@@ -57,7 +57,7 @@
 
     /* 以下样式用于 hello uni-app 演示所需 */
     page {
-        background-color: #F4F5F6;
+        background-color: #fff;
         height: 100%;
         font-size: 28upx;
         line-height: 1.8;

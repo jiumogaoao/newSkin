@@ -1,5 +1,6 @@
+import headerCP from '@/components/header_CP.vue'
 module.exports = {
-	
+	components:{headerCP},
 	computed:{
 		destop(){
 			return this.$store.state.rootST.destop
