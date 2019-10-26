@@ -7,6 +7,20 @@
             	"navigationBarTitleText": "如新"
             }
         }
+        ,{
+            "path" : "pages/shelf/shelf",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        }
+        ,{
+            "path" : "pages/detail/detail",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        }
     ],
     "subPackages": [],
     "globalStyle": {

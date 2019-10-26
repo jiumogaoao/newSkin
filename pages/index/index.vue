@@ -16,7 +16,6 @@
 			</view>
 		</view>
 		<view class="joinFrame">
-			<image class="joinBG" src="/static/indexBackImg.jpg"></image>
 			<view class="joinCenterFrame">
 				<view class="joinTitle">加入如新</view>
 				<view class="joinButton">加入我们</view>
@@ -48,23 +47,27 @@
 		<view class="storyFrame">
 			<view class="storyItem">
 				<image class="storyImg" src="/static/IpMMLTJCOmjYB0M3Tj5LxtpBTOBb5w.jpg"></image>
-				<view class="storyTitle">ageLoc王牌</view>
-				<view class="storyMore">了解更多</view>
+				<view class="storyBottom">
+					<view class="storyTitle">ageLoc王牌</view>
+					<view class="storyMore">了解更多</view>
+				</view>
 			</view>
 			<view class="storyItem">
-				<image class="storyImg" src="/static/IpMMLTJCOmjYB0M3Tj5LxtpBTOBb5w.jpg"></image>
-				<view class="storyTitle">ageLoc王牌</view>
-				<view class="storyMore">了解更多</view>
+				<image class="storyImg" src="/static/nPeSlwW7K11t331317eT3k7byTgGGe.jpg"></image>
+				<view class="storyBottom">
+					<view class="storyTitle">Nu Skin的诞生</view>
+					<view class="storyMore">了解更多</view>
+				</view>
 			</view>
-			<view class="more">查看更多</view>
 		</view>
+		<view class="more">查看更多</view>
 		<footerCP/>
 	</view>
 </template>
 
 <script>
 	import allPage from "@/mixin/allPage"
-	import productSimpleCP from "@/compoments/productSimple_CP"
+	import productSimpleCP from "@/components/productSimple_CP.vue"
 	export default {
 		mixins: [allPage],
 		components:{productSimpleCP},
@@ -90,6 +93,7 @@
 		margin: auto;
 		width: 240px;
 		margin-top: 45px;
+		margin-bottom: 80px;
 	}
 	.shelfTitleBG{
 		width:215px;
@@ -112,15 +116,17 @@
 		top: 60px;
 		left: 40px;
 	}
+	.shelfProductList{
+		display: flex;
+		justify-content: space-between;
+	}
 	.joinFrame{
 		width: 100%;
 		height: 500px;
 		margin-top: 103px;
 		position: relative;
-	}
-	.joinBG{
-		width: 100%;
-		height: 100%;
+		background-image: url('/h5/static/indexBackImg.jpg');
+		margin-bottom: 100px;
 	}
 	.joinCenterFrame{
 		width: 1200px;
@@ -133,7 +139,7 @@
 		letter-spacing: 5px;
 		position: absolute;
 		top: 130px;
-		left: 365;
+		left: 365px;
 	}
 	.joinButton{
 		position: absolute;
@@ -144,11 +150,13 @@
 		width: 170px;
 		display: block;
 		text-align: center;
-		top: 165px;
+		top: 228px;
 		left: 365px;
+		font-size: 12px;
 	}
 	.titleFrame{
 		width: 1200px;
+		margin: auto;
 		margin-bottom: 39px;
 	}
 	.title{
@@ -161,10 +169,11 @@
 		height: 8px;
 		background: #77C4D6;
 		margin: auto;
+		margin-top: 20px;
 	}
 	.newsFrame{
 		    width: 100%;
-		    background-image: url(/static/index/images/indexBackImg_02.jpg);
+		    background-image: url('/h5/static/indexBackImg_02.jpg');
 		    background-size: 100% 100%;
 		    height: 684px;
 		    background-position: left 15px;
@@ -186,6 +195,7 @@
 		    color: #ffffff;
 		    text-align: center;
 		    cursor: pointer;
+			font-size: 12px;
 	}
 	.newsItem{
 		padding-bottom: 25px;
@@ -195,7 +205,8 @@
 		    cursor: pointer;
 	}
 	.newsImage{
-		width: 100%;
+		width: 578px;
+		height:372px;
 	}
 	.newsTitle{
 		margin-top: 30px;
@@ -210,6 +221,7 @@
 	}
 	.storyFrame{
 		width: 1200px;
+		margin: auto;
 		display: flex;
 		justify-content: space-between;
 		margin-top: 55px;
@@ -219,7 +231,12 @@
 		height: auto;
 	}
 	.storyImg{
-		width:100%;
+		width:378px;
+		height:151px;
+	}
+	.storyBottom{
+		padding: 15px 50px 35px 23px;
+		border: 1px solid #F0E9DE;
 	}
 	.storyTitle{
 		font-size: 20px;
@@ -232,7 +249,8 @@
 		    font-size: 14px;
 		    letter-spacing: 1px;
 		    color: #333333;
-		    border-bottom: 1px solid;
 		    cursor: pointer;
+			text-decoration: underline;
+			margin-top:20px;
 	}
 </style>

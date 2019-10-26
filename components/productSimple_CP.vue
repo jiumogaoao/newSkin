@@ -42,4 +42,12 @@
 		font-weight: bold;
 		font-size: 16px;
 	}
+	.follow{
+		width:20px;
+		height:18px;
+		position: absolute;
+		right: 19px;
+		top: 11px;
+		cursor: pointer;
+	}
 </style>

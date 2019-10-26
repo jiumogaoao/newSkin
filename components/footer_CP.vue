@@ -23,6 +23,7 @@
 					<image class="followItem" src="/static/weibo.png"></image>
 					<image class="followItem" src="/static/weixin.png"></image>
 				</view>
+				<view class="line"></view>
 			</view>
 		</view>
 	</view>
@@ -40,9 +41,10 @@
 
 <style lang="scss" scoped>
 	.footer_CP{
-		    background: url(/static/index/images/footer_bg.png) no-repeat center center;
+		    background: url('/h5/static/footer_bg.png') no-repeat center center;
 		    width: 100%;
 		    height: 328px;
+			margin-top: 100px;
 	}
 	.centerFrame{
 		width:1200px;
@@ -52,6 +54,9 @@
 	}
 	.left{
 		display: flex;
+		padding-top: 89px;
+	}
+	.right{
 		padding-top: 89px;
 	}
 	.title{
@@ -68,11 +73,22 @@
 			color: #fff;
 	}
 	.followFrame{
+		margin-top: 34px;
 		display: flex;
 	}
 	.followItem{
 		margin-right: 100px;
 		    width: 45px;
 		    height: 45px;
+	}
+	.list{
+		margin-right:80px;
+	}
+	.line{
+		width: 330px;
+		    height: 3px;
+		    background-color: #676767;
+		    margin-top: 30px;
+		    margin-left: 6px;
 	}
 </style>

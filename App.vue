@@ -56,11 +56,14 @@
     @import './common/uni.css';
 
     /* 以下样式用于 hello uni-app 演示所需 */
+	uni-view,uni-image{font-size: 12px;
+        line-height: 1;}
+	uni-image{display: block;}
     page {
         background-color: #fff;
         height: 100%;
-        font-size: 28upx;
-        line-height: 1.8;
+        font-size: 12px;
+        line-height: 1;
     }
 
     .uni-header-logo {

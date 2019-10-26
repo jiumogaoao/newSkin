@@ -1,7 +1,8 @@
 import headerCP from '@/components/header_CP.vue'
 import footerCP from '@/components/footer_CP.vue'
+import breadcrumbsCP from '@/components/breadcrumbs_CP.vue'
 module.exports = {
-	components:{headerCP},
+	components:{headerCP,footerCP,breadcrumbsCP},
 	computed:{
 		destop(){
 			return this.$store.state.rootST.destop

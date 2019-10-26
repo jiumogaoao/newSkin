@@ -70,6 +70,8 @@
 		top:0;
 		left:0;
 		width:100%;
+		background-color: #fff;
+		z-index:3;
 	}
 	.headerCP{
 		width:1200px;
@@ -164,6 +166,7 @@
 		position: absolute;
 		top:110px;
 		left:0px;
+		display: none;
 	}
 	.nav2Child{
 		width:100%;
