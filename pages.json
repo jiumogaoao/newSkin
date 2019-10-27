@@ -35,6 +35,13 @@
             	"navigationBarTitleText": "如新"
             }
         }
+        ,{
+            "path" : "pages/myOrder/myOrder",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        }
     ],
     "subPackages": [],
     "globalStyle": {
