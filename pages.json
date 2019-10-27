@@ -21,6 +21,20 @@
             	"navigationBarTitleText": "如新"
             }
         }
+        ,{
+            "path" : "pages/shoppingCar/shoppingCar",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        }
+        ,{
+            "path" : "pages/comfirm/comfirm",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        }
     ],
     "subPackages": [],
     "globalStyle": {

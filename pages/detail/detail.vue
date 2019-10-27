@@ -1,15 +1,24 @@
 <template>
 	<view>
 		<headerCP/>
-		<view class="band"></view>
+		<view class="empty"></view>
 		<breadcrumbsCP/>
 		<view class="top">
 			<view class="left">
-				<image class="bigPic"></image>
+				<image class="bigPic" src="/static/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg"></image>
 				<view class="picFrame">
 					<image class="degLeft" src="/static/feel3.png"></image>
-					<view class="picRollFrame"></view>
-					<image class="degRight" src="/static/feel3.png"></image>
+					<view class="picRollFrame">
+						<view class="picRoll">
+							<image class="smallPic" src="/static/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg"></image>
+							<image class="smallPic" src="/static/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg"></image>
+							<image class="smallPic" src="/static/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg"></image>
+							<image class="smallPic" src="/static/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg"></image>
+							<image class="smallPic" src="/static/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg"></image>
+							<image class="smallPic" src="/static/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg"></image>
+						</view>
+					</view>
+					<image class="degRight" src="/static/feel4.png"></image>
 				</view>
 			</view>
 			<view class="right">
@@ -103,8 +112,214 @@
 </script>
 
 <style lang="scss" scoped>
-	.band{
+	.empty{
 		width:100%;
 		height:130px;
+	}
+	.top{
+		width:1200px;
+		margin: auto;
+		display: flex;
+	}
+	.left{
+		width:580px;
+		flex-shrink: 0;
+	}
+	.bigPic{
+		width:580px;
+		height:580px;
+	}
+	.picFrame{
+		width: 580px;
+		height:82px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.degLeft{
+		width:9px;
+		height:18px;
+		margin-left: 10px;
+	}
+	.degRight{
+		width:9px;
+		height:18px;
+		margin-right:10px;
+	}
+	.picRollFrame{
+		width: 500px;
+		height:82px;
+		overflow: hidden;
+		position: relative;
+	}
+	.picRoll{
+		height:82px;
+		display: flex;
+		flex-wrap: nowrap;
+		position: absolute;
+		top:0;
+		left:0;
+		align-items: center;
+	}
+	.smallPic{
+		width:78px;
+		height:78px;
+	}
+	.right{
+		flex-grow: 1;
+	}
+	.id{
+		font-size: 16px;
+		    color: #808080;
+		    margin-bottom: 23px;
+	}
+	.chn{
+		font-size: 20px;
+		    line-height: 20px;
+		    color: #333333;
+	}
+	.eng{
+		font-size: 20px;
+		    line-height: 20px;
+		    color: #333333;
+	}
+	.band{
+		font-size: 16px;
+		    line-height: 16px;
+		    color: #808080;
+		    margin-bottom: 26px;
+	}
+	.price{
+		font-size: 14px;
+		    line-height: 14px;
+		    color: #37b0c9;
+	}
+	.newPrice{
+		font-size: 20px;
+		    line-height: 20px;
+		    font-weight: bold;
+		    color: #37b0c9;
+		    float: left;
+		    margin-right: 10px;
+	}
+	.oldPrice{
+		color: #909399;
+		    font-size: 20px;
+		    line-height: 20px;
+		    text-decoration: line-through;
+	}
+	.frame{
+		display: flex;
+	}
+	.title{
+		color: #808080;
+		    font-size: 14px;
+		    margin-right: 35px;
+	}
+	.activeGroud{
+		display: flex;
+	}
+	.activeTitle{
+		color: #ff69b0;
+		    font-size: 14px;
+		    line-height: 19px;
+		    border: 1px solid #ff69b0;
+		    width: 58px;
+		    height: 22px;
+		    text-align: center;
+		    border-radius: 11px;
+		    display: inline-block;
+			margin-right: 10px;
+	}
+	.activeItem{
+		    font-size: 14px;
+		    color: #333333;
+			margin-bottom: 15px;
+	}
+	.text{
+		font-size: 14px;
+		    color: #333333;
+			margin-bottom: 15px;
+	}
+	.buttonFrame{
+		display: flex;
+		align-items: center;
+	}
+	.addShoppingCart{
+		    position: relative;
+		    z-index: 55;
+		    width: 190px;
+		    height: 44px;
+		    line-height: 44px;
+		    font-size: 16px;
+		    color: #ffffff;
+		    text-align: center;
+		    background-color: #018ab0;
+		    cursor: pointer;
+		    float: left;
+		    margin-right: 78px;
+	}
+	.iconButton{
+		display: flex;
+		align-items: center;
+	}
+	.follow{
+		width:70px;
+		height:70px;
+	}
+	.bigTitle{
+		font-size: 20px;
+		    line-height: 54px;
+		    font-weight: bold;
+		    color: #333333;
+		    text-align: center;
+	}
+	.titleLine{
+		width:1200px;
+		height: 2px;
+		background-color: #e6e6e6;
+		margin: auto;
+		margin-top: 20px;
+	}
+	.detailFrame,.notice{
+		width: 1200px;
+		margin: auto;
+		margin-top: 20px;
+	}
+	.detailFrame{
+	    color: rgb(127, 127, 127);
+	    font-family: 微软雅黑,Microsoft YaHei;
+	    font-size: 18px;
+	}
+	.notice{
+		font-size: 14px;
+		    line-height: 28px;
+		    color: #333333;
+	}
+	.radioFrame{
+		display: flex;
+	}
+	.radio{
+		border: 1px solid #008ab0;
+		position: relative;
+		position: relative;
+		padding: 5px 10px;
+		border-radius: 3px;
+		margin-right:10px;
+	}
+	.choosed{
+		width:15px;
+		height:16px;
+		position:absolute;
+		right:0;
+		bottom:0;
+	}
+	.iconButton{
+		margin-right:10px;
+	}
+	.follow{
+		width:22px;
+		height:22px;
+		margin-right:10px;
 	}
 </style>
