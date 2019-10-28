@@ -1,9 +1,11 @@
 <template>
-	<image class="radioCP" src="/static/radio.png"></image>
+	<image class="radioCP" :src="imgPath+'radio.png'"></image>
 </template>
 
 <script>
+	import allComponent from "@/mixin/allComponent"
 	export default {
+		mixins: [allComponent],
 		data() {
 			return {
 				

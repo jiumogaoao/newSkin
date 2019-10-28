@@ -21,7 +21,9 @@
 </template>
 
 <script>
+	import allComponent from "@/mixin/allComponent"
 	export default {
+		mixins: [allComponent],
 		data() {
 			return {
 				

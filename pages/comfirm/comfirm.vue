@@ -1,11 +1,11 @@
 <template>
-	<view>
+	<view v-if="destop && initReady">
 		<headerCP/>
 		<view class="band"></view>
 		<breadcrumbsCP/>
 		<view class="top">
 			<view class="topLeft">
-				<image class="noticeIcon" src="/static/order-check.png"></image>
+				<image class="noticeIcon" :src="imgPath+'order-check.png'"></image>
 				<view class="noticeTitle" >填写并核对订单信息</view>
 			</view>
 			<view class="flow">
@@ -105,7 +105,7 @@
 				<view class="bottomItem">产品总金额：￥425.00</view>
 				<view class="bottomItem">促销优惠：-￥425.00</view>
 				<view class="bottomItem">运费：￥425.00</view>
-				<view class="bottomItem">税费<image class="info" src="/static/conOrderQa.png"></image>：￥425.00</view>
+				<view class="bottomItem">税费<image class="info" :src="imgPath+'conOrderQa.png'"></image>：￥425.00</view>
 				<view class="bottomItem">现金优惠：-￥425.00</view>
 				<view class="bottomItem">应付总额 （含运费）：<block class="blue">￥425.00</block></view>
 				<view class="bottomItem big">产品总金额：￥425.00</view>

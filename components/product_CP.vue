@@ -1,17 +1,19 @@
 <template>
 	<view class="productCP">
-		<image src="/static/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg" class="img"></image>
+		<image :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'" class="img"></image>
 		<view class="brand">王牌ageLOC</view>
 		<view class="title">商品标题</view>
 		<view class="taxes">预计税费：￥100</view>
 		<view class="price">零售价：<block style="font-size: 20px;">￥100</block></view>
-		<image class="follow" src="/static/sellWellHIcon.png"></image>
-		<image class="shoppingCar" src="/static/caricon-blue.png"></image>
+		<image class="follow" :src="imgPath+'sellWellHIcon.png'"></image>
+		<image class="shoppingCar" :src="imgPath+'caricon-blue.png'"></image>
 	</view>
 </template>
 
 <script>
+	import allComponent from "@/mixin/allComponent"
 	export default {
+		mixins: [allComponent],
 		data() {
 			return {
 				

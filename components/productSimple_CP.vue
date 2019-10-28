@@ -1,14 +1,16 @@
 <template>
 	<view class="productSimpleCP">
-		<image src="/static/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg" class="img"></image>
+		<image :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'" class="img"></image>
 		<view class="title">商品标题</view>
 		<view class="price">￥100</view>
-		<image class="follow" src="/static/sellWellHIcon.png"></image>
+		<image class="follow" :src="imgPath+'sellWellHIcon.png'"></image>
 	</view>
 </template>
 
 <script>
+	import allComponent from "@/mixin/allComponent"
 	export default {
+		mixins: [allComponent],
 		data() {
 			return {
 				

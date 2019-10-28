@@ -1,11 +1,11 @@
 <template>
-	<view>
+	<view v-if="destop && initReady">
 		<headerCP/>
 		<view class="band"></view>
 		<breadcrumbsCP/>
 		<view class="search">
 			<input class="searchInput"/>
-			<image src="/static/search-blue.png" class="searchIcon"></image>
+			<image :src="imgPath+'search-blue.png'" class="searchIcon"></image>
 		</view>
 		<view class="tableFrame">
 			<table class="table" style="margin-top: 39px;">

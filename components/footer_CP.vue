@@ -20,8 +20,8 @@
 			<view class="right">
 				<view class="title">关注我们</view>
 				<view class="followFrame">
-					<image class="followItem" src="/static/weibo.png"></image>
-					<image class="followItem" src="/static/weixin.png"></image>
+					<image class="followItem" :src="imgPath+'weibo.png'"></image>
+					<image class="followItem" :src="imgPath+'weixin.png'"></image>
 				</view>
 				<view class="line"></view>
 			</view>
@@ -30,7 +30,9 @@
 </template>
 
 <script>
+	import allComponent from "@/mixin/allComponent"
 	export default {
+		mixins: [allComponent],
 		data() {
 			return {
 				
@@ -41,7 +43,7 @@
 
 <style lang="scss" scoped>
 	.footer_CP{
-		    background: url('/h5/static/footer_bg.png') no-repeat center center;
+		    background: url($oss-destop+'footer_bg.png') no-repeat center center;
 		    width: 100%;
 		    height: 328px;
 			margin-top: 100px;

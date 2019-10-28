@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view v-if="destop && initReady">
 		<headerCP/>
 		<view class="band"></view>
 		<breadcrumbsCP/>
@@ -20,7 +20,7 @@
 					<view class="list">
 						<view class="listItem" style="width:60%">
 							<view class="product">
-								<image src="/static/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg"></image>
+								<image :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'"></image>
 								<view class="infoFrame">
 									<view class="productTitle">如新华贸骨骼配方</view>
 									<view class="info">产品编号：01003331</view>
@@ -29,7 +29,7 @@
 								<view class="count">x5</view>
 							</view>
 							<view class="product">
-								<image src="/static/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg"></image>
+								<image :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'"></image>
 								<view class="infoFrame">
 									<view class="productTitle">如新华贸骨骼配方</view>
 									<view class="info">产品编号：01003331</view>

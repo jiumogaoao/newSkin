@@ -1,9 +1,11 @@
 <template>
-	<image class="checkboxCP" src="/static/checked.png"></image>
+	<image class="checkboxCP" :src="imgPath+'checked.png'"></image>
 </template>
 
 <script>
+	import allComponent from "@/mixin/allComponent"
 	export default {
+		mixins: [allComponent],
 		data() {
 			return {
 				

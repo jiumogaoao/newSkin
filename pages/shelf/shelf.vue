@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view v-if="destop && initReady">
 		<headerCP/>
 		<view class="band"></view>
 		<breadcrumbsCP/>

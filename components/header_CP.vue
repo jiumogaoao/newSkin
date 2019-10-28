@@ -1,18 +1,18 @@
 <template>
 	<view class="headerCPFrame">
 		<view class="headerCP">
-			<image src="/static/indexLogo.jpg" id="logo"></image>
+			<image :src="imgPath+'indexLogo.jpg'" id="logo"></image>
 			<view class="right">
 				<view class="top">
 					<view class="topLeft">
-						<view class="place"><image src="/static/indexLandmarkIcon.png" id="place"></image>上海</view>
+						<view class="place"><image :src="imgPath+'indexLandmarkIcon.png'" id="place"></image>上海</view>
 						<view class="nav1">产品目录</view>
 						<view class="nav1">加入事业</view>
 						<view class="nav1">店铺查询</view>
 					</view>
 					<view class="topRight">
-						<image src="/static/indexSearchIcon.png" id="search"></image>
-						<image src="/static/indexUserIcon.png" id="user"></image>
+						<image :src="imgPath+'indexSearchIcon.png'" id="search"></image>
+						<image :src="imgPath+'indexUserIcon.png'" id="user"></image>
 						<div class="goShoppingCar">购物车</div>
 					</view>
 				</view>
@@ -55,7 +55,9 @@
 </template>
 
 <script>
+	import allComponent from "@/mixin/allComponent"
 	export default {
+		mixins: [allComponent],
 		data() {
 			return {
 				

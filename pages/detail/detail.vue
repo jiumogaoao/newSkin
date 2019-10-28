@@ -1,24 +1,24 @@
 <template>
-	<view>
+	<view v-if="destop && initReady">
 		<headerCP/>
 		<view class="empty"></view>
 		<breadcrumbsCP/>
 		<view class="top">
 			<view class="left">
-				<image class="bigPic" src="/static/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg"></image>
+				<image class="bigPic" :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'"></image>
 				<view class="picFrame">
-					<image class="degLeft" src="/static/feel3.png"></image>
+					<image class="degLeft" :src="imgPath+'feel3.png'"></image>
 					<view class="picRollFrame">
 						<view class="picRoll">
-							<image class="smallPic" src="/static/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg"></image>
-							<image class="smallPic" src="/static/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg"></image>
-							<image class="smallPic" src="/static/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg"></image>
-							<image class="smallPic" src="/static/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg"></image>
-							<image class="smallPic" src="/static/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg"></image>
-							<image class="smallPic" src="/static/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg"></image>
+							<image class="smallPic" :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'"></image>
+							<image class="smallPic" :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'"></image>
+							<image class="smallPic" :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'"></image>
+							<image class="smallPic" :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'"></image>
+							<image class="smallPic" :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'"></image>
+							<image class="smallPic" :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'"></image>
 						</view>
 					</view>
-					<image class="degRight" src="/static/feel4.png"></image>
+					<image class="degRight" :src="imgPath+'feel4.png'"></image>
 				</view>
 			</view>
 			<view class="right">
@@ -61,8 +61,8 @@
 				<view class="frame">
 					<view class="title">容量：</view>
 					<view class="radioFrame">
-						<view class="radio">30ml<image class="choosed" src="/static/prop-selected.png"></image></view>
-						<view class="radio">30ml<image class="choosed" src="/static/prop-selected.png"></image></view>
+						<view class="radio">30ml<image class="choosed" :src="imgPath+'prop-selected.png'"></image></view>
+						<view class="radio">30ml<image class="choosed" :src="imgPath+'prop-selected.png'"></image></view>
 					</view>
 				</view>
 				<view class="frame">
@@ -71,8 +71,8 @@
 				</view>
 				<view class="buttonFrame">
 					<view class="addShoppingCart">加入购物车</view>
-					<view class="iconButton"><image class="follow" src="/static/sellWellHIcon.png"></image>加入收藏夹</view>
-					<view class="iconButton"><image class="follow" src="/static/sharp.png"></image>分享到</view>
+					<view class="iconButton"><image class="follow" :src="imgPath+'sellWellHIcon.png'"></image>加入收藏夹</view>
+					<view class="iconButton"><image class="follow" :src="imgPath+'sharp.png'"></image>分享到</view>
 				</view>
 			</view>
 		</view>

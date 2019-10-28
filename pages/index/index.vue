@@ -1,10 +1,10 @@
 <template>
-	<view>
+	<view v-if="destop && initReady">
 		<headerCP/>
 		<view class="band"></view>
 		<view class="shelf">
 			<view class="shelfTitleFrame">
-				<image src="/static/indexLeaf.jpg" class="shelfTitleBG"></image>
+				<image :src="imgPath+'indexLeaf.jpg'" class="shelfTitleBG"></image>
 				<view class="shelfTitle">彩妆系列</view>
 				<view class="shelfTitleLine"></view>
 			</view>
@@ -28,12 +28,12 @@
 		<view class="newsFrame">
 			<view class="newsCenterFrame">
 				<view class="newsItem">
-					<image class="newsImage" src="/static/BFx00b0ptJs4P2Tw0b1OBB4vWYQqBp.jpg"></image>
+					<image class="newsImage" :src="imgPath+'BFx00b0ptJs4P2Tw0b1OBB4vWYQqBp.jpg'"></image>
 					<view class="newsTitle">如新海外购上线了</view>
 					<view class="newsDesc">“勿忘初心，自我革新，砥砺前行”</view>
 				</view>
 				<view class="newsItem">
-					<image class="newsImage" src="/static/BFx00b0ptJs4P2Tw0b1OBB4vWYQqBp.jpg"></image>
+					<image class="newsImage" :src="imgPath+'BFx00b0ptJs4P2Tw0b1OBB4vWYQqBp.jpg'"></image>
 					<view class="newsTitle">如新海外购上线了</view>
 					<view class="newsDesc">“勿忘初心，自我革新，砥砺前行”</view>
 				</view>
@@ -46,14 +46,14 @@
 		</view>
 		<view class="storyFrame">
 			<view class="storyItem">
-				<image class="storyImg" src="/static/IpMMLTJCOmjYB0M3Tj5LxtpBTOBb5w.jpg"></image>
+				<image class="storyImg" :src="imgPath+'IpMMLTJCOmjYB0M3Tj5LxtpBTOBb5w.jpg'"></image>
 				<view class="storyBottom">
 					<view class="storyTitle">ageLoc王牌</view>
 					<view class="storyMore">了解更多</view>
 				</view>
 			</view>
 			<view class="storyItem">
-				<image class="storyImg" src="/static/nPeSlwW7K11t331317eT3k7byTgGGe.jpg"></image>
+				<image class="storyImg" :src="imgPath+'nPeSlwW7K11t331317eT3k7byTgGGe.jpg'"></image>
 				<view class="storyBottom">
 					<view class="storyTitle">Nu Skin的诞生</view>
 					<view class="storyMore">了解更多</view>
@@ -125,7 +125,7 @@
 		height: 500px;
 		margin-top: 103px;
 		position: relative;
-		background-image: url('/h5/static/indexBackImg.jpg');
+		background-image: url($oss-destop+'indexBackImg.jpg');
 		margin-bottom: 100px;
 	}
 	.joinCenterFrame{
@@ -173,7 +173,7 @@
 	}
 	.newsFrame{
 		    width: 100%;
-		    background-image: url('/h5/static/indexBackImg_02.jpg');
+		    background-image: url($oss-destop+'indexBackImg_02.jpg');
 		    background-size: 100% 100%;
 		    height: 684px;
 		    background-position: left 15px;
