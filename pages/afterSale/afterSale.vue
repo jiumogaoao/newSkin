@@ -6,15 +6,16 @@
 		<view class="body">
 			<mineNavCP/>
 			<view class="info">
-				<view class="title">我的订单</view>
-				<tabbarCP/>
+				<view class="title">售后服务查询</view>
 				<view class="head">
-					<view class="headItem first" style="width:46%">订单详情</view>
-					<view class="headItem" style="width:10%">数量</view>
-					<view class="headItem" style="width:12%">收货人</view>
-					<view class="headItem" style="width:12%">金额</view>
+					<view class="headItem first" style="width:56%">产品</view>
+					<view class="headItem" style="width:12%">退款金额</view>
+					<view class="headItem" style="width:12%">申请数量</view>
 					<view class="headItem" style="width:10%">状态</view>
 					<view class="headItem" style="width:10%">操作</view>
+				</view>
+				<view class="head">
+					<view class="headItem first">服务单号：CBER0000022</view>
 				</view>
 				<view class="listFrame">
 					<view class="list">
@@ -26,27 +27,16 @@
 									<view class="info">产品编号：01003331</view>
 									<view class="info">规格：180粒</view>
 								</view>
-								<view class="count">x5</view>
-							</view>
-							<view class="product">
-								<image :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'" class="productImg"></image>
-								<view class="infoFrame">
-									<view class="productTitle">如新华贸骨骼配方</view>
-									<view class="info">产品编号：01003331</view>
-									<view class="info">规格：180粒</view>
-								</view>
-								<view class="count">x5</view>
 							</view>
 						</view>
-						<view class="listItem" style="width:12%">收货人：张天爱</view>
-						<view class="listItem" style="width:12%">￥2143.82</view>
+						<view class="listItem" style="width:12%">￥3401.01</view>
+						<view class="listItem" style="width:12%">X2</view>
 						<view class="listItem" style="width:10%">
-							<view class="state">待收货</view>
-							<view class="blue">订单详情</view>
+							<view class="state">退货完成</view>
+							<view class="blue">服务单详情</view>
 						</view>
 						<view class="listItem" style="width:10%">
-							<view class="button" style="margin: 0 auto 18px;">确认收货</view>
-							<view class="button">查看物流</view>
+
 						</view>
 					</view>
 				</view>
@@ -116,11 +106,8 @@
 		border-left: 1px solid #f5f5f5;
 	}
 	.product{
-		margin-top: -1px;
 		width:100%;
 		height: 142px;
-		border: 1px solid #f5f5f5;
-		border-bottom: 0;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;

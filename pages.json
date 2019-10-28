@@ -42,6 +42,90 @@
             	"navigationBarTitleText": "如新"
             }
         }
+        ,{
+            "path" : "pages/afterSale/afterSale",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        }
+        ,{
+            "path" : "pages/myCoupon/myCoupon",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        }
+        ,{
+            "path" : "pages/amout/amout",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        }
+        ,{
+            "path" : "pages/myLevel/myLevel",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        }
+        ,{
+            "path" : "pages/myShare/myShare",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        }
+        ,{
+            "path" : "pages/myIncome/myIncome",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        }
+        ,{
+            "path" : "pages/myCard/myCard",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        }
+        ,{
+            "path" : "pages/myInfo/myInfo",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        }
+        ,{
+            "path" : "pages/myQrcode/myQrcode",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        }
+        ,{
+            "path" : "pages/myNotice/myNotice",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        }
+        ,{
+            "path" : "pages/myFollow/myFollow",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        }
+        ,{
+            "path" : "pages/myIntegral/myIntegral",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        }
     ],
     "subPackages": [],
     "globalStyle": {
