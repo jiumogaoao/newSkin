@@ -66,7 +66,53 @@
 		<footerCP/>
 		</block>
 		<!-- #endif -->
-		<block  v-if="!destop && initReady"></block>
+		<block  v-if="!destop && initReady">
+			<view class="navBar">
+				<view class="left">
+					<image class="notice" :src="imgPath+'xinxi2.0.png'"></image>
+				</view>
+				<view class="right">
+					<image class="shoppingCar" :src="imgPath+'tab-cart-current.png'"></image>
+					<image class="navList" :src="imgPath+'menu01.png'"></image>
+				</view>
+			</view>
+			<view class="banner">
+				<swiper class="swiper" :indicator-dots="true" :autoplay="true" :interval="2000" :duration="500">
+				                        <swiper-item>
+				                            <image :src="imgPath+'EYMk7dC8827epCIeeAkWyYEej5l20Z.jpg'" class="item"></image>
+				                        </swiper-item>
+				                        <swiper-item>
+				                            <image :src="imgPath+'EYMk7dC8827epCIeeAkWyYEej5l20Z.jpg'" class="item"></image>
+				                        </swiper-item>
+				</swiper>
+			</view>
+			<view class="doubleFrame">
+				<view class="item">
+					<image class="icon" :src="imgPath+'xsk89KqkppQud34p8xbXm4pKhqPbHh.png'"></images>
+					<view class="title">我的订单</view>
+				</view>
+				<view class="item">
+					<image class="icon" :src="imgPath+'c6.png'"></images>
+					<view class="title">我的收藏</view>
+				</view>
+			</view>
+			<image class="bigTitle" :src="imgPath+'rxph.png'"></image>
+			<view class="productList">
+				<productSimpleCP style="margin-top:30rpx;"/>
+				<productSimpleCP style="margin-top:30rpx;"/>
+				<productSimpleCP style="margin-top:30rpx;"/>
+				<productSimpleCP style="margin-top:30rpx;"/>
+			</view>
+			<image class="ad" :src="imgPath+'ad1.png'"/>
+			<view class="productList">
+				<productSimpleCP style="margin-top:30rpx;"/>
+			</view>
+			<image class="ad" :src="imgPath+'ad1.png'"/>
+			<view class="productList">
+				<productSimpleCP style="margin-top:30rpx;"/>
+			</view>
+			
+		</block>
 	</view>
 </template>
 
@@ -262,5 +308,88 @@
 		}
 	}
 	/* #endif */
-	.phone{}
+	.phone{
+		.navBar{
+			width:750rpx;
+			height:62rpx;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			position: fixed;
+			top:0;
+			left:0;
+			background-color: #fff;
+			z-index: 3;
+			.notice{
+				width:42rpx;
+				height:42rpx;
+				margin-left: 20rpx;
+			}
+			.right{
+				display: flex;
+				align-items: center;
+				.shoppingCar{
+					width:42rpx;
+					height:42rpx;
+					margin-right: 20rpx;
+				}
+				.navList{
+					width:42rpx;
+					height:42rpx;
+					margin-right: 20rpx;
+				}
+			}
+		}
+		.banner{
+			width:750rpx;
+			height:400rpx;
+			padding-top: 62rpx;
+			.swiper{
+				width:100%;
+				height:100%;
+				.item{
+					width:100%;
+					height:100%;
+				}
+			}
+		}
+		.doubleFrame{
+			width:750rpx;
+			height:253rpx;
+			display: flex;
+			justify-content: space-evenly;
+			align-items: center;
+			.item{
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				.icon{
+					width:68rpx;
+					height:68rpx;
+				}
+				.title{
+					font-size: 32rpx;
+					margin-top: 20rpx;
+					font-weight: bold;
+				}
+			}
+		}
+		.bigTitle{
+				width:750rpx;
+				height:95rpx;
+		}
+		.productList{
+			width:750rpx;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		.ad{
+			width:750rpx;
+			height:340rpx;
+			margin-top: 40rpx;
+			margin-bottom: 20rpx;
+		}
+	}
 </style>
