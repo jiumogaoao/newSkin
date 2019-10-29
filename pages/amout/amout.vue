@@ -38,57 +38,63 @@
 </script>
 
 <style lang="scss" scoped>
-	.band{
-		width:100%;
-		height:130px;
+	/* #ifdef H5 */
+	.destop{
+		.band{
+			width:100%;
+			height:130px;
+		}
+		.body{
+			width:1200px;
+			margin: auto;
+			margin-top: 20px;
+			display: flex;
+		}
+		.info{
+			flex-grow: 1;
+		}
+		.title{
+			font-size: 16px;
+			    font-weight: bold;
+			    color: #000;
+				margin-bottom: 60px;
+		}
+		.dsc{
+			font-size: 14px;
+			    line-height: 22px;
+			    letter-spacing: 1px;
+			    color: #808080;
+		}
+		.button{
+			    margin: 40px 0 0;
+			    width: 140px;
+			    height: 34px;
+			    background-color: #008ab0;
+			    border-radius: 17px;
+			    font-size: 14px;
+			    letter-spacing: 1px;
+			    color: #ffffff;
+			    text-align: center;
+			    line-height: 34px;
+		}
+		.amoutListTitle{
+			margin: 70px 0 0;
+			    font-size: 14px;
+			    color: #333333;
+			    letter-spacing: 1px;
+			    line-height: 45px;
+			    font-weight: 600;
+			    border-bottom: 1px solid #F5F5F5;
+		}
+		.noMessage{
+			    font-size: 12px;
+			    letter-spacing: 1px;
+			    color: #333333;
+			    text-align: center;
+			    line-height: 95px;
+		}
 	}
-	.body{
-		width:1200px;
-		margin: auto;
-		margin-top: 20px;
-		display: flex;
-	}
-	.info{
-		flex-grow: 1;
-	}
-	.title{
-		font-size: 16px;
-		    font-weight: bold;
-		    color: #000;
-			margin-bottom: 60px;
-	}
-	.dsc{
-		font-size: 14px;
-		    line-height: 22px;
-		    letter-spacing: 1px;
-		    color: #808080;
-	}
-	.button{
-		    margin: 40px 0 0;
-		    width: 140px;
-		    height: 34px;
-		    background-color: #008ab0;
-		    border-radius: 17px;
-		    font-size: 14px;
-		    letter-spacing: 1px;
-		    color: #ffffff;
-		    text-align: center;
-		    line-height: 34px;
-	}
-	.amoutListTitle{
-		margin: 70px 0 0;
-		    font-size: 14px;
-		    color: #333333;
-		    letter-spacing: 1px;
-		    line-height: 45px;
-		    font-weight: 600;
-		    border-bottom: 1px solid #F5F5F5;
-	}
-	.noMessage{
-		    font-size: 12px;
-		    letter-spacing: 1px;
-		    color: #333333;
-		    text-align: center;
-		    line-height: 95px;
-	}
+	/* #endif */
+	.phone{}
+	
 </style>

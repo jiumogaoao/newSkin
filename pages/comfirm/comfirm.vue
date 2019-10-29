@@ -144,7 +144,9 @@
 
 <style lang="scss" scoped>
 	@import '@/table.scss';
-	.band{
+	/* #ifdef H5 */
+	.destop{
+		.band{
 		width:100%;
 		height:130px;
 	}
@@ -376,4 +378,8 @@
 				text-align: center;
 				line-height:40px;
 	}
+	}
+	/* #endif */
+	.phone{}
+	
 </style>

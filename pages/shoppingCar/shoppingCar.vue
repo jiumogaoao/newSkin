@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view :class="destop?'destop':'phone'">
 		<!-- #ifdef H5 -->
 		<block  v-if="destop && initReady">
 			<headerCP/>
@@ -146,7 +146,9 @@
 
 <style lang="scss" scoped>
 	@import '@/table.scss';
-	.band{
+	/* #ifdef H5 */
+	.destop{
+		.band{
 		width:100%;
 		height:130px;
 	}
@@ -200,4 +202,8 @@
 		justify-content: space-between;
 		flex-wrap: wrap;
 	}
+	}
+	/* #endif */
+	.phone{}
+	
 </style>

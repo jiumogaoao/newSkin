@@ -36,39 +36,45 @@
 </script>
 
 <style lang="scss" scoped>
-	.band{
-		width:100%;
-		height:130px;
-	}
-	.body{
-		width:1200px;
-		margin: auto;
-		margin-top: 20px;
-		display: flex;
-	}
-	.info{
-		flex-grow: 1;
-	}
-	.title{
-		font-size: 16px;
-		    font-weight: bold;
-		    color: #000;
-			margin-bottom: 60px;
-	}
-	.blue{
-		color: #008ab0;
-		font-size: 14px;
-		letter-spacing: 1px;
-	}
-	.bindCard{
-		    width: 334px;
-		    height: 130px;
-		    line-height: 130px;
-		    background-color: #f4f4f4;
-		    font-size: 14px;
-		    color: #008ab0;
-		    text-align: center;
-		    cursor: pointer;
+	/* #ifdef H5 */
+	.destop{
+		.band{
+			width:100%;
+			height:130px;
+		}
+		.body{
+			width:1200px;
+			margin: auto;
 			margin-top: 20px;
+			display: flex;
+		}
+		.info{
+			flex-grow: 1;
+		}
+		.title{
+			font-size: 16px;
+			    font-weight: bold;
+			    color: #000;
+				margin-bottom: 60px;
+		}
+		.blue{
+			color: #008ab0;
+			font-size: 14px;
+			letter-spacing: 1px;
+		}
+		.bindCard{
+			    width: 334px;
+			    height: 130px;
+			    line-height: 130px;
+			    background-color: #f4f4f4;
+			    font-size: 14px;
+			    color: #008ab0;
+			    text-align: center;
+			    cursor: pointer;
+				margin-top: 20px;
+		}
 	}
+	/* #endif */
+	.phone{}
+	
 </style>

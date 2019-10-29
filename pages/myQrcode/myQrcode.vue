@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view :class="destop?'destop':'phone'">
 		<!-- #ifdef H5 -->
 		<block  v-if="destop && initReady">
 			<headerCP/>
@@ -38,37 +38,43 @@
 </script>
 
 <style lang="scss" scoped>
-	.band{
-		width:100%;
-		height:130px;
+	/* #ifdef H5 */
+	.destop{
+		.band{
+			width:100%;
+			height:130px;
+		}
+		.body{
+			width:1200px;
+			margin: auto;
+			margin-top: 20px;
+			display: flex;
+		}
+		.info{
+			flex-grow: 1;
+		}
+		.title{
+			font-size: 16px;
+			    font-weight: bold;
+			    color: #000;
+				margin-bottom: 60px;
+		}
+		.row{
+			margin-top: 55px;
+			width: 100%;
+			display: flex;
+		}
+		.qrCode{
+			width:194px;
+			height:194px;
+			margin-right: 30px;
+		}
+		.text{
+			font-size: 14px;
+			margin-right: 30px;
+		}
 	}
-	.body{
-		width:1200px;
-		margin: auto;
-		margin-top: 20px;
-		display: flex;
-	}
-	.info{
-		flex-grow: 1;
-	}
-	.title{
-		font-size: 16px;
-		    font-weight: bold;
-		    color: #000;
-			margin-bottom: 60px;
-	}
-	.row{
-		margin-top: 55px;
-		width: 100%;
-		display: flex;
-	}
-	.qrCode{
-		width:194px;
-		height:194px;
-		margin-right: 30px;
-	}
-	.text{
-		font-size: 14px;
-		margin-right: 30px;
-	}
+	/* #endif */
+	.phone{}
+	
 </style>

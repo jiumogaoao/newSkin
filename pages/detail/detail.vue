@@ -118,7 +118,9 @@
 </script>
 
 <style lang="scss" scoped>
-	.empty{
+	/* #ifdef H5 */
+	.destop{
+		.empty{
 		width:100%;
 		height:130px;
 	}
@@ -328,4 +330,8 @@
 		height:22px;
 		margin-right:10px;
 	}
+	}
+	/* #endif */
+	.phone{}
+	
 </style>

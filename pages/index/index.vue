@@ -85,177 +85,182 @@
 </script>
 
 <style lang="scss" scoped>
-	.band{
-		width:100%;
-		height:200px;
-	}
-	.shelf{
-		width:1200px;
-		margin: auto;
-	}
-	.shelfTitleFrame{
-		position:relative;
-		margin: auto;
-		width: 240px;
-		margin-top: 45px;
-		margin-bottom: 80px;
-	}
-	.shelfTitleBG{
-		width:215px;
-		height:144px;
-		position: absolute;
-		top: -53px;
-		left: 24px;
-	}
-	.shelfTitle{
-		font-size: 32px;
-		color:#212529;
-		position: relative;
-		z-index: 3;
-	}
-	.shelfTitleLine{
-		width:40px;
-		height:8px;
-		background-color: #77C4D6;
-		position: absolute;
-		top: 60px;
-		left: 40px;
-	}
-	.shelfProductList{
-		display: flex;
-		justify-content: space-between;
-	}
-	.joinFrame{
-		width: 100%;
-		height: 500px;
-		margin-top: 103px;
-		position: relative;
-		background-image: url($oss-destop+'indexBackImg.jpg');
-		margin-bottom: 100px;
-	}
-	.joinCenterFrame{
-		width: 1200px;
-		margin: 0 auto;
-		position: relative;
-	}
-	.joinTitle{
-		font-size: 40px;
-		font-weight: 550;
-		letter-spacing: 5px;
-		position: absolute;
-		top: 130px;
-		left: 365px;
-	}
-	.joinButton{
-		position: absolute;
-		color: #ffffff;
-		background: #008AB0;
-		height: 40px;
-		line-height: 40px;
-		width: 170px;
-		display: block;
-		text-align: center;
-		top: 228px;
-		left: 365px;
-		font-size: 12px;
-	}
-	.titleFrame{
-		width: 1200px;
-		margin: auto;
-		margin-bottom: 39px;
-	}
-	.title{
-		text-align: center;
-		font-size: 30px;
-		line-height: 36px;
-	}
-	.titleLine{
-		width: 40px;
-		height: 8px;
-		background: #77C4D6;
-		margin: auto;
-		margin-top: 20px;
-	}
-	.newsFrame{
-		    width: 100%;
-		    background-image: url($oss-destop+'indexBackImg_02.jpg');
-		    background-size: 100% 100%;
-		    height: 684px;
-		    background-position: left 15px;
-		    background-repeat: no-repeat;
-	}
-	.newsCenterFrame{
-		    width: 1200px;
-		    margin: 0 auto !important;
-		    margin-top: 65px;
-		    display: flex;
-		    justify-content: space-between;
-	}
-	.more{
-		width: 250px;
-		    height: 50px;
-		    line-height: 50px;
-		    margin: 65px auto 0;
-		    background: #008AB0;
-		    color: #ffffff;
-		    text-align: center;
-		    cursor: pointer;
+	/* #ifdef H5 */
+	.destop{
+		.band{
+			width:100%;
+			height:200px;
+		}
+		.shelf{
+			width:1200px;
+			margin: auto;
+		}
+		.shelfTitleFrame{
+			position:relative;
+			margin: auto;
+			width: 240px;
+			margin-top: 45px;
+			margin-bottom: 80px;
+		}
+		.shelfTitleBG{
+			width:215px;
+			height:144px;
+			position: absolute;
+			top: -53px;
+			left: 24px;
+		}
+		.shelfTitle{
+			font-size: 32px;
+			color:#212529;
+			position: relative;
+			z-index: 3;
+		}
+		.shelfTitleLine{
+			width:40px;
+			height:8px;
+			background-color: #77C4D6;
+			position: absolute;
+			top: 60px;
+			left: 40px;
+		}
+		.shelfProductList{
+			display: flex;
+			justify-content: space-between;
+		}
+		.joinFrame{
+			width: 100%;
+			height: 500px;
+			margin-top: 103px;
+			position: relative;
+			background-image: url($oss-destop+'indexBackImg.jpg');
+			margin-bottom: 100px;
+		}
+		.joinCenterFrame{
+			width: 1200px;
+			margin: 0 auto;
+			position: relative;
+		}
+		.joinTitle{
+			font-size: 40px;
+			font-weight: 550;
+			letter-spacing: 5px;
+			position: absolute;
+			top: 130px;
+			left: 365px;
+		}
+		.joinButton{
+			position: absolute;
+			color: #ffffff;
+			background: #008AB0;
+			height: 40px;
+			line-height: 40px;
+			width: 170px;
+			display: block;
+			text-align: center;
+			top: 228px;
+			left: 365px;
 			font-size: 12px;
+		}
+		.titleFrame{
+			width: 1200px;
+			margin: auto;
+			margin-bottom: 39px;
+		}
+		.title{
+			text-align: center;
+			font-size: 30px;
+			line-height: 36px;
+		}
+		.titleLine{
+			width: 40px;
+			height: 8px;
+			background: #77C4D6;
+			margin: auto;
+			margin-top: 20px;
+		}
+		.newsFrame{
+			    width: 100%;
+			    background-image: url($oss-destop+'indexBackImg_02.jpg');
+			    background-size: 100% 100%;
+			    height: 684px;
+			    background-position: left 15px;
+			    background-repeat: no-repeat;
+		}
+		.newsCenterFrame{
+			    width: 1200px;
+			    margin: 0 auto !important;
+			    margin-top: 65px;
+			    display: flex;
+			    justify-content: space-between;
+		}
+		.more{
+			width: 250px;
+			    height: 50px;
+			    line-height: 50px;
+			    margin: 65px auto 0;
+			    background: #008AB0;
+			    color: #ffffff;
+			    text-align: center;
+			    cursor: pointer;
+				font-size: 12px;
+		}
+		.newsItem{
+			padding-bottom: 25px;
+			    width: 578px;
+			    background: #ffffff;
+			    border: 1px solid #f0e9de;
+			    cursor: pointer;
+		}
+		.newsImage{
+			width: 578px;
+			height:372px;
+		}
+		.newsTitle{
+			margin-top: 30px;
+			padding-left: 40px;
+			font-size: 20px;
+		}
+		.newsDesc{
+			    margin-top: 25px;
+			    padding-left: 40px;
+			    font-size: 15px;
+			    color: #9A9A9A;
+		}
+		.storyFrame{
+			width: 1200px;
+			margin: auto;
+			display: flex;
+			justify-content: space-between;
+			margin-top: 55px;
+		}
+		.storyItem{
+			width: 378px;
+			height: auto;
+		}
+		.storyImg{
+			width:378px;
+			height:151px;
+		}
+		.storyBottom{
+			padding: 15px 50px 35px 23px;
+			border: 1px solid #F0E9DE;
+		}
+		.storyTitle{
+			font-size: 20px;
+			    font-weight: bold;
+			    letter-spacing: 2px;
+			    color: #2f2728;
+			    line-height: 30px;
+		}
+		.storyMore{
+			    font-size: 14px;
+			    letter-spacing: 1px;
+			    color: #333333;
+			    cursor: pointer;
+				text-decoration: underline;
+				margin-top:20px;
+		}
 	}
-	.newsItem{
-		padding-bottom: 25px;
-		    width: 578px;
-		    background: #ffffff;
-		    border: 1px solid #f0e9de;
-		    cursor: pointer;
-	}
-	.newsImage{
-		width: 578px;
-		height:372px;
-	}
-	.newsTitle{
-		margin-top: 30px;
-		padding-left: 40px;
-		font-size: 20px;
-	}
-	.newsDesc{
-		    margin-top: 25px;
-		    padding-left: 40px;
-		    font-size: 15px;
-		    color: #9A9A9A;
-	}
-	.storyFrame{
-		width: 1200px;
-		margin: auto;
-		display: flex;
-		justify-content: space-between;
-		margin-top: 55px;
-	}
-	.storyItem{
-		width: 378px;
-		height: auto;
-	}
-	.storyImg{
-		width:378px;
-		height:151px;
-	}
-	.storyBottom{
-		padding: 15px 50px 35px 23px;
-		border: 1px solid #F0E9DE;
-	}
-	.storyTitle{
-		font-size: 20px;
-		    font-weight: bold;
-		    letter-spacing: 2px;
-		    color: #2f2728;
-		    line-height: 30px;
-	}
-	.storyMore{
-		    font-size: 14px;
-		    letter-spacing: 1px;
-		    color: #333333;
-		    cursor: pointer;
-			text-decoration: underline;
-			margin-top:20px;
-	}
+	/* #endif */
+	.phone{}
 </style>

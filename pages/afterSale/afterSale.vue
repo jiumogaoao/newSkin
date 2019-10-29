@@ -66,7 +66,9 @@
 </script>
 
 <style lang="scss" scoped>
-	.band{
+	/* #ifdef H5 */
+	.destop{
+		.band{
 		width:100%;
 		height:130px;
 	}
@@ -174,4 +176,7 @@
 		    color: #fff;
 		    cursor: pointer;
 	}
+	}
+	/* #endif */
+	.phone{}
 </style>

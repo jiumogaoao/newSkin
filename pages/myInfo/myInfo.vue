@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view :class="destop?'destop':'phone'">
 		<!-- #ifdef H5 -->
 		<block  v-if="destop && initReady">
 			<headerCP/>
@@ -43,6 +43,8 @@
 </script>
 
 <style lang="scss" scoped>
+	/* #ifdef H5 */
+	.destop{
 	.band{
 		width:100%;
 		height:130px;
@@ -95,4 +97,8 @@
 	.text{
 		font-size: 14px;
 	}
+	}
+	/* #endif */
+	.phone{}
+	
 </style>
