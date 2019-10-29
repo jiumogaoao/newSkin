@@ -24,9 +24,11 @@ var browser = {
 module.exports = {
 	components:{headerCP,footerCP,breadcrumbsCP},
 	mounted(){
+		// #ifdef H5
 		if (!browser.versions.mobile){
 			this.$store.dispatch('rootST/destop')
 		}
+		// #endif
 		this.$store.dispatch('rootST/initReady')
 	},
 	computed:{

@@ -1,6 +1,8 @@
 <template>
-	<view v-if="destop && initReady">
-		<headerCP/>
+	<view>
+		<!-- #ifdef H5 -->
+		<block  v-if="destop && initReady">
+			<headerCP/>
 		<view class="band"></view>
 		<breadcrumbsCP/>
 		<view class="search">
@@ -117,6 +119,10 @@
 			<productCP/>
 		</view>
 		<footerCP/>
+		</block>
+		<!-- #endif -->
+		<block  v-if="!destop && initReady"></block>
+		
 	</view>
 </template>
 

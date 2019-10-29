@@ -1,49 +1,54 @@
 <template>
-	<view v-if="destop && initReady">
-		<headerCP/>
-		<view class="band"></view>
-		<breadcrumbsCP/>
-		<view class="body">
-			<mineNavCP/>
-			<view class="info">
-				<view class="title">售后服务查询</view>
-				<view class="head">
-					<view class="headItem first" style="width:56%">产品</view>
-					<view class="headItem" style="width:12%">退款金额</view>
-					<view class="headItem" style="width:12%">申请数量</view>
-					<view class="headItem" style="width:10%">状态</view>
-					<view class="headItem" style="width:10%">操作</view>
-				</view>
-				<view class="head">
-					<view class="headItem first">服务单号：CBER0000022</view>
-				</view>
-				<view class="listFrame">
-					<view class="list">
-						<view class="listItem" style="width:56%">
-							<view class="product">
-								<image :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'" class="productImg"></image>
-								<view class="infoFrame">
-									<view class="productTitle">如新华贸骨骼配方</view>
-									<view class="info">产品编号：01003331</view>
-									<view class="info">规格：180粒</view>
+	<view :class="destop?'destop':'phone'">
+		<!-- #ifdef H5 -->
+		<block  v-if="destop && initReady">
+			<headerCP/>
+			<view class="band"></view>
+			<breadcrumbsCP/>
+			<view class="body">
+				<mineNavCP/>
+				<view class="info">
+					<view class="title">售后服务查询</view>
+					<view class="head">
+						<view class="headItem first" style="width:56%">产品</view>
+						<view class="headItem" style="width:12%">退款金额</view>
+						<view class="headItem" style="width:12%">申请数量</view>
+						<view class="headItem" style="width:10%">状态</view>
+						<view class="headItem" style="width:10%">操作</view>
+					</view>
+					<view class="head">
+						<view class="headItem first">服务单号：CBER0000022</view>
+					</view>
+					<view class="listFrame">
+						<view class="list">
+							<view class="listItem" style="width:56%">
+								<view class="product">
+									<image :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'" class="productImg"></image>
+									<view class="infoFrame">
+										<view class="productTitle">如新华贸骨骼配方</view>
+										<view class="info">产品编号：01003331</view>
+										<view class="info">规格：180粒</view>
+									</view>
 								</view>
 							</view>
-						</view>
-						<view class="listItem" style="width:12%">￥3401.01</view>
-						<view class="listItem" style="width:12%">X2</view>
-						<view class="listItem" style="width:10%">
-							<view class="state">退货完成</view>
-							<view class="blue">服务单详情</view>
-						</view>
-						<view class="listItem" style="width:10%">
-
+							<view class="listItem" style="width:12%">￥3401.01</view>
+							<view class="listItem" style="width:12%">X2</view>
+							<view class="listItem" style="width:10%">
+								<view class="state">退货完成</view>
+								<view class="blue">服务单详情</view>
+							</view>
+							<view class="listItem" style="width:10%">
+			
+							</view>
 						</view>
 					</view>
 				</view>
+				
 			</view>
-			
-		</view>
-		<footerCP/>
+			<footerCP/>
+		</block>
+		<!-- #endif -->
+		<block  v-if="!destop && initReady"></block>
 	</view>
 </template>
 
