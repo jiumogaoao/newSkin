@@ -1,32 +1,56 @@
 <template>
-	<view class="footer_CP">
-		<view class="centerFrame">
-			<view class="left">
-				<view class="list">
-					<view class="title">公司信息</view>
-					<view class="item">关于我们</view>
+	<view :class="destop?'destopCP':'phoneCP'">
+		<!-- #ifdef H5 -->
+		<view class="footer_CP" v-if="destop">
+			<view class="centerFrame">
+				<view class="left">
+					<view class="list">
+						<view class="title">公司信息</view>
+						<view class="item">关于我们</view>
+					</view>
+					<view class="list">
+						<view class="title">帮助</view>
+						<view class="item">售后服务</view>
+						<view class="item">联系我们</view>
+						<view class="item">帮助中心</view>
+					</view>
+					<view class="list">
+						<view class="title">其他</view>
+						<view class="item">官网主页</view>
+					</view>
 				</view>
-				<view class="list">
-					<view class="title">帮助</view>
-					<view class="item">售后服务</view>
-					<view class="item">联系我们</view>
-					<view class="item">帮助中心</view>
-				</view>
-				<view class="list">
-					<view class="title">其他</view>
-					<view class="item">官网主页</view>
+				<view class="right">
+					<view class="title">关注我们</view>
+					<view class="followFrame">
+						<image class="followItem" :src="imgPath+'weibo.png'"></image>
+						<image class="followItem" :src="imgPath+'weixin.png'"></image>
+					</view>
+					<view class="line"></view>
 				</view>
 			</view>
-			<view class="right">
+		</view>
+		<!-- #endif -->
+		<view class="footer_CP" v-if="!destop">
+			<view class="top">
 				<view class="title">关注我们</view>
-				<view class="followFrame">
-					<image class="followItem" :src="imgPath+'weibo.png'"></image>
-					<image class="followItem" :src="imgPath+'weixin.png'"></image>
+				<view class="iconFrame">
+					<image class="item" :src="imgPath+'weixin.png'"></image>
+					<image class="item" :src="imgPath+'xinlang.png'"></image>
 				</view>
-				<view class="line"></view>
+			</view>
+			<view class="bottom">
+				<view class="list">
+					<view class="item">企业证照</view>
+					<view class="item">版权声明</view>
+					<view class="item">隐私政策</view>
+				</view>
+				<view class="list">
+					<view class="item">粤ICP备20181025001</view>
+				</view>
 			</view>
 		</view>
 	</view>
+	
 </template>
 
 <script>
@@ -42,7 +66,9 @@
 </script>
 
 <style lang="scss" scoped>
-	.footer_CP{
+	/* #ifdef H5 */
+	.destopCP{
+		.footer_CP{
 		    background: url($oss-destop+'footer_bg.png') no-repeat center center;
 		    width: 100%;
 		    height: 328px;
@@ -92,5 +118,50 @@
 		    background-color: #676767;
 		    margin-top: 30px;
 		    margin-left: 6px;
+	}
+	}
+	/* #endif */
+	.phoneCP{
+		.footer_CP{
+			margin-top: 40rpx;
+			.top{
+				width:750rpx;
+				height:280rpx;
+				background: #63666b;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				.title{
+					color: #fff;
+					font-size: 28rpx;
+				}
+				.iconFrame{
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					margin-top: 20rpx;
+					width:200rpx;
+					.item{
+						width: 80rpx;
+						height:80rpx;
+					}
+				}
+			}
+			.bottom{
+				width:750rpx;
+				.list{
+					margin-top: 20rpx;
+					display: flex;
+					align-items: center;
+					padding-left: 40rpx;
+					.item{
+						color: #b1b1b1;
+						font-size: 20rpx;
+						margin-right: 68rpx;
+					}
+				}
+			}
+		}
 	}
 </style>

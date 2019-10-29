@@ -126,6 +126,20 @@
             	"navigationBarTitleText": "如新"
             }
         }
+        ,{
+            "path" : "pages/type/type",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        }
+        ,{
+            "path" : "pages/mine/mine",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        }
     ],
     "subPackages": [],
     "globalStyle": {

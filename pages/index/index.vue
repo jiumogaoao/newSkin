@@ -111,7 +111,76 @@
 			<view class="productList">
 				<productSimpleCP style="margin-top:30rpx;"/>
 			</view>
-			
+			<image class="smallTitle" :src="imgPath+'index_news.png'"></image>
+			<view class="news">
+				<image class="img" :src="imgPath+'BFx00b0ptJs4P2Tw0b1OBB4vWYQqBp.jpg'"></image>
+				<view class="title">如新海外购上线了</view>
+				<view class="dsc">"勿忘初心，自我革新，砥砺前行"</view>
+			</view>
+			<view class="more">查看更多</view>
+			<view class="joinFrame">
+				<view class="title">加入如新</view>
+				<view class="button">立即加入</view>
+			</view>
+			<image class="smallTitle" :src="imgPath+'index_pp.png'"></image>
+			<view class="storyList">
+				<scroll-view scroll-x="true" class="scroll-X">
+					<view class="scrollFrame">
+						<view class="item">
+							<image class="pic" :src="imgPath+'IpMMLTJCOmjYB0M3Tj5LxtpBTOBb5w.jpg'"></image>
+							<view class="subTitle">品牌故事</view>
+							<view class="title">ageLoc王牌</view>
+							<view class="knowMore">了解更多>></view>
+						</view>
+						<view class="item">
+							<image class="pic" :src="imgPath+'nPeSlwW7K11t331317eT3k7byTgGGe.jpg'"></image>
+							<view class="subTitle">品牌故事</view>
+							<view class="title">Nu Skin的诞生</view>
+							<view class="knowMore">了解更多>></view>
+						</view>
+					</view>
+				</scroll-view>
+			</view>
+			<view class="more">查看更多</view>
+			<footerCP/>
+			<view style="width:750rpx;height:50rpx;"></view>
+			<headerCP/>
+			<view class="sideNav">
+				<view class="searchFrame">
+					<input class="search"/>
+					<image class="searchButton" :src="imgPath+'sousuo.png'"></image>
+				</view>
+				<view class="navList">
+					<view class="item">
+						<view class="title">关于我们</view>
+						<image class="deg" :src="imgPath+'jiantou-r.png'"></image>
+					</view>
+					<view class="item">
+						<view class="title">新闻中心</view>
+						<image class="deg" :src="imgPath+'jiantou-r.png'"></image>
+					</view>
+					<view class="item">
+						<view class="title">售后中心</view>
+						<image class="deg" :src="imgPath+'jiantou-r.png'"></image>
+					</view>
+					<view class="item">
+						<view class="title">联系我们</view>
+						<image class="deg" :src="imgPath+'jiantou-r.png'"></image>
+					</view>
+					<view class="item">
+						<view class="title">帮助中心</view>
+						<image class="deg" :src="imgPath+'jiantou-r.png'"></image>
+					</view>
+					<view class="item">
+						<view class="title">官网主页</view>
+						<image class="deg" :src="imgPath+'jiantou-r.png'"></image>
+					</view>
+				</view>
+				<view class="logon">
+					<image class="icon" :src="imgPath+'touxiangs.png'"></image>
+					<view class="title">注册|登录</view>
+				</view>
+			</view>
 		</block>
 	</view>
 </template>
@@ -390,6 +459,209 @@
 			height:340rpx;
 			margin-top: 40rpx;
 			margin-bottom: 20rpx;
+		}
+		.smallTitle{
+			width:298rpx;
+			height: 58rpx;
+			margin: auto;
+			margin-top: 40rpx;
+		}
+		.news{
+			width:690rpx;
+			height:493rpx;
+			border: 1px solid #f0e9de;
+			margin: auto;
+			margin-top:40rpx;
+			.img{
+				width:690rpx;
+				height:360rpx;
+			}
+			.title{
+				padding: 0 30rpx;
+				    color: #191919;
+				    font-size: 28rpx;
+				    line-height: 60rpx;
+				    font-weight: 600;
+			}
+			.dsc{
+				padding: 10rpx 30rpx;
+				    font-size: 24rpx;
+				    color: grey;
+			}
+		}
+		.more{
+			width: 180rpx;
+			    height: 50rpx;
+			    background: #008ab0;
+			    color: #fff;
+			    text-align: center;
+			    font-size: 32rpx;
+			    line-height: 50rpx;
+			    border-radius: 5rpx;
+			    margin: 0rpx 285rpx;
+				margin-top:40rpx;
+		}
+		.joinFrame{
+			width:750rpx;
+			height: 420rpx;
+			background-image: url($oss-phone+'jiaru.png');
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			margin-top: 40rpx;
+			background-repeat: no-repeat;
+			background-size: cover;
+			.title{
+				    text-align: center;
+				    color: #4d4d4d;
+				    font-size: 40px;
+			}
+			.button{
+				width: 180px;
+				    height: 50px;
+				    background: #008ab0;
+				    color: #fff;
+				    text-align: center;
+				    font-size: 32px;
+				    line-height: 50px;
+				    border-radius: 5px;
+					margin-top: 40rpx;
+			}
+		}
+		.storyList{
+			border-radius: 6rpx;
+			    padding-top: 40rpx;
+			    padding-left: 30rpx;
+			    padding-right: 30rpx;
+			    padding-bottom: 40rpx;
+			    background: #fff;
+			    -webkit-box-shadow: 1rpx 1rpx 5rpx rgba(0,0,0,.2);
+			    box-shadow: 1rpx 1rpx 5rpx rgba(0,0,0,.2);
+			    position: relative;
+			    z-index: 1;
+			.scroll-X{
+				width:100%;
+				height:100%;
+				.scrollFrame{
+					height: 100%;
+					display: flex;
+					flex-wrap: nowrap;
+					.item{
+						width: 490rpx;
+						    height: 580rpx;
+						    margin-right: 30rpx;
+						    font-size: 26rpx;
+						    color: #303133;
+						    line-height: 1.8;
+						    border: 1px solid #f0e9de;
+							flex-shrink: 0;
+						.pic{
+							width: 490rpx;
+							    height: 320rpx;
+							    border-radius: 6rpx;
+						}
+						.subTitle{
+							color: #191919;
+							    font-size: 26px;
+							    padding: 0px 20px;
+								margin-top: 40rpx;
+						}
+						.title{
+							color: #191919;
+							    font-size: 30px;
+							    padding: 0 20px;
+							    font-weight: 600;
+								margin-top: 20rpx;
+						}
+						.knowMore{
+							padding: 0 20px;
+							    color: #008ab0;
+							    font-size: 26px;
+								margin-top: 40rpx;
+						}
+					}
+				}
+			}
+		}
+		.sideNav{
+			position: fixed;
+			top:62rpx;
+			left:750rpx;
+			right:0;
+			bottom:0;
+			overflow: hidden;
+			background-color: #fff;
+			z-index: 3;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: center;
+			.searchFrame{
+				width:100%;
+				height:130rpx;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-shrink: 0;
+				.search{
+					width: 571rpx;
+					    height: 70rpx;
+					    font-size: 30rpx;
+					    background: #f6f7f7;
+					    padding: 0 20rpx;
+					    border-radius: 15rpx;
+				}
+				.searchButton{
+					width:34rpx;
+					height:34rpx;
+					margin-left: 40rpx;
+				}
+			}
+			.navList{
+				width: 100%;
+				flex-grow: 1;
+				.item{
+					height: 100rpx;
+					width:100%;
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					.title{
+						font-size: 30px;
+						color: #323232;
+						margin-left: 20rpx;
+					}
+					.deg{
+						width:30rpx;
+						height:30rpx;
+						margin-right: 20rpx;
+					}
+				}
+			}
+			.logon{
+				width: 690rpx;
+				    height: 70rpx;
+				    background: #008ab0;
+				    color: #fff;
+				    text-align: center;
+				    line-height: 70rpx;
+				    border-radius: 15rpx;
+					flex-shrink: 0;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					margin-bottom: 20rpx;
+				.icon{
+					width:40rpx;
+					height:40rpx;
+				}
+				.title{
+					font-size: 28px;
+					color: #fff;
+					margin-left: 20rpx;
+				}
+			}
 		}
 	}
 </style>

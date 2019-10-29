@@ -22,6 +22,7 @@
 </script>
 
 <style lang="scss" scoped>
+	/* #ifdef H5 */
 	.destopCP{
 		.productSimpleCP{
 			width: 275px;
@@ -56,6 +57,7 @@
 			cursor: pointer;
 		}
 	}
+	/* #endif */
 	.phoneCP{
 		.productSimpleCP{
 			width: 670rpx;
