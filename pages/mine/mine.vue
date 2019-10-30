@@ -82,6 +82,7 @@
 					</view>
 				</view>
 			</view>
+			<view style="width:100%;height:100rpx;"></view>
 			<headerCP/>
 		</block>
 	</view>
@@ -132,16 +133,16 @@
 				display: flex;
 				align-items: center;
 				.avatar{
-					    width: 120px;
-					    height: 120px;
+					    width: 120rpx;
+					    height: 120rpx;
 					    border: 5px solid #fff;
 					    border-radius: 50%;
-					    margin-left: 30px;
+					    margin-left: 30rpx;
 				}
 				.logon{
-					font-size: 38px;
+					font-size: 38rpx;
 					color: #fff;
-					margin-left: 30px;
+					margin-left: 30rpx;
 				}
 			}
 		}
@@ -155,15 +156,15 @@
 					height: 100rpx;
 					border-bottom: 1px solid #e2e2e2;
 					line-height: 100rpx;
-					padding: 0 30px;
+					padding: 0 30rpx;
 					background: #fff;
 					justify-content: space-between;
 					.title{
-						font-size: 30px;
+						font-size: 30rpx;
 						color: #333;
 					}
 					.go{
-						font-size: 28px;
+						font-size: 28rpx;
 						    color: grey;
 					}
 				}
@@ -171,20 +172,24 @@
 					width:750rpx;
 					display: flex;
 					align-items: center;
-					height: 148px;
+					height: 148rpx;
+					margin-top: 40rpx;
 					.item{
 						width:25%;
+						display: flex;
+						flex-direction: column;
+						align-items: center;
 						.icon{
-							    width: 54px;
-							    height: 54px;
+							    width: 54rpx;
+							    height: 54rpx;
 						}
 						.name{
-							font-size: 24px;
+							font-size: 24rpx;
 							    width: 100%;
 							    text-align: center;
-							    padding-bottom: 20px;
+							    padding-bottom: 20rpx;
 							    color: #1f1f1f;
-							    padding-top: 10px;
+							    padding-top: 10rpx;
 						}
 					}
 				}
