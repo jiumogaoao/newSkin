@@ -121,7 +121,58 @@
 		<footerCP/>
 		</block>
 		<!-- #endif -->
-		<block  v-if="!destop && initReady"></block>
+		<block  v-if="!destop && initReady">
+			<view class="header">购物车</view>
+			<view class="list">
+				<view class="top">
+					<view class="warehouse">
+						<checkBoxCP/>
+						<view class="name">黄埔保税仓库</view>
+					</view>
+					<view class="offerFrame">
+						<view class="left">
+							<view class="type">满减</view>
+							<view class="message">满1000减50活动</view>
+						</view>
+						<view class="right">还差￥940 ></view>
+					</view>
+				</view>
+				<view class="product">
+					<checkBoxCP/>
+					<image class="productImg" src=""/>
+					<view class="infoFrame">
+						<view class="infoTop">
+							<view class="title">斯昂防护润唇膏</view>
+							<view class="id">产品编号：</view>
+						</view>
+						<view class="taxt">含税</view>
+						<view class="infoBottom">
+							<view class="price">￥60</view>
+							<view class="countFrame">
+								<view class="sub">-</view>
+								<input class="count"/>
+								<view class="add">+</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+			<view class="tapBar">
+				<view class="tap hl">我的收藏</view>
+				<view class="tap">我买过的</view>
+			</view>
+			<view class="productList">
+				<productCP/>
+				<productCP/>
+				<productCP/>
+				<productCP/>
+				<productCP/>
+				<productCP/>
+				<productCP/>
+				<productCP/>
+			</view>
+			<headerCP/>
+		</block>
 		
 	</view>
 </template>
@@ -204,6 +255,8 @@
 	}
 	}
 	/* #endif */
-	.phone{}
+	.phone{
+		
+	}
 	
 </style>
