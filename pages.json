@@ -140,6 +140,20 @@
             	"navigationBarTitleText": "如新"
             }
         }
+        ,{
+            "path" : "pages/logon/logon",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        }
+        ,{
+            "path" : "pages/regest/regest",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        }
     ],
     "subPackages": [],
     "globalStyle": {
