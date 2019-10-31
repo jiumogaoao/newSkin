@@ -100,7 +100,120 @@
 		<footerCP/>
 		</block>
 		<!-- #endif -->
-		<block  v-if="!destop && initReady"></block>
+		<block  v-if="!destop && initReady">
+			<view class="top">
+				<swiper class="swiper" :indicator-dots="true" :autoplay="true" :interval="2000" :duration="500">
+				                        <swiper-item>
+				                            <image class="smallPic" :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'"></image>
+				                        </swiper-item>
+				                        <swiper-item>
+				                            <image class="smallPic" :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'"></image>
+				                        </swiper-item>
+				                        <swiper-item>
+				                            <image class="smallPic" :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'"></image>
+				                        </swiper-item>
+				</swiper>
+				<view class="flew">
+					<view class="name" style="padding-left: 20rpx;">产品编号：SKU111</view>
+					<view class="name" style="padding-right: 20rpx;">推广奖励：<block class="blue">￥40.00</block></view>
+				</view>
+				<view class="title">agcLoC焕新系列-晚霜 30ml</view>
+				<view class="title">agcLoC Transforming Night</view>
+				<view class="price">零售价：<block class="block">￥100</block></view>
+				<image class="follow" :src="imgPath+'shoucang.png'"></image>
+			</view>
+			<view class="middle">
+				<view class="row">
+					<view class="title">税费</view>
+					<view class="text">￥46.41</view>
+				</view>
+				<view class="row">
+					<view class="title">运费</view>
+					<view class="text">满￥46.41免运费</view>
+				</view>
+				<view class="row">
+					<view class="title">活动</view>
+					<view class="activeList">
+						<view class="group">
+							<view class="groupName">[满减]</view>
+							<view class="itemList">
+								<view class="item">满1000减50</view>
+								<view class="item">满2000减100</view>
+							</view>
+						</view>
+						<view class="group">
+							<view class="groupName">[优惠]</view>
+							<view class="itemList">
+								<view class="item">下单立减10</view>
+								<view class="item">满1000打80折</view>
+								<view class="item">下单立减50</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+			<view class="skuFrame">
+				<view class="left">
+					<view class="title">规格</view>
+					<view class="text">已选30ml</view>
+					<view class="text">数量1</view>
+				</view>
+				<image class="rightDag" src=""></image>
+			</view>
+			<view class="info">
+				<view class="titleFrame">
+					<view class="line"></view>
+					<view class="bigTitle">图文详情</view>
+					<view class="line"></view>
+				</view>
+				<view class="detailFrame">
+					<view item>
+						<view class="point"></view>
+						<view class="item">11111111111</view>
+					</view>
+					<view item>
+						<view class="point"></view>
+						<view class="item">11111111111</view>
+					</view>
+					<view item>
+						<view class="point"></view>
+						<view class="item">11111111111</view>
+					</view>
+				</view>
+				<view class="titleFrame">
+					<view class="line"></view>
+					<view class="bigTitle">使用方法</view>
+					<view class="line"></view>
+				</view>
+				<view class="useMessage">
+					111111111111
+				</view>
+				<view class="titleFrame">
+					<view class="line"></view>
+					<view class="bigTitle">消费者告知书</view>
+					<view class="line"></view>
+				</view>
+				<view class="noticeFrame">
+					<view class="item">1111111111</view>
+					<view class="item">1111111111</view>
+					<view class="item">1111111111</view>
+					<view class="item">1111111111</view>
+				</view>
+			</view>
+			<view class="foot">
+				<view class="iconFrame">
+					<image class="icon" :src="imgPath+'share.png'"/>
+				</view>
+				<view class="iconFrame shop">
+					<image class="icon" :src="imgPath+'tab-home-current.png'"/>
+				</view>
+				<view class="iconFrame">
+					<image class="icon" :src="imgPath+'tab-cart-current.png'"/>
+				</view>
+				<view class="addCar">加入购物车</view>
+				<view class="buy">立即购买</view>
+			</view>
+		</block>
 		
 	</view>
 </template>
@@ -332,6 +445,218 @@
 	}
 	}
 	/* #endif */
-	.phone{}
+	.phone{
+		.top{
+			width:750rpx;
+			background-color: #fff;
+			position: relative;
+			.follow{
+				position: absolute;
+				top:40rpx;
+				right:40rpx;
+				width: 40rpx;
+				height:40rpx;
+			}
+			.swiper{
+				width:750rpx;
+				height: 722rpx;
+				.smallPic{
+					width:100%;
+					height:100%;
+				}
+			}
+			.flew{
+				width: 750rpx;
+				display: flex;
+				margin-top: 20rpx;
+				justify-content: space-between;
+				.name{
+					    font-size: 26rpx;
+					    color: #323232;
+						.blue{
+							color: #37b0c9;
+						}
+				}
+			}
+			.title{
+				font-size: 32rpx;
+				    color: #323232;
+				    min-height: 40rpx;
+				    line-height: 40rpx;
+				    padding-top: 20rpx;
+					padding-left: 20rpx;
+			}
+			.price{
+				margin-top: 40rpx;
+				font-size: 28px;
+				padding-left: 20rpx;
+				.block{
+					color: #37b0c9;
+				}
+			}
+		}
+		.middle{
+			background-color: #fff;
+			width: 750rpx;
+			margin-top: 20rpx;
+			.row{
+				margin-top: 20rpx;
+				display: flex;
+				.title{
+					font-size: 26rpx;
+					    color: grey;
+						padding-left: 20rpx;
+				}
+				.text{
+					font-size: 26rpx;
+					color: #333;
+					margin-left: 35rpx;
+				}
+				.activeList{
+					margin-left: 35rpx;
+					.group{
+						display: flex;
+						.groupName{
+							font-size: 26rpx;
+							color: #ffad43;
+						}
+						.itemList{
+							margin-left: 20rpx;
+							.item{
+								font-size: 26rpx;
+								    color: grey;
+									margin-bottom: 10rpx;
+							}
+						}
+					}
+				}
+			}
+		}
+		.skuFrame{
+			margin-top: 20rpx;
+			background-color: #fff;
+			width:750rpx;
+			height:115rpx;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			.left{
+				margin-left: 20rpx;
+				display: flex;
+				.title{
+					color: grey;
+					font-size: 26px;
+				}
+				.text{
+					font-size: 26px;
+					color: #303133;
+					margin-left: 20rpx;
+				}
+			}
+			.rightDag{
+				width:32rpx;
+				height:32rpx;
+				margin-right: 20rpx;
+			}
+		}
+		.info{
+			width: 100%;
+			padding: 20rpx;
+			background-color: #fff;
+			margin-top: 20rpx;
+			.titleFrame{
+				width:400rpx;
+				margin: auto;
+				margin-bottom: 60rpx;
+				display: flex;
+				align-items: center;
+				.line{
+					height:1px;
+					flex-grow: 1;
+					background-color: #ccc;
+				}
+				.bigTitle{
+					font-size: 30px;
+					    color: #333;
+					margin: 0 20rpx;
+					flex-shrink: 0;
+				}
+			}
+			.detailFrame{
+				width: 100%;
+				margin-bottom: 100rpx;
+				.item{
+					display: flex;
+					margin-bottom: 20rpx;
+					.point{
+						width:10rpx;
+						height:10rpx;
+						background-color: #000;
+						border-radius: 10rpx;
+					}
+					.item{
+						font-size: 37.5rpx;
+						color: rgb(127, 127, 127);
+					}
+				}
+			}
+			.useMessage{
+				font-size: 37.5rpx;
+				color: rgb(127, 127, 127);
+				margin-bottom: 60rpx;
+			}
+			.noticeFrame{
+				padding-bottom: 110rpx;
+				.item{
+					line-height: 50rpx;
+					font-size: 12px;
+				}
+			}
+		}
+		.foot{
+			width:750rpx;
+			height: 110rpx;
+			background-color: #fff;
+			display: flex;
+			align-items: center;
+			position: fixed;
+			left:0;
+			bottom:0;
+			.iconFrame{
+				height: 110rpx;
+				width:100rpx;
+				right:100rpx;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-shrink: 0;
+				.icon{
+					width:44rpx;
+					height:44rpx;
+				}
+			}
+			.shop{
+				background-color: #f6f7f7;
+			}
+			.addCar{
+				height: 110rpx;
+				background: #37b0c9;
+				line-height: 110rpx;
+				text-align: center;
+				font-size: 32rpx;
+				color: #fff;
+				flex-grow: 1;
+			}
+			.buy{
+				height: 110rpx;
+				background: #008ab0;
+				line-height: 110rpx;
+				text-align: center;
+				font-size: 32rpx;
+				color: #fff;
+				flex-grow: 1;
+			}
+		}
+	}
 	
 </style>

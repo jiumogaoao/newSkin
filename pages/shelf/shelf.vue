@@ -32,7 +32,23 @@
 		<footerCP/>
 		</block>
 		<!-- #endif -->
-		<block  v-if="!destop && initReady"></block>
+		<block  v-if="!destop && initReady">
+			<view class="head">
+				<image class="back" :src="imgPath+'zuojiantou.png'"></image>
+				商品列表
+			</view>
+			<tabbarCP style="margin-top:40rpx;"/>
+			<view class="productList">
+				<productCP/>
+				<productCP/>
+				<productCP/>
+				<productCP/>
+				<productCP/>
+				<productCP/>
+				<productCP/>
+				<productCP/>
+			</view>
+		</block>
 		
 	</view>
 </template>
@@ -40,9 +56,10 @@
 <script>
 	import allPage from "@/mixin/allPage"
 	import productCP from "@/components/product_CP.vue"
+	import tabbarCP from "@/components/tabbar_CP.vue"
 	export default {
 		mixins: [allPage],
-		components:{productCP},
+		components:{productCP,tabbarCP},
 		data() {
 			return {
 				
@@ -57,50 +74,75 @@
 		.band{
 		width:100%;
 		height:130px;
-	}
-	.shelfTitle{
-		margin-top: 29px;
-		text-align: center;
-		font-size: 30px;
-		line-height: 30px;
-		color: #333333;
-		margin-bottom: 50px;
-	}
-	.optionFrame{
-		width:1200px;
-		background: #f5f5f5;
-		overflow: hidden;
-		margin: auto;
-		display: flex;
-		align-items: center;
-		height: 52px;
-	}
-	.optionTitle{
-		font-weight: 700!important;
-		font-size: 14px;
-		padding-left: 20px;
-		margin-right: 60px;
-	}
-	.optionItem{
-		font-size: 14px;
-		padding: 0 20px;
-	}
-	.optionItem.hl{
-		background-color: rgb(236, 236, 236);
-		color: #37b0c9;
-		height: 52px;
-		line-height: 52px;
-	}
-	.productList{
-		width: 1200px;
-		margin: auto;
-		display: flex;
-		justify-content: space-between;
-		flex-wrap: wrap;
-		margin-top: 25px;
-	}
+		}
+		.shelfTitle{
+			margin-top: 29px;
+			text-align: center;
+			font-size: 30px;
+			line-height: 30px;
+			color: #333333;
+			margin-bottom: 50px;
+		}
+		.optionFrame{
+			width:1200px;
+			background: #f5f5f5;
+			overflow: hidden;
+			margin: auto;
+			display: flex;
+			align-items: center;
+			height: 52px;
+		}
+		.optionTitle{
+			font-weight: 700!important;
+			font-size: 14px;
+			padding-left: 20px;
+			margin-right: 60px;
+		}
+		.optionItem{
+			font-size: 14px;
+			padding: 0 20px;
+		}
+		.optionItem.hl{
+			background-color: rgb(236, 236, 236);
+			color: #37b0c9;
+			height: 52px;
+			line-height: 52px;
+		}
+		.productList{
+			width: 1200px;
+			margin: auto;
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			margin-top: 25px;
+		}
 	}
 	/* #endif */
-	.phone{}
+	.phone{
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		width:750rpx;
+		.head{
+			width:100%;
+			text-align: center;
+			    font-size: 40rpx;
+			padding-top: 34rpx;
+			position: relative;
+			.back{
+				width:32rpx;
+				height:32rpx;
+				position:absolute;
+				left:20rpx;
+			}
+		}
+		.productList{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			margin-top: 20rpx;
+			padding: 0 30px;
+		}
+	}
 	
 </style>

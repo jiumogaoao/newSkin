@@ -1,6 +1,7 @@
 <template>
 	<view :class="destop?'destopCP':'phoneCP'">
-		<view class="productCP">
+		<!-- #ifdef H5 -->
+		<view class="productCP" v-if="destop">
 			<image :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'" class="img"></image>
 			<view class="brand">王牌ageLOC</view>
 			<view class="title">商品标题</view>
@@ -8,6 +9,15 @@
 			<view class="price">零售价：<block style="font-size: 20px;">￥100</block></view>
 			<image class="follow" :src="imgPath+'sellWellHIcon.png'"></image>
 			<image class="shoppingCar" :src="imgPath+'caricon-blue.png'"></image>
+		</view>
+		<!-- #endif -->
+		<view class="productCP" v-if="!destop">
+			<image :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'" class="img"></image>
+			<view class="brand">王牌ageLOC</view>
+			<view class="title">商品标题</view>
+			<view class="taxes">预计税费：￥100</view>
+			<view class="price">零售价：<block style="font-size: 20px;">￥100</block></view>
+			<image class="shoppingCar" :src="imgPath+'tab-cart-current.png'"></image>
 		</view>
 	</view>
 </template>
@@ -25,6 +35,7 @@
 </script>
 
 <style lang="scss">
+	/* #ifdef H5 */
 	.destopCP{
 		.productCP{
 			width: 274px;
@@ -67,14 +78,6 @@
 		    font-size: 14px;
 			margin-left: 19px;
 			}
-		.follow{
-			width:20px;
-			height:18px;
-			position: absolute;
-			right: 19px;
-			top: 11px;
-			cursor: pointer;
-		}
 		.shoppingCar{
 			width:24px;
 			height:25px;
@@ -84,6 +87,7 @@
 			cursor: pointer;
 		}
 	}
+	/* #endif */
 	.phoneCP{
 		.productCP{
 			width: 329rpx;
@@ -99,31 +103,34 @@
 			height:329rpx;
 		}
 		.brand{
-			font-size: 14rpx;
-			color: #808080;
-			line-height: 14rpx;
 			display: block;
-			margin-left: 19rpx;
+			padding: 0 20rpx;
+			color: grey;
+			font-size: 24rpx;
 		}
 		.title{
-			color: #333;
+			    padding: 0 20rpx;
+			    padding-top: 15rpx;
 			    font-size: 26rpx;
-			    padding: 15rpx 20rpx;
+			    color: #333;
 			    line-height: 35rpx;
 			    height: 80rpx;
+			    display: -webkit-box;
+			    overflow: hidden;
 		}
 		.taxes{
-			font-size: 14rpx;
-			    line-height: 30rpx;
+			font-size: 22rpx;
 			    color: #c2c2c2;
-			    display: inline-block;
-				margin-left: 19rpx;
+			    padding: 0 20rpx;
+			    padding-top: 10rpx;
+			    height: 40rpx;
 		}
 		.price{
 			font-size: 34rpx;
 			    color: #37b0c9;
 			    line-height: 1;
 				margin-left: 20rpx;
+				margin-top: 15rpx;
 			}
 		.follow{
 			width:20rpx;
@@ -134,10 +141,10 @@
 			cursor: pointer;
 		}
 		.shoppingCar{
-			width:24rpx;
-			height:25rpx;
+			width:40rpx;
+			height:40rpx;
 			position: absolute;
-			right: 19rpx;
+			right: 20rpx;
 			bottom: 30rpx;
 			cursor: pointer;
 		}

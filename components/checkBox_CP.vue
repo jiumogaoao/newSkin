@@ -1,5 +1,10 @@
 <template>
-	<image class="checkboxCP" :src="imgPath+'checked.png'"></image>
+	<view :class="destop?'destopCP':'phoneCP'">
+		<!-- #ifdef H5 -->
+		<image class="checkboxCP" :src="imgPath+'checked.png'" v-if="destop"></image>
+		<!-- #endif -->
+		<image class="checkboxCP" :src="imgPath+'cartxuan.png'" v-if="!destop"></image>
+	</view>
 </template>
 
 <script>
@@ -15,8 +20,18 @@
 </script>
 
 <style lang="scss" scoped>
-	.checkboxCP{
-		width:18px;
-		height:18px;
+	/* #ifdef H5 */
+	.destopCP{
+		.checkboxCP{
+			width:18px;
+			height:18px;
+		}
+	}
+	/* #endif */
+	.phoneCP{
+		.checkboxCP{
+			width:38px;
+			height:38px;
+		}
 	}
 </style>
