@@ -154,6 +154,34 @@
             	"navigationBarTitleText": "如新"
             }
         }
+        ,{
+            "path" : "pages/join/join",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/news/news",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/story/story",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/storyDetail/storyDetail",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/newDetail/newDetail",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/help/help",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/myPlace/myPlace",
+            "style" : {}
+        }
     ],
     "subPackages": [],
     "globalStyle": {

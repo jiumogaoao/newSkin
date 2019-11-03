@@ -3,37 +3,37 @@
 		<block if="!destop">
 			<view class="top">
 				<view class="header">
-					<image class="notice" :src="imgPath+'xinxi2.0-hl.png'"></image>
+					<image class="notice" :src="imgPath+'xinxi2.0-hl.png'" @click="go('/pages/notice/notice')"></image>
 					<view class="right">
-						<image class="shoppingCar" :src="imgPath+'tab-cart-hl.png'"></image>
+						<image class="shoppingCar" :src="imgPath+'tab-cart-hl.png'" @click="go('/pages/shoppingCar/shoppingCar')"></image>
 						<image class="option" :src="imgPath+'menu01-hl.png'"></image>
 					</view>
 				</view>
 				<view class="infoFrame">
 					<image class="avatar" :src="imgPath+'missing-face.png'"></image>
-					<view class="logon">注册登录</view>
+					<view class="logon" @click="go('/pages/logon/logon')">注册登录</view>
 				</view>
 			</view>
 			<view class="bottom">
 				<view class="list">
 					<view class="topFrame">
 						<view class="title">我的订单</view>
-						<view class="go">全部订单 ></view>
+						<view class="go" @click="go('/pages/order/order')">全部订单 ></view>
 					</view>
 					<view class="itemFrame">
-						<view class="item">
+						<view class="item" @click="go('/pages/order/order?type=1')">
 							<image class="icon" :src="imgPath+'daifukuan.png'"></image>
 							<view class="name">待付款</view>
 						</view>
-						<view class="item">
+						<view class="item" @click="go('/pages/order/order?type=2')">
 							<image class="icon" :src="imgPath+'daifahuo.png'"></image>
 							<view class="name">待发货</view>
 						</view>
-						<view class="item">
+						<view class="item" @click="go('/pages/order/order?type=3')">
 							<image class="icon" :src="imgPath+'daishouhuo.png'"></image>
 							<view class="name">待收货</view>
 						</view>
-						<view class="item">
+						<view class="item" @click="go('/pages/order/order?type=4')">
 							<image class="icon" :src="imgPath+'yiwancheng.png'"></image>
 							<view class="name">已完成</view>
 						</view>
@@ -44,19 +44,19 @@
 						<view class="title">交易管理</view>
 					</view>
 					<view class="itemFrame">
-						<view class="item">
+						<view class="item" @click="go('/pages/myPlace/myPlace')">
 							<image class="icon" :src="imgPath+'dizhi.png'"></image>
 							<view class="name">发货地址</view>
 						</view>
-						<view class="item">
+						<view class="item" @click="go('/pages/myCoupon/myCoupon')">
 							<image class="icon" :src="imgPath+'youhuoquan.png'"></image>
 							<view class="name">优惠券</view>
 						</view>
-						<view class="item">
+						<view class="item" @click="go('/pages/afterSale/afterSale')">
 							<image class="icon" :src="imgPath+'shouhou.png'"></image>
 							<view class="name">售后查询</view>
 						</view>
-						<view class="item">
+						<view class="item" @click="go('/pages/amount/amount')">
 							<image class="icon" :src="imgPath+'goumaiedu.png'"></image>
 							<view class="name">年度购买额度</view>
 						</view>
@@ -67,15 +67,15 @@
 						<view class="title">我的账号</view>
 					</view>
 					<view class="itemFrame">
-						<view class="item">
+						<view class="item" @click="go('/pages/myInfo/myInfo')">
 							<image class="icon" :src="imgPath+'wodezhanghao.png'"></image>
 							<view class="name">我的账号</view>
 						</view>
-						<view class="item">
+						<view class="item" @click="go('/pages/myIntegral/myIntegral')">
 							<image class="icon" :src="imgPath+'wodejifen.png'"></image>
 							<view class="name">我的积分</view>
 						</view>
-						<view class="item">
+						<view class="item" @click="go('/pages/myFollow/myFollow')">
 							<image class="icon" :src="imgPath+'wodeshoucang.png'"></image>
 							<view class="name">我的收藏</view>
 						</view>

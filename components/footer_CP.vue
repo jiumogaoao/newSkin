@@ -10,13 +10,13 @@
 					</view>
 					<view class="list">
 						<view class="title">帮助</view>
-						<view class="item">售后服务</view>
+						<view class="item" @click="go('/pages/afterSale/afterSale')">售后服务</view>
 						<view class="item">联系我们</view>
-						<view class="item">帮助中心</view>
+						<view class="item" @click="go('/pages/help/help')">帮助中心</view>
 					</view>
 					<view class="list">
 						<view class="title">其他</view>
-						<view class="item">官网主页</view>
+						<view class="item" @click="go('/pages/index/index')">官网主页</view>
 					</view>
 				</view>
 				<view class="right">

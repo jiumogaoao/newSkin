@@ -7,48 +7,30 @@
 				<view class="right">
 					<view class="top">
 						<view class="topLeft">
-							<view class="place"><image :src="imgPath+'indexLandmarkIcon.png'" id="place"></image>上海</view>
-							<view class="nav1">产品目录</view>
-							<view class="nav1">加入事业</view>
-							<view class="nav1">店铺查询</view>
+							<view class="place"><image :src="imgPath+'indexLandmarkIcon.png'" id="place"></image>{{place}}</view>
+							<view class="nav1" v-for="(v,i) in topNav" :key="'nav1'+i" @click="go(v.url)">{{v.nav}}</view>
 						</view>
 						<view class="topRight">
 							<image :src="imgPath+'indexSearchIcon.png'" id="search"></image>
-							<image :src="imgPath+'indexUserIcon.png'" id="user"></image>
-							<div class="goShoppingCar">购物车</div>
+							<image :src="imgPath+'indexUserIcon.png'" id="user" @click="go('/pages/myOrder/myOrder')"></image>
+							<div class="goShoppingCar" @click="go('/pages/shoppingCar/shoppingCar')">购物车</div>
 						</view>
 					</view>
 					<view class="bottom">
-						<view class="nav2">首页</view>
-						<view class="nav2">王牌ageLOC</view>
-						<view class="nav2">护肤</view>
-						<view class="nav2">身体护理</view>
-						<view class="nav2">彩妆</view>
-						<view class="nav2">营养补充</view>
-						<view class="nav2">新闻中心</view>
-						<view class="nav2">品牌故事</view>
+						<view class="nav2" @click="go('/pages/index/index')">首页</view>
+						<view class="nav2" v-for="(v,i) in secondNav" @mouseover="changeNavHl(i)">{{v.nav}}</view>
+						<view class="nav2" @click="go('/pages/news/news')">新闻中心</view>
+						<view class="nav2" @click="go('/pages/stroy/stroy')">品牌故事</view>
 					</view>
 				</view>
-				<view class="nav2ChildFrame">
-					<view class="nav2Child">
-						<view class="secondNav">
-							<view class="secondNavName">二级目录</view>
-							<view class="thirdNav">三级目录</view>
-						</view>
-						<view class="secondNav">
-							<view class="secondNavName">二级目录</view>
-							<view class="thirdNav">三级目录</view>
-						</view>
-						<view class="secondNav">
-							<view class="secondNavName">二级目录</view>
-							<view class="thirdNav">三级目录</view>
-						</view>
-						<view class="secondNav">
-							<view class="secondNavName">二级目录</view>
-							<view class="thirdNav">三级目录</view>
+				<view class="nav2ChildFrame" v-if="navHl || navHl===0">
+					<view class="nav2Child" v-if="secondNav[navHl].child">
+						<view class="secondNav" v-for="(v,i) in secondNav[navHl].child">
+							<view class="secondNavName">{{v.nav}}</view>
+							<view class="thirdNav" v-if="v.child" v-for="(n,o) in v.child" @click="go('/pages/shelf/shelf?id='+n.id)">{{n.nav}}</view>
 						</view>
 					</view>
-					<view class="showAll">查看所有商品></view>
+					<view class="showAll" @click="go('/pages/shelf/shelf')">查看所有商品></view>
 				</view>
 				
 			</view>
@@ -56,19 +38,19 @@
 		</view>
 		<!-- #endif -->
 		<view class="headerCP" v-if="!destop">
-			<view class="item hl">
+			<view class="item hl" @click="go('/pages/index/index')">
 				<image class="icon" :src="imgPath+'tab-home-current.png'"></image>
 				<view class="title">首页</view>
 			</view>
-			<view class="item">
+			<view class="item" @click="go('/pages/type/type')">
 				<image class="icon" :src="imgPath+'tab-cate.png'"></image>
 				<view class="title">产品目录</view>
 			</view>
-			<view class="item">
+			<view class="item" @click="go('/pages/shoppingCar/shoppingCar')">
 				<image class="icon" :src="imgPath+'tab-cart.png'"></image>
 				<view class="title">购物车</view>
 			</view>
-			<view class="item">
+			<view class="item" @click="go('/pages/mine/mine')">
 				<image class="icon" :src="imgPath+'tab-my.png'"></image>
 				<view class="title">个人中心</view>
 			</view>
@@ -83,8 +65,24 @@
 		mixins: [allComponent],
 		data() {
 			return {
-				
+				navHl:null
 			};
+		},
+		methods:{
+			changeNavHl(index){
+				this.navHl = index;
+			}
+		},
+		computed:{
+			topNav(){
+				return this.$store.state.rootST.topNav
+			},
+			secondNav(){
+				return this.$store.state.rootST.secondNav
+			},
+			place(){
+				return this.$store.state.rootST.place
+			}
 		}
 	}
 </script>
@@ -194,6 +192,9 @@
 			top:110px;
 			left:0px;
 			display: none;
+		}
+		.headerCP:hover .nav2ChildFrame{
+			display: block;
 		}
 		.nav2Child{
 			width:100%;

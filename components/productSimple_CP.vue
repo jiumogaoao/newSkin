@@ -1,10 +1,11 @@
 <template>
-	<view :class="destop?'destopCP':'phoneCP'">
+	<view :class="destop?'destopCP':'phoneCP'" @click="c">
 		<view class="productSimpleCP">
-			<image :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'" class="img"></image>
-			<view class="title">商品标题</view>
-			<view class="price">￥100</view>
-			<image class="follow" :src="imgPath+'sellWellHIcon.png'"></image>
+			<image :src="img" class="img"></image>
+			<view class="title">{{name}}</view>
+			<view class="price">￥{{price}}</view>
+			<image class="follow" :src="imgPath+'favorite-full-love.png'" v-if="follow"></image>
+			<image class="follow" :src="imgPath+'sellWellHIcon.png'" v-else></image>
 		</view>
 	</view>
 </template>
@@ -12,7 +13,13 @@
 <script>
 	import allComponent from "@/mixin/allComponent"
 	export default {
+		props:['follow','img','name','price','pId'],
 		mixins: [allComponent],
+		methods: {
+			c(){
+				this.$emit('click')
+			}
+		},
 		data() {
 			return {
 				

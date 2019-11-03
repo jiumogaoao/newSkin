@@ -4,16 +4,13 @@
 			<view class="header">分类</view>
 			<view class="frame">
 				<view class="left">
-					<view class="item">王牌ageLOC</view>
-					<view class="item">护肤</view>
-					<view class="item">彩妆</view>
-					<view class="item">营养补充</view>
+					<view :class="{item:1,hl:i==nav}" v-for="(v,i) in secondNav" :key="i" @click="setNav(i)">{{v.nav}}</view>
 				</view>
 				<view class="right">
-					<view class="item">唇部彩妆</view>
-					<view class="item">基础营养</view>
-					<view class="item">头发洗护</view>
-					<view class="item">ageLOC焕新系列</view>
+					<block v-for="(v,i) in secondNav[nav].child" :key="i">
+						<view class="item">{{v.nav}}</view>
+						<view class="childItem" v-for="(n,o) in v.child" :key="o" @click="go('/pages/shelf/shelf?id='+n.id)">{{n.nav}}</view>
+					</block>
 				</view>
 			</view>
 			<headerCP/>
@@ -27,8 +24,18 @@
 		mixins: [allPage],
 		data() {
 			return {
-				
+				nav:0
 			};
+		},
+		computed:{
+			secondNav(){
+				return this.$store.state.rootST.secondNav
+			}
+		},
+		methods:{
+			setNav(num){
+				this.nav = num
+			}
 		}
 	}
 </script>
@@ -65,6 +72,9 @@
 					text-align: center;
 					font-size: 28rpx;
 				}
+				.item.hl{
+					background-color: #fff;
+				}
 			}
 			.right{
 				flex-grow: 1;
@@ -73,7 +83,16 @@
 					width: 100%;
 					height: 78rpx;
 					color: #303133;
-					font-size: 28px;
+					font-size: 28rpx;
+					line-height: 78rpx;
+					text-align: center;
+					background-color: #ddd;
+				}
+				.childItem{
+					width: 100%;
+					height: 78rpx;
+					color: #303133;
+					font-size: 22rpx;
 					line-height: 78rpx;
 					text-align: center;
 				}

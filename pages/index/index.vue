@@ -4,23 +4,20 @@
 		<block  v-if="destop && initReady">
 		<headerCP/>
 		<view class="band"></view>
-		<view class="shelf">
+		<view class="shelf" v-for="(v,i) in shelf" :key="i">
 			<view class="shelfTitleFrame">
 				<image :src="imgPath+'indexLeaf.jpg'" class="shelfTitleBG"></image>
-				<view class="shelfTitle">彩妆系列</view>
+				<view class="shelfTitle">{{v.title}}</view>
 				<view class="shelfTitleLine"></view>
 			</view>
 			<view class="shelfProductList">
-				<productSimpleCP/>
-				<productSimpleCP/>
-				<productSimpleCP/>
-				<productSimpleCP/>
+				<productSimpleCP v-for="(n,o) in v.prouduct" @click="go('/pages/detail/detail?id='+n.pId)" :key="n.pId" :follow="n.follow" :img="n.img" :name="n.name" :price="n.price" :pId="n.pId"/>
 			</view>
 		</view>
 		<view class="joinFrame">
 			<view class="joinCenterFrame">
 				<view class="joinTitle">加入如新</view>
-				<view class="joinButton">加入我们</view>
+				<view class="joinButton" @click="go('/pages/join/join')">加入我们</view>
 			</view>
 		</view>
 		<view class="titleFrame">
@@ -29,137 +26,108 @@
 		</view>
 		<view class="newsFrame">
 			<view class="newsCenterFrame">
-				<view class="newsItem">
-					<image class="newsImage" :src="imgPath+'BFx00b0ptJs4P2Tw0b1OBB4vWYQqBp.jpg'"></image>
-					<view class="newsTitle">如新海外购上线了</view>
-					<view class="newsDesc">“勿忘初心，自我革新，砥砺前行”</view>
-				</view>
-				<view class="newsItem">
-					<image class="newsImage" :src="imgPath+'BFx00b0ptJs4P2Tw0b1OBB4vWYQqBp.jpg'"></image>
-					<view class="newsTitle">如新海外购上线了</view>
-					<view class="newsDesc">“勿忘初心，自我革新，砥砺前行”</view>
+				<view class="newsItem" v-for="(v,i) in news" :key="i" @click="go('/pages/newsDetail/newsDetail?id='+sid)">
+					<image class="newsImage" :src="v.img"></image>
+					<view class="newsTitle">{{name}}</view>
+					<view class="newsDesc">{{dsc}}</view>
 				</view>
 			</view>
-			<view class="more">查看更多</view>
+			<view class="more" @click="go('/pages/news/news')">查看更多</view>
 		</view>
 		<view class="titleFrame">
 			<view class="title">品牌故事</view>
 			<view class="titleLine"></view>
 		</view>
 		<view class="storyFrame">
-			<view class="storyItem">
-				<image class="storyImg" :src="imgPath+'IpMMLTJCOmjYB0M3Tj5LxtpBTOBb5w.jpg'"></image>
+			<view class="storyItem" v-for="(v,i) in story" :key="v.sid">
+				<image class="storyImg" :src="v.img"></image>
 				<view class="storyBottom">
-					<view class="storyTitle">ageLoc王牌</view>
-					<view class="storyMore">了解更多</view>
-				</view>
-			</view>
-			<view class="storyItem">
-				<image class="storyImg" :src="imgPath+'nPeSlwW7K11t331317eT3k7byTgGGe.jpg'"></image>
-				<view class="storyBottom">
-					<view class="storyTitle">Nu Skin的诞生</view>
-					<view class="storyMore">了解更多</view>
+					<view class="storyTitle">{{v.name}}</view>
+					<view class="storyMore" @click="go('/pages/storyDetail/storyDetail?id='+sid)">了解更多</view>
 				</view>
 			</view>
 		</view>
-		<view class="more">查看更多</view>
+		<view class="more" @click="go('/pages/story/story')">查看更多</view>
 		<footerCP/>
 		</block>
 		<!-- #endif -->
 		<block  v-if="!destop && initReady">
 			<view class="navBar">
 				<view class="left">
-					<image class="notice" :src="imgPath+'xinxi2.0.png'"></image>
+					<image class="notice" :src="imgPath+'xinxi2.0.png'" @click="go('/pages/myNotice/myNotice')"></image>
 				</view>
 				<view class="right">
-					<image class="shoppingCar" :src="imgPath+'tab-cart-current.png'"></image>
-					<image class="navList" :src="imgPath+'menu01.png'"></image>
+					<image class="shoppingCar" :src="imgPath+'tab-cart-current.png'" @click="go('/pages/shoppingCar/shoppingCar')"></image>
+					<image class="navList" :src="imgPath+'menu01.png'" @click="sideShow()"></image>
 				</view>
 			</view>
 			<view class="banner">
 				<swiper class="swiper" :indicator-dots="true" :autoplay="true" :interval="2000" :duration="500">
-				                        <swiper-item>
-				                            <image :src="imgPath+'EYMk7dC8827epCIeeAkWyYEej5l20Z.jpg'" class="item"></image>
-				                        </swiper-item>
-				                        <swiper-item>
-				                            <image :src="imgPath+'EYMk7dC8827epCIeeAkWyYEej5l20Z.jpg'" class="item"></image>
+				                        <swiper-item v-for="(v,i) in banner" @click="go('/pages/detail/detail?id='+v.id)" :key="i">
+				                            <image :src="v.url" class="item"></image>
 				                        </swiper-item>
 				</swiper>
 			</view>
 			<view class="doubleFrame">
-				<view class="item">
+				<view class="item" @click="go('/pages/myOrder/myOrder')">
 					<image class="icon" :src="imgPath+'xsk89KqkppQud34p8xbXm4pKhqPbHh.png'"></images>
 					<view class="title">我的订单</view>
 				</view>
-				<view class="item">
+				<view class="item" @click="go('/pages/myFollow/myFollow')">
 					<image class="icon" :src="imgPath+'c6.png'"></images>
 					<view class="title">我的收藏</view>
 				</view>
 			</view>
-			<image class="bigTitle" :src="imgPath+'rxph.png'"></image>
-			<view class="productList">
-				<productSimpleCP style="margin-top:30rpx;"/>
-				<productSimpleCP style="margin-top:30rpx;"/>
-				<productSimpleCP style="margin-top:30rpx;"/>
-				<productSimpleCP style="margin-top:30rpx;"/>
-			</view>
-			<image class="ad" :src="imgPath+'ad1.png'"/>
-			<view class="productList">
-				<productSimpleCP style="margin-top:30rpx;"/>
-			</view>
-			<image class="ad" :src="imgPath+'ad1.png'"/>
-			<view class="productList">
-				<productSimpleCP style="margin-top:30rpx;"/>
-			</view>
+			<block v-for="(v,i) in shelf" :key="i">
+				<image class="bigTitle" :src="imgPath+'rxph.png'"></image>
+				<view class="productList">
+					<productSimpleCP style="margin-top:30rpx;" v-for="(n,o) in v.prouduct"  @click="go('/pages/detail/detail?id='+n.pId)" :key="n.pId" :follow="n.follow" :img="n.img" :name="n.name" :price="n.price" :pId="n.pId"/>
+				</view>
+				<image class="ad" :src="imgPath+'ad1.png'"/>
+			</block>
 			<image class="smallTitle" :src="imgPath+'index_news.png'"></image>
-			<view class="news">
-				<image class="img" :src="imgPath+'BFx00b0ptJs4P2Tw0b1OBB4vWYQqBp.jpg'"></image>
-				<view class="title">如新海外购上线了</view>
-				<view class="dsc">"勿忘初心，自我革新，砥砺前行"</view>
+			<view class="news" v-for="(v,i) in news" :key="v.nId" @click="go('/pages/newDetail/newDetail')">
+				<image class="img" :src="v.img"></image>
+				<view class="title">{{v.name}}</view>
+				<view class="dsc">{{v.dsc}}</view>
 			</view>
-			<view class="more">查看更多</view>
+			<view class="more" @click="go('/pages/news/news')">查看更多</view>
 			<view class="joinFrame">
 				<view class="title">加入如新</view>
-				<view class="button">立即加入</view>
+				<view class="button" @click="go('/pages/join/join')">立即加入</view>
 			</view>
 			<image class="smallTitle" :src="imgPath+'index_pp.png'"></image>
 			<view class="storyList">
 				<scroll-view scroll-x="true" class="scroll-X">
 					<view class="scrollFrame">
-						<view class="item">
-							<image class="pic" :src="imgPath+'IpMMLTJCOmjYB0M3Tj5LxtpBTOBb5w.jpg'"></image>
+						<view class="item" v-for="(v,i) in story">
+							<image class="pic" :src="v.img"></image>
 							<view class="subTitle">品牌故事</view>
-							<view class="title">ageLoc王牌</view>
-							<view class="knowMore">了解更多>></view>
-						</view>
-						<view class="item">
-							<image class="pic" :src="imgPath+'nPeSlwW7K11t331317eT3k7byTgGGe.jpg'"></image>
-							<view class="subTitle">品牌故事</view>
-							<view class="title">Nu Skin的诞生</view>
-							<view class="knowMore">了解更多>></view>
+							<view class="title">{{v.name}}</view>
+							<view class="knowMore" @click="go('/pages/storyDetail/storyDetail')">了解更多>></view>
 						</view>
 					</view>
 				</scroll-view>
 			</view>
-			<view class="more">查看更多</view>
+			<view class="more" @click="go('/pages/story/story')">查看更多</view>
 			<footerCP/>
 			<view style="width:750rpx;height:50rpx;"></view>
 			<headerCP/>
-			<view class="sideNav">
+			<view :class="{sideNav:1,open:showSide}">
 				<view class="searchFrame">
 					<input class="search"/>
 					<image class="searchButton" :src="imgPath+'sousuo.png'"></image>
 				</view>
 				<view class="navList">
-					<view class="item">
+					<view class="item" @click="go('/pages/story/story')">
 						<view class="title">关于我们</view>
 						<image class="deg" :src="imgPath+'jiantou-r.png'"></image>
 					</view>
-					<view class="item">
+					<view class="item" @click="go('/pages/news/news')">
 						<view class="title">新闻中心</view>
 						<image class="deg" :src="imgPath+'jiantou-r.png'"></image>
 					</view>
-					<view class="item">
+					<view class="item" @click="go('/pages/afterSale/afterSale')">
 						<view class="title">售后中心</view>
 						<image class="deg" :src="imgPath+'jiantou-r.png'"></image>
 					</view>
@@ -167,16 +135,16 @@
 						<view class="title">联系我们</view>
 						<image class="deg" :src="imgPath+'jiantou-r.png'"></image>
 					</view>
-					<view class="item">
+					<view class="item" @click="go('/pages/help/help')">
 						<view class="title">帮助中心</view>
 						<image class="deg" :src="imgPath+'jiantou-r.png'"></image>
 					</view>
-					<view class="item">
+					<view class="item" @click="go('/pages/index/index')">
 						<view class="title">官网主页</view>
 						<image class="deg" :src="imgPath+'jiantou-r.png'"></image>
 					</view>
 				</view>
-				<view class="logon">
+				<view class="logon" @click="go('/pages/logon/logon')">
 					<image class="icon" :src="imgPath+'touxiangs.png'"></image>
 					<view class="title">注册|登录</view>
 				</view>
@@ -193,8 +161,27 @@
 		components:{productSimpleCP},
 		data() {
 			return {
-				
+				showSide:false
 			};
+		},
+		methods:{
+			sideShow(){
+				this.showSide = !this.showSide
+			}
+		},
+		computed:{
+			banner(){
+				return this.$store.state.indexST.banner
+			},
+			shelf(){
+				return this.$store.state.indexST.shelf
+			},
+			news(){
+				return this.$store.state.indexST.news
+			},
+			story(){
+				return this.$store.state.indexST.story
+			}
 		}
 	}
 </script>
@@ -209,6 +196,7 @@
 		.shelf{
 			width:1200px;
 			margin: auto;
+			margin-top: 60px;
 		}
 		.shelfTitleFrame{
 			position:relative;
@@ -662,6 +650,9 @@
 					margin-left: 20rpx;
 				}
 			}
+		}
+		.sideNav.open{
+			left:0;
 		}
 	}
 </style>

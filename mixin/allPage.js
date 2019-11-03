@@ -31,6 +31,13 @@ module.exports = {
 		// #endif
 		this.$store.dispatch('rootST/initReady')
 	},
+	methods: {
+		go(url){
+			uni.navigateTo({
+			    url: url
+			});
+		}
+	},
 	computed:{
 		destop(){
 			return this.$store.state.rootST.destop
@@ -43,12 +50,6 @@ module.exports = {
 		},
 		logo(){
 			return this.$store.state.rootST.logo
-		},
-		topNav(){
-			return this.$store.state.rootST.topNav
-		},
-		secondNav(){
-			return this.$store.state.rootST.secondNav
 		},
 		imgPath(){
 			if(this.destop){
