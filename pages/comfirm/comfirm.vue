@@ -128,11 +128,12 @@
 
 <script>
 	import allPage from "@/mixin/allPage"
+	import needLogon from "@/mixin/needLogon"
 	import checkBoxCP from "@/components/checkBox_CP.vue"
 	import radioCP from "@/components/radio_CP.vue"
 	import couponCP from "@/components/coupon_CP.vue"
 	export default {
-		mixins: [allPage],
+		mixins: [allPage,needLogon],
 		components:{checkBoxCP,radioCP,couponCP},
 		data() {
 			return {

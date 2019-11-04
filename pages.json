@@ -180,7 +180,10 @@
         }
         ,{
             "path" : "pages/myPlace/myPlace",
-            "style" : {}
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
         }
     ],
     "subPackages": [],

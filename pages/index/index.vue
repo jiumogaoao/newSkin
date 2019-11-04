@@ -11,7 +11,7 @@
 				<view class="shelfTitleLine"></view>
 			</view>
 			<view class="shelfProductList">
-				<productSimpleCP v-for="(n,o) in v.prouduct" @click="go('/pages/detail/detail?id='+n.pId)" :key="n.pId" :follow="n.follow" :img="n.img" :name="n.name" :price="n.price" :pId="n.pId"/>
+				<productSimpleCP v-for="(n,o) in v.prouduct" @follow="follow(n.pId)" @click="go('/pages/detail/detail?id='+n.pId)" :key="n.pId" :follow="n.follow" :img="n.img" :name="n.name" :price="n.price" :pId="n.pId"/>
 			</view>
 		</view>
 		<view class="joinFrame">
@@ -159,6 +159,9 @@
 	export default {
 		mixins: [allPage],
 		components:{productSimpleCP},
+		onShow: function() {
+			this.$store.dispatch('rootST/changeFootNav', 'index')
+		},
 		data() {
 			return {
 				showSide:false
@@ -167,6 +170,9 @@
 		methods:{
 			sideShow(){
 				this.showSide = !this.showSide
+			},
+			follow(id){
+				
 			}
 		},
 		computed:{

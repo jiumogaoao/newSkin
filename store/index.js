@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import rootST from './root_ST'
 import indexST from './indexShow_ST'
+import userST from './user_ST'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
@@ -13,7 +14,8 @@ const store = new Vuex.Store({
 	},
 	modules: {
 		rootST,
-		indexST
+		indexST,
+		userST
 	},
 	mutations: {
 		login(state, provider) {

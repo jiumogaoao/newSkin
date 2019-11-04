@@ -1,5 +1,5 @@
 <template>
-	<view :class="destop?'destopCP':'phoneCP'">
+	<view :class="destop?'destopCP':'phoneCP'" @click="c">
 		<!-- #ifdef H5 -->
 		<view class="productCP" v-if="destop">
 			<image :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'" class="img"></image>
@@ -7,8 +7,9 @@
 			<view class="title">商品标题</view>
 			<view class="taxes">预计税费：￥100</view>
 			<view class="price">零售价：<block style="font-size: 20px;">￥100</block></view>
-			<image class="follow" :src="imgPath+'sellWellHIcon.png'"></image>
-			<image class="shoppingCar" :src="imgPath+'caricon-blue.png'"></image>
+			<image class="follow" :src="imgPath+'favorite-full-love.png'" v-if="follow" @click="f"></image>
+			<image class="follow" :src="imgPath+'sellWellHIcon.png'" v-else @click="f"></image>
+			<image class="shoppingCar" :src="imgPath+'caricon-blue.png'" @click="a"></image>
 		</view>
 		<!-- #endif -->
 		<view class="productCP" v-if="!destop">
@@ -17,7 +18,9 @@
 			<view class="title">商品标题</view>
 			<view class="taxes">预计税费：￥100</view>
 			<view class="price">零售价：<block style="font-size: 20px;">￥100</block></view>
-			<image class="shoppingCar" :src="imgPath+'tab-cart-current.png'"></image>
+			<image class="follow" :src="imgPath+'favorite-full-love.png'" v-if="follow" @click="f"></image>
+			<image class="follow" :src="imgPath+'sellWellHIcon.png'" v-else @click="f"></image>
+			<image class="shoppingCar" :src="imgPath+'tab-cart-current.png'" @click="a"></image>
 		</view>
 	</view>
 </template>
@@ -30,6 +33,17 @@
 			return {
 				
 			};
+		},
+		methods: {
+			c(){
+				this.$emit('click')
+			},
+			f(){
+				this.$emit('follow')
+			},
+			a(){
+				this.$emit('addCar')
+			}
 		}
 	}
 </script>
@@ -84,6 +98,14 @@
 			position: absolute;
 			right: 19px;
 			bottom: 30px;
+			cursor: pointer;
+		}
+		.follow{
+			width:20px;
+			height:18px;
+			position: absolute;
+			right: 19px;
+			top: 11px;
 			cursor: pointer;
 		}
 	}

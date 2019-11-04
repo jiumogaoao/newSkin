@@ -20,7 +20,7 @@
 						<view class="nav2" @click="go('/pages/index/index')">首页</view>
 						<view class="nav2" v-for="(v,i) in secondNav" @mouseover="changeNavHl(i)">{{v.nav}}</view>
 						<view class="nav2" @click="go('/pages/news/news')">新闻中心</view>
-						<view class="nav2" @click="go('/pages/stroy/stroy')">品牌故事</view>
+						<view class="nav2" @click="go('/pages/story/story')">品牌故事</view>
 					</view>
 				</view>
 				<view class="nav2ChildFrame" v-if="navHl || navHl===0">
@@ -38,20 +38,20 @@
 		</view>
 		<!-- #endif -->
 		<view class="headerCP" v-if="!destop">
-			<view class="item hl" @click="go('/pages/index/index')">
-				<image class="icon" :src="imgPath+'tab-home-current.png'"></image>
+			<view :class="{item:1,hl:footNav=='index'}" @click="go('/pages/index/index')">
+				<image class="icon" :src="footNav=='index'?(imgPath+'tab-home-current.png'):(imgPath+'tab-home.png')"></image>
 				<view class="title">首页</view>
 			</view>
-			<view class="item" @click="go('/pages/type/type')">
-				<image class="icon" :src="imgPath+'tab-cate.png'"></image>
+			<view :class="{item:1,hl:footNav=='type'}" @click="go('/pages/type/type')">
+				<image class="icon" :src="footNav=='type'?(imgPath+'tab-cate-current.png'):(imgPath+'tab-cate.png')"></image>
 				<view class="title">产品目录</view>
 			</view>
-			<view class="item" @click="go('/pages/shoppingCar/shoppingCar')">
-				<image class="icon" :src="imgPath+'tab-cart.png'"></image>
+			<view :class="{item:1,hl:footNav=='shoppingCar'}" @click="go('/pages/shoppingCar/shoppingCar')">
+				<image class="icon" :src="footNav=='shoppingCar'?(imgPath+'tab-cart-current.png'):(imgPath+'tab-cart.png')"></image>
 				<view class="title">购物车</view>
 			</view>
-			<view class="item" @click="go('/pages/mine/mine')">
-				<image class="icon" :src="imgPath+'tab-my.png'"></image>
+			<view :class="{item:1,hl:footNav=='mine'}" @click="go('/pages/mine/mine')">
+				<image class="icon" :src="footNav=='mine'?(imgPath+'tab-my-current.png'):(imgPath+'tab-my.png')"></image>
 				<view class="title">个人中心</view>
 			</view>
 		</view>
@@ -82,6 +82,9 @@
 			},
 			place(){
 				return this.$store.state.rootST.place
+			},
+			footNav(){
+				return this.$store.state.rootST.footNav
 			}
 		}
 	}
@@ -188,6 +191,7 @@
 		}
 		.nav2ChildFrame{
 			width:100%;
+			background-color: #fff;
 			position: absolute;
 			top:110px;
 			left:0px;

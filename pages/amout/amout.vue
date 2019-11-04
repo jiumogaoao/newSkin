@@ -27,8 +27,12 @@
 <script>
 	import allPage from "@/mixin/allPage"
 	import mine from "@/mixin/mine"
+	import needLogon from "@/mixin/needLogon"
 	export default {
-		mixins: [allPage,mine],
+		mixins: [allPage,needLogon,mine],
+		onShow: function() {
+			this.$store.dispatch('rootST/changeMyPage', 'amout')
+		},
 		data() {
 			return {
 				

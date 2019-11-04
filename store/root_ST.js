@@ -14,6 +14,8 @@ export default {
 		  {nav:'彩妆',child:[{nav:'一级导航4',child:[{nav:'二级导航4',id:'4'}]}]},
 		  {nav:'营养补充',child:[{nav:'一级导航5',child:[{nav:'二级导航5',id:'5'}]}]},
 		  ],
+	  myPage:'myOrder',
+	  footNav:'index'
   },
   mutations: {
 	  clear(state, data){
@@ -25,6 +27,12 @@ export default {
 	  },
 	  destop(state, data){
 		  state.destop = true;
+	  },
+	  changeMyPage(state, data){
+		  state.myPage = data;
+	  },
+	  changeFootNav(state, data){
+	  		  state.footNav = data;
 	  }
   },
   actions:{
@@ -36,6 +44,12 @@ export default {
 	  },
 	  destop(context,data){
 		  context.commit("destop");
+	  },
+	  changeMyPage(context,data){
+		  context.commit("changeMyPage",data);
+	  },
+	  changeFootNav(context,data){
+	  		  context.commit("changeFootNav",data);
 	  }
   }
  }

@@ -90,8 +90,12 @@
 
 <script>
 	import allPage from "@/mixin/allPage"
+	import needLogon from "@/mixin/needLogon"
 	export default {
-		mixins: [allPage],
+		mixins: [allPage,needLogon],
+		onShow: function() {
+			this.$store.dispatch('rootST/changeFootNav', 'mine')
+		},
 		data() {
 			return {
 				

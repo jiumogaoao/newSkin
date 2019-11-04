@@ -4,8 +4,8 @@
 			<image :src="img" class="img"></image>
 			<view class="title">{{name}}</view>
 			<view class="price">￥{{price}}</view>
-			<image class="follow" :src="imgPath+'favorite-full-love.png'" v-if="follow"></image>
-			<image class="follow" :src="imgPath+'sellWellHIcon.png'" v-else></image>
+			<image class="follow" :src="imgPath+'favorite-full-love.png'" v-if="follow" @click="f"></image>
+			<image class="follow" :src="imgPath+'sellWellHIcon.png'" v-else @click="f"></image>
 		</view>
 	</view>
 </template>
@@ -18,6 +18,9 @@
 		methods: {
 			c(){
 				this.$emit('click')
+			},
+			f(){
+				this.$emit('follow')
 			}
 		},
 		data() {

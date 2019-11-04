@@ -12,10 +12,10 @@
 			<view class="center">
 				<view class="logonFrame">
 					<view class="tabbarFrame">
-						<view class="item hl">手机验证码登录</view>
-						<view class="item">账号登录</view>
+						<view :class="{item:1,hl:logOnType==0}" @click="changeType(0)">手机验证码登录</view>
+						<view :class="{item:1,hl:logOnType==1}" @click="changeType(1)">账号登录</view>
 					</view>
-					<view class="frame">
+					<view class="frame" v-if="logOnType==0">
 						<view class="row">
 							<image class="icon" :src="imgPath+'login-form-mine.png'"></image><input class="input"/>
 						</view>
@@ -26,7 +26,7 @@
 							<image class="icon" :src="imgPath+'login-form-lock.png'"></image><input class="input"/><view class="getPhoneCode">获取验证码</view>
 						</view>
 					</view>
-					<view class="frame">
+					<view class="frame" v-else>
 						<view class="row">
 							<image class="icon" :src="imgPath+'login-form-mine.png'"></image><input class="input"/>
 						</view>
@@ -38,7 +38,7 @@
 						</view>
 					</view>
 					<view class="forget">忘记密码</view>
-					<view class="logon">登录</view>
+					<view class="logon" @click="logon">登录</view>
 					<view class="thirdPathLogonFrame">
 						<view class="left">
 							<view class="title">社交账号登录</view>
@@ -60,17 +60,17 @@
 				</view>
 				<image class="logo" :src="imgPath+'logo.png'"></image>
 				<view class="tagBar">
-					<view class="item hl">
+					<view :class="{item:1,hl:logOnType==0}" @click="changeType(0)">
 						<view class="name">手机验证码登录</view>
 						<image class="deg" :src="imgPath+'upDeg.png'"></image>
 					</view>
-					<view class="item">
+					<view :class="{item:1,hl:logOnType==1}" @click="changeType(1)">
 						<view class="name">账号登录</view>
 						<image class="deg" :src="imgPath+'upDeg.png'"></image>
 					</view>
 				</view>
 			</view>
-			<view class="listFrame">
+			<view class="listFrame" v-if="logOnType==0">
 				<view class="list">
 					<input class="input" placeholder="请输入手机号码"/>
 				</view>
@@ -84,7 +84,7 @@
 					<view class="getCode">获取验证码</view>
 				</view>
 			</view>
-			<view class="listFrame">
+			<view class="listFrame" v-else>
 				<view class="list">
 					<input class="input" placeholder="请输入手机号码/账号"/>
 				</view>
@@ -93,7 +93,7 @@
 					<image class="eye" :src="imgPath+'yanjing.png'"></image>
 				</view>
 			</view>
-			<view class="logon">登录</view>
+			<view class="logon" @click="logon">登录</view>
 			<view class="blueFrame">
 				<view class="blue">立即注册</view>
 				<view class="blue">忘记密码？</view>
@@ -116,9 +116,17 @@
 		mixins: [allPage],
 		data() {
 					return {
-						
+						logOnType:0
 					};
-				}
+				},
+		methods:{
+			changeType(type){
+				this.logOnType = type
+			},
+			logon(){
+				this.$store.dispatch('userST/logon', {})
+			}
+		}
 			}
 		</script>
 		

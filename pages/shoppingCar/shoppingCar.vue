@@ -97,7 +97,7 @@
 							    			</div>
 							    		</div>
 							    		<div class="btn-area">
-							    			<a class="submit-btn" style="cursor: pointer;color: #fff;" onclick="checkCart()">去结算</a>
+							    			<a class="submit-btn" style="cursor: pointer;color: #fff;" @click="go('/pages/comfirm/comfirm')">去结算</a>
 							    		</div>
 							    	</td>
 							    </tr>
@@ -181,8 +181,12 @@
 	import allPage from "@/mixin/allPage"
 	import checkBoxCP from "@/components/checkBox_CP.vue"
 	import productCP from "@/components/product_CP.vue"
+	import needLogon from "@/mixin/needLogon"
 	export default {
-		mixins: [allPage],
+		mixins: [allPage,needLogon],
+		onShow: function() {
+			this.$store.dispatch('rootST/changeFootNav', 'shoppingCar')
+		},
 		components:{
 			checkBoxCP,
 			productCP

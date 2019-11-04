@@ -41,10 +41,14 @@
 <script>
 	import allPage from "@/mixin/allPage"
 	import mine from "@/mixin/mine"
+	import needLogon from "@/mixin/needLogon"
 	import checkBoxCP from "@/components/checkBox_CP.vue"
 	export default {
-		mixins: [allPage,mine],
+		mixins: [allPage,needLogon,mine],
 		components:{checkBoxCP},
+		onShow: function() {
+			this.$store.dispatch('rootST/changeMyPage', 'myNotice')
+		},
 		data() {
 			return {
 				

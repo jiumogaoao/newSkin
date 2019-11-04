@@ -22,6 +22,9 @@
 	import allPage from "@/mixin/allPage"
 	export default {
 		mixins: [allPage],
+		onShow: function() {
+			this.$store.dispatch('rootST/changeFootNav', 'type')
+		},
 		data() {
 			return {
 				nav:0

@@ -31,10 +31,14 @@
 <script>
 	import allPage from "@/mixin/allPage"
 	import mine from "@/mixin/mine"
+	import needLogon from "@/mixin/needLogon"
 	import couponCP from "@/components/coupon_CP.vue"
 	export default {
-		mixins: [allPage,mine],
+		mixins: [allPage,needLogon,mine],
 		components:{couponCP},
+		onShow: function() {
+			this.$store.dispatch('rootST/changeMyPage', 'myCoupon')
+		},
 		data() {
 			return {
 				

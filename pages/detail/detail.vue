@@ -72,7 +72,7 @@
 					<input />
 				</view>
 				<view class="buttonFrame">
-					<view class="addShoppingCart">加入购物车</view>
+					<view class="addShoppingCart" @click="go('/pages/shoppingCar/shoppingCar')">加入购物车</view>
 					<view class="iconButton"><image class="follow" :src="imgPath+'sellWellHIcon.png'"></image>加入收藏夹</view>
 					<view class="iconButton"><image class="follow" :src="imgPath+'sharp.png'"></image>分享到</view>
 				</view>
@@ -204,14 +204,14 @@
 				<view class="iconFrame">
 					<image class="icon" :src="imgPath+'share.png'"/>
 				</view>
-				<view class="iconFrame shop">
+				<view class="iconFrame shop" @click="go('/pages/shelf/shelf')">
 					<image class="icon" :src="imgPath+'tab-home-current.png'"/>
 				</view>
-				<view class="iconFrame">
+				<view class="iconFrame" @click="go('/pages/shoppingCar/shoppingCar')">
 					<image class="icon" :src="imgPath+'tab-cart-current.png'"/>
 				</view>
 				<view class="addCar">加入购物车</view>
-				<view class="buy">立即购买</view>
+				<view class="buy" @click="go('/pages/comfirm/comfirm')">立即购买</view>
 			</view>
 		</block>
 		

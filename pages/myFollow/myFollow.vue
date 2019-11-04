@@ -31,10 +31,14 @@
 <script>
 	import allPage from "@/mixin/allPage"
 	import mine from "@/mixin/mine"
+	import needLogon from "@/mixin/needLogon"
 	import productCP from "@/components/product_CP.vue"
 	export default {
-		mixins: [allPage,mine],
+		mixins: [allPage,needLogon,mine],
 		components:{productCP},
+		onShow: function() {
+			this.$store.dispatch('rootST/changeMyPage', 'myFollow')
+		},
 		data() {
 			return {
 				
