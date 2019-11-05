@@ -3,6 +3,10 @@ import Vuex from 'vuex'
 import rootST from './root_ST'
 import indexST from './indexShow_ST'
 import userST from './user_ST'
+import shelfST from './shelf_ST'
+import shoppingCarST from './shoppingCar_ST'
+import followST from './follow_ST'
+import historyST from './history_ST'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
@@ -15,7 +19,11 @@ const store = new Vuex.Store({
 	modules: {
 		rootST,
 		indexST,
-		userST
+		userST,
+		shelfST,
+		shoppingCarST,
+		followST,
+		historyST
 	},
 	mutations: {
 		login(state, provider) {

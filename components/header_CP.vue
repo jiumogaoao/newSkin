@@ -224,7 +224,7 @@
 	.phoneCP{
 		.headerCP{
 			width:750rpx;
-			height:50rpx;
+			height:100rpx;
 			background-color: #fff;
 			border-top:1px solid rgba(255, 255, 255, 0.33);
 			z-index: 3;
@@ -240,12 +240,13 @@
 				justify-content: center;
 				align-items: center;
 				.icon{
-					width:27rpx;
-					height:24rpx;
+					width:35rpx;
+					height:35rpx;
 				}
 				.title{
 					font-size: 10rpx;
 					line-height: 12rpx;
+					margin-top: 10rpx;
 					color:rgb(192, 196, 204)
 				}
 			}

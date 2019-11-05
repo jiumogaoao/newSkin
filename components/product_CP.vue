@@ -28,6 +28,7 @@
 <script>
 	import allComponent from "@/mixin/allComponent"
 	export default {
+		props:['follow','img','band','name','taxes','price','id'],
 		mixins: [allComponent],
 		data() {
 			return {

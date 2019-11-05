@@ -37,16 +37,18 @@
 				<image class="back" :src="imgPath+'zuojiantou.png'"></image>
 				商品列表
 			</view>
-			<tabbarCP style="margin-top:40rpx;"/>
+			<tabbarCP style="margin-top:40rpx;" :list="sort" :hl="hl" @change="change"/>
 			<view class="productList">
-				<productCP/>
-				<productCP/>
-				<productCP/>
-				<productCP/>
-				<productCP/>
-				<productCP/>
-				<productCP/>
-				<productCP/>
+				<productCP v-for="(v,i) in product" 
+				:key="v.pId" 
+				:follow="v.follow" 
+				:img="v.img" 
+				:band="v.band" 
+				:name="v.name" 
+				:taxes="v.taxes" 
+				:price="v.price" 
+				:id="v.pId"
+				@click="go('/pages/detail/detail?id='+v.pId)"/>
 			</view>
 		</block>
 		
@@ -62,8 +64,17 @@
 		components:{productCP,tabbarCP},
 		data() {
 			return {
-				
+				hl:0
 			};
+		},
+		methods:{
+			change(num){
+				this.hl = num;
+			}
+		},
+		computed:{
+			sort(){return this.$store.state.shelfST.sort},
+			product(){return this.$store.state.shelfST.product}
 		}
 	}
 </script>
@@ -138,10 +149,9 @@
 		}
 		.productList{
 			display: flex;
-			justify-content: space-between;
+			justify-content: space-evenly;
 			flex-wrap: wrap;
 			margin-top: 20rpx;
-			padding: 0 30px;
 		}
 	}
 	

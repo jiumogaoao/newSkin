@@ -374,7 +374,7 @@
 	.phone{
 		.navBar{
 			width:750rpx;
-			height:62rpx;
+			height:64rpx;
 			display: flex;
 			justify-content: space-between;
 			align-items: center;

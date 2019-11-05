@@ -47,8 +47,8 @@
 	.phone{
 		.header{
 			width:750rpx;
-			height:20rpx;
-			line-height: 20rpx;
+			height:80rpx;
+			line-height: 80rpx;
 			text-align: center;
 			position: fixed;
 			top:0;
@@ -58,7 +58,7 @@
 		}
 		.frame{
 			position: fixed;
-			top:20rpx;
+			top:80rpx;
 			left:0;
 			width:750rpx;
 			bottom:50rpx;

@@ -123,34 +123,34 @@
 		<!-- #endif -->
 		<block  v-if="!destop && initReady">
 			<view class="header">购物车</view>
-			<view class="list">
+			<view class="list" v-for="(v,i) in warehouse" :key="v.id">
 				<view class="top">
 					<view class="warehouse">
 						<checkBoxCP class="checkBoxCP"/>
-						<view class="name">黄埔保税仓库</view>
+						<view class="name">{{v.name}}</view>
 					</view>
-					<view class="offerFrame">
+					<view class="offerFrame" v-for="(n,o) in v.activity" :key="o">
 						<view class="left">
-							<view class="type">满减</view>
-							<view class="message">满1000减50活动</view>
+							<view class="type">{{n.type?'满折':'满减'}}</view>
+							<view class="message" v-for="(x,y) in n.option" :key="x.key">{{x.name}}</view>
 						</view>
 						<view class="right">还差￥940 ></view>
 					</view>
 				</view>
-				<view class="product">
+				<view class="product" v-for="(n,o) in v.list" :key="n.pId">
 					<checkBoxCP class="checkBoxCP"/>
-					<image class="productImg" src=""/>
+					<image class="productImg" :src="n.img"/>
 					<view class="infoFrame">
 						<view class="infoTop">
-							<view class="title">斯昂防护润唇膏</view>
-							<view class="id">产品编号：</view>
-							<view class="taxt">含税</view>
+							<view class="title">{{n.name}}</view>
+							<view class="id">产品编号：{{n.capacityKey}}</view>
+							<view class="taxt">{{n.taxes?('含税￥'+n.taxes):''}}</view>
 						</view>
 						<view class="infoBottom">
-							<view class="price">￥60</view>
+							<view class="price">￥{{n.price}}</view>
 							<view class="countFrame">
 								<view class="sub">-</view>
-								<input class="count"/>
+								<input class="count" :value="n.count"/>
 								<view class="add">+</view>
 							</view>
 						</view>
@@ -158,18 +158,45 @@
 				</view>
 			</view>
 			<view class="tapBar">
-				<view class="tap hl">我的收藏 <view class="line"></view></view>
-				<view class="tap">我买过的 <view class="line"></view></view>
+				<view :class="{tap:1,hl:tap==0}">我的收藏 <view class="line" v-if="tap==0"></view></view>
+				<view :class="{tap:1,hl:tap==1}">我买过的 <view class="line" v-if="tap==1"></view></view>
 			</view>
-			<view class="productList">
-				<productCP/>
-				<productCP/>
-				<productCP/>
-				<productCP/>
-				<productCP/>
-				<productCP/>
-				<productCP/>
-				<productCP/>
+			<view class="productList" v-if="tap==0">
+				<productCP v-for="(v,i) in followList" 
+				:key="v.pId" 
+				:follow="v.follow" 
+				:img="v.img" 
+				:band="v.band" 
+				:name="v.name" 
+				:taxes="v.taxes" 
+				:price="v.price" 
+				:id="v.pId"
+				@click="go('/pages/detail/detail?id='+v.pId)"/>
+			</view>
+			<view class="productList" v-else>
+				<productCP v-for="(v,i) in historyList" 
+				:key="v.pId" 
+				:follow="v.follow" 
+				:img="v.img" 
+				:band="v.band" 
+				:name="v.name" 
+				:taxes="v.taxes" 
+				:price="v.price" 
+				:id="v.pId"
+				@click="go('/pages/detail/detail?id='+v.pId)"/>
+			</view>
+			<view class="totalFrame">
+				<view class="left">
+					<checkBoxCP/>
+					<view class="state">清空</view>
+				</view>
+				<view class="right">
+					<view class="rightLeft">
+						<view class="total">总价：<text class="blue">￥1000.00</text></view>
+						<view class="discount">优惠：-100.00元</view>
+					</view>
+					<view class="go">去结算</view>
+				</view>
 			</view>
 			<headerCP/>
 		</block>
@@ -193,8 +220,13 @@
 		},
 		data() {
 			return {
-				
+				tap:0
 			};
+		},
+		computed:{
+			warehouse(){return this.$store.state.shoppingCarST.warehouse},
+			followList(){return this.$store.state.followST.list},
+			historyList(){return this.$store.state.historyST.list}
 		}
 	}
 </script>
@@ -263,9 +295,9 @@
 		    background: #f4f4f4;
 			.header{
 				width:100%;
-				height:50rpx;
+				height:80rpx;
 				background-color: #fff;
-				line-height: 50rpx;
+				line-height: 80rpx;
 				text-align: center;
 			}
 			.list{
@@ -315,7 +347,7 @@
 						.right{
 							margin-right: 40rpx;
 							color: #ff69b0;
-							    font-size: 28px;
+							    font-size: 28rpx;
 						}
 					}
 				}
@@ -437,14 +469,10 @@
 						position:absolute;
 						left:40%;
 						bottom:10rpx;
-						display: none;
 					}
 				}
 				.hl{
 					color: #37b0c9;
-					.line{
-						display: block;
-					}
 				}
 			}
 			.productList{
@@ -454,6 +482,26 @@
 				display: flex;
 				justify-content: space-evenly;
 				flex-wrap: wrap;
+			}
+			.totalFrame{
+				width:750rpx;
+				height:100rpx;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				position: fixed;
+				left: 0rpx;
+				bottom: 110rpx;
+				z-index: 95;
+				background-color: rgba(255,255,255,0.9);
+				.left{
+					display: flex;
+					align-items: center;
+					margin-left: 20rpx;
+					.state{
+						margin-left: 10rpx;
+					}
+				}
 			}
 	}
 	

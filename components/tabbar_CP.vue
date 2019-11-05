@@ -1,10 +1,7 @@
 <template>
 	<view :class="destop?'destopCP':'phoneCP'">
 		<view class="tabbarCP">
-			<view class="item hl">综合<view class="line"></view></view>
-			<view class="item">销量<view class="line"></view></view>
-			<view class="item">人气<view class="line"></view></view>
-			<view class="item">价格<view class="line"></view></view>
+			<view :class="{item:1,hl:v.id==hl}" v-for="(v,i) in list" :key="v.id" @click="c(v.id)">{{v.name}}<view class="line" v-if="hl == v.id"></view></view>
 		</view>
 	</view>
 	
@@ -13,11 +10,17 @@
 <script>
 	import allComponent from "@/mixin/allComponent"
 	export default {
+		props:['list','hl'],
 		mixins: [allComponent],
 		data() {
 			return {
 				
 			};
+		},
+		methods:{
+			c(id){
+				this.$emit('change',id)
+			}
 		}
 	}
 </script>
@@ -40,16 +43,13 @@
 			position: relative;
 		}
 		.line{
-			display: none;
+			display: block;
 			position: absolute;
 			bottom:-13px;
 			    left: 5%;
 			    width: 90%;
 			height:2px;
 			background-color: #008ab0;
-		}
-		.hl .line{
-			display: block;
 		}
 	}
 	/* #endif */
@@ -71,7 +71,7 @@
 			position: relative;
 		}
 		.line{
-			display: none;
+			display: block;
 			position: absolute;
 			    left: 50%;
 			    bottom: 0;
@@ -82,9 +82,6 @@
 		}
 		.hl{
 			color:#008ab0;
-		}
-		.hl .line{
-			display: block;
 		}
 	}
 </style>

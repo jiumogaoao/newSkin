@@ -3,7 +3,8 @@
 		<!-- #ifdef H5 -->
 		<image class="checkboxCP" :src="imgPath+'checked.png'" v-if="destop"></image>
 		<!-- #endif -->
-		<image class="checkboxCP" :src="imgPath+'cartxuan.png'" v-if="!destop"></image>
+		<image class="checkboxCP" :src="imgPath+'cartxuan.png'" v-if="!destop&&checked"></image>
+		<image class="checkboxCP" :src="imgPath+'card_wxuan.png'" v-if="!destop&&!checked"></image>
 	</view>
 </template>
 
@@ -11,6 +12,7 @@
 	import allComponent from "@/mixin/allComponent"
 	export default {
 		mixins: [allComponent],
+		props:['checked'],
 		data() {
 			return {
 				
@@ -30,8 +32,8 @@
 	/* #endif */
 	.phoneCP{
 		.checkboxCP{
-			width:38px;
-			height:38px;
+			width:38rpx;
+			height:38rpx;
 		}
 	}
 </style>
