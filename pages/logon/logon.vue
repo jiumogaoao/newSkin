@@ -45,7 +45,7 @@
 							<image class="icon" :src="imgPath+'login-wechat.png'"></image>
 							<image class="icon" :src="imgPath+'login-qq.png'"></image>
 						</view>
-						<view class="blue">立即注册</view>
+						<view class="blue" @click="go('/pages/regest/regest')">立即注册</view>
 					</view>
 				</view>
 			</view>
@@ -95,7 +95,7 @@
 			</view>
 			<view class="logon" @click="logon">登录</view>
 			<view class="blueFrame">
-				<view class="blue">立即注册</view>
+				<view class="blue" @click="go('/pages/regest/regest')">立即注册</view>
 				<view class="blue">忘记密码？</view>
 			</view>
 			<view class="thirdPath">
@@ -366,7 +366,7 @@
 									background: none;
 									border: 0;
 									flex-grow:1 ;
-									font-size: 30px;
+									font-size: 30rpx;
 								}
 								.picCode{
 									width:70rpx;
@@ -416,7 +416,7 @@
 								background-color: #e6e6e6;
 							}
 							.title{
-								font-size: 32px;
+								font-size: 32rpx;
 								margin: 0 10rpx;
 								flex-shrink: 0;
 							}

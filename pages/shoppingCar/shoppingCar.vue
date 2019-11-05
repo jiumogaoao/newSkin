@@ -195,7 +195,7 @@
 						<view class="total">总价：<text class="blue">￥1000.00</text></view>
 						<view class="discount">优惠：-100.00元</view>
 					</view>
-					<view class="go">去结算</view>
+					<view class="go" @click="go('/pages/comfirm/comfirm')">去结算</view>
 				</view>
 			</view>
 			<headerCP/>
@@ -500,6 +500,23 @@
 					margin-left: 20rpx;
 					.state{
 						margin-left: 10rpx;
+					}
+				}
+				.right{
+					display: flex;
+					align-items: center;
+					margin-right: 20rpx;
+					.rightLeft{
+						margin-right: 10rpx;
+						.blue{color:#37b0c9}
+						.discount{
+							margin-top: 10rpx;
+						}
+					}
+					.go{
+						padding: 10rpx 20rpx;
+						background-color: #37b0c9;
+						color:#fff;
 					}
 				}
 			}

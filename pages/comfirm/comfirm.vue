@@ -121,7 +121,58 @@
 		<footerCP/>
 		</block>
 		<!-- #endif -->
-		<block  v-if="!destop && initReady"></block>
+		<block  v-if="!destop && initReady">
+			<view class="head">
+				<image src="https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/back.png" class="back"/>
+				订单确认
+			</view>
+			<view class="place">
+				<image class="address" src="https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/place.png"></image>
+				<view class="center">
+					<view class="title">里里 153****2656</view>
+					<view class="detail">收货地址：广东潮州潮安县沙爹激动啊师大暨大</view>
+				</view>
+				<image class="deg" src="https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/jiantou-r.png"></image>
+			</view>
+			<view class="list">
+				<view class="titleFrame">产品信息</view>
+				<view class="product">
+					<image class="pic" src="https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg"></image>
+					<view class="right">
+						<view class="title">丝昂去渍牙膏（暂未非直销产品）</view>
+						<view class="code">产品编号 29003817</view>
+						<view class="bottom">
+							<view class="price">零售顾客价￥60.00</view>
+							<view class="count">X1</view>
+						</view>
+					</view>
+					
+				</view>
+			</view>
+			<view class="invoiceFrame">
+				<view class="text">发票</view>
+				<view class="text">个人></view>
+			</view>
+			<view class="totalFrame">
+				<view class="row">
+					<view class="title">产品数量</view>
+					<view class="number">1</view>
+				</view>
+				<view class="row">
+					<view class="title">运费</view>
+					<view class="number">￥15.00</view>
+				</view>
+				<view class="row">
+					<view class="title">产品总金额</view>
+					<view class="number">￥60.00</view>
+				</view>
+			</view>
+			<view class="bottomFrame">
+				<view class="title">应付总额（含运费）</view>
+				<view class="price">￥75.00</view>
+				<view class="go" @click="go('/pages/myOrder/myOrder')">确认订单</view>
+			</view>
+		</block>
 		
 	</view>
 </template>
@@ -381,6 +432,163 @@
 	}
 	}
 	/* #endif */
-	.phone{}
+	page{
+		background: #f1f1f1
+	}
+	.phone{
+		.head{
+			width:750rpx;
+			height:80rpx;
+			border-bottom: 1px solid #ddd;
+			position: relative;
+			line-height: 80rpx;
+			font-size: 16rpx;
+			background-color: #fff;
+			text-align: center;
+			.back{
+				position:absolute;
+				top:20rpx;
+				left:20rpx;
+				width:24rpx;
+				height:42rpx;
+			}
+		}
+		.place{
+			width: 690rpx;
+			padding: 30rpx;
+			display: flex;
+			justify-content:space-between;
+			align-items: center;
+			background-color: #fff;
+			.address{
+				width:32rpx;
+				height:44rpx;
+				flex-shrink: 0;
+			}
+			.center{
+				flex-grow: 1;
+				margin-left: 20rpx;
+				margin-right: 20rpx;
+				.title{
+					font-size: 40rpx;
+					color: #333;
+				}
+				.detail{
+					font-size: 30rpx;
+					color: gray;
+					margin-top: 10rpx;
+				}
+			}
+			.deg{
+				width:16rpx;
+				height:26rpx;
+			}
+		}
+		.list{
+			width:750rpx;
+			margin-top: 20rpx;
+			background-color: #fff;
+			.titleFrame{
+				height: 86rpx;
+				width:100%;
+				text-indent: 30rpx;
+				font-size: 40rpx;
+				line-height: 86rpx;
+				border-bottom: 1px solid #ddd;
+			}
+			.product{
+				padding: 20rpx 30rpx;
+				display: flex;
+				align-items: center;
+				.pic{
+					width:160rpx;
+					height:194rpx;
+					flex-shrink: 0;
+				}
+				.right{
+					flex-grow: 1;
+					.title{
+						font-size: 40rpx;
+						color: #333;
+					}
+					.code{
+						font-size: 20rpx;
+						color: gray;
+						margin-top: 10rpx;
+					}
+					.bottom{
+						margin-top: 20rpx;
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						.price,.count{
+							font-size: 40rpx;
+							color: #333;
+						}
+					}
+				}
+			}
+		}
+		.invoiceFrame{
+			padding: 0 30rpx;
+			height: 88rpx;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			background: #fff;
+			margin-top: 20rpx;
+			.text{
+				font-size: 40rpx;
+				color: #333;
+			}
+		}
+		.totalFrame{
+			margin-top: 20rpx;
+			background: #fff;
+			padding: 20rpx 30rpx 0 30rpx;
+			width:690rpx;
+			.row{
+				padding-bottom: 30rpx;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				.title{
+					font-size: 30rpx;
+					color: #333333;
+				}
+				.number{
+					font-size: 30rpx;
+				}
+			}
+		}
+		.bottomFrame{
+			padding: 0 30rpx;
+			height: 100rpx;
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+			position: fixed;
+			left: 0;
+			bottom:0;
+			width: 690rpx;
+			background: #fff;
+			.title{
+				font-size: 20rpx;
+				color: #333;
+			}
+			.price{
+				font-size: 20rpx;
+				color: #0089af;
+				margin: 0 10rpx;
+			}
+			.go{
+				font-size: 20rpx;
+				padding: 20rpx 30rpx;
+				background-color: #0089af;
+				color: #fff;
+				border-radius: 30rpx;
+			}
+		}
+	}
 	
 </style>

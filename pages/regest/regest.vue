@@ -288,7 +288,7 @@
 					.dsc{
 						width:690rpx;
 						margin-top: 40rpx;
-						font-size: 24px;
+						font-size: 24rpx;
 						    color: #343434;
 					}
 					.logon{

@@ -58,7 +58,9 @@
 		<footerCP/>
 		</block>
 		<!-- #endif -->
-		<block  v-if="!destop && initReady"></block>
+		<block  v-if="!destop && initReady">
+			
+		</block>
 		
 	</view>
 </template>
