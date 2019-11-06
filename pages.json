@@ -185,6 +185,13 @@
             	"navigationBarTitleText": "如新"
             }
         }
+        ,{
+            "path" : "pages/orderDetail/orderDetail",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        }
     ],
     "subPackages": [],
     "globalStyle": {

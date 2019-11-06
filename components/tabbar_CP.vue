@@ -66,6 +66,7 @@
 		.item{
 			align-items: center;
 			    height: 100%;
+				line-height: 80rpx;
 			    font-size: 30rpx;
 			    color: #303133;
 			position: relative;
