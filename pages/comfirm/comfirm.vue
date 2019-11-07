@@ -123,7 +123,7 @@
 		<!-- #endif -->
 		<block  v-if="!destop && initReady">
 			<view class="head">
-				<image src="https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/back.png" class="back"/>
+				<image src="https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/back.png" class="back" @click="back"/>
 				订单确认
 			</view>
 			<view class="place">
@@ -203,7 +203,7 @@
 		height:130px;
 	}
 	.top{
-		width: 1200px;
+		@include frame-width;
 		margin: auto;
 		height: 80px;
 		background-color: #f3f8fb;
@@ -432,10 +432,9 @@
 	}
 	}
 	/* #endif */
-	page{
-		background: #f1f1f1
-	}
+
 	.phone{
+		background: #f1f1f1;
 		.head{
 			width:750rpx;
 			height:80rpx;

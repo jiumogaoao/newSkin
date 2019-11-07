@@ -14,7 +14,7 @@
 		<!-- #endif -->
 		<block  v-if="!destop && initReady">
 			<view class="head">
-				<img class="back" src="https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/back.png"/>
+				<img class="back" src="https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/back.png" @click="back"/>
 				标题
 			</view>
 			<view class="topFrame">

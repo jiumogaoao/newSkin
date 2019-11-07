@@ -108,15 +108,29 @@
 			<view class="tap hl">我的收藏</view>
 			<view class="tap">我买过的</view>
 		</view>
-		<view class="productList">
-			<productCP/>
-			<productCP/>
-			<productCP/>
-			<productCP/>
-			<productCP/>
-			<productCP/>
-			<productCP/>
-			<productCP/>
+		<view class="productList" v-if="tap==0">
+			<productCP v-for="(v,i) in followList"
+			:key="v.pId" 
+			:follow="v.follow" 
+			:img="v.img" 
+			:band="v.band" 
+			:name="v.name" 
+			:taxes="v.taxes" 
+			:price="v.price" 
+			:id="v.pId"
+			@click="go('/pages/detail/detail?id='+v.pId)"/>
+		</view>
+		<view class="productList" v-else>
+			<productCP v-for="(v,i) in historyList"
+			:key="v.pId" 
+			:follow="v.follow" 
+			:img="v.img" 
+			:band="v.band" 
+			:name="v.name" 
+			:taxes="v.taxes" 
+			:price="v.price" 
+			:id="v.pId"
+			@click="go('/pages/detail/detail?id='+v.pId)"/>
 		</view>
 		<footerCP/>
 		</block>
@@ -144,7 +158,7 @@
 						<view class="infoTop">
 							<view class="title">{{n.name}}</view>
 							<view class="id">产品编号：{{n.capacityKey}}</view>
-							<view class="taxt">{{n.taxes?('含税￥'+n.taxes):''}}</view>
+							<view class="taxt">{{n.taxes?('含税￥'+n.taxes):'不含税'}}</view>
 						</view>
 						<view class="infoBottom">
 							<view class="price">￥{{n.price}}</view>
@@ -185,6 +199,7 @@
 				:id="v.pId"
 				@click="go('/pages/detail/detail?id='+v.pId)"/>
 			</view>
+			<view style="width:750rpx;height:200rpx;"></view>
 			<view class="totalFrame">
 				<view class="left">
 					<checkBoxCP/>
@@ -262,11 +277,11 @@
 		margin-right: 20px;
 	}
 	.tableFrame{
-		width: 1200px;
+		@include frame-width;
 		margin: auto;
 	}
 	.tapBar{
-		width:1200px;
+		@include frame-width;
 		margin: auto;
 		height: 64px;
 		display: flex;
@@ -283,7 +298,7 @@
 	}
 	.productList{
 		margin-top: 20px;
-		width:1200px;
+		@include frame-width;
 		margin: auto;
 		display: flex;
 		justify-content: space-between;
@@ -517,6 +532,7 @@
 						padding: 10rpx 20rpx;
 						background-color: #37b0c9;
 						color:#fff;
+						border-radius: 20rpx;
 					}
 				}
 			}

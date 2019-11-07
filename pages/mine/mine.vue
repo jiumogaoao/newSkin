@@ -18,22 +18,22 @@
 				<view class="list">
 					<view class="topFrame">
 						<view class="title">我的订单</view>
-						<view class="go" @click="go('/pages/order/order')">全部订单 ></view>
+						<view class="go" @click="go('/pages/myOrder/myOrder')">全部订单 ></view>
 					</view>
 					<view class="itemFrame">
-						<view class="item" @click="go('/pages/order/order?type=1')">
+						<view class="item" @click="go('/pages/myOrder/myOrder?type=1')">
 							<image class="icon" :src="imgPath+'daifukuan.png'"></image>
 							<view class="name">待付款</view>
 						</view>
-						<view class="item" @click="go('/pages/order/order?type=2')">
+						<view class="item" @click="go('/pages/myOrder/myOrder?type=2')">
 							<image class="icon" :src="imgPath+'daifahuo.png'"></image>
 							<view class="name">待发货</view>
 						</view>
-						<view class="item" @click="go('/pages/order/order?type=3')">
+						<view class="item" @click="go('/pages/myOrder/myOrder?type=3')">
 							<image class="icon" :src="imgPath+'daishouhuo.png'"></image>
 							<view class="name">待收货</view>
 						</view>
-						<view class="item" @click="go('/pages/order/order?type=4')">
+						<view class="item" @click="go('/pages/myOrder/myOrder?type=4')">
 							<image class="icon" :src="imgPath+'yiwancheng.png'"></image>
 							<view class="name">已完成</view>
 						</view>
@@ -56,7 +56,7 @@
 							<image class="icon" :src="imgPath+'shouhou.png'"></image>
 							<view class="name">售后查询</view>
 						</view>
-						<view class="item" @click="go('/pages/amount/amount')">
+						<view class="item" @click="go('/pages/amout/amout')">
 							<image class="icon" :src="imgPath+'goumaiedu.png'"></image>
 							<view class="name">年度购买额度</view>
 						</view>

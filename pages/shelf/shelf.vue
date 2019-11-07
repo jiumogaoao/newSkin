@@ -20,21 +20,23 @@
 			<view class="optionItem">价格倒序</view>
 		</view>
 		<view class="productList">
-			<productCP/>
-			<productCP/>
-			<productCP/>
-			<productCP/>
-			<productCP/>
-			<productCP/>
-			<productCP/>
-			<productCP/>
+			<productCP v-for="(v,i) in product"
+			:key="v.pId" 
+			:follow="v.follow" 
+			:img="v.img" 
+			:band="v.band" 
+			:name="v.name" 
+			:taxes="v.taxes" 
+			:price="v.price" 
+			:id="v.pId"
+			@click="go('/pages/detail/detail?id='+v.pId)"/>
 		</view>
 		<footerCP/>
 		</block>
 		<!-- #endif -->
 		<block  v-if="!destop && initReady">
 			<view class="head">
-				<image class="back" :src="imgPath+'zuojiantou.png'"></image>
+				<image class="back" :src="imgPath+'back.png'" @click="back"></image>
 				商品列表
 			</view>
 			<tabbarCP style="margin-top:40rpx;" :list="sort" :hl="hl" @change="change"/>
@@ -95,7 +97,7 @@
 			margin-bottom: 50px;
 		}
 		.optionFrame{
-			width:1200px;
+			@include frame-width;
 			background: #f5f5f5;
 			overflow: hidden;
 			margin: auto;
@@ -120,7 +122,7 @@
 			line-height: 52px;
 		}
 		.productList{
-			width: 1200px;
+			@include frame-width;
 			margin: auto;
 			display: flex;
 			justify-content: space-between;

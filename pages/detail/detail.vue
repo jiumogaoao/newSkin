@@ -69,7 +69,11 @@
 				</view>
 				<view class="frame">
 					<view class="title">数量：</view>
-					<input />
+					<view class="countFrame">
+						<view class="add">+</view>
+						<input class="input"/>
+						<view class="sub">-</view>
+					</view>
 				</view>
 				<view class="buttonFrame">
 					<view class="addShoppingCart" @click="go('/pages/shoppingCar/shoppingCar')">加入购物车</view>
@@ -238,7 +242,7 @@
 		height:130px;
 	}
 	.top{
-		width:1200px;
+		@include frame-width;
 		margin: auto;
 		display: flex;
 	}
@@ -301,7 +305,7 @@
 	}
 	.eng{
 		font-size: 20px;
-		    line-height: 20px;
+		    line-height: 60px;
 		    color: #333333;
 	}
 	.band{
@@ -314,6 +318,7 @@
 		font-size: 14px;
 		    line-height: 14px;
 		    color: #37b0c9;
+			margin-bottom: 20px;
 	}
 	.newPrice{
 		font-size: 20px;
@@ -336,6 +341,29 @@
 		color: #808080;
 		    font-size: 14px;
 		    margin-right: 35px;
+			line-height: 24px;
+	}
+	.countFrame{
+		height:30px;
+		border: 1px solid #333;
+		border-radius: 5px;
+		display: flex;
+		align-items: center;
+		margin-bottom: 15px;
+		.add,.sub{
+			width:40px;
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+		}
+		.input{
+			width:40px;
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+			border-right: 1px solid #ddd;
+			border-left: 1px solid #ddd;
+		}
 	}
 	.activeGroud{
 		display: flex;
@@ -356,11 +384,13 @@
 		    font-size: 14px;
 		    color: #333333;
 			margin-bottom: 15px;
+			line-height: 24px;
 	}
 	.text{
 		font-size: 14px;
 		    color: #333333;
 			margin-bottom: 15px;
+			line-height: 24px;
 	}
 	.buttonFrame{
 		display: flex;
@@ -396,14 +426,14 @@
 		    text-align: center;
 	}
 	.titleLine{
-		width:1200px;
+		@include frame-width;
 		height: 2px;
 		background-color: #e6e6e6;
 		margin: auto;
 		margin-top: 20px;
 	}
 	.detailFrame,.notice{
-		width: 1200px;
+		@include frame-width;
 		margin: auto;
 		margin-top: 20px;
 	}
@@ -412,6 +442,9 @@
 	    font-family: 微软雅黑,Microsoft YaHei;
 	    font-size: 18px;
 	}
+	.detailFrame view,.notice view{
+		line-height: 3;
+	}
 	.notice{
 		font-size: 14px;
 		    line-height: 28px;
@@ -419,6 +452,7 @@
 	}
 	.radioFrame{
 		display: flex;
+		margin-bottom: 15px;
 	}
 	.radio{
 		border: 1px solid #008ab0;

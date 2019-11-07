@@ -59,7 +59,7 @@
 		<!-- #endif -->
 		<block  v-if="!destop && initReady">
 				<view class="head">
-					<image class="back" :src="imgPath+'zuojiantou.png'"></image>
+					<image class="back" :src="imgPath+'zuojiantou.png'" @click="back"></image>
 					注册
 				</view>
 				<view class="listFrame">
@@ -112,7 +112,7 @@
 			/* #ifdef H5 */
 			.destop{
 				.head{
-					width:1200px;
+					@include frame-width;
 					height:100px;
 					margin: auto;
 					display: flex;

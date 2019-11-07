@@ -75,7 +75,7 @@
 			margin-top: 100px;
 	}
 	.centerFrame{
-		width:1200px;
+		@include frame-width;
 		margin:auto;
 		display: flex;
 		justify-content: space-between;

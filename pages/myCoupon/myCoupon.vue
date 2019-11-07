@@ -9,7 +9,7 @@
 			<mineNavCP/>
 			<view class="info">
 				<view class="title">我的优惠券</view>
-				<tabbarCP/>
+				<tabbarCP :list="[{id:0,name:'未使用（0）'},{id:1,name:'已使用（0）'},{id:2,name:'已失效（0）'}]" :hl="0"/>
 				<view class="couponFrame">
 					<couponCP/>
 					<couponCP/>
@@ -23,7 +23,12 @@
 		<footerCP/>
 		</block>
 		<!-- #endif -->
-		<block  v-if="!destop && initReady"></block>
+		<block  v-if="!destop && initReady">
+			<view class="head">
+							<image class="back" :src="imgPath+'back.png'" @click="back"></image>
+							我的优惠券
+						</view>
+		</block>
 		
 	</view>
 </template>
@@ -55,7 +60,7 @@
 		height:130px;
 	}
 	.body{
-		width:1200px;
+		@include frame-width;
 		margin: auto;
 		margin-top: 20px;
 		display: flex;
@@ -79,6 +84,24 @@
 	}
 	}
 	/* #endif */
-	.phone{}
+	.phone{
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+			width:750rpx;
+			.head{
+				width:100%;
+				text-align: center;
+				    font-size: 40rpx;
+				padding-top: 34rpx;
+				position: relative;
+				.back{
+					width:32rpx;
+					height:32rpx;
+					position:absolute;
+					left:20rpx;
+				}
+			}
+		}
 	
 </style>

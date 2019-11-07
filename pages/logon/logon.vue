@@ -55,7 +55,7 @@
 		<block  v-if="!destop && initReady">
 			<view class="top">
 				<view class="head">
-					<image class="back" :src="imgPath+'zuojiantou.png'"></image>
+					<image class="back" :src="imgPath+'zuojiantou.png'" @click="back"></image>
 					登录
 				</view>
 				<image class="logo" :src="imgPath+'logo.png'"></image>
@@ -134,7 +134,7 @@
 			/* #ifdef H5 */
 			.destop{
 				.head{
-					width:1200px;
+					@include frame-width;
 					height:100px;
 					margin: auto;
 					display: flex;
@@ -160,7 +160,7 @@
 					}
 				}
 				.center{
-					width: 1200px;
+					@include frame-width;
 					margin: auto;
 					margin-top: 40px;
 					display: flex;

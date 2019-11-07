@@ -102,7 +102,7 @@
 			z-index:3;
 		}
 		.headerCP{
-			width:1200px;
+			@include frame-width;
 			height:130px;
 			display: flex;
 			justify-content:space-between;

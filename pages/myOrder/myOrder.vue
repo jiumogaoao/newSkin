@@ -9,7 +9,7 @@
 			<mineNavCP/>
 			<view class="info">
 				<view class="title">我的订单</view>
-				<tabbarCP/>
+				<tabbarCP :list="[{id:0,name:'全部'},{id:1,name:'待付款'},{id:2,name:'已支付'},{id:3,name:'待发货'},{id:4,name:'已完成'}]" :hl="0"/>
 				<view class="head">
 					<view class="headItem first" style="width:46%">订单详情</view>
 					<view class="headItem" style="width:10%">数量</view>
@@ -61,7 +61,7 @@
 		<block  v-if="!destop && initReady">
 			<view class="head">
 				<view class="left">
-					<img class="back" src="https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/back.png"/>
+					<img class="back" src="https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/back.png" @click="back"/>
 					<img class="notice" src="https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/xinxi2.0.png"/>
 				</view>
 				<view class="title">标题</view>
@@ -225,7 +225,6 @@
 </script>
 
 <style lang="scss" scoped>
-	page{background-color: #f1f1f1;}
 	/* #ifdef H5 */
 	.destop{
 		.band{
@@ -233,7 +232,7 @@
 			height:130px;
 		}
 		.body{
-			width:1200px;
+			@include frame-width;
 			margin: auto;
 			margin-top: 20px;
 			display: flex;
@@ -342,6 +341,7 @@
 	}
 	/* #endif */
 	.phone{
+		background-color: #f1f1f1;
 		.head{
 			width:710rpx;
 			height:110rpx;

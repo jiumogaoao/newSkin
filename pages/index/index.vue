@@ -26,10 +26,10 @@
 		</view>
 		<view class="newsFrame">
 			<view class="newsCenterFrame">
-				<view class="newsItem" v-for="(v,i) in news" :key="i" @click="go('/pages/newsDetail/newsDetail?id='+sid)">
+				<view class="newsItem" v-for="(v,i) in news" :key="i" @click="go('/pages/newDetail/newDetail?id='+v.nId)">
 					<image class="newsImage" :src="v.img"></image>
-					<view class="newsTitle">{{name}}</view>
-					<view class="newsDesc">{{dsc}}</view>
+					<view class="newsTitle">{{v.name}}</view>
+					<view class="newsDesc">{{v.dsc}}</view>
 				</view>
 			</view>
 			<view class="more" @click="go('/pages/news/news')">查看更多</view>
@@ -200,7 +200,7 @@
 			height:200px;
 		}
 		.shelf{
-			width:1200px;
+			@include frame-width;
 			margin: auto;
 			margin-top: 60px;
 		}
@@ -235,6 +235,7 @@
 		.shelfProductList{
 			display: flex;
 			justify-content: space-between;
+			flex-wrap: wrap;
 		}
 		.joinFrame{
 			width: 100%;
@@ -245,7 +246,7 @@
 			margin-bottom: 100px;
 		}
 		.joinCenterFrame{
-			width: 1200px;
+			@include frame-width;
 			margin: 0 auto;
 			position: relative;
 		}
@@ -271,7 +272,7 @@
 			font-size: 12px;
 		}
 		.titleFrame{
-			width: 1200px;
+			@include frame-width;
 			margin: auto;
 			margin-bottom: 39px;
 		}
@@ -296,11 +297,12 @@
 			    background-repeat: no-repeat;
 		}
 		.newsCenterFrame{
-			    width: 1200px;
+			    @include frame-width;
 			    margin: 0 auto !important;
 			    margin-top: 65px;
 			    display: flex;
 			    justify-content: space-between;
+				flex-wrap: wrap;
 		}
 		.more{
 			width: 250px;
@@ -336,9 +338,10 @@
 			    color: #9A9A9A;
 		}
 		.storyFrame{
-			width: 1200px;
+			@include frame-width;
 			margin: auto;
 			display: flex;
+			flex-wrap: wrap;
 			justify-content: space-between;
 			margin-top: 55px;
 		}
@@ -509,17 +512,17 @@
 			.title{
 				    text-align: center;
 				    color: #4d4d4d;
-				    font-size: 40px;
+				    font-size: 40rpx;
 			}
 			.button{
-				width: 180px;
-				    height: 50px;
+				width: 180rpx;
+				    height: 50rpx;
 				    background: #008ab0;
 				    color: #fff;
 				    text-align: center;
-				    font-size: 32px;
-				    line-height: 50px;
-				    border-radius: 5px;
+				    font-size: 32rpx;
+				    line-height: 50rpx;
+				    border-radius: 5rpx;
 					margin-top: 40rpx;
 			}
 		}
@@ -557,21 +560,21 @@
 						}
 						.subTitle{
 							color: #191919;
-							    font-size: 26px;
-							    padding: 0px 20px;
+							    font-size: 26rpx;
+							    padding: 0px 20rpx;
 								margin-top: 40rpx;
 						}
 						.title{
 							color: #191919;
-							    font-size: 30px;
-							    padding: 0 20px;
+							    font-size: 30rpx;
+							    padding: 0 20rpx;
 							    font-weight: 600;
 								margin-top: 20rpx;
 						}
 						.knowMore{
-							padding: 0 20px;
+							padding: 0 20rpx;
 							    color: #008ab0;
-							    font-size: 26px;
+							    font-size: 26rpx;
 								margin-top: 40rpx;
 						}
 					}

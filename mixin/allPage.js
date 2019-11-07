@@ -32,6 +32,9 @@ module.exports = {
 		this.$store.dispatch('rootST/initReady')
 	},
 	methods: {
+		back(){
+			uni.navigateBack();
+		},
 		go(url){
 			uni.navigateTo({
 			    url: url

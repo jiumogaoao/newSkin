@@ -6,7 +6,7 @@ export default {
 	  destop:false,
 	  place:'上海',
 	  logo:'',
-	  topNav:[{nav:'产品目录',url:'/pages/index/index'},{nav:'加入事业',url:'/pages/index/index'},{nav:'店铺查询',url:'/pages/index/index'}],
+	  topNav:[{nav:'产品目录',url:'/pages/index/index'},{nav:'加入事业',url:'/pages/join/join'},{nav:'店铺查询',url:'/pages/index/index'}],
 	  secondNav:[
 		  {nav:'王牌ageLOC',child:[{nav:'一级导航1',child:[{nav:'二级导航1',id:'1'}]}]},
 		  {nav:'护肤',child:[{nav:'一级导航2',child:[{nav:'二级导航2',id:'2'}]}]},

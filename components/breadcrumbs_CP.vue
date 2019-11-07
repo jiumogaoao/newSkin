@@ -22,7 +22,7 @@
 
 <style lang="scss">
 	.breadcrumbs{
-		width:1200px;
+		@include frame-width;
 		margin: auto;
 		display: flex;
 	}
