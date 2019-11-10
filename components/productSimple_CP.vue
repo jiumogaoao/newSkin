@@ -70,33 +70,34 @@
 	/* #endif */
 	.phoneCP{
 		.productSimpleCP{
-			width: 670rpx;
-			height: 812rpx;
+			width: 654rpx;
+			height: 876rpx;
 			border: 1px solid #F0E9DE;
 			position: relative;
 			.img{
-				width: 665rpx;
-				height: 668rpx;
+				width: 100%;
+				height: 602rpx;
 			}
 			.title{
-				padding: 10rpx 30rpx;
-				    color: #191919;
-				    font-size: 28rpx;
-				    line-height: 40rpx;
-				    text-align: center;
+				text-align: center;
+				margin-top: 80rpx;
+				font-size: 30rpx;
+				font-weight: 500;
+				color: #191919;
 			}
 			.price{
-				padding: 0 30rpx;
+				margin-top: 87rpx;
 				    text-align: center;
-				    font-size: 32rpx;
+				    font-size: 30rpx;
 				    color: #191919;
+					font-weight: 500;
 			}
 			.follow{
-				width:40rpx;
-				height:40rpx;
+				width:45rpx;
+				height:39rpx;
 				position: absolute;
-				    top: 20rpx;
-				    right: 20rpx;
+				    top: 16rpx;
+				    right: 22rpx;
 			}
 		}
 	}

@@ -56,6 +56,9 @@
 				<view class="left">
 					<image class="notice" :src="imgPath+'xinxi2.0.png'" @click="go('/pages/myNotice/myNotice')"></image>
 				</view>
+				<view class="center">
+					<image class="logo" :src="imgPath+'logo_mobile.png'"></image>
+				</view>
 				<view class="right">
 					<image class="shoppingCar" :src="imgPath+'tab-cart-current.png'" @click="go('/pages/shoppingCar/shoppingCar')"></image>
 					<image class="navList" :src="imgPath+'menu01.png'" @click="sideShow()"></image>
@@ -68,24 +71,40 @@
 				                        </swiper-item>
 				</swiper>
 			</view>
-			<view class="doubleFrame">
+			<view class="iconListFrame">
 				<view class="item" @click="go('/pages/myOrder/myOrder')">
-					<image class="icon" :src="imgPath+'xsk89KqkppQud34p8xbXm4pKhqPbHh.png'"></images>
+					<image class="icon" :src="imgPath+'wodedingdan.png'"></images>
 					<view class="title">我的订单</view>
 				</view>
-				<view class="item" @click="go('/pages/myFollow/myFollow')">
-					<image class="icon" :src="imgPath+'c6.png'"></images>
-					<view class="title">我的收藏</view>
+				<view class="item" @click="go('/pages/myCoupon/myCoupon')">
+					<image class="icon" :src="imgPath+'youhuijuan.png'"></images>
+					<view class="title">我的优惠券</view>
+				</view>
+				<view class="item" @click="go('/pages/shelf/shelf')">
+					<image class="icon" :src="imgPath+'agelocme.png'"></images>
+					<view class="title">ageLOCme</view>
+				</view>
+				<view class="item" @click="go('/pages/shelf/shelf')">
+					<image class="icon" :src="imgPath+'expo.jpg'"></images>
+					<view class="title">EXPO精选</view>
+				</view>
+				<view class="item" @click="go('/pages/mine/mine')">
+					<image class="icon" :src="imgPath+'allapps.png'"></images>
+					<view class="title">所有应用</view>
 				</view>
 			</view>
 			<block v-for="(v,i) in shelf" :key="i">
-				<image class="bigTitle" :src="imgPath+'rxph.png'"></image>
+				<view class="bigTitle">
+					热销排行
+					<view class="line"></view>
+				</view>
+
 				<view class="productList">
 					<productSimpleCP style="margin-top:30rpx;" v-for="(n,o) in v.prouduct"  @click="go('/pages/detail/detail?id='+n.pId)" :key="n.pId" :follow="n.follow" :img="n.img" :name="n.name" :price="n.price" :pId="n.pId"/>
 				</view>
 				<image class="ad" :src="imgPath+'ad1.png'"/>
 			</block>
-			<image class="smallTitle" :src="imgPath+'index_news.png'"></image>
+			<view class="smallTitle">新闻中心<view class="line"></view></view>
 			<view class="news" v-for="(v,i) in news" :key="v.nId" @click="go('/pages/newDetail/newDetail')">
 				<image class="img" :src="v.img"></image>
 				<view class="title">{{v.name}}</view>
@@ -93,10 +112,10 @@
 			</view>
 			<view class="more" @click="go('/pages/news/news')">查看更多</view>
 			<view class="joinFrame">
-				<view class="title">加入如新</view>
+				<image class="pic" :src="imgPath+'事业机会20190624PC.jpg'"></image>
 				<view class="button" @click="go('/pages/join/join')">立即加入</view>
 			</view>
-			<image class="smallTitle" :src="imgPath+'index_pp.png'"></image>
+			<view class="smallTitle">品牌故事<view class="line"></view></view>
 			<view class="storyList">
 				<scroll-view scroll-x="true" class="scroll-X">
 					<view class="scrollFrame">
@@ -377,7 +396,7 @@
 	.phone{
 		.navBar{
 			width:750rpx;
-			height:64rpx;
+			height:113rpx;
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
@@ -386,14 +405,31 @@
 			left:0;
 			background-color: #fff;
 			z-index: 3;
-			.notice{
-				width:42rpx;
-				height:42rpx;
-				margin-left: 20rpx;
+			.left{
+				width:200rpx;
+				display: flex;
+				align-items: center;
+				.notice{
+					width:42rpx;
+					height:42rpx;
+					margin-left: 20rpx;
+				}
+			}
+			.center{
+				flex-grow: 1;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				.logo{
+					width:58rpx;
+					height:58rpx;
+				}
 			}
 			.right{
 				display: flex;
 				align-items: center;
+				width:200rpx;
+				justify-content: flex-end;
 				.shoppingCar{
 					width:42rpx;
 					height:42rpx;
@@ -408,7 +444,7 @@
 		}
 		.banner{
 			width:750rpx;
-			height:400rpx;
+			height:600rpx;
 			padding-top: 62rpx;
 			.swiper{
 				width:100%;
@@ -419,9 +455,9 @@
 				}
 			}
 		}
-		.doubleFrame{
+		.iconListFrame{
 			width:750rpx;
-			height:253rpx;
+			height:326rpx;
 			display: flex;
 			justify-content: space-evenly;
 			align-items: center;
@@ -431,19 +467,41 @@
 				justify-content: center;
 				align-items: center;
 				.icon{
-					width:68rpx;
-					height:68rpx;
+					width:120rpx;
+					height:120rpx;
 				}
 				.title{
-					font-size: 32rpx;
-					margin-top: 20rpx;
-					font-weight: bold;
+					width:122rpx;
+					font-size: 23rpx;
+					margin-top: 30rpx;
+					text-align: center;
+					color: #4a4a4a;
 				}
 			}
 		}
 		.bigTitle{
-				width:750rpx;
-				height:95rpx;
+				width:488rpx;
+				height:100rpx;
+				margin: auto;
+				background-image: url($oss-phone+'web_hot_bg.png');
+				    background-position: 0% 0%;
+				    background-size: 100% 100%;
+				    background-repeat: no-repeat;
+				font-size: 38rpx;
+				text-align: center;
+				line-height: 80rpx;
+				position: relative;
+				margin-bottom: 112rpx;
+				letter-spacing:10px;
+				font-weight: 500;
+				.line{
+					width:50rpx;
+					height:11rpx;
+					position: absolute;
+					bottom:-15rpx;
+					left:219rpx;
+					background-color: #0091be;
+				}
 		}
 		.productList{
 			width:750rpx;
@@ -453,15 +511,26 @@
 		}
 		.ad{
 			width:750rpx;
-			height:340rpx;
-			margin-top: 40rpx;
-			margin-bottom: 20rpx;
+			height:300rpx;
+			margin-top: 68rpx;
+			margin-bottom: 80rpx;
 		}
 		.smallTitle{
-			width:298rpx;
 			height: 58rpx;
-			margin: auto;
-			margin-top: 40rpx;
+			text-align: center;
+			font-size: 36rpx;
+			font-weight: 500;
+			margin-top: 127rpx;
+			position: relative;
+			margin-bottom: 68rpx;
+			.line{
+				width:48rpx;
+				height: 10rpx;
+				background-color: #ded83c;
+				position: absolute;
+				bottom:-10rpx;
+				left:351rpx;
+			}
 		}
 		.news{
 			width:690rpx;
@@ -487,43 +556,35 @@
 			}
 		}
 		.more{
-			width: 180rpx;
-			    height: 50rpx;
-			    background: #008ab0;
-			    color: #fff;
-			    text-align: center;
-			    font-size: 32rpx;
-			    line-height: 50rpx;
-			    border-radius: 5rpx;
-			    margin: 0rpx 285rpx;
-				margin-top:40rpx;
+			background: #008ab0;
+			color: #fff;
+			text-align: center;
+			font-size: 27rpx;
+			margin: auto;
+			margin-top: 44rpx;
+			width:335rpx;
+			height:79rpx;
+			line-height: 79rpx;
+			margin-bottom: 132rpx;
 		}
 		.joinFrame{
 			width:750rpx;
-			height: 420rpx;
-			background-image: url($oss-phone+'jiaru.png');
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
 			margin-top: 40rpx;
-			background-repeat: no-repeat;
-			background-size: cover;
-			.title{
-				    text-align: center;
-				    color: #4d4d4d;
-				    font-size: 40rpx;
+			.pic{
+				width:750rpx;
+				height: 229rpx;
 			}
 			.button{
-				width: 180rpx;
-				    height: 50rpx;
 				    background: #008ab0;
 				    color: #fff;
 				    text-align: center;
-				    font-size: 32rpx;
-				    line-height: 50rpx;
-				    border-radius: 5rpx;
-					margin-top: 40rpx;
+				    font-size: 27rpx;
+					margin: auto;
+					margin-top: 44rpx;
+					width:335rpx;
+					height:79rpx;
+					line-height: 79rpx;
+					margin-bottom: 132rpx;
 			}
 		}
 		.storyList{

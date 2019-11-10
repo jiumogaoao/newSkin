@@ -3,11 +3,11 @@ export default {
   namespaced:true,
   state: {
 	  banner:[
-		  {url:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/EYMk7dC8827epCIeeAkWyYEej5l20Z.jpg',id:'1'},
-		  {url:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/EYMk7dC8827epCIeeAkWyYEej5l20Z.jpg',id:'2'},
-		  {url:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/EYMk7dC8827epCIeeAkWyYEej5l20Z.jpg',id:'3'},
-		  {url:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/EYMk7dC8827epCIeeAkWyYEej5l20Z.jpg',id:'4'},
-		  {url:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/EYMk7dC8827epCIeeAkWyYEej5l20Z.jpg',id:'5'}
+		  {url:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/肌修Banner20191102MOB.jpg',id:'1'},
+		  {url:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/肌修Banner20191102MOB.jpg',id:'2'},
+		  {url:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/肌修Banner20191102MOB.jpg',id:'3'},
+		  {url:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/肌修Banner20191102MOB.jpg',id:'4'},
+		  {url:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/肌修Banner20191102MOB.jpg',id:'5'}
 		  ],
 	  shelf:[
 		  {title:'热销排行',
