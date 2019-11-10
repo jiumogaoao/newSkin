@@ -43,7 +43,7 @@ module.exports = {
 	},
 	computed:{
 		destop(){
-			return this.$store.state.rootST.destop
+			return config.destop
 		},
 		initReady(){
 			return this.$store.state.rootST.initReady
@@ -55,7 +55,7 @@ module.exports = {
 			return this.$store.state.rootST.logo
 		},
 		imgPath(){
-			if(this.destop){
+			if(config.destop){
 				return config.OSS + 'destop/'
 			}else{
 				return config.OSS + 'phone/'
