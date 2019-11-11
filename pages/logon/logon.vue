@@ -56,9 +56,8 @@
 			<view class="top">
 				<view class="head">
 					<image class="back" :src="imgPath+'zuojiantou.png'" @click="back"></image>
-					登录
 				</view>
-				<image class="logo" :src="imgPath+'logo.png'"></image>
+				<image class="logo" :src="imgPath+'de4406c8.logo2.png'"></image>
 				<view class="tagBar">
 					<view :class="{item:1,hl:logOnType==0}" @click="changeType(0)">
 						<view class="name">手机验证码登录</view>
@@ -72,31 +71,31 @@
 			</view>
 			<view class="listFrame" v-if="logOnType==0">
 				<view class="list">
-					<input class="input" placeholder="请输入手机号码"/>
+					<input class="input" placeholder="请输入手机号码" placeholder-class="placeholder"/>
 				</view>
 				<view class="list">
-					<input class="input" placeholder="请输入图形验证码"/>
+					<input class="input" placeholder="请输入图形验证码" placeholder-class="placeholder"/>
 					<image class="picCode" :src="imgPath+'verificationCode.png'"></image>
 					<view class="blue">换一张</view>
 				</view>
 				<view class="list">
-					<input class="input" placeholder="请输入手机验证码"/>
+					<input class="input" placeholder="请输入手机验证码" placeholder-class="placeholder"/>
 					<view class="getCode">获取验证码</view>
 				</view>
 			</view>
 			<view class="listFrame" v-else>
 				<view class="list">
-					<input class="input" placeholder="请输入手机号码/账号"/>
+					<input class="input" placeholder="请输入手机号码/账号" placeholder-class="placeholder"/>
 				</view>
 				<view class="list">
-					<input class="input" placeholder="请输入密码"/>
+					<input class="input" placeholder="请输入密码" placeholder-class="placeholder"/>
 					<image class="eye" :src="imgPath+'yanjing.png'"></image>
 				</view>
 			</view>
 			<view class="logon" @click="logon">登录</view>
 			<view class="blueFrame">
-				<view class="blue" @click="go('/pages/regest/regest')">立即注册</view>
-				<view class="blue">忘记密码？</view>
+				<view class="text" @click="go('/pages/regest/regest')">立即注册</view>
+				<view class="text">忘记密码？</view>
 			</view>
 			<view class="thirdPath">
 				<view class="line"></view>
@@ -104,8 +103,9 @@
 				<view class="line"></view>
 			</view>
 			<view class="iconFrame">
-				<image class="icon" :src="imgPath+'wechat.png'"></image>
-				<image class="icon" :src="imgPath+'qq.png'"></image>
+				<image class="icon" :src="imgPath+'wx2.png'"></image>
+				<image class="icon" :src="imgPath+'wb2.png'"></image>
+				<image class="icon" :src="imgPath+'qq2.png'"></image>
 			</view>
 		</block>
 	</view>
@@ -292,36 +292,32 @@
 						    font-size: 21rpx;
 					}
 						.top{
-							height: 370rpx;
+							height: 420rpx;
 							    width: 750rpx;
-							    background-color: #0490b7;
-								
-							    background: url($oss-phone+'login_bg.png') 50%;
+								background: linear-gradient(-45deg,#5cc2cc,#0573b2);
 							    position: relative;
 							.head{
 								width:100%;
 								text-align: center;
-								    color: #fff;
-								    font-size: 40rpx;
 								padding-top: 34rpx;
 								position: relative;
 								.back{
-									width:32rpx;
-									height:32rpx;
+									width:41rpx;
+									height:41rpx;
 									position:absolute;
-									left:20rpx;
+									left:34rpx;
 								}
 							}
 							.logo{
-								width:110rpx;
-								height:35rpx;
+								width:348rpx;
+								height:98rpx;
 								margin: auto;
-								margin-top: 131rpx;
+								margin-top: 126rpx;
 							}
 							.tagBar{
-								width: 80%;
+								width: 422rpx;
 								margin: auto;
-								margin-top: 40rpx;
+								margin-top: 96rpx;
 								display: flex;
 								justify-content: space-between;
 								.item{
@@ -329,22 +325,18 @@
 									flex-direction: column;
 									justify-content: space-between;
 									align-items: center;
-									height:90rpx;
+									height:67rpx;
 									.name{
-										color: #d7f8ff;
+										color: #fff;
 										font-size: 30rpx;
 									}
 									.deg{
-										width:25rpx;
-										height:13rpx;
+										width:36rpx;
+										height:21rpx;
 										display: none;
 									}
 								}
 								.hl{
-									.name{
-										color: #fff;
-										font-weight: 600;
-									}
 									.deg{
 										display: block;
 									}
@@ -352,84 +344,103 @@
 							}
 						}
 						.listFrame{
-							width:690rpx;
-							margin: auto;
-							margin-top: 40rpx;
+							width:100%;
+							padding: 30rpx 30rpx;
 							.list{
 								width:100%;
-								height: 100rpx;
+								height: 86rpx;
+								padding-top: 20rpx;
 								border-bottom: 1px solid #eaeaea;
 								display: flex;
 								align-items: center;
+								.placeholder{
+									color: #878787;
+									font-size: 25rpx;
+								}
 								.input{
 									height: 100%;
 									background: none;
 									border: 0;
 									flex-grow:1 ;
-									font-size: 30rpx;
+									font-size: 25rpx;
 								}
 								.picCode{
-									width:70rpx;
-									height:30rpx;
+									width:146rpx;
+									height:62rpx;
 									margin: 0 20rpx;
+									position: relative;
+									top:-10rpx
 								}
 								.getCode{
-									font-size: 30rpx;
-									    color: #008ab0;
-									    border: 1rpx solid #008ab0;
-									    padding: 5rpx 21rpx;
+									font-size: 26rpx;
+									    color: #fff;
+										background-color: #3a3a3a;
+									    padding: 17rpx 22rpx;
 									    border-radius: 36rpx;
+										position: relative;
+										top:-10rpx
 								}
 								.eye{
 									width:40rpx;
 									height:40rpx;
 								}
+								.blue{
+									font-size: 26rpx;
+									color: #7d7d7d;
+									position: relative;
+									top:-10rpx
+								}
 							}
 						}
 						.logon{
 							width: 690rpx;
-							    height: 76rpx;
-							    line-height: 76rpx;
-							    border-radius: 70rpx;
-							    margin-top: 21rpx;
-							    background: #008ab0;
+							    height: 80rpx;
+							    line-height: 80rpx;
+							    border-radius: 80rpx;
+								margin-top: 40rpx;
+							    background: #038eb7;
 							    color: #fff;
 								text-align: center;
-							    font-size: 32rpx;
+							    font-size: 28rpx;
 						}
 						.blueFrame{
 							width: 690rpx;
 							display: flex;
 							justify-content: space-between;
 							align-items: center;
-							margin-top: 20rpx;
+							margin-top: 67rpx;
+							.text{
+								font-size: 22rpx;
+								color: #383838;
+							}
 						}
 						.thirdPath{
-							width: 690rpx;
+							width: 576rpx;
 							display: flex;
 							justify-content: space-between;
 							align-items: center;
-							margin-top: 60rpx;
+							margin-top: 153rpx;
 							.line{
 								flex-grow: 1;
-								height:1;
-								background-color: #e6e6e6;
+								height:1px;
+								background-color: #e1e1e1;
 							}
 							.title{
-								font-size: 32rpx;
+								font-size: 24rpx;
 								margin: 0 10rpx;
 								flex-shrink: 0;
+								color: #2a8c93;
 							}
 						}
 						.iconFrame{
-							width:250rpx;
+							width:400rpx;
 							display: flex;
 							justify-content: space-between;
 							align-items: center;
-							margin-top: 40rpx;
+							margin-top: 50rpx;
 							.icon{
-								width:70rpx;
-								height:70rpx;
+								width:80rpx;
+								height:80rpx;
 							}
 						}
 					}
