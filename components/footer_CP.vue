@@ -34,8 +34,9 @@
 			<view class="top">
 				<view class="title">关注我们</view>
 				<view class="iconFrame">
-					<image class="item" :src="imgPath+'weixin.png'"></image>
 					<image class="item" :src="imgPath+'xinlang.png'"></image>
+					<image class="item" :src="imgPath+'weixin.png'"></image>
+					<image class="item" :src="imgPath+'icon4.png'"></image>
 				</view>
 			</view>
 			<view class="bottom">
@@ -126,8 +127,8 @@
 			margin-top: 40rpx;
 			.top{
 				width:750rpx;
-				height:280rpx;
-				background: #63666b;
+				height:380rpx;
+				background: #6a6d76;
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
@@ -140,25 +141,25 @@
 					display: flex;
 					justify-content: space-between;
 					align-items: center;
-					margin-top: 20rpx;
-					width:200rpx;
+					margin-top: 63rpx;
+					width:386rpx;
 					.item{
-						width: 80rpx;
-						height:80rpx;
+						width: 96rpx;
+						height:96rpx;
 					}
 				}
 			}
 			.bottom{
 				width:750rpx;
 				.list{
-					margin-top: 20rpx;
+					margin-top: 75rpx;
 					display: flex;
 					align-items: center;
-					padding-left: 40rpx;
+					padding-left: 50rpx;
 					.item{
-						color: #b1b1b1;
-						font-size: 20rpx;
-						margin-right: 68rpx;
+						color: #ddd;
+						font-size: 22rpx;
+						margin-right: 100rpx;
 					}
 				}
 			}

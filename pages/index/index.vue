@@ -133,10 +133,17 @@
 			<view style="width:750rpx;height:50rpx;"></view>
 			<headerCP/>
 			<view :class="{sideNav:1,open:showSide}">
-				<view class="searchFrame">
-					<input class="search"/>
-					<image class="searchButton" :src="imgPath+'sousuo.png'"></image>
+				<view class="bigSearchFrame">
+					<view class="searchFrame">
+						<input class="search"/>
+						<image class="searchButton" :src="imgPath+'sousuo.png'"></image>
+					</view>
+					<view class="qrFrame">
+						<image class="qrCode" :src="imgPath+'qrbtn.png'"></image>
+						<view class="text">二维码</view>
+					</view>
 				</view>
+				
 				<view class="navList">
 					<view class="item" @click="go('/pages/story/story')">
 						<view class="title">关于我们</view>
@@ -165,7 +172,7 @@
 				</view>
 				<view class="logon" @click="go('/pages/logon/logon')">
 					<image class="icon" :src="imgPath+'touxiangs.png'"></image>
-					<view class="title">注册|登录</view>
+					<view class="title">注册 | 登录</view>
 				</view>
 			</view>
 		</block>
@@ -644,7 +651,7 @@
 		}
 		.sideNav{
 			position: fixed;
-			top:62rpx;
+			top:85rpx;
 			left:750rpx;
 			right:0;
 			bottom:0;
@@ -655,55 +662,75 @@
 			flex-direction: column;
 			justify-content: space-between;
 			align-items: center;
-			.searchFrame{
+			padding: 0 50rpx 0 42rpx;
+			.bigSearchFrame{
 				width:100%;
-				height:130rpx;
 				display: flex;
-				justify-content: center;
+				justify-content: space-between;
 				align-items: center;
+				height:226rpx;
 				flex-shrink: 0;
-				.search{
-					width: 571rpx;
-					    height: 70rpx;
-					    font-size: 30rpx;
-					    background: #f6f7f7;
-					    padding: 0 20rpx;
-					    border-radius: 15rpx;
+				.searchFrame{
+					width:529rpx;
+					flex-shrink: 0;
+					position: relative;
+					.search{
+						width: 100%;
+						    height: 70rpx;
+						    font-size: 30rpx;
+						    background: #f6f7f7;
+						    padding: 0 20rpx;
+						    border-radius: 15rpx;
+					}
+					.searchButton{
+						width:44rpx;
+						height:44rpx;
+						position: absolute;
+						top:15rpx;
+						left: 20rpx;
+					}
 				}
-				.searchButton{
-					width:34rpx;
-					height:34rpx;
-					margin-left: 40rpx;
+				.qrFrame{
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
+					.qrCode{
+						width:43rpx;
+						height:43rpx;
+					}
+					.text{
+						font-size: 22rpx;
+						color: #8f8f8f;
+						margin-top: 18rpx;
+					}
 				}
 			}
+			
 			.navList{
 				width: 100%;
 				flex-grow: 1;
 				.item{
-					height: 100rpx;
 					width:100%;
 					display: flex;
 					justify-content: space-between;
 					align-items: center;
+					margin-bottom: 62rpx;
 					.title{
-						font-size: 30px;
-						color: #323232;
-						margin-left: 20rpx;
+						font-size: 28rpx;
+						color: #010101;
 					}
 					.deg{
-						width:30rpx;
-						height:30rpx;
-						margin-right: 20rpx;
+						width:20rpx;
+						height:20rpx;
 					}
 				}
 			}
 			.logon{
-				width: 690rpx;
-				    height: 70rpx;
+				width: 100%;
+				    height: 83rpx;
 				    background: #008ab0;
 				    color: #fff;
-				    text-align: center;
-				    line-height: 70rpx;
 				    border-radius: 15rpx;
 					flex-shrink: 0;
 					display: flex;
@@ -715,9 +742,9 @@
 					height:40rpx;
 				}
 				.title{
-					font-size: 28px;
+					font-size: 32rpx;
 					color: #fff;
-					margin-left: 20rpx;
+					margin-left: 44rpx;
 				}
 			}
 		}
