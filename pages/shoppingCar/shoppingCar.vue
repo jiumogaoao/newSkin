@@ -2,6 +2,7 @@
 	<view :class="destop?'destop':'phone'">
 		<!-- #ifdef H5 -->
 		<block  v-if="destop && initReady">
+			<view class="content" :style="{width:w+'px',height:h+'px',transform:'scale3d('+s+','+s+',1)'}">
 			<headerCP/>
 		<view class="band"></view>
 		<breadcrumbsCP/>
@@ -133,6 +134,7 @@
 			@click="go('/pages/detail/detail?id='+v.pId)"/>
 		</view>
 		<footerCP/>
+		</view>
 		</block>
 		<!-- #endif -->
 		<block  v-if="!destop && initReady">
@@ -250,6 +252,13 @@
 	@import '@/table.scss';
 	/* #ifdef H5 */
 	.destop{
+		.content{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-direction: column;
+		transform-origin: left top;
+		}
 		.band{
 		width:100%;
 		height:130px;

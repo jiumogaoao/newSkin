@@ -2,6 +2,7 @@
 	<view :class="destop?'destop':'phone'">
 		<!-- #ifdef H5 -->
 		<block  v-if="destop && initReady">
+			<view class="content" :style="{width:w+'px',height:h+'px',transform:'scale3d('+s+','+s+',1)'}">
 			<view class="head">
 				<view class="left">
 					<image class="logo" :src="imgPath+'indexLogo.jpg'"></image>
@@ -50,6 +51,7 @@
 				</view>
 			</view>
 			<footerCP/>
+			</view>
 		</block>
 		<!-- #endif -->
 		<block  v-if="!destop && initReady">
@@ -133,6 +135,13 @@
 		<style lang="scss" scoped>
 			/* #ifdef H5 */
 			.destop{
+				.content{
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				flex-direction: column;
+				transform-origin: left top;
+				}
 				.head{
 					@include frame-width;
 					height:100px;
