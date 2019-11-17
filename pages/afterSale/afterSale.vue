@@ -51,10 +51,34 @@
 		</block>
 		<!-- #endif -->
 		<block  v-if="!destop && initReady">
-			<view class="head">
-				<image class="back" :src="imgPath+'back.png'" @click="back"></image>
-				售后服务查询
-			</view>
+			<block  v-if="!destop && initReady">
+				<navBarCP>
+					<view class="nuskinIcon navBarBack" slot="left" @click="back">&#xe63d;</view>
+					<text slot="center">售后服务单查询</text>
+				</navBarCP>
+				<view style="width:100%;height: 114rpx;"></view>
+				<view class="point" @click="go('/pages/afterSale/serveDetail')">
+					<view class="top">服务单号：CBER9999999</view>
+					<view class="center">
+						<view class="product">
+								<image src="/static/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg"></image>
+								<view class="info">
+									<view class="title">清如新盈透三校保养系列</view>
+									<view class="dsc">产品编号：29115333</view>
+									<view class="dsc">规格：粉红 100ml*2</view>
+									<view class="price">￥140.00</view>
+								</view>
+						</view>
+						<view class="state">
+							<view class="title">待审核</view>
+							<view class="dsc">申请已提交，请等待审核~</view>
+						</view>
+					</view>
+					<view class="bottom">
+						<view class="button">取消申请</view>
+					</view>
+				</view>
+			</block>
 		</block>
 	</view>
 </template>
@@ -196,22 +220,78 @@
 	}
 	}
 	/* #endif */
+	page{background-color: $main-gray-background;}
 	.phone{
 		display: flex;
 		align-items: center;
 		flex-direction: column;
 		width:750rpx;
-		.head{
+		.point{
 			width:100%;
-			text-align: center;
-			    font-size: 40rpx;
-			padding-top: 34rpx;
-			position: relative;
-			.back{
-				width:32rpx;
-				height:32rpx;
-				position:absolute;
-				left:20rpx;
+			background-color: #fff;
+			margin-top: 20rpx;
+			.top{
+				padding: 30rpx;
+				font-size: 36rpx;
+				font-size: 26rpx;
+			}
+			.center{
+				padding: 30rpx;
+				background-color: $main-gray-background;
+				border-bottom: 1px solid $main-gray;
+				.product{
+					display: flex;
+					image{
+						width:160rpx;
+						height:160rpx;
+						flex-shrink: 0;
+					}
+					.info{
+						margin-left: 20rpx;
+						.title{
+							font-size: 26rpx;
+						}
+						.dsc{
+							font-size: 24rpx;
+							color: $main-gray-deep;
+							margin-top: 20rpx;
+						}
+						.price{
+							font-size: 24rpx;
+							color: $main-hl;
+							margin-top: 20rpx;
+						}
+					}
+				}
+				.state{
+					margin-top: 20rpx;
+					.title{
+						font-size: 26rpx;
+					}
+					.dsc{
+						font-size: 24rpx;
+						color: $main-gray-deep;
+						margin-top: 20rpx;
+					}
+				}
+			}
+			.bottom{
+				width: 100%;
+				background-color: #fff;
+				padding: 30rpx;
+				display: flex;
+				justify-content: flex-end;
+				align-items: center;
+				.button{
+					width: 200rpx;
+					height: 82rpx;
+					text-align: center;
+					line-height: 82rpx;
+					background-color: $main-hl;
+					color: #fff;
+					font-size: 30rpx;
+					border-radius: 82rpx;
+				}
 			}
 		}
 	}

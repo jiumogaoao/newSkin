@@ -97,7 +97,7 @@
 			<view class="logon" @click="logon">登录</view>
 			<view class="blueFrame">
 				<view class="text" @click="go('/pages/regest/regest')">立即注册</view>
-				<view class="text">忘记密码？</view>
+				<view class="text" @click="go('/pages/logon/reset')">忘记密码？</view>
 			</view>
 			<view class="thirdPath">
 				<view class="line"></view>
@@ -105,9 +105,9 @@
 				<view class="line"></view>
 			</view>
 			<view class="iconFrame">
-				<image class="icon" :src="imgPath+'wx2.png'"></image>
-				<image class="icon" :src="imgPath+'wb2.png'"></image>
-				<image class="icon" :src="imgPath+'qq2.png'"></image>
+				<image class="icon" :src="imgPath+'wx2.png'" @click="go('/pages/logon/authorization')"></image>
+				<image class="icon" :src="imgPath+'wb2.png'" @click="go('/pages/logon/authorization')"></image>
+				<image class="icon" :src="imgPath+'qq2.png'" @click="go('/pages/logon/authorization')"></image>
 			</view>
 		</block>
 	</view>
@@ -127,6 +127,7 @@
 			},
 			logon(){
 				this.$store.dispatch('userST/logon', {})
+				uni.navigateBack()
 			}
 		}
 			}

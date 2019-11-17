@@ -27,10 +27,76 @@
 		</block>
 		<!-- #endif -->
 		<block  v-if="!destop && initReady">
-			<view class="head">
-							<image class="back" :src="imgPath+'back.png'" @click="back"></image>
-							个人信息
-						</view>
+			<navBarCP>
+				<view class="nuskinIcon navBarBack" slot="left" @click="back">&#xe63d;</view>
+				<text slot="center">我的账号</text>
+			</navBarCP>
+			<view style="width:100%;height: 114rpx;"></view>
+			<view class="frame">
+				<view class="list" @click="go('/pages/myQrcode/myQrcode')">
+					<view class="title">我的二维码</view>
+					<view class="right">
+						<view class="nuskinIcon qr" style="margin-right: 20rpx;">&#xe6e5;</view>
+						<view class="nuskinIcon">&#xe636;</view>
+					</view>
+					
+				</view>
+				<view class="list">
+					<view class="title">账号</view>
+					<view class="right" @click="go('/pages/myInfo/setAccount')">
+						<view class="dsc">去修改</view>
+						<view class="nuskinIcon">&#xe636;</view>
+					</view>
+					
+				</view>
+				<view class="list">
+					<view class="title">账号密码</view>
+					<view class="right" @click="go('/pages/myInfo/setPassword')">
+						<view class="dsc">修改密码</view>
+						<view class="nuskinIcon">&#xe636;</view>
+					</view>
+				</view>
+				<view class="list">
+					<view class="title">手机号</view>
+					<view class="right" @click="go('/pages/myInfo/setPhone')">
+						<view class="dsc">139*****2563</view>
+						<view class="nuskinIcon">&#xe636;</view>
+					</view>
+					
+				</view>
+			</view>
+			<view class="frame">
+				<view class="list">
+					<view class="title">微信</view>
+					<view class="right">
+						<view class="dsc">David</view>
+						<view class="nuskinIcon">&#xe636;</view>
+					</view>
+				</view>
+				<view class="list">
+					<view class="title">QQ</view>
+					<view class="right">
+						<view class="dsc">绑定</view>
+						<view class="nuskinIcon">&#xe636;</view>
+					</view>
+					
+				</view>
+			</view>
+			<view class="frame">
+				<view class="list">
+					<view class="title">联系我们</view>
+					<view class="right">
+						<view class="nuskinIcon">&#xe636;</view>
+					</view>
+				</view>
+				<view class="list" @click="go('/pages/help/help')">
+					<view class="title">帮助中心</view>
+					<view class="right">
+						<view class="nuskinIcon">&#xe636;</view>
+					</view>
+				</view>
+			</view>
+			<view class="logout">退出登录</view>
 		</block>
 		
 	</view>
@@ -117,23 +183,54 @@
 	}
 	}
 	/* #endif */
+	page{background-color: $main-gray-background;}
 	.phone{
 			display: flex;
 			align-items: center;
 			flex-direction: column;
 			width:750rpx;
-			.head{
-				width:100%;
-				text-align: center;
-				    font-size: 40rpx;
-				padding-top: 34rpx;
-				position: relative;
-				.back{
-					width:32rpx;
-					height:32rpx;
-					position:absolute;
-					left:20rpx;
+			.frame{
+				width:750rpx;
+				background-color: #fff;
+				padding: 0 30rpx;
+				margin-top: 20rpx;
+				.list{
+					width:100%;
+					height: 96rpx;
+					border-bottom: 1px solid $main-gray;
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+					.title{
+						font-size: 26rpx;
+					}
+					.right{
+						display: flex;
+						align-items: center;
+						.dsc{
+							font-size: 24rpx;
+							color: $main-gray-deep
+						}
+						.nuskinIcon{
+							font-size: 24rpx;
+							color: $main-gray-deep
+						}
+						.qr{
+							font-size: 40rpx;
+						}
+					}
 				}
+			}
+			.logout{
+				width:669rpx;
+				height: 80rpx;
+				border-radius: 80rpx;
+				background-color: #fff;
+				font-size: 26rpx;
+				text-align: center;
+				line-height: 80rpx;
+				margin: auto;
+				margin-top: 38rpx;
 			}
 		}
 	

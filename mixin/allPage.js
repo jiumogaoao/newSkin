@@ -1,6 +1,7 @@
 import headerCP from '@/components/header_CP.vue'
 import footerCP from '@/components/footer_CP.vue'
 import breadcrumbsCP from '@/components/breadcrumbs_CP.vue'
+import navBarCP from '@/components/navBar_CP.vue'
 import config from '@/common/config'
 var browser = {
             versions: function() {
@@ -22,11 +23,12 @@ var browser = {
         }
 
 module.exports = {
-	components:{headerCP,footerCP,breadcrumbsCP},
+	components:{headerCP,footerCP,breadcrumbsCP,navBarCP},
 	data() {
 				return {
 					ww:0,
-					wh:0
+					wh:0,
+					showSide:false
 				}
 				},
 	mounted(){
@@ -56,7 +58,10 @@ module.exports = {
 			uni.navigateTo({
 			    url: url
 			});
-		}
+		},
+		sideShow(){
+			this.showSide = !this.showSide
+		},
 	},
 	computed:{
 		destop(){

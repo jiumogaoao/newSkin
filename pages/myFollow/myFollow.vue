@@ -26,10 +26,21 @@
 		</block>
 		<!-- #endif -->
 		<block  v-if="!destop && initReady">
-			<view class="head">
-							<image class="back" :src="imgPath+'back.png'" @click="back"></image>
-							我的收藏
-						</view>
+			<navBarCP>
+				<view class="nuskinIcon navBarBack" slot="left" @click="back">&#xe63d;</view>
+				<text slot="center">我的收藏</text>
+			</navBarCP>
+			<view style="width:100%;height: 114rpx;"></view>
+			<view class="list">
+				<productCP/>
+				<productCP/>
+				<productCP/>
+				<productCP/>
+				<productCP/>
+				<productCP/>
+				<productCP/>
+				<productCP/>
+			</view>
 		</block>
 		
 	</view>
@@ -92,22 +103,14 @@
 	}
 	/* #endif */
 	.phone{
-			display: flex;
-			align-items: center;
-			flex-direction: column;
 			width:750rpx;
-			.head{
-				width:100%;
-				text-align: center;
-				    font-size: 40rpx;
-				padding-top: 34rpx;
-				position: relative;
-				.back{
-					width:32rpx;
-					height:32rpx;
-					position:absolute;
-					left:20rpx;
-				}
+			.list{
+				background-color: #fff;
+				width: 750rpx;
+				padding: 30rpx;
+				display: flex;
+				justify-content: space-between;
+				flex-wrap: wrap;
 			}
 		}
 	

@@ -18,8 +18,7 @@
 			<view class="title">商品标题</view>
 			<view class="taxes">预计税费：￥100</view>
 			<view class="price">零售价：<block style="font-size: 20px;">￥100</block></view>
-			<image class="follow" :src="imgPath+'favorite-full-love.png'" v-if="follow" @click="f"></image>
-			<image class="follow" :src="imgPath+'sellWellHIcon.png'" v-else @click="f"></image>
+			<view :class="{follow:1,nuskinIcon:1,hl:(follow?1:0)}" @click="f($event)">&#xe64e;</view>
 			<image class="shoppingCar" :src="imgPath+'tab-cart-current.png'" @click="a"></image>
 		</view>
 	</view>
@@ -39,8 +38,11 @@
 			c(){
 				this.$emit('click')
 			},
-			f(){
-				this.$emit('follow')
+			f(e){
+				e.stopPropagation()
+				e.preventDefault()
+				alert(1)
+				this.$emit('follow',{id})
 			},
 			a(){
 				this.$emit('addCar')
@@ -113,55 +115,58 @@
 	/* #endif */
 	.phoneCP{
 		.productCP{
-			width: 329rpx;
-			    height: 580rpx;
-			    border: 1px solid #f0e9de;
+			width: 340rpx;
+			    height: 570rpx;
+			    border: 1px solid #ddd;
 			    position: relative;
 			    background-color: #fff;
-			    margin-bottom: 25rpx;
+			    margin-bottom: 42rpx;
 			    cursor: pointer;
 		}
 		.img{
-			width:329rpx;
-			height:329rpx;
+			width:100%;
+			height:338rpx;
 		}
 		.brand{
 			display: block;
-			padding: 0 20rpx;
-			color: grey;
-			font-size: 24rpx;
+			padding: 0 18rpx;
+			color: $main-gray-deep;
+			font-size: 16rpx;
+			text-align: center;
+			margin-top: 23rpx;
 		}
 		.title{
-			    padding: 0 20rpx;
-			    padding-top: 15rpx;
+			    padding: 0 18rpx;
+			    margin-top: 22rpx;
 			    font-size: 26rpx;
-			    color: #333;
-			    line-height: 35rpx;
-			    height: 80rpx;
-			    display: -webkit-box;
+			    color: $main-gray-deep;
+			    line-height: 25rpx;
+				text-align: center;
+			    height: 50rpx;
 			    overflow: hidden;
 		}
 		.taxes{
-			font-size: 22rpx;
-			    color: #c2c2c2;
-			    padding: 0 20rpx;
-			    padding-top: 10rpx;
-			    height: 40rpx;
+			font-size: 18rpx;
+			padding: 0 18rpx;
+			margin-top: 20rpx;
 		}
 		.price{
 			font-size: 34rpx;
-			    color: #37b0c9;
-			    line-height: 1;
-				margin-left: 20rpx;
-				margin-top: 15rpx;
+			    color: $main-hl;
+			    font-size: 18rpx;
+			    padding: 0 18rpx;
+				margin-top: 20rpx;
 			}
 		.follow{
-			width:20rpx;
-			height:18rpx;
+			color: $main-gray;
 			position: absolute;
-			right: 19rpx;
-			top: 11rpx;
+			right: 39rpx;
+			top: 43rpx;
 			cursor: pointer;
+			font-size: 30rpx;
+		}
+		.follow.hl{
+			color: $main-hl;
 		}
 		.shoppingCar{
 			width:40rpx;

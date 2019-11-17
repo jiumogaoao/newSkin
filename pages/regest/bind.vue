@@ -65,42 +65,27 @@
 						<image class="back" :src="imgPath+'back.png'" @click="back()"></image>
 					</view>
 					<view class="center">
-						注册
+						推广商申请
 					</view>
-					<view class="right" @click="go('/pages/login/login')">
-						登录
+					<view class="right" @click="go('/pages/index/index')">
+						跳过
 					</view>
 				</view>
 				<view class="listFrame">
-					<view class="referrer" v-if="referrer">您的推荐人是{{referrer}}（{{referrerPhone}}）</view>
 					<view class="list">
-						<input class="input" placeholder="请输入手机号码"/>
+						<input class="input" placeholder="请输入CN号"/>
 					</view>
 					<view class="list">
-						<input class="input" placeholder="请输入图形验证码"/>
-						<image class="picCode" :src="imgPath+'verificationCode.png'"></image>
-						<view class="blue">换一张</view>
-					</view>
-					<view class="list">
-						<input class="input" placeholder="请输入手机验证码"/>
-						<view class="getCode">获取验证码</view>
-					</view>
-					<view class="list">
-						<input class="input" placeholder="请设置密码,6~20位数"/>
-						<image class="eye" :src="imgPath+'yanjing.png'"></image>
-					</view>
-					<view class="list">
-						<input class="input" placeholder="请再次确认密码"/>
+						<input class="input" placeholder="请输入CN号密码"/>
 						<image class="eye" :src="imgPath+'yanjing.png'"></image>
 					</view>
 				</view>
-				<view class="dsc">密码长度须为6-20非纯数字，可包含字母、数字或下划线('_')中的至少2个类别</view>
 				<view class="ruleFrame">
 					<chechBoxCP/>
-					<view class="text">已阅读并同意</view>
-					<view class="blue">《如新海外购用户协议》</view>
+					<view class="text">绑定CN号需同意</view>
+					<view class="blue">《如新海外购推广商申请书》</view>
 				</view>
-				<view class="logon" @click="regest">注册</view>
+				<view class="logon" @click="go('/pages/index/index')">绑定</view>
 		</block>
 	</view>
 </template>
@@ -112,15 +97,8 @@
 		components:{chechBoxCP},
 		data() {
 					return {
-						referrer:'王**',
-						referrerPhone:'135****5636'
+
 					};
-				},
-				methods:{
-					regest(){
-						this.$store.dispatch('userST/logon', {})
-						this.go('/pages/regest/bind')
-					}
 				}
 			}
 		</script>

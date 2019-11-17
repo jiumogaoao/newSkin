@@ -22,10 +22,33 @@
 		</block>
 		<!-- #endif -->
 		<block  v-if="!destop && initReady">
-			<view class="head">
-							<image class="back" :src="imgPath+'back.png'" @click="back"></image>
-							收货地址
+			<navBarCP>
+				<view class="nuskinIcon navBarBack" slot="left" @click="back">&#xe63d;</view>
+				<text slot="center">收货地址</text>
+			</navBarCP>
+			<view style="width:100%;height: 114rpx;"></view>
+
+				<view class="point">
+					<view class="top">
+						<view class="name">里里</view>
+						<view class="tel">153****2656</view>
+					</view>
+					<view class="place">所在地区：广东潮州潮安县沙爹激动啊师大暨大</view>
+					<view class="bottom">
+						<view class="left">
+							<radioCP @click="back"/>
+							<view class="text">默认地址</view>
 						</view>
+						<view class="right">
+							<view class="button" @click="go('/pages/myPlace/newPlace')">编辑</view>
+							<view class="button">删除</view>
+						</view>
+					</view>
+				</view>
+
+			<view class="newFrame">
+				<view class="button" @click="go('/pages/myPlace/newPlace')">新建地址</view>
+			</view>
 		</block>
 	</view>
 </template>
@@ -34,8 +57,10 @@
 	import allPage from "@/mixin/allPage"
 	import mine from "@/mixin/mine"
 	import needLogon from "@/mixin/needLogon"
+	import radioCP from "@/components/radio_CP.vue"
 	export default {
 		mixins: [allPage,needLogon,mine],
+		components:{radioCP},
 		onShow: function() {
 			this.$store.dispatch('rootST/changeMyPage', 'myPlace')
 		},
@@ -98,22 +123,82 @@
 	
 	}
 	/* #endif */
+	page{background-color: $main-gray-background;}
 	.phone{
 			display: flex;
 			align-items: center;
 			flex-direction: column;
 			width:750rpx;
-			.head{
-				width:100%;
-				text-align: center;
-				    font-size: 40rpx;
-				padding-top: 34rpx;
-				position: relative;
-				.back{
-					width:32rpx;
-					height:32rpx;
-					position:absolute;
-					left:20rpx;
+			.point{
+				width: 750rpx;
+				padding: 0 30rpx;
+				background-color: #fff;
+				margin-bottom: 20rpx;
+				.top{
+					width: 100%;
+					height: 80rpx;
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					.name{
+						font-size: 26rpx;
+					}
+					.tel{
+						font-size: 24rpx;
+					}
+				}
+				.place{
+					font-size: 24rpx;
+					color: $main-gray-deep;
+					margin-top: 20rpx;
+					margin-bottom: 42rpx;
+				}
+				.bottom{
+					width: 100%;
+					height: 98rpx;
+					border-top:1px solid $main-gray;
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					.left{
+						display: flex;
+						align-items: center;
+						.text{
+							margin-left: 20rpx;
+							color: $main-gray-deep;
+						}
+					}
+					.right{
+						display: flex;
+						align-items: center;
+						.button{
+							font-size: 24rpx;
+							color: $main-gray-deep;
+							margin-left: 94rpx;
+						}
+					}
+				}
+			}
+			.newFrame{
+				width: 750rpx;
+				height: 120rpx;
+				background-color: #fff;
+				border-top:1px solid $main-gray;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				position: fixed;
+				bottom:0;
+				left: 0;
+				.button{
+					width:692rpx;
+					height: 79rpx;
+					background-color: $main-hl;
+					color: #fff;
+					text-align: center;
+					line-height: 79rpx;
+					font-size: 28rpx;
+					border-radius: 79rpx;
 				}
 			}
 		}

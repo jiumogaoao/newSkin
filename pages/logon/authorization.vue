@@ -65,42 +65,43 @@
 						<image class="back" :src="imgPath+'back.png'" @click="back()"></image>
 					</view>
 					<view class="center">
-						注册
+						{{type?'登录':'手机验证登录'}}
 					</view>
-					<view class="right" @click="go('/pages/login/login')">
-						登录
+					<view class="right">
+						
 					</view>
 				</view>
 				<view class="listFrame">
-					<view class="referrer" v-if="referrer">您的推荐人是{{referrer}}（{{referrerPhone}}）</view>
-					<view class="list">
-						<input class="input" placeholder="请输入手机号码"/>
-					</view>
-					<view class="list">
-						<input class="input" placeholder="请输入图形验证码"/>
-						<image class="picCode" :src="imgPath+'verificationCode.png'"></image>
-						<view class="blue">换一张</view>
-					</view>
-					<view class="list">
-						<input class="input" placeholder="请输入手机验证码"/>
-						<view class="getCode">获取验证码</view>
-					</view>
-					<view class="list">
-						<input class="input" placeholder="请设置密码,6~20位数"/>
-						<image class="eye" :src="imgPath+'yanjing.png'"></image>
-					</view>
-					<view class="list">
-						<input class="input" placeholder="请再次确认密码"/>
-						<image class="eye" :src="imgPath+'yanjing.png'"></image>
-					</view>
+					<view class="welcome">欢迎登录，完成时将自动绑定微信 <text class="blue">AKIKEI</text></view>
+					<block v-if="type">
+						<view class="list">
+							<input class="input" placeholder="请输入手机号/账号"/>
+						</view>
+						<view class="list">
+							<input class="input" placeholder="输入密码"/>
+							<image class="eye" :src="imgPath+'yanjing.png'"></image>
+						</view>
+					</block>
+					<block v-else>
+						<view class="list">
+							<input class="input" placeholder="请输入手机号码"/>
+						</view>
+						<view class="list">
+							<input class="input" placeholder="请输入图形验证码"/>
+							<image class="picCode" :src="imgPath+'verificationCode.png'"></image>
+							<view class="blue">换一张</view>
+						</view>
+						<view class="list">
+							<input class="input" placeholder="请输入手机验证码"/>
+							<view class="getCode">获取验证码</view>
+						</view>
+					</block>
 				</view>
-				<view class="dsc">密码长度须为6-20非纯数字，可包含字母、数字或下划线('_')中的至少2个类别</view>
-				<view class="ruleFrame">
-					<chechBoxCP/>
-					<view class="text">已阅读并同意</view>
-					<view class="blue">《如新海外购用户协议》</view>
+				<view class="blueFrame">
+					<view class="text" @click="toggleType">{{type?'手机验证码登录':'账号密码登录'}}</view>
+					<view class="text" @click="go('/pages/regest/regest')">去注册</view>
 				</view>
-				<view class="logon" @click="regest">注册</view>
+				<view class="logon" @click="logon">登录</view>
 		</block>
 	</view>
 </template>
@@ -112,14 +113,16 @@
 		components:{chechBoxCP},
 		data() {
 					return {
-						referrer:'王**',
-						referrerPhone:'135****5636'
+						type:0
 					};
 				},
 				methods:{
-					regest(){
+					toggleType(){
+						this.type = this.type?0:1
+					},
+					logon(){
 						this.$store.dispatch('userST/logon', {})
-						this.go('/pages/regest/bind')
+						this.go('/pages/index/index')
 					}
 				}
 			}
@@ -366,6 +369,17 @@
 						    color: #fff;
 							text-align: center;
 						    font-size: 28rpx;
+					}
+					.blueFrame{
+						width: 690rpx;
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						margin-top: 67rpx;
+						.text{
+							font-size: 22rpx;
+							color: #383838;
+						}
 					}
 					.ruleFrame{
 						width: 690rpx;

@@ -138,37 +138,49 @@
 		</block>
 		<!-- #endif -->
 		<block  v-if="!destop && initReady">
-			<view class="header">购物车</view>
+			<navBarCP>
+				<view class="nuskinIcon navBarBack" slot="left" @click="back">&#xe63d;</view>
+				<view class="nuskinIcon navBarIcon" slot="left" @click="go('/pages/myNotice/myNotice')">&#xe63f;</view>
+				<text slot="center">购物车<text style="font-size: 22rpx;">广东</text></text>
+				<view class="navBarText" slot="right">编辑</view>
+				<view class="nuskinIcon navBarIcon" slot="right" @click="sideShow()">&#xe656;</view>
+			</navBarCP>
+			<view style="width: 750rpx;height:114rpx;"></view>
 			<view class="list" v-for="(v,i) in warehouse" :key="v.id">
 				<view class="top">
 					<view class="warehouse">
 						<checkBoxCP class="checkBoxCP"/>
 						<view class="name">{{v.name}}</view>
 					</view>
-					<view class="offerFrame" v-for="(n,o) in v.activity" :key="o">
-						<view class="left">
-							<view class="type">{{n.type?'满折':'满减'}}</view>
-							<view class="message" v-for="(x,y) in n.option" :key="x.key">{{x.name}}</view>
-						</view>
-						<view class="right">还差￥940 ></view>
+					<view class="nuskinIcon">&#xe68b;</view>
+				</view>
+				<view class="offerFrame" v-for="(n,o) in v.activity" :key="o">
+					<view class="left">
+						<view class="type">{{n.type?'满折':'满减'}}</view>
+						<view class="message" v-for="(x,y) in n.option" :key="x.key">{{x.name}}</view>
 					</view>
+					<view class="right">还差￥940 ></view>
 				</view>
 				<view class="product" v-for="(n,o) in v.list" :key="n.pId">
-					<checkBoxCP class="checkBoxCP"/>
-					<image class="productImg" :src="n.img"/>
-					<view class="infoFrame">
-						<view class="infoTop">
-							<view class="title">{{n.name}}</view>
-							<view class="id">产品编号：{{n.capacityKey}}</view>
-							<view class="taxt">{{n.taxes?('含税￥'+n.taxes):'不含税'}}</view>
+					<view class="productTop">
+						<view class="productLeft">
+							<checkBoxCP class="checkBoxCP"/>
+							<image class="productImg" :src="n.img"/>
 						</view>
-						<view class="infoBottom">
-							<view class="price">￥{{n.price}}</view>
-							<view class="countFrame">
-								<view class="sub">-</view>
-								<input class="count" :value="n.count"/>
-								<view class="add">+</view>
+						<view class="infoFrame">
+							<view class="infoTop">
+								<view class="title">{{n.name}}</view>
+								<view class="id">产品编号：{{n.capacityKey}}</view>
+								<view class="taxt">{{n.taxes?('含税￥'+n.taxes):'不含税'}}</view>
 							</view>
+						</view>
+					</view>
+					<view class="infoBottom">
+						<view class="price">￥{{n.price}}</view>
+						<view class="countFrame">
+							<view class="sub nuskinIcon">&#xe693;</view>
+							<input class="count" :value="n.count"/>
+							<view class="add nuskinIcon">&#xe61a;</view>
 						</view>
 					</view>
 				</view>
@@ -328,175 +340,160 @@
 				width:750rpx;
 				margin-top: 20rpx;
 				background-color: #fff;
+				border-bottom: 1px solid $main-gray;
+				border-top:1px solid $main-gray;
 				.top{
 					width:100%;
+					padding: 0 30rpx;
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					height: 88rpx;
+					border-bottom: 1px solid $main-gray;
 					.warehouse{
 						width:100%;
-						height: 90rpx;
+						height: 88rpx;
 						display: flex;
 						align-items: center;
-						.checkBoxCP{
-							margin-left: 40rpx;
-						}
 						.name{
-							margin-left: 10rpx;
-							color: #333;
-							    font-size: 28rpx;
-							    line-height: 90rpx;
+							margin-left: 48rpx;
+							font-size: 29rpx;
 						}
 					}
-					.offerFrame{
-						width:100%;
-						height:80rpx;
+					.nuskinIcon{
+						font-size: 36rpx;
+						font-weight: bold;
+					}
+				}
+				.offerFrame{
+					width:100%;
+					height:80rpx;
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					background-color: $main-gray-background;
+					.left{
 						display: flex;
-						justify-content: space-between;
 						align-items: center;
-						.left{
-							display: flex;
-							align-items: center;
-							.type{
-								color: #ffad43;
-								    font-size: 26rpx;
-								    border: 1px solid #ffad43;
-								    padding: 2rpx 20rpx;
-								    border-radius: 30rpx;
-									margin-left: 40rpx;
-							}
-							.message{
-								color: #333;
-								    font-size: 28rpx;
-								    padding-left: 20rpx;
-							}
+						.type{
+							color: #ffad43;
+							    font-size: 26rpx;
+							    border: 1px solid #ffad43;
+							    padding: 2rpx 20rpx;
+							    border-radius: 30rpx;
+								margin-left: 40rpx;
 						}
-						.right{
-							margin-right: 40rpx;
-							color: #ff69b0;
+						.message{
+							color: #333;
 							    font-size: 28rpx;
+							    padding-left: 20rpx;
 						}
+					}
+					.right{
+						margin-right: 40rpx;
+						color: #ff69b0;
+						    font-size: 28rpx;
 					}
 				}
 				.product{
-					display: flex;
-					align-items: center;
-					justify-content: space-between;
-					height: 250rpx;
-					.checkBoxCP{
-						margin-left: 40rpx;
-						flex-shrink: 0;
-					}
-					.productImg{
-						width:178rpx;
-						height:178rpx;
-						margin-left: 20rpx;
-						flex-shrink: 0;
-					}
-					.infoFrame{
-						flex-grow: 1;
-						height: 100%;
+					.productTop{
 						display: flex;
-						flex-direction: column;
 						justify-content: space-between;
-						.title{
-							font-size: 30rpx;
-							    color: #303133;
-							    height: 40rpx;
-							    line-height: 40rpx;
-						}
-						.id{
-							font-size: 24rpx;
-							    color: grey;
-							    height: 40rpx;
-							    line-height: 40rpx;
-						}
-						.taxt{
-							color: #ff69b0;
-							    width: 80rpx;
-							    height: 38rpx;
-							    border: 1px solid #ff69b0;
-							    border-radius: 50rpx;
-							    font-size: 25rpx;
-							    text-align: center;
-							    line-height: 36rpx;
-							    margin-top: 20rpx;
-						}
-						.infoBottom{
+						background-color: $main-gray-background;
+						padding: 30rpx 29rpx;
+						.productLeft{
 							display: flex;
-							justify-content: space-between;
 							align-items: center;
-							padding-bottom: 20rpx;
-							.price{
-								    color: #37b0c9;
-								    font-size: 32rpx;
+							.checkBoxCP{
+								margin-left: 30rpx;
+								flex-shrink: 0;
 							}
-							.countFrame{
-								display: flex;
-								align-items: center;
-								margin-right: 40rpx;
-								.sub{
-									background-color: #fff;
-									    width: 60rpx;
-									    height: 50rpx;
-									    text-align: center;
-									    padding: 0;
-									    font-size: 30rpx;
-									    border: 1px solid #ccc;
-									border-right: none;
-									    border-top-left-radius: 6rpx;
-									    border-bottom-left-radius: 6rpx;
-								}
-								.count{
-									background-color: #fff;
-									    width: 60rpx;
-									    height: 50rpx;
-									    text-align: center;
-									    padding: 0;
-									    font-size: 30rpx;
-									    border: 1px solid #ccc;
-								}
-								.add{
-									background-color: #fff;
-									    width: 60rpx;
-									    height: 50rpx;
-									    text-align: center;
-									    padding: 0;
-									    font-size: 30rpx;
-									    border: 1px solid #ccc;
-									border-left: none;
-									    border-top-right-radius: 6rpx;
-									    border-bottom-right-radius: 6rpx;
-								}
+							.productImg{
+								width:178rpx;
+								height:178rpx;
+								margin-left: 20rpx;
+								flex-shrink: 0;
+							}
+						}
+						.infoFrame{
+							flex-grow: 1;
+							margin-left: 16rpx;
+							.title{
+								font-size: 25rpx;
+							}
+							.id{
+								font-size: 21rpx;
+								color: $main-gray-deep;
+								margin-top: 25rpx;
+							}
+							.taxt{
+								color: #ff69b0;
+								    width: 80rpx;
+								    height: 38rpx;
+								    border: 1px solid #ff69b0;
+								    border-radius: 50rpx;
+								    font-size: 25rpx;
+								    text-align: center;
+								    line-height: 36rpx;
+								    margin-top: 20rpx;
+							}
+						}
+					}
+					.infoBottom{
+						height: 92rpx;
+						display: flex;
+						justify-content: flex-end;
+						align-items: center;
+						border-bottom: 1px solid $main-gray;
+						border-top: 1px solid $main-gray;
+						padding: 0 30rpx;
+						.price{
+							    font-size: 22rpx;
+						}
+						.countFrame{
+							display: flex;
+							align-items: center;
+							margin-left: 50rpx;
+							width: 142rpx;
+							justify-content: space-between;
+							.sub,.add{
+								font-size: 40rpx;
+							}
+							.count{
+								    text-align: center;
+								    padding: 0;
+								    font-size: 30rpx;
 							}
 						}
 					}
 				}
 			}
 			.tapBar{
-				margin-top: 20rpx;
+				margin-top: 40rpx;
 				width:750rpx;
-				height: 125px;
+				height: 114px;
 				    background: #fff;
-				    padding-top: 30px;
 				display: flex;
-				align-items: center;
+				align-items:flex-end;
 				.tap{
 					width:50%;
-					height: 125px;
-					line-height: 125px;
+					height: 81px;
+					line-height: 81px;
 					text-align: center;
 					font-size: 28px;
-					    color: #333;
+					color: $main-gray-deep;
 					position: relative;
 					.line{
-						width:20%;
-						height:6rpx;
-						background-color: #37b0c9;
+						width:126rpx;
+						height:5rpx;
+						background-color: #333;
 						position:absolute;
-						left:40%;
+						left:140rpx;
 						bottom:10rpx;
 					}
 				}
 				.hl{
-					color: #37b0c9;
+					color: #333;
 				}
 			}
 			.productList{
@@ -518,30 +515,30 @@
 				bottom: 110rpx;
 				z-index: 95;
 				background-color: rgba(255,255,255,0.9);
+				padding: 0 30rpx;
 				.left{
 					display: flex;
 					align-items: center;
-					margin-left: 20rpx;
 					.state{
-						margin-left: 10rpx;
+						margin-left: 47rpx;
 					}
 				}
 				.right{
 					display: flex;
 					align-items: center;
-					margin-right: 20rpx;
 					.rightLeft{
-						margin-right: 10rpx;
-						.blue{color:#37b0c9}
+						margin-right: 25rpx;
+						.blue{color:$main-hl;}
 						.discount{
 							margin-top: 10rpx;
 						}
 					}
 					.go{
-						padding: 10rpx 20rpx;
-						background-color: #37b0c9;
+						padding: 17rpx 40rpx;
+						background-color: $main-hl;
 						color:#fff;
-						border-radius: 20rpx;
+						border-radius: 40rpx;
+						font-size: 23rpx;
 					}
 				}
 			}

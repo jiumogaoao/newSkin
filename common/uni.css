@@ -4,7 +4,15 @@
 	font-style: normal;
 	src: url('./static/uni.ttf') format('truetype');
 }
-
+@font-face {
+	font-family: nuskin;
+	font-weight: normal;
+	font-style: normal;
+	src: url('./static/nuskin.ttf') format('truetype');
+}
+.nuskinIcon{
+	font-family: nuskin;
+}
 /*通用 */
 /*每个页面公共css */
 	view,
@@ -35,11 +43,35 @@
 		box-sizing: border-box;
 	}
 view{
-	font-family:"Lantinghei SC",Verlag,PingFangSC-Light
+	font-family:"Lantinghei SC",Verlag,PingFangSC-Light;
+	color:#333;
 }
 progress, checkbox-group{
 	width: 100%;
 }
 form {
 	width: 100%;
+}
+.navBarCenterPic{
+	width:58rpx;
+	height:58rpx;
+}
+.navBarIcon{
+	font-size: 42rpx;
+	color: #49b3c9;
+}
+.navBar .left .navBarIcon,.navBar .left .navBarText{
+	margin-right: 37rpx;
+}
+.navBar .right .navBarIcon,.navBar .right .navBarText{
+	margin-left: 37rpx;
+}
+.navBarBack{
+	font-size: 42rpx;
+	font-weight: bold;
+	margin-right: 37rpx;
+}
+.navBarText{
+	color: #49b3c9;
+	font-size: 30rpx;
 }

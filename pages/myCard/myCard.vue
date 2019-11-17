@@ -20,10 +20,17 @@
 		</block>
 		<!-- #endif -->
 		<block  v-if="!destop && initReady">
-			<view class="head">
-							<image class="back" :src="imgPath+'back.png'" @click="back"></image>
-							我的银行卡
-						</view>
+			<navBarCP>
+				<view class="nuskinIcon navBarBack" slot="left" @click="back">&#xe63d;</view>
+				<text slot="center">我的银行卡</text>
+			</navBarCP>
+			<view style="width:100%;height: 114rpx;"></view>
+			<view class="dsc">
+				您还未绑定银行卡，将影响商品分享推广和奖励发放，请尽快绑定您的常用银行卡！
+			</view>
+			<view class="add" @click="go('/pages/myCard/newCard')">
+				+ 绑定银行卡
+			</view>
 		</block>
 		
 	</view>
@@ -93,23 +100,27 @@
 		}
 	}
 	/* #endif */
+	page{
+		background-color: $main-gray-background;
+	}
 	.phone{
-			display: flex;
-			align-items: center;
-			flex-direction: column;
 			width:750rpx;
-			.head{
-				width:100%;
+			.dsc{
+				padding: 30rpx;
+				color: $main-hl;
+				font-size: 24rpx;
+				line-height: 1.5;
+			}
+			.add{
+				width: 690rpx;
+				height: 200rpx;
+				border: 1px solid $main-gray;
+				background-color: #fff;
+				margin: auto;
+				margin-top: 20rpx;
+				font-size: 26rpx;
+				line-height: 198rpx;
 				text-align: center;
-				    font-size: 40rpx;
-				padding-top: 34rpx;
-				position: relative;
-				.back{
-					width:32rpx;
-					height:32rpx;
-					position:absolute;
-					left:20rpx;
-				}
 			}
 		}
 	

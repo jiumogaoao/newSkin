@@ -37,13 +37,22 @@
 		</block>
 		<!-- #endif -->
 		<block  v-if="!destop && initReady">
-			<navBarCP>
-				<view class="nuskinIcon navBarIcon" slot="left" @click="go('/pages/myNotice/myNotice')">&#xe63f;</view>
-				<text slot="center">清洁</text>
-				<view class="nuskinIcon navBarIcon" slot="right" @click="go('/pages/shoppingCar/shoppingCar')">&#xe6d5;</view>
-				<view class="nuskinIcon navBarIcon" slot="right" @click="sideShow()">&#xe656;</view>
-			</navBarCP>
-			<tabbarCP class="tabbarCP" :list="sort" :hl="hl" @change="change"/>
+			<view class="navBar">
+				<view class="left">
+					<image class="back" :src="imgPath+'back.png'" @click="back()"></image>
+					<image class="notice" :src="imgPath+'xinxi2.0.png'" @click="go('/pages/myNotice/myNotice')"></image>
+				</view>
+				<view class="center">
+					店铺名称或XX品牌专区
+				</view>
+				<view class="right" @click="go('/pages/login/login')">
+					<image class="shoppingCar" :src="imgPath+'tab-cart-current.png'" @click="go('/pages/shoppingCar/shoppingCar')"></image>
+					<image class="list" :src="imgPath+'menu01.png'" @click="sideShow()"></image>
+				</view>
+			</view>
+			<image class="bigPic" :src="imgPath+'IpMMLTJCOmjYB0M3Tj5LxtpBTOBb5w.jpg'"/>
+			<view class="dsc">如新新动机是NU SKIN首创二合一肌肤保养系统。一次护理，即享更深层净化及促进肌肤更新双重功效。早晚各一次，让您享受活力满满的面部按摩，日复一日，肌肤由内而外焕发透亮光采。</view>
+			<tabbarCP :list="sort" :hl="hl" @change="change"/>
 			<view class="productList">
 				<productCP v-for="(v,i) in product" 
 				:key="v.pId" 
@@ -187,14 +196,19 @@
 				}
 			}
 		}
-		.tabbarCP{
-			padding-top: 112rpx;
+		.bigPic{
+			width: 750rpx;
+			height: 400rpx;
+			padding-top: 113rpx;
+		}
+		.dsc{
+			padding: 30rpx;
 		}
 		.productList{
 			display: flex;
 			justify-content: space-evenly;
 			flex-wrap: wrap;
-			margin-top: 40rpx;
+			margin-top: 90rpx;
 		}
 	}
 	

@@ -38,10 +38,62 @@
 		</block>
 		<!-- #endif -->
 		<block  v-if="!destop && initReady">
-			<view class="head">
-							<image class="back" :src="imgPath+'back.png'" @click="back"></image>
-							我的收入
-						</view>
+			<navBarCP>
+				<view class="nuskinIcon navBarBack" slot="left" @click="back">&#xe63d;</view>
+				<text slot="center">我的收入</text>
+				<view class="navBarText" slot="right">说明</view>
+			</navBarCP>
+			<view style="width:100%;height: 114rpx;"></view>
+			<view class="date">2019年5月</view>
+			<view class="point">
+				<view class="title">报筹：</view>
+				<view class="dsc">￥1500.00</view>
+			</view>
+			<view class="point">
+				<view class="title">报筹调整：</view>
+				<view class="dsc">￥1500.00</view>
+			</view>
+			<view class="point">
+				<view class="title">应发金额：</view>
+				<view class="dsc">￥1500.00</view>
+			</view>
+			<view class="point">
+				<view class="title">计税额：</view>
+				<view class="dsc">￥1500.00</view>
+			</view>
+			<view class="point">
+				<view class="title">总税额：</view>
+				<view class="dsc">￥1500.00</view>
+			</view>
+			<view class="point">
+				<view class="title">实发金额：</view>
+				<view class="dsc">￥1500.00</view>
+			</view>
+			<view class="date">2019年5月</view>
+			<view class="point">
+				<view class="title">报筹：</view>
+				<view class="dsc">￥1500.00</view>
+			</view>
+			<view class="point">
+				<view class="title">报筹调整：</view>
+				<view class="dsc">￥1500.00</view>
+			</view>
+			<view class="point">
+				<view class="title">应发金额：</view>
+				<view class="dsc">￥1500.00</view>
+			</view>
+			<view class="point">
+				<view class="title">计税额：</view>
+				<view class="dsc">￥1500.00</view>
+			</view>
+			<view class="point">
+				<view class="title">总税额：</view>
+				<view class="dsc">￥1500.00</view>
+			</view>
+			<view class="point">
+				<view class="title">实发金额：</view>
+				<view class="dsc">￥1500.00</view>
+			</view>
 		</block>
 		
 	</view>
@@ -156,22 +208,32 @@
 		}
 	}
 	/* #endif */
+	page{
+		background-color: $main-gray-background;
+	}
 	.phone{
-			display: flex;
-			align-items: center;
-			flex-direction: column;
 			width:750rpx;
-			.head{
-				width:100%;
-				text-align: center;
-				    font-size: 40rpx;
-				padding-top: 34rpx;
-				position: relative;
-				.back{
-					width:32rpx;
-					height:32rpx;
-					position:absolute;
-					left:20rpx;
+			.date{
+				width: 750rpx;
+				padding: 30rpx;
+				font-size: 26rpx;
+				color: $main-hl;
+			}
+			.point{
+				width:750rpx;
+				height: 90rpx;
+				background-color: #fff;
+				padding: 0 30rpx;
+				border-bottom: 1px solid $main-gray;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				.title{
+					font-size: 26rpx;
+				}
+				.dsc{
+					font-size: 24rpx;
+					color: $main-gray-deep;
 				}
 			}
 		}

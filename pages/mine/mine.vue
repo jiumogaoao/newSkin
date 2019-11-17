@@ -81,6 +81,29 @@
 						</view>
 					</view>
 				</view>
+				<view class="list">
+					<view class="topFrame">
+						<view class="title">我的推广</view>
+					</view>
+					<view class="itemFrame">
+						<view class="item" @click="go('/pages/myCard/myCard')">
+							<image class="icon" :src="imgPath+'wodezhanghao.png'"></image>
+							<view class="name">我的银行卡</view>
+						</view>
+						<view class="item" @click="go('/pages/myLevel/myLevel')">
+							<image class="icon" :src="imgPath+'wodejifen.png'"></image>
+							<view class="name">我的身份</view>
+						</view>
+						<view class="item" @click="go('/pages/myShare/myShare')">
+							<image class="icon" :src="imgPath+'wodeshoucang.png'"></image>
+							<view class="name">我的分享</view>
+						</view>
+						<view class="item" @click="go('/pages/myIncome/myIncome')">
+							<image class="icon" :src="imgPath+'wodeshoucang.png'"></image>
+							<view class="name">我的收入</view>
+						</view>
+					</view>
+				</view>
 			</view>
 			<view style="width:100%;height:100rpx;"></view>
 			<headerCP/>

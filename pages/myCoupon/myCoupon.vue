@@ -26,10 +26,15 @@
 		</block>
 		<!-- #endif -->
 		<block  v-if="!destop && initReady">
-			<view class="head">
-							<image class="back" :src="imgPath+'back.png'" @click="back"></image>
-							我的优惠券
-						</view>
+			<navBarCP>
+				<view class="nuskinIcon navBarBack" slot="left" @click="back">&#xe63d;</view>
+				<text slot="center">优惠券</text>
+			</navBarCP>
+			<view style="width:100%;height: 114rpx;"></view>
+			<tabbarCP class="tabbarCP" :list="l" :hl="0"></tabbarCP>
+			<couponCP :type="2"/>
+			<couponCP :type="2"/>
+			<couponCP :type="2"/>
 		</block>
 		
 	</view>
@@ -48,7 +53,7 @@
 		},
 		data() {
 			return {
-				
+				l:[{id:0,name:"未使用"},{id:1,name:"已使用"},{id:2,name:"已失效"}]
 			};
 		}
 	}
@@ -98,18 +103,55 @@
 			align-items: center;
 			flex-direction: column;
 			width:750rpx;
-			.head{
-				width:100%;
-				text-align: center;
-				    font-size: 40rpx;
-				padding-top: 34rpx;
-				position: relative;
-				.back{
-					width:32rpx;
-					height:32rpx;
-					position:absolute;
-					left:20rpx;
+			.top{
+				padding: 30rpx;
+				display: flex;
+				align-items: center;
+				.nuskinIcon{
+					font-size: 50rpx;
 				}
+				.text{
+					margin-left: 20rpx;
+				}
+			}
+			.list{
+				width:750rpx;
+				background-color: #fff;
+				margin-top: 20rpx;
+				.point{
+					width: 100%;
+					height: 88rpx;
+					border-bottom: 1px solid $main-gray;
+					padding: 0 30rpx;
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					.title{
+						font-size: 24rpx;
+						flex-shrink: 0;
+					}
+					input{
+						font-size: 26rpx;
+						flex-grow: 1;
+						text-align: right;
+					}
+					.placeholder{
+						color: $main-gray-deep;
+						font-size: 26rpx;
+					}
+				}
+			}
+			.button{
+				width: 500rpx;
+				height: 82rpx;
+				text-align: center;
+				line-height: 82rpx;
+				margin: auto;
+				margin-top: 100rpx;
+				background-color: $main-hl;
+				color: #fff;
+				font-size: 30rpx;
+				border-radius: 82rpx;
 			}
 		}
 	

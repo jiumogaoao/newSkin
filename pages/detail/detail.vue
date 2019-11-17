@@ -107,6 +107,13 @@
 		</block>
 		<!-- #endif -->
 		<block  v-if="!destop && initReady">
+			<navBarCP>
+				<view class="nuskinIcon navBarBack" slot="left" @click="back()">&#xe63d;</view>
+				<view class="nuskinIcon navBarIcon" slot="left" @click="go('/pages/myNotice/myNotice')">&#xe63f;</view>
+				<text slot="center">复合谷物即食食品</text>
+				<view class="nuskinIcon navBarIcon" slot="right" @click="go('/pages/shoppingCar/shoppingCar')">&#xe6d5;</view>
+				<view class="nuskinIcon navBarIcon" slot="right" @click="sideShow()">&#xe656;</view>
+			</navBarCP>
 			<view class="top">
 				<swiper class="swiper" :indicator-dots="true" :autoplay="true" :interval="2000" :duration="500">
 				                        <swiper-item>
@@ -120,13 +127,13 @@
 				                        </swiper-item>
 				</swiper>
 				<view class="flew">
-					<view class="name" style="padding-left: 20rpx;">产品编号：SKU111</view>
-					<view class="name" style="padding-right: 20rpx;">推广奖励：<block class="blue">￥40.00</block></view>
+					<view class="name">产品编号：SKU111</view>
+					<view class="name">推广奖励：<block class="blue">￥40.00</block></view>
 				</view>
 				<view class="title">agcLoC焕新系列-晚霜 30ml</view>
 				<view class="title">agcLoC Transforming Night</view>
 				<view class="price">零售价：<block class="block">￥100</block></view>
-				<image class="follow" :src="imgPath+'shoucang.png'"></image>
+				<view :class="{nuskinIcon:1,follow:1,hl:(follow?1:0)}">&#xe64e;</view>
 			</view>
 			<view class="middle">
 				<view class="row">
@@ -138,7 +145,7 @@
 					<view class="text">满￥46.41免运费</view>
 				</view>
 				<view class="row">
-					<view class="title">活动</view>
+					<view class="title" style="color:#333;">活动</view>
 					<view class="activeList">
 						<view class="group">
 							<view class="groupName">[满减]</view>
@@ -158,13 +165,13 @@
 					</view>
 				</view>
 			</view>
-			<view class="skuFrame">
+			<view class="skuFrame" @click="openSku">
 				<view class="left">
 					<view class="title">规格</view>
 					<view class="text">已选30ml</view>
 					<view class="text">数量1</view>
 				</view>
-				<image class="rightDag" src=""></image>
+				<view class="nuskinIcon rightDag">&#xe636;</view>
 			</view>
 			<view class="info">
 				<view class="titleFrame">
@@ -210,7 +217,7 @@
 				<view class="iconFrame">
 					<image class="icon" :src="imgPath+'share.png'"/>
 				</view>
-				<view class="iconFrame shop" @click="go('/pages/shelf/shelf')">
+				<view class="iconFrame shop" @click="go('/pages/shelf/shop')">
 					<image class="icon" :src="imgPath+'tab-home-current.png'"/>
 				</view>
 				<view class="iconFrame" @click="go('/pages/shoppingCar/shoppingCar')">
@@ -218,6 +225,38 @@
 				</view>
 				<view class="addCar">加入购物车</view>
 				<view class="buy" @click="go('/pages/comfirm/comfirm')">立即购买</view>
+			</view>
+			<view class="skuOptionFrame" v-if="skuShow" @click="closeSku">
+				<view class="skuOption">
+					<view class="top">
+						<image :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'" class="pic"></image>
+						<view class="right">
+							<view class="text">灵韵润泽唇膏-熏莎红</view>
+							<view class="text">零售价：<text>￥485.00</text></view>
+							<view class="stock">库存：995件</view>
+						</view>
+					</view>
+					<view class="skuList">
+						<view class="skuTitle">颜色</view>
+						<view class="skuGFrame">
+							<view class="sku hl">黛纱红</view>
+							<view class="sku">黛纱红</view>
+							<view class="sku">黛纱红</view>
+						</view>
+					</view>
+					<view class="countFrame">
+						<view class="title">数量</view>
+						<view class="countInput">
+							<view class="sub">-</view>
+							<input class="input"/>
+							<view class="add">+</view>
+						</view>
+					</view>
+					<view class="buttonFrame">
+						<view class="button" @click="closeSku">加入购物车</view>
+						<view class="button" style="background-color: #018fb7;" @click="go('/pages/comfirm/comfirm')">立即购买</view>
+					</view>
+				</view>
 			</view>
 		</block>
 		
@@ -230,8 +269,16 @@
 		mixins: [allPage],
 		data() {
 			return {
-				
+				skuShow:false
 			};
+		},
+		methods:{
+			openSku(){
+				this.skuShow=true;
+			},
+			closeSku(){
+				this.skuShow=false;
+			}
 		}
 	}
 </script>
@@ -488,75 +535,82 @@
 	}
 	}
 	/* #endif */
+	page{
+		background-color: $main-gray-background;
+	}
 	.phone{
 		.top{
 			width:750rpx;
 			background-color: #fff;
 			position: relative;
+			padding-top: 113rpx;
+			padding-bottom: 34rpx;
 			.follow{
 				position: absolute;
-				top:40rpx;
+				top:153rpx;
 				right:40rpx;
-				width: 40rpx;
-				height:40rpx;
+				font-size: 40rpx;
+				color: $main-gray;
+			}
+			.follow.hl{
+				color: $main-hl;
 			}
 			.swiper{
 				width:750rpx;
-				height: 722rpx;
+				height: 750rpx;
 				.smallPic{
 					width:100%;
 					height:100%;
 				}
 			}
 			.flew{
-				width: 750rpx;
+				width: 100%;
+				padding: 0 30rpx;
 				display: flex;
-				margin-top: 20rpx;
+				margin-top: 59rpx;
 				justify-content: space-between;
 				.name{
-					    font-size: 26rpx;
-					    color: #323232;
+					    font-size: 21rpx;
+					    color: $main-gray-deep;
 						.blue{
 							color: #37b0c9;
 						}
 				}
 			}
 			.title{
-				font-size: 32rpx;
-				    color: #323232;
-				    min-height: 40rpx;
-				    line-height: 40rpx;
-				    padding-top: 20rpx;
-					padding-left: 20rpx;
+				font-size: 31rpx;
+				padding: 0 30rpx;
+				text-align: center;
+				margin-top: 32rpx;
+				font-weight: bolder;
 			}
 			.price{
-				margin-top: 40rpx;
-				font-size: 28px;
-				padding-left: 20rpx;
-				.block{
-					color: #37b0c9;
-				}
+				margin-top: 30rpx;
+				font-size: 24px;
+				padding: 0 30rpx;
+				text-align: center;
+				color: $main-hl;
 			}
 		}
 		.middle{
 			background-color: #fff;
-			width: 750rpx;
-			margin-top: 20rpx;
+			width: 100%;
+			padding: 0 30rpx;
+			margin-top: 18rpx;
 			.row{
-				margin-top: 20rpx;
+				padding-top: 44rpx;
+				padding-bottom: 36rpx;
 				display: flex;
 				.title{
-					font-size: 26rpx;
-					    color: grey;
-						padding-left: 20rpx;
+					font-size: 23rpx;
+					    color: $main-gray-deep;
 				}
 				.text{
-					font-size: 26rpx;
-					color: #333;
-					margin-left: 35rpx;
+					font-size: 23rpx;
+					margin-left: 40rpx;
 				}
 				.activeList{
-					margin-left: 35rpx;
+					margin-left: 40rpx;
 					.group{
 						display: flex;
 						.groupName{
@@ -564,10 +618,10 @@
 							color: #ffad43;
 						}
 						.itemList{
-							margin-left: 20rpx;
+							margin-left: 23rpx;
 							.item{
-								font-size: 26rpx;
-								    color: grey;
+								font-size: 23rpx;
+								    color: $main-gray-deep;
 									margin-bottom: 10rpx;
 							}
 						}
@@ -579,55 +633,51 @@
 			margin-top: 20rpx;
 			background-color: #fff;
 			width:750rpx;
-			height:115rpx;
+			height:110rpx;
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
+			padding: 0 30rpx;
 			.left{
-				margin-left: 20rpx;
 				display: flex;
 				.title{
-					color: grey;
-					font-size: 26px;
+					color: $main-gray-deep;
+					font-size: 23rpx;
 				}
 				.text{
-					font-size: 26px;
-					color: #303133;
-					margin-left: 20rpx;
+					font-size: 23rpx;
+					margin-left: 34rpx;
 				}
 			}
 			.rightDag{
-				width:32rpx;
-				height:32rpx;
-				margin-right: 20rpx;
+				font-size: 24rpx;
+				color: $main-gray-deep;
 			}
 		}
 		.info{
 			width: 100%;
-			padding: 20rpx;
+			padding: 30rpx;
 			background-color: #fff;
 			margin-top: 20rpx;
 			.titleFrame{
 				width:400rpx;
 				margin: auto;
-				margin-bottom: 60rpx;
 				display: flex;
 				align-items: center;
 				.line{
 					height:1px;
 					flex-grow: 1;
-					background-color: #ccc;
+					background-color: $main-gray;
 				}
 				.bigTitle{
-					font-size: 30px;
-					    color: #333;
+					font-size: 26rpx;
 					margin: 0 20rpx;
 					flex-shrink: 0;
 				}
 			}
 			.detailFrame{
 				width: 100%;
-				margin-bottom: 100rpx;
+				margin: 100rpx 0;
 				.item{
 					display: flex;
 					margin-bottom: 20rpx;
@@ -638,17 +688,18 @@
 						border-radius: 10rpx;
 					}
 					.item{
-						font-size: 37.5rpx;
+						font-size: 30rpx;
 						color: rgb(127, 127, 127);
 					}
 				}
 			}
 			.useMessage{
-				font-size: 37.5rpx;
+				margin: 100rpx 0;
+				font-size: 30rpx;
 				color: rgb(127, 127, 127);
-				margin-bottom: 60rpx;
 			}
 			.noticeFrame{
+				margin-top: 100rpx;
 				padding-bottom: 110rpx;
 				.item{
 					line-height: 50rpx;
@@ -698,6 +749,112 @@
 				font-size: 32rpx;
 				color: #fff;
 				flex-grow: 1;
+			}
+		}
+		.skuOptionFrame{
+			position: fixed;
+			top:114rpx;
+			bottom:0;
+			left: 0;
+			right:0;
+			background-color: rgba(0,0,0,0.3);
+			.skuOption{
+				position: absolute;
+				left:0;
+				bottom:0;
+				width:100%;
+				padding: 96rpx 38rpx 53rpx 38rpx;
+				background-color: #fff;
+				.top{
+					display: flex;
+					margin-bottom: 46rpx;
+					.pic{
+						width:192rpx;
+						height:192rpx;
+						flex-shrink: 0;
+					}
+					.right{
+						margin-left: 60rpx;
+						.text{
+							font-size: 24rpx;
+							margin-bottom: 16rpx;
+						}
+						.stock{
+							font-size: 24rpx;
+							color: $main-gray-deep;
+						}
+					}
+				}
+				.skuList{
+					.skuTitle{
+						font-size: 22rpx;
+						color: $main-gray-deep;
+						margin-bottom: 26rpx;
+					}
+					.skuGFrame{
+						display: flex;
+						margin-bottom: 20rpx;
+						.sku{
+							font-size: 22rpx;
+							padding: 14rpx 32rpx;
+							border: 1px solid $main-gray;
+							border-radius: 3rpx;
+							margin-right: 20rpx;
+						}
+						.sku.hl{
+							border: 1px solid $main-hl;
+							color: $main-hl;
+						}
+					}
+				}
+				.countFrame{
+					display: flex;
+					align-items: center;
+					.title{
+						font-size: 26rpx;
+						color: $main-gray-deep;
+					}
+					.countInput{
+						margin-left: 24rpx;
+						display: flex;
+						align-items: center;
+						border: 1px solid $main-gray-deep;
+						border-radius: 10rpx;
+						width: 175rpx;
+						height:50rpx;
+						.sub,.add{
+							width:58rpx;
+							flex-shrink: 0;
+							text-align: center;
+							font-size: 60rpx;
+							line-height: 20rpx;
+							position: relative;
+							top:-6rpx;
+							color: $main-gray-deep;
+						}
+						.input{
+							border-left: 1px solid $main-gray-deep;
+							border-right: 1px solid $main-gray-deep;
+							text-align: center;
+						}
+					}
+				}
+				.buttonFrame{
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					margin-top: 57rpx;
+					.button{
+						width:299rpx;
+						height: 89rpx;
+						border-radius: 89rpx;
+						background-color: $main-hl;
+						color: #fff;
+						line-height: 89rpx;
+						text-align: center;
+						font-size: 25rpx;
+					}
+				}
 			}
 		}
 	}

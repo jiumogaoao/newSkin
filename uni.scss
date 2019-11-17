@@ -77,8 +77,12 @@ $uni-font-size-paragraph:30upx;
 /*OSS*/
 $oss-destop: "https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/destop/";
 $oss-phone: "https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/";
-/*边框尺寸*/
-
+/*主色*/
+$main-hl:#49b3c9;
+$main-gray:#dbdbdb;
+$main-gray-deep:#7c7c7c;
+$main-gray-background:#f8f8f8;
+$main-black:#333;
 @mixin frame-width{
 	width:1200px;
 }

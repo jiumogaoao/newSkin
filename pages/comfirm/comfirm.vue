@@ -124,17 +124,33 @@
 		</block>
 		<!-- #endif -->
 		<block  v-if="!destop && initReady">
-			<view class="head">
-				<image src="https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/back.png" class="back" @click="back"/>
-				订单确认
-			</view>
-			<view class="place">
-				<image class="address" src="https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/place.png"></image>
+			<navBarCP>
+				<view class="nuskinIcon navBarBack" slot="left" @click="back">&#xe63d;</view>
+				<text slot="center">订单确认</text>
+			</navBarCP>
+			<view style="width:100%;height: 114rpx;"></view>
+			<view class="place" @click="go('/pages/myPlace/myPlace')">
+				<view class="address nuskinIcon">&#xe74a;</view>
 				<view class="center">
 					<view class="title">里里 153****2656</view>
 					<view class="detail">收货地址：广东潮州潮安县沙爹激动啊师大暨大</view>
 				</view>
-				<image class="deg" src="https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/jiantou-r.png"></image>
+				<view class="deg nuskinIcon" @click="go('/pages/myPlace/myPlace')">&#xe636;</view>
+				<image class="line" :src="imgPath+'bottomLine.png'"></image>
+			</view>
+			<view class="idFrame">
+				<view class="top">
+					<view class="title">购买人</view>
+					<view class="info">
+						<view class="text">黄潇雨</view>
+						<view class="text">440963***********69</view>
+						<view class="change" @click="go('/pages/comfirm/buyerList')">更换</view>
+					</view>
+				</view>
+				<view class="bottom">
+					<view class="nuskinIcon">&#xe60d;</view>
+					<view class="text">海关规定购买跨境商品，购买人需提交真实姓名和身份证号码进行实名认证，且实名认证信息与支付本订单的银行卡实名信息一致。</view>
+				</view>
 			</view>
 			<view class="list">
 				<view class="titleFrame">产品信息</view>
@@ -151,9 +167,20 @@
 					
 				</view>
 			</view>
-			<view class="invoiceFrame">
-				<view class="text">发票</view>
-				<view class="text">个人></view>
+			<view class="saleFrame">
+				<view class="point">
+					<view class="left">
+						<view class="type">满减</view>
+						<view class="text">购买产品满1000元减100元</view>
+					</view>
+				</view>
+				<view class="point">
+					<view class="left">
+						<view class="type">优惠券</view>
+						<view class="text">轻享套装专用现金抵用券150元</view>
+					</view>
+					<view class="nuskinIcon" @click="go('/pages/comfirm/chooseCoupon')">&#xe636;</view>
+				</view>
 			</view>
 			<view class="totalFrame">
 				<view class="row">
@@ -172,7 +199,7 @@
 			<view class="bottomFrame">
 				<view class="title">应付总额（含运费）</view>
 				<view class="price">￥75.00</view>
-				<view class="go" @click="go('/pages/myOrder/myOrder')">确认订单</view>
+				<view class="go" @click="go('/pages/pay/pay')">确认订单</view>
 			</view>
 		</block>
 		
@@ -441,55 +468,88 @@
 	}
 	}
 	/* #endif */
-
+	page{
+		background: $main-gray-background;
+	}
 	.phone{
-		background: #f1f1f1;
-		.head{
-			width:750rpx;
-			height:80rpx;
-			border-bottom: 1px solid #ddd;
-			position: relative;
-			line-height: 80rpx;
-			font-size: 16rpx;
-			background-color: #fff;
-			text-align: center;
-			.back{
-				position:absolute;
-				top:20rpx;
-				left:20rpx;
-				width:24rpx;
-				height:42rpx;
-			}
-		}
 		.place{
-			width: 690rpx;
-			padding: 30rpx;
+			width: 750rpx;
+			padding: 39rpx 30rpx;
 			display: flex;
 			justify-content:space-between;
 			align-items: center;
 			background-color: #fff;
+			position: relative;
 			.address{
-				width:32rpx;
-				height:44rpx;
+				font-size: 50rpx;
+				color: $main-gray-deep;
 				flex-shrink: 0;
 			}
 			.center{
 				flex-grow: 1;
-				margin-left: 20rpx;
-				margin-right: 20rpx;
+				margin-left: 26rpx;
+				margin-right: 26rpx;
 				.title{
-					font-size: 40rpx;
-					color: #333;
+					font-size: 24rpx;
 				}
 				.detail{
-					font-size: 30rpx;
-					color: gray;
+					font-size: 23rpx;
+					color: $main-gray-deep;
 					margin-top: 10rpx;
 				}
 			}
 			.deg{
-				width:16rpx;
-				height:26rpx;
+				font-size: 50rpx;
+				color: $main-gray-deep;
+				flex-shrink: 0;
+			}
+			.line{
+				width: 750rpx;
+				height: 9rpx;
+				position: absolute;
+				bottom:0;
+				left: 0;
+			}
+		}
+		.idFrame{
+			background-color: #fff;
+			margin-top: 15rpx;
+			width: 750rpx;
+			.top{
+				width: 100%;
+				height: 87rpx;
+				padding: 0 30rpx;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				border-bottom: 1px solid $main-gray;
+				border-top: 1px solid $main-gray;
+				.title{
+					font-size: 26rpx;
+				}
+				.info{
+					display: flex;
+					align-items: center;
+					.text{
+						font-size: 24;
+						margin-right: 20rpx;
+					}
+					.change{
+						font-size: 24;
+						color: $main-hl;
+					}
+				}
+			}
+			.bottom{
+				padding: 30rpx;
+				display: flex;
+				align-items: center;
+				.nuskinIcon{
+					font-size: 50rpx;
+				}
+				.text{
+					margin-left: 20rpx;
+				}
 			}
 		}
 		.list{
@@ -497,75 +557,88 @@
 			margin-top: 20rpx;
 			background-color: #fff;
 			.titleFrame{
-				height: 86rpx;
+				height: 87rpx;
 				width:100%;
-				text-indent: 30rpx;
-				font-size: 40rpx;
-				line-height: 86rpx;
-				border-bottom: 1px solid #ddd;
+				padding: 0 30rpx;
+				font-size: 26rpx;
+				line-height: 87rpx;
+				border-bottom: 1px solid $main-gray;
+				border-bottom: 1px solid $main-gray;
 			}
 			.product{
 				padding: 20rpx 30rpx;
 				display: flex;
 				align-items: center;
 				.pic{
-					width:160rpx;
-					height:194rpx;
+					width:123rpx;
+					height:123rpx;
 					flex-shrink: 0;
 				}
 				.right{
 					flex-grow: 1;
 					.title{
-						font-size: 40rpx;
-						color: #333;
+						font-size: 25rpx;
 					}
 					.code{
-						font-size: 20rpx;
-						color: gray;
-						margin-top: 10rpx;
+						font-size: 21rpx;
+						color: $main-gray-deep;
+						margin-top: 18rpx;
 					}
 					.bottom{
-						margin-top: 20rpx;
+						margin-top: 40rpx;
 						display: flex;
 						justify-content: space-between;
 						align-items: center;
 						.price,.count{
-							font-size: 40rpx;
-							color: #333;
+							font-size: 25rpx;
 						}
 					}
 				}
 			}
 		}
-		.invoiceFrame{
-			padding: 0 30rpx;
-			height: 88rpx;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			background: #fff;
+		.saleFrame{
+			width:750rpx;
 			margin-top: 20rpx;
-			.text{
-				font-size: 40rpx;
-				color: #333;
+			background-color: #fff;
+			.point{
+				width: 100%;
+				height: 87rpx;
+				padding: 0 30rpx;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				border-bottom: 1px solid $main-gray;
+				border-top: 1px solid $main-gray;
+				margin-bottom: -1px;
+				.left{
+					display: flex;
+					align-items: center;
+					.type{
+						color: #ffad43;
+						font-size: 26rpx;
+						border: 1px solid #ffad43;
+						padding: 2rpx 20rpx;
+						    border-radius: 30rpx;
+							margin-right: 20rpx;
+					}
+				}
 			}
 		}
 		.totalFrame{
 			margin-top: 20rpx;
 			background: #fff;
 			padding: 20rpx 30rpx 0 30rpx;
-			width:690rpx;
+			width:750rpx;
 			.row{
-				padding-bottom: 30rpx;
+				padding-bottom: 24rpx;
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
 				.title{
-					font-size: 30rpx;
-					color: #333333;
+					font-size: 23rpx;
 				}
 				.number{
-					font-size: 30rpx;
+					font-size: 18rpx;
 				}
 			}
 		}
@@ -578,7 +651,7 @@
 			position: fixed;
 			left: 0;
 			bottom:0;
-			width: 690rpx;
+			width: 750rpx;
 			background: #fff;
 			.title{
 				font-size: 20rpx;

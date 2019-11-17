@@ -27,10 +27,21 @@
 		</block>
 		<!-- #endif -->
 		<block  v-if="!destop && initReady">
-			<view class="head">
-							<image class="back" :src="imgPath+'back.png'" @click="back"></image>
-							我的身份
-						</view>
+			<navBarCP>
+				<view class="nuskinIcon navBarBack" slot="left" @click="back">&#xe63d;</view>
+				<text slot="center">我的身份</text>
+			</navBarCP>
+			<view style="width:100%;height: 114rpx;"></view>
+			<view class="top">
+				<view class="title">我的身份</view>
+				<view class="dsc">零售顾客</view>
+			</view>
+			<view class="point" @click="go('/pages/myLevel/newLevel')">
+				<view class="title">申请成为推广商</view>
+				<view class="dsc">
+					推广商可以查看每个商品的佣金金额或比例，且推广商分享有专属的链接，零售客户没有专属链接；当推广商将如新海外购的商品链接分享出去，他人从链接进入成功购买，即可分享佣金。
+				</view>
+			</view>
 		</block>
 		
 	</view>
@@ -107,22 +118,41 @@
 	}
 	}
 	/* #endif */
+	page{
+		background-color: $main-gray-background;
+	}
 	.phone{
-			display: flex;
-			align-items: center;
-			flex-direction: column;
 			width:750rpx;
-			.head{
-				width:100%;
-				text-align: center;
-				    font-size: 40rpx;
-				padding-top: 34rpx;
-				position: relative;
-				.back{
-					width:32rpx;
-					height:32rpx;
-					position:absolute;
-					left:20rpx;
+			.top{
+				width:750rpx;
+				padding: 0 30rpx;
+				height: 90rpx;
+				border-bottom: 1px solid $main-gray;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				background-color: #fff;
+				.title{
+					font-weight: 26rpx;
+				}
+				.dsc{
+					font-size: 24rpx;
+					color: $main-gray-deep;
+				}
+			}
+			.point{
+				width:750rpx;
+				padding: 30rpx;
+				margin-top: 20rpx;
+				background-color: #fff;
+				.title{
+					font-weight: 26rpx;
+				}
+				.dsc{
+					font-size: 24rpx;
+					color: $main-gray-deep;
+					margin-top: 20rpx;
+					line-height: 1.5;
 				}
 			}
 		}

@@ -3,8 +3,8 @@
 		<!-- #ifdef H5 -->
 		<image class="checkboxCP" :src="imgPath+'checked.png'" v-if="destop"></image>
 		<!-- #endif -->
-		<image class="checkboxCP" :src="imgPath+'cartxuan.png'" v-if="!destop&&checked"></image>
-		<image class="checkboxCP" :src="imgPath+'card_wxuan.png'" v-if="!destop&&!checked"></image>
+		<view class="checkboxCP nuskinIcon" v-if="!destop&&!checked">&#xea2a;</view>
+		<view class="checkboxCP nuskinIcon checked" v-if="!destop&&checked">&#xe62e;</view>
 	</view>
 </template>
 
@@ -32,8 +32,11 @@
 	/* #endif */
 	.phoneCP{
 		.checkboxCP{
-			width:38rpx;
-			height:38rpx;
+			font-size: 50rpx;
+			color: $main-gray;
+		}
+		.checkboxCP.checked{
+			color: $main-hl;
 		}
 	}
 </style>

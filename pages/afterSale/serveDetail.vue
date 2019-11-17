@@ -17,35 +17,28 @@
 		<block  v-if="!destop && initReady">
 			<navBarCP>
 				<view class="nuskinIcon navBarBack" slot="left" @click="back">&#xe63d;</view>
-				<text slot="center">订单详情</text>
+				<text slot="center">服务单详情</text>
 			</navBarCP>
 			<view style="width:100%;height: 114rpx;"></view>
-			<view class="logisticsFrame" @click="go('/pages/orderDetail/logistics')">
-				<view class="left">
-					<view class="nuskinIcon">&#xe8ee;</view>
-					<view class="info">
-						<view class="title">清关完成，移交快递公司</view>
-						<view class="dsc">快递单号：1253623630</view>
-						<view class="dsc">2019-05-03 15:23:36</view>
-					</view>
-				</view>
-				<view class="nuskinIcon">&#xe636;</view>
-			</view>
 			<view class="topFrame">
-				<view class="state">已取消</view>
-				<view class="type">线上购物</view>
+				<view class="state">待审核</view>
 			</view>
-			<view class="placeFrame">
-				<view class="nuskinIcon">&#xe74a;</view>
-				<view class="right">
-					<view class="title">里里 153****2656</view>
-					<view class="dsc">收货地址：广东，潮州，潮安县，沙爹激动啊师大暨大</view>
+			<view class="stateFrame">
+				<view class="title">售后处理进度</view>
+				<view class="stateList">
+					<view class="left">
+						<view class="point"><view class="line"></view></view>
+						<view class="infoFrame">
+							<view class="title">申请已提交，请等待审核~</view>
+							<view class="dsc">2019-05-03 15:23:26</view>
+						</view>
+					</view>
+					<view class="nuskinIcon" @click="go('/pages/afterSale/serveState')">&#xe636;</view>
 				</view>
 			</view>
 			<view class="list">
 				<view class="top">
-					<view class="title">包裹1</view>
-					<view class="dsc">订单将按照以下明细拆为多个包裹发货</view>
+					<view class="title">商品信息</view>
 				</view>
 				<view class="item">
 					<image class="pic" :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'"></image>
@@ -53,6 +46,7 @@
 						<view>
 							<view class="title">如新新动轻享套装（适用油性肌肤）</view>
 							<view class="code">产品编号 29139479</view>
+							<view class="code">规格：粉红 100ml*2</view>
 						</view>
 						<view class="rightBottom">
 							<view class="text">￥1,775.00</view>
@@ -61,42 +55,31 @@
 					</view>
 				</view>
 			</view>
-			<view class="invoiceFrame">
-				<view class="title">购买人</view>
-				<view class="dsc">黄潇雨 440963***********69</view>
-			</view>
-			<view class="idFrame">
-				<view class="row">订单号：<text class="id">CN52919693</text></view>
-				<view class="row">支付交易号：<text class="id">CN52919693</text></view>
-				<view class="row">下单日期：<text class="id">2019-09-11 23:04:59</text></view>
-			</view>
 			<view class="priceFrame">
 				<view class="row">
-					<view class="text">产品数量</view>
+					<view class="text">服务单号</view>
+					<view class="text">CBER9999999999</view>
+				</view>
+				<view class="row">
+					<view class="text">申请时间</view>
+					<view class="text">2019-06-03 13:36:56</view>
+				</view>
+				<view class="row">
+					<view class="text">服务类型</view>
+					<view class="text">退货</view>
+				</view>
+				<view class="row">
+					<view class="text">申请数量</view>
 					<view class="text">1</view>
 				</view>
 				<view class="row">
-					<view class="text">运费</view>
-					<view class="text">￥0.00</view>
-				</view>
-				<view class="row">
-					<view class="text">产品总金额</view>
-					<view class="text">￥1，775.00</view>
-				</view>
-				<view class="row">
-					<view class="text">直销产品总业绩</view>
-					<view class="text">￥1,775.00</view>
-				</view>
-				<view class="bottom">
-					<view class="row">
-						<view class="text">应付总额</view>
-						<view class="text blue">￥1,775.00</view>
-					</view>
+					<view class="text">最大退款金额</view>
+					<view class="text">￥140.00</view>
 				</view>
 			</view>
 			<view style="width:100%;height: 114rpx;"></view>
 			<view class="bottomFrame">
-				<view class="go" @click="go('/pages/comfirm/comfirm')">再次购买</view>
+				<view class="go">取消申请</view>
 			</view>
 		</block>
 		
@@ -133,32 +116,6 @@
 	}
 	/* #endif */
 	.phone{
-		.logisticsFrame{
-			width:750rpx;
-			height: 300rpx;
-			padding: 30rpx;
-			background-color: #fff;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			background-color: $main-gray-background;
-			.left{
-				display: flex;
-				align-items: center;
-				.nuskinIcon{
-					font-size: 50rpx;
-					margin-right: 20rpx;;
-				}
-				.title{
-					font-size: 26rpx;
-				}
-				.dsc{
-					font-size: 24rpx;
-					color: $main-gray-deep;
-					margin-top: 20rpx;
-				}
-			}
-		}
 		.topFrame{
 			width:750rpx;
 			height: 160rpx;
@@ -180,30 +137,46 @@
 				border-radius: 30rpx;
 			}
 		}
-		.placeFrame{
-			padding: 0 30rpx;
-			width:750rpx;
+		.stateFrame{
+			width: 100%;
 			background-color: #fff;
-			height: 162rpx;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			margin-top: 20rpx;
-			.nuskinIcon{
-				font-size: 50rpx;
-				color: $main-gray-deep;
-				flex-shrink: 0;
+			padding: 30rpx;
+			.title{
+				font-size: 26rpx;
 			}
-			.right{
-				flex-grow: 1;
-				margin-left: 48rpx;
-				.title{
-					font-size: 26rpx;
-				}
-				.dsc{
-					font-size: 24rpx;
-					color: $main-gray-deep;
-					margin-top: 20rpx;
+			.stateList{
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-top: 20rpx;
+				.left{
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					.point{
+						width:20rpx;
+						height: 20rpx;
+						background-color: $main-hl;
+						border-radius: 20rpx;
+						margin-right: 20rpx;
+						position: relative;
+						.line{
+							width:2px;
+							height:55rpx;
+							background-color:$main-gray;
+							position: absolute;
+							top:20rpx;
+							left: 8rpx;
+						}
+					}
+					.title{
+						font-size: 26rpx;
+					}
+					.dsc{
+						font-size: 24rpx;
+						color: $main-gray-deep;
+						margin-top: 20rpx;
+					}
 				}
 			}
 		}
@@ -287,40 +260,9 @@
 				}
 			}
 		}
-		.invoiceFrame{
-			padding: 0 30rpx;
-			background-color: #fff;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			height: 90rpx;
-			margin-top: 20rpx;
-			.title{
-				font-size: 26rpx;
-			}
-			.dsc{
-				font-size: 24rpx;
-				color: $main-gray-deep;
-			}
-		}
-		.idFrame{
-			padding: 10rpx 30rpx;
-			background-color: #fff;
-			margin-top: 20rpx;
-			.row{
-				font-size: 26rpx;
-				line-height: 50rpx;
-				.id{
-					font-size: 24rpx;
-					color: $main-gray-deep;
-					font-weight: bold;
-				}
-			}
-		}
 		.priceFrame{
 			padding: 10rpx 30rpx;
 			background-color: #fff;
-			margin-top: 20rpx;
 			.row{
 				width: 100%;
 				display: flex;

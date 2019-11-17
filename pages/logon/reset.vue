@@ -65,42 +65,44 @@
 						<image class="back" :src="imgPath+'back.png'" @click="back()"></image>
 					</view>
 					<view class="center">
-						注册
+						{{step?'重置密码':'手机找回'}}
 					</view>
-					<view class="right" @click="go('/pages/login/login')">
-						登录
-					</view>
-				</view>
-				<view class="listFrame">
-					<view class="referrer" v-if="referrer">您的推荐人是{{referrer}}（{{referrerPhone}}）</view>
-					<view class="list">
-						<input class="input" placeholder="请输入手机号码"/>
-					</view>
-					<view class="list">
-						<input class="input" placeholder="请输入图形验证码"/>
-						<image class="picCode" :src="imgPath+'verificationCode.png'"></image>
-						<view class="blue">换一张</view>
-					</view>
-					<view class="list">
-						<input class="input" placeholder="请输入手机验证码"/>
-						<view class="getCode">获取验证码</view>
-					</view>
-					<view class="list">
-						<input class="input" placeholder="请设置密码,6~20位数"/>
-						<image class="eye" :src="imgPath+'yanjing.png'"></image>
-					</view>
-					<view class="list">
-						<input class="input" placeholder="请再次确认密码"/>
-						<image class="eye" :src="imgPath+'yanjing.png'"></image>
+					<view class="right">
+						
 					</view>
 				</view>
-				<view class="dsc">密码长度须为6-20非纯数字，可包含字母、数字或下划线('_')中的至少2个类别</view>
-				<view class="ruleFrame">
-					<chechBoxCP/>
-					<view class="text">已阅读并同意</view>
-					<view class="blue">《如新海外购用户协议》</view>
-				</view>
-				<view class="logon" @click="regest">注册</view>
+				<block v-if="step">
+					<view class="listFrame">
+						<view class="list">
+							<input class="input" placeholder="输入新密码" placeholder-class="placeholder"/>
+							<image class="eye" :src="imgPath+'yanjing.png'"></image>
+						</view>
+						<view class="list">
+							<input class="input" placeholder="确认密码" placeholder-class="placeholder"/>
+							<image class="eye" :src="imgPath+'yanjing.png'"></image>
+						</view>
+					</view>
+					<view class="dsc">密码长度须为6-20非纯数字，可包含字母、数字或下划线('_')中的至少2个类别</view>
+					<view class="logon" @click="reset">提交</view>
+				</block>
+				<block v-else>
+					<view class="listFrame">
+						<view class="referrer">为保证您的账号安全，请验证后再进行下一步操作</view>
+						<view class="list">
+							<input class="input" placeholder="输入已注册的手机号"/>
+						</view>
+						<view class="list">
+							<input class="input" placeholder="输入验证码"/>
+							<image class="picCode" :src="imgPath+'verificationCode.png'"></image>
+							<view class="blue">换一张</view>
+						</view>
+						<view class="list">
+							<input class="input" placeholder="输入手机验证码"/>
+							<view class="getCode">获取验证码</view>
+						</view>
+					</view>
+					<view class="logon" @click="next">下一步</view>
+				</block>
 		</block>
 	</view>
 </template>
@@ -112,14 +114,16 @@
 		components:{chechBoxCP},
 		data() {
 					return {
-						referrer:'王**',
-						referrerPhone:'135****5636'
+						step:0
 					};
 				},
 				methods:{
-					regest(){
+					next(){
+						this.step = 1;
+					},
+					reset(){
 						this.$store.dispatch('userST/logon', {})
-						this.go('/pages/regest/bind')
+						this.go('/pages/index/index')
 					}
 				}
 			}

@@ -44,10 +44,47 @@
 		</block>
 		<!-- #endif -->
 		<block  v-if="!destop && initReady">
-			<view class="head">
-							<image class="back" :src="imgPath+'back.png'" @click="back"></image>
-							我的积分
-						</view>
+			<navBarCP>
+				<view class="nuskinIcon navBarBack" slot="left" @click="back">&#xe63d;</view>
+				<text slot="center">服务单详情</text>
+			</navBarCP>
+			<view style="width:100%;height: 114rpx;"></view>
+			<view class="top">
+				<view class="left">
+					<view class="title">999</view>
+					<view class="dsc">积分余额</view>
+				</view>
+				<view class="button">积分购物</view>
+			</view>
+			<view class="center">
+				<view class="left">
+					<view class="title">即将失效积分：3300</view>
+					<view class="dsc">失效时间：2019.09.09</view>
+				</view>
+				<view class="nuskinIcon" @click="go('/pages/myIntegral/integralDetail')">&#xe636;</view>
+			</view>
+			<view class="listTitle">积分记录 <text class="nuskinIcon">&#xe65d;</text></view>
+			<view class="list">
+				<view class="left">
+					<view class="title">调整积分</view>
+					<view class="dsc">2019-06-05 12:36:56</view>
+				</view>
+				<view class="right">+1500</view>
+			</view>
+			<view class="list">
+				<view class="left">
+					<view class="title">调整积分</view>
+					<view class="dsc">2019-06-05 12:36:56</view>
+				</view>
+				<view class="right">+1500</view>
+			</view>
+			<view class="list">
+				<view class="left">
+					<view class="title">调整积分</view>
+					<view class="dsc">2019-06-05 12:36:56</view>
+				</view>
+				<view class="right">+1500</view>
+			</view>
 		</block>
 		
 	</view>
@@ -195,22 +232,87 @@
 	}
 	}
 	/* #endif */
+	page{
+		background-color: $main-gray-background;
+	}
 	.phone{
-			display: flex;
-			align-items: center;
-			flex-direction: column;
 			width:750rpx;
-			.head{
+			.top{
+				width:750rpx;
+				height:200rpx;
+				background-image: linear-gradient(to top right, #23a7da, #34b5b9);
+				padding: 30rpx;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				.title{
+					font-size: 35rpx;
+					color: #fff;
+				}
+				.dsc{
+					font-size: 22rpx;
+					color: #fff;
+					margin-top: 15rpx;
+				}
+				.button{
+					width:158rpx;
+					height:48rpx;
+					line-height: 46rpx;
+					text-align: center;
+					border: 1px solid #fff;
+					color: #fff;
+					font-size: 22rpx;
+					border-radius: 48rpx;
+				}
+			}
+			.center{
 				width:100%;
-				text-align: center;
-				    font-size: 40rpx;
-				padding-top: 34rpx;
-				position: relative;
-				.back{
-					width:32rpx;
-					height:32rpx;
-					position:absolute;
-					left:20rpx;
+				height: 156rpx;
+				background-color: #fff;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 0 30rpx;
+				.title{
+					font-size: 26rpx;
+				}
+				.dsc{
+					font-size: 24rpx;
+					color: $main-gray-deep;
+					margin-top: 20rpx;
+				}
+				.nuskinIcon{
+					font-size: 24rpx;
+					color: $main-gray-deep;
+				}
+			}
+			.listTitle{
+				width:100%;
+				padding: 30rpx;
+				background-color: #fff;
+				margin-top: 20rpx;
+				border-bottom: 1px solid $main-gray;
+				display: flex;
+				align-items: center;
+				height: 100rpx;
+				font-size: 26rpx;
+			}
+			.list{
+				width:100%;
+				padding: 30rpx;
+				background-color: #fff;
+				border-bottom: 1px solid $main-gray;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				height: 150rpx;
+				.title{
+					font-size: 26rpx;
+				}
+				.dsc{
+					font-size: 24rpx;
+					color: $main-gray-deep;
+					margin-top: 20rpx;
 				}
 			}
 		}

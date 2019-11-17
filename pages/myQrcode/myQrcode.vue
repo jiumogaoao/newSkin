@@ -22,10 +22,20 @@
 		</block>
 		<!-- #endif -->
 		<block  v-if="!destop && initReady">
-			<view class="head">
-							<image class="back" :src="imgPath+'back.png'" @click="back"></image>
-							我的二维码
-						</view>
+			<navBarCP>
+				<view class="nuskinIcon navBarBack" slot="left" @click="back">&#xe63d;</view>
+				<text slot="center">我的二维码</text>
+			</navBarCP>
+			<view style="width:100%;height: 114rpx;"></view>
+			<view class="frame">
+				<view class="title">
+					此二维码为您的身份凭证，可作为分享他人注册和身份验证使用
+				</view>
+				<image src="/static/qrCode.png"></image>
+				<view class="dsc">138****1848</view>
+				<view class="dsc">请扫描我的二维码进行注册</view>
+				<view class="button">保存到手机</view>
+			</view>
 		</block>
 		
 	</view>
@@ -94,21 +104,35 @@
 	}
 	/* #endif */
 	.phone{
-			display: flex;
-			align-items: center;
-			flex-direction: column;
-			width:750rpx;
-			.head{
-				width:100%;
-				text-align: center;
-				    font-size: 40rpx;
-				padding-top: 34rpx;
-				position: relative;
-				.back{
-					width:32rpx;
-					height:32rpx;
-					position:absolute;
-					left:20rpx;
+			.frame{
+				width:750rpx;
+				padding: 30rpx;
+				background-color: #fff;
+				display: flex;
+				align-items: center;
+				flex-direction: column;
+				.title{
+					font-size: 32rpx;
+					text-align: center;
+				}
+				image{
+					width:400rpx;
+					height:400rpx;
+					margin-top: 250rpx;
+				}
+				.dsc{
+					font-size: 24rpx;
+					margin-top: 20rpx;
+					text-align: center;
+				}
+				.button{
+					width:303rpx;
+					height: 84rpx;
+					border: 1px solid $main-gray;
+					margin: auto;
+					margin-top: 62rpx;
+					line-height: 84rpx;
+					text-align: center;
 				}
 			}
 		}

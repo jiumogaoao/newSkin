@@ -56,19 +56,20 @@
 	.phoneCP{
 		width:100%;
 		.tabbarCP{
-			height: 80rpx;
+			height: 91rpx;
 			border-bottom: 1px solid #f5f5f5;
 			width:100%;
 			display: flex;
 			align-items: center;
 			justify-content: space-evenly;
+			background-color: #fff;
 		}
 		.item{
 			align-items: center;
 			    height: 100%;
-				line-height: 80rpx;
-			    font-size: 30rpx;
-			    color: #303133;
+				line-height: 91rpx;
+			    font-size: 26rpx;
+			    color: #333;
 			position: relative;
 		}
 		.line{

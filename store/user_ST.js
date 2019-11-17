@@ -10,7 +10,7 @@ export default {
   	  },
 	  logon(state, data){
 		  state.userName = data.userName
-		  uni.navigateBack()
+		  
 	  }
   },
   actions:{

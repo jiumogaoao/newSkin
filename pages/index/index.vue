@@ -54,7 +54,13 @@
 		</block>
 		<!-- #endif -->
 		<block  v-if="!destop && initReady">
-			<view class="navBar">
+			<navBarCP>
+				<view class="nuskinIcon navBarIcon" slot="left" @click="go('/pages/myNotice/myNotice')">&#xe63f;</view>
+				<image class="navBarCenterPic" :src="imgPath+'logo_mobile.png'" slot="center"></image>
+				<view class="nuskinIcon navBarIcon" slot="right" @click="go('/pages/shoppingCar/shoppingCar')">&#xe6d5;</view>
+				<view class="nuskinIcon navBarIcon" slot="right" @click="sideShow()">&#xe656;</view>
+			</navBarCP>
+<!-- 			<view class="navBar">
 				<view class="left">
 					<image class="notice" :src="imgPath+'xinxi2.0.png'" @click="go('/pages/myNotice/myNotice')"></image>
 				</view>
@@ -65,7 +71,7 @@
 					<image class="shoppingCar" :src="imgPath+'tab-cart-current.png'" @click="go('/pages/shoppingCar/shoppingCar')"></image>
 					<image class="navList" :src="imgPath+'menu01.png'" @click="sideShow()"></image>
 				</view>
-			</view>
+			</view> -->
 			<view class="banner">
 				<swiper class="swiper" :indicator-dots="true" :autoplay="true" :interval="2000" :duration="500">
 				                        <swiper-item v-for="(v,i) in banner" @click="go('/pages/detail/detail?id='+v.id)" :key="i">
@@ -136,11 +142,11 @@
 			<headerCP/>
 			<view :class="{sideNav:1,open:showSide}">
 				<view class="bigSearchFrame">
-					<view class="searchFrame">
+					<view class="searchFrame" @click="go('/pages/search/search')">
 						<input class="search"/>
 						<image class="searchButton" :src="imgPath+'sousuo.png'"></image>
 					</view>
-					<view class="qrFrame">
+					<view class="qrFrame" @click="go('/pages/myQrcode/myQrcode')">
 						<image class="qrCode" :src="imgPath+'qrbtn.png'"></image>
 						<view class="text">二维码</view>
 					</view>
@@ -192,13 +198,10 @@
 		},
 		data() {
 			return {
-				showSide:false
+				
 			};
 		},
 		methods:{
-			sideShow(){
-				this.showSide = !this.showSide
-			},
 			follow(id){
 				
 			}

@@ -209,6 +209,140 @@
             	"navigationStyle": "custom",
             	"navigationBarTitleText": "如新"
             }
+        },{
+            "path" : "pages/regest/bind",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        },{
+            "path" : "pages/logon/authorization",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        },{
+            "path" : "pages/logon/reset",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        },{
+            "path" : "pages/shelf/shop",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        },{
+            "path" : "pages/orderDetail/logistics",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        },{
+            "path" : "pages/comfirm/buyerList",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        },{
+            "path" : "pages/comfirm/newBuyer",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        },{
+            "path" : "pages/myPlace/newPlace",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        },{
+            "path" : "pages/comfirm/chooseCoupon",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        }
+        ,{
+            "path" : "pages/pay/pay",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        }
+        ,{
+            "path" : "pages/search/search",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        },{
+            "path" : "pages/orderDetail/newAfterSale",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        },{
+            "path" : "pages/orderDetail/evaluation",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        },{
+            "path" : "pages/afterSale/serveDetail",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        },{
+            "path" : "pages/afterSale/serveState",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        },{
+            "path" : "pages/myInfo/setAccount",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        },{
+            "path" : "pages/myInfo/setPassword",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        },{
+            "path" : "pages/myInfo/setPhone",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        },{
+            "path" : "pages/help/userRule",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        },{
+            "path" : "pages/myIntegral/integralDetail",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        },{
+            "path" : "pages/myLevel/newLevel",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        },{
+            "path" : "pages/myCard/newCard",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
         }
     ],
     "subPackages": [],

@@ -61,16 +61,13 @@
 		</block>
 		<!-- #endif -->
 		<block  v-if="!destop && initReady">
-			<view class="head">
-				<view class="left">
-					<img class="back" src="https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/back.png" @click="back"/>
-					<img class="notice" src="https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/xinxi2.0.png"/>
-				</view>
-				<view class="title">标题</view>
-				<view class="right">
-					<img class="search" src="https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/sousuo.png"/>
-				</view>
-			</view>
+				<navBarCP>
+					<view class="nuskinIcon navBarBack" slot="left" @click="back">&#xe63d;</view>
+					<view class="nuskinIcon navBarIcon" slot="left" @click="go('/pages/myNotice/myNotice')">&#xe63f;</view>
+					<text slot="center">我的订单</text>
+					<view class="nuskinIcon navBarIcon" slot="right" @click="go('/pages/search/search')">&#xe72f;</view>
+				</navBarCP>
+				<view style="width:100%;height: 114rpx;"></view>
 			<tabbarCP class="tabbar" :list="[{id:0,name:'全部'},{id:1,name:'待付款'},{id:2,name:'已支付'},{id:3,name:'待发货'},{id:4,name:'已完成'}]" :hl="0"/>
 			<view class="list" @click="go('/pages/orderDetail/orderDetail')">
 				<view class="top">
@@ -351,31 +348,6 @@
 	/* #endif */
 	.phone{
 		background-color: #f1f1f1;
-		.head{
-			width:710rpx;
-			height:110rpx;
-			padding: 20rpx;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			background-color: #fff;
-			.title{
-				font-size: 40rpx;
-			}
-			.left{
-				display: flex;
-				align-items: center;
-				.back{
-					width:40rpx;
-					height:42rpx;
-				}
-				.notice{
-					width:40rpx;
-					height:40rpx;
-					margin-left: 20rpx;
-				}
-			}
-		}
 		.tabbar{
 			background-color: #fff;
 			margin-top: 20rpx;
@@ -386,8 +358,8 @@
 			margin-top: 20rpx;
 			.top{
 				padding: 0 30rpx;
-				width: 690rpx;
-				height: 160rpx;
+				width: 750rpx;
+				height: 162rpx;
 				display: flex;
 				justify-content: center;
 				flex-direction: column;
@@ -398,37 +370,36 @@
 						display: flex;
 						align-items: center;
 						.tap{
-							background: #f1f1f1;
-							color: gray;
-							font-size: 20rpx;
+							background: $main-gray;
+							color: $main-gray-deep;
+							font-size: 22rpx;
 							width: 140rpx;
-							height:46rpx;
+							height:48rpx;
 							text-align: center;
-							line-height: 46rpx;
-							margin-right: 20rpx;
-							border-radius: 20rpx;
+							line-height: 48rpx;
+							margin-right: 18rpx;
+							border-radius: 48rpx;
 						}
 						.date{
-							font-size: 30rpx;
-							color: #333;
+							font-size: 23rpx;
 						}
 					}
 					.blue{
-						font-size: 30rpx;
-						color:#0089af;
+						font-size: 24rpx;
+						color:$main-hl;
 					}
 				}
 				.topBottom{
-					font-size: 26rpx;
-					color:gray;
-					margin-top: 10rpx;
+					font-size: 24rpx;
+					color:$main-gray-deep;
+					margin-top: 18rpx;
 				}
 			}
 			.item{
-				width: 690rpx;
-				height: 180rpx;
-				padding: 20rpx 30rpx;
-				background-color: #f9f9f9;
+				width: 750rpx;
+				height: 220rpx;
+				padding: 30rpx;
+				background-color: $main-gray-background;
 				display: flex;
 				align-items: center;
 				.pic{
@@ -444,24 +415,24 @@
 					flex-direction: column;
 					height:160rpx;
 					.title{
-						font-size: 30rpx;
+						font-size: 26rpx;
 					}
 					.code{
-						font-size: 20rpx;
-						margin-top: 10rpx;
+						font-size: 21rpx;
+						margin-top: 21rpx;
+						color: $main-gray-deep;
 					}
 					.rightBottom{
 						display: flex;
 						justify-content: space-between;
 						.text{
-							font-size: 26rpx;
-							color: #333;
+							font-size: 21rpx;
 						}
 					}
 				}
 			}
 			.bottomTop{
-				width:690rpx;
+				width:750rpx;
 				height: 84rpx;
 				padding: 0 30rpx;
 				background-color: #fff;

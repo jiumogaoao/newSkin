@@ -29,10 +29,33 @@
 		</block>
 		<!-- #endif -->
 		<block  v-if="!destop && initReady">
-			<view class="head">
-							<image class="back" :src="imgPath+'back.png'" @click="back"></image>
-							我的分享
-						</view>
+			<navBarCP>
+				<view class="nuskinIcon navBarBack" slot="left" @click="back">&#xe63d;</view>
+				<text slot="center">我的分享</text>
+			</navBarCP>
+			<view style="width:100%;height: 114rpx;"></view>
+			<tabbarCP :list="l" :hl="0"/>
+			<view class="total">累计注册人数：123</view>
+			<view class="list">
+				<view class="text">王**</view>
+				<view class="text">136*****3693</view>
+				<view class="text">8019-05-06</view>
+			</view>
+			<view class="list">
+				<view class="text">王**</view>
+				<view class="text">136*****3693</view>
+				<view class="text">8019-05-06</view>
+			</view>
+			<view class="list">
+				<view class="text">王**</view>
+				<view class="text">136*****3693</view>
+				<view class="text">8019-05-06</view>
+			</view>
+			<view class="list">
+				<view class="text">王**</view>
+				<view class="text">136*****3693</view>
+				<view class="text">8019-05-06</view>
+			</view>
 		</block>
 		
 	</view>
@@ -49,7 +72,7 @@
 		},
 		data() {
 			return {
-				
+				l:[{id:0,name:'分享注册'},{id:1,name:'分享产品'},{id:2,name:'分享订单'}]
 			};
 		}
 	}
@@ -147,22 +170,29 @@
 	}
 	}
 	/* #endif */
+	page{
+		background-color: $main-gray-background;
+	}
 	.phone{
-			display: flex;
-			align-items: center;
-			flex-direction: column;
 			width:750rpx;
-			.head{
-				width:100%;
-				text-align: center;
-				    font-size: 40rpx;
-				padding-top: 34rpx;
-				position: relative;
-				.back{
-					width:32rpx;
-					height:32rpx;
-					position:absolute;
-					left:20rpx;
+			.total{
+				font-size: 24rpx;
+				color: $main-hl;
+				width: 750rpx;
+				padding: 30rpx;
+				text-align: right;
+			}
+			.list{
+				width: 750rpx;
+				height: 90rpx;
+				background-color: #fff;
+				padding: 0 30rpx;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				border-bottom: 1px solid $main-gray;
+				.text{
+					font-size: 26rpx;
 				}
 			}
 		}
