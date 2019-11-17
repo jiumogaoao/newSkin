@@ -42,14 +42,17 @@
 				<!-- <image class="icon" :src="footNav=='index'?(imgPath+'tab-home-current.png'):(imgPath+'tab-home.png')"></image> -->
 				<view class="title">首页</view>
 			</view>
+			<view class="line"></view>
 			<view class="item" @click="go('/pages/type/type')">
 				<!-- <image class="icon" :src="footNav=='type'?(imgPath+'tab-cate-current.png'):(imgPath+'tab-cate.png')"></image> -->
 				<view class="title">产品目录</view>
 			</view>
+			<view class="line"></view>
 			<view class="item" @click="go('/pages/join/join')">
 				<!-- <image class="icon" :src="footNav=='shoppingCar'?(imgPath+'tab-cart-current.png'):(imgPath+'tab-cart.png')"></image> -->
 				<view class="title">加入如新</view>
 			</view>
+			<view class="line"></view>
 			<view class="item" @click="go('/pages/mine/mine')">
 				<!-- <image class="icon" :src="footNav=='mine'?(imgPath+'tab-my-current.png'):(imgPath+'tab-my.png')"></image> -->
 				<view class="title">个人中心</view>
@@ -99,7 +102,7 @@
 			left:0;
 			width:100%;
 			background-color: #fff;
-			z-index:3;
+			z-index:10;
 		}
 		.headerCP{
 			@include frame-width;
@@ -196,6 +199,7 @@
 			top:110px;
 			left:0px;
 			display: none;
+			padding: 30px;
 		}
 		.headerCP:hover .nav2ChildFrame{
 			display: block;
@@ -209,6 +213,7 @@
 		}
 		.secondNavName{
 			font-size: 16px;
+			line-height: 60px;
 			color:#333;
 		}
 		.thirdNav{
@@ -247,6 +252,11 @@
 					font-size: 23rpx;
 					color:#999;
 				}
+			}
+			.line{
+				width: 1px;
+				height: 10px;
+				background-color: #999;
 			}
 			.hl{
 				.title{

@@ -116,7 +116,7 @@
 			</view>
 			<view class="buttonFrame">
 				<view class="cancel">取消</view>
-				<view class="submit">确认订单</view>
+				<view class="submit" @click="go('/pages/pay/pay')">确认订单</view>
 			</view>
 		</view>
 		<footerCP/>
@@ -413,7 +413,8 @@
 	.couponFrame{
 		height: auto;
 		    background-color: #f7f7f7;
-		    padding: 20px;
+		    padding: 10px;
+			justify-content: space-between;
 		    display: -webkit-flex;
 		    -webkit-flex-wrap: wrap;
 		    display: flex;

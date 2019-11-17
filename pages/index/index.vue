@@ -5,21 +5,33 @@
 		<view class="content" :style="{width:w+'px',height:h+'px',transform:'scale3d('+s+','+s+',1)'}">
 		<headerCP/>
 		<view class="band"></view>
+		<swiper class="banner" :indicator-dots="true" :autoplay="true" :interval="1000" :duration="500">
+		                        <swiper-item>
+		                            <image src="/static/20190506FreeShippingPCbanner.png"></image>
+		                        </swiper-item>
+		                        <swiper-item>
+		                            <image src="/static/20190506FreeShippingPCbanner.png"></image>
+		                        </swiper-item>
+		                        <swiper-item>
+		                            <image src="/static/20190506FreeShippingPCbanner.png"></image>
+		                        </swiper-item>
+		                    </swiper>
 		<view class="shelf" v-for="(v,i) in shelf" :key="i">
-			<view class="shelfTitleFrame">
-				<image :src="imgPath+'indexLeaf.jpg'" class="shelfTitleBG"></image>
-				<view class="shelfTitle">{{v.title}}</view>
-				<view class="shelfTitleLine"></view>
+			<view class="shelfFrame">
+				<view class="shelfTitleFrame" v-if="v.title">
+					<image :src="imgPath+'indexLeaf.jpg'" class="shelfTitleBG"></image>
+					<view class="shelfTitle">{{v.title}}</view>
+					<view class="shelfTitleLine"></view>
+				</view>
+				<view class="shelfProductList">
+					<productSimpleCP v-for="(n,o) in v.prouduct" @follow="follow(n.pId)" @click="go('/pages/detail/detail?id='+n.pId)" :key="n.pId" :follow="n.follow" :img="n.img" :name="n.name" :price="n.price" :pId="n.pId"/>
+				</view>
 			</view>
-			<view class="shelfProductList">
-				<productSimpleCP v-for="(n,o) in v.prouduct" @follow="follow(n.pId)" @click="go('/pages/detail/detail?id='+n.pId)" :key="n.pId" :follow="n.follow" :img="n.img" :name="n.name" :price="n.price" :pId="n.pId"/>
-			</view>
+			<image class="promo" :src="'/static/pomo'+i+'.jpg'"></image>
 		</view>
 		<view class="joinFrame">
-			<view class="joinCenterFrame">
-				<view class="joinTitle">加入如新</view>
+				<image src="/static/事业机会20190624PC.jpg"></image>
 				<view class="joinButton" @click="go('/pages/join/join')">加入我们</view>
-			</view>
 		</view>
 		<view class="titleFrame">
 			<view class="title">新闻中心</view>
@@ -235,12 +247,34 @@
 		}
 		.band{
 			width:100%;
-			height:200px;
+			height:130px;
+			flex-shrink: 0;
+		}
+		.banner{
+			width:100%;
+			height: 600px;
+			flex-shrink: 0;
+			swiper-item{
+				width:100%;
+				height: 600px;
+			}
+			image{
+				width:100%;
+				height: 600px;
+			}
 		}
 		.shelf{
-			@include frame-width;
-			margin: auto;
-			margin-top: 60px;
+			width: 100%;
+			.shelfFrame{
+				@include frame-width;
+				margin: auto;
+				margin-top: 60px;
+			}
+			.promo{
+				width: 100%;
+				height: 237px;
+				margin-top: 68px;
+			}
 		}
 		.shelfTitleFrame{
 			position:relative;
@@ -277,38 +311,27 @@
 		}
 		.joinFrame{
 			width: 100%;
-			height: 500px;
 			margin-top: 103px;
 			position: relative;
-			background-image: url($oss-destop+'indexBackImg.jpg');
 			margin-bottom: 100px;
+			flex-shrink: 0;
+			image{
+				width: 100%;
+				height:475px
+			}
+			.joinButton{
+				color: #ffffff;
+				background: #008AB0;
+				height: 40px;
+				line-height: 40px;
+				width: 170px;
+				text-align: center;
+				font-size: 12px;
+				margin: auto;
+				margin-top: 45px;
+			}
 		}
-		.joinCenterFrame{
-			@include frame-width;
-			margin: 0 auto;
-			position: relative;
-		}
-		.joinTitle{
-			font-size: 40px;
-			font-weight: 550;
-			letter-spacing: 5px;
-			position: absolute;
-			top: 130px;
-			left: 365px;
-		}
-		.joinButton{
-			position: absolute;
-			color: #ffffff;
-			background: #008AB0;
-			height: 40px;
-			line-height: 40px;
-			width: 170px;
-			display: block;
-			text-align: center;
-			top: 228px;
-			left: 365px;
-			font-size: 12px;
-		}
+		
 		.titleFrame{
 			@include frame-width;
 			margin: auto;

@@ -274,11 +274,13 @@
 		.band{
 		width:100%;
 		height:130px;
+		flex-shrink: 0;
 	}
 	.search{
 		position: relative;
 		width: 760px;
 		margin: 0 auto;
+		margin-top: 40px;
 		margin-bottom: 45px;
 		height:52px;
 		display: flex;

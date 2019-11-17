@@ -41,6 +41,7 @@
 	video {
 		line-height: 1;
 		box-sizing: border-box;
+		flex-shrink: 0;
 	}
 view{
 	font-family:"Lantinghei SC",Verlag,PingFangSC-Light;
@@ -74,4 +75,10 @@ form {
 .navBarText{
 	color: #49b3c9;
 	font-size: 30rpx;
+}
+.destop{
+	background-color: #fff;
+}
+.destop .content{
+	overflow: auto;
 }

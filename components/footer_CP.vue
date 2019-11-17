@@ -69,6 +69,7 @@
 <style lang="scss" scoped>
 	/* #ifdef H5 */
 	.destopCP{
+		width:100%;
 		.footer_CP{
 		    background: url($oss-destop+'footer_bg.png') no-repeat center center;
 		    width: 100%;

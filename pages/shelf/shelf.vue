@@ -98,6 +98,7 @@
 		.band{
 		width:100%;
 		height:130px;
+		flex-shrink: 0;
 		}
 		.shelfTitle{
 			margin-top: 29px;
@@ -115,6 +116,7 @@
 			display: flex;
 			align-items: center;
 			height: 52px;
+			flex-shrink: 0;
 		}
 		.optionTitle{
 			font-weight: 700!important;

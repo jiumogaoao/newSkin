@@ -286,16 +286,20 @@
 <style lang="scss" scoped>
 	/* #ifdef H5 */
 	.destop{
+		background-color: #fff;
 		.content{
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		flex-direction: column;
 		transform-origin: left top;
+		overflow: auto;
+		background-color: #fff;
 		}
 		.empty{
 		width:100%;
 		height:130px;
+		flex-shrink: 0;
 	}
 	.top{
 		@include frame-width;
@@ -487,11 +491,13 @@
 		background-color: #e6e6e6;
 		margin: auto;
 		margin-top: 20px;
+		flex-shrink: 0;
 	}
 	.detailFrame,.notice{
 		@include frame-width;
 		margin: auto;
 		margin-top: 20px;
+		flex-shrink: 0;
 	}
 	.detailFrame{
 	    color: rgb(127, 127, 127);

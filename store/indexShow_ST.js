@@ -18,7 +18,13 @@ export default {
 			  {follow:false,img:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/destop/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg',name:'灵韵冰晶炫感惑唇彩',price:10,pId:'4'}
 			]
 		  },
-		  {title:'彩妆系列',prouduct:[
+		  {prouduct:[
+		  {follow:false,img:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/destop/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg',name:'灵韵冰晶炫感惑唇彩',price:10,pId:'5'},
+		  {follow:false,img:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/destop/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg',name:'灵韵冰晶炫感惑唇彩',price:10,pId:'6'},
+		  {follow:false,img:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/destop/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg',name:'灵韵冰晶炫感惑唇彩',price:10,pId:'7'},
+		  {follow:false,img:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/destop/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg',name:'灵韵冰晶炫感惑唇彩',price:10,pId:'8'}
+		  ]},
+		  {prouduct:[
 		  {follow:false,img:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/destop/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg',name:'灵韵冰晶炫感惑唇彩',price:10,pId:'5'},
 		  {follow:false,img:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/destop/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg',name:'灵韵冰晶炫感惑唇彩',price:10,pId:'6'},
 		  {follow:false,img:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/destop/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg',name:'灵韵冰晶炫感惑唇彩',price:10,pId:'7'},
@@ -29,7 +35,11 @@ export default {
 		  {img:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/destop/BFx00b0ptJs4P2Tw0b1OBB4vWYQqBp.jpg',
 		  name:'如新海外购上线了',
 		  dsc:'勿忘初心，自我革新，砥砺前行',
-		  nId:'1'}
+		  nId:'1'},
+		  {img:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/destop/BFx00b0ptJs4P2Tw0b1OBB4vWYQqBp.jpg',
+		  name:'如新海外购上线了',
+		  dsc:'勿忘初心，自我革新，砥砺前行',
+		  nId:'2'}
 	  ],
 	  story:[
 		  {
