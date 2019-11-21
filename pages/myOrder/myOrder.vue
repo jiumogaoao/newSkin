@@ -67,7 +67,7 @@
 					<text slot="center">我的订单</text>
 					<view class="nuskinIcon navBarIcon" slot="right" @click="go('/pages/search/search')">&#xe72f;</view>
 				</navBarCP>
-				<view style="width:100%;height: 114rpx;"></view>
+				<view style="width:100%;height: 55px;"></view>
 			<tabbarCP class="tabbar" :list="[{id:0,name:'全部'},{id:1,name:'待付款'},{id:2,name:'已支付'},{id:3,name:'待发货'},{id:4,name:'已完成'}]" :hl="0"/>
 			<view class="list" @click="go('/pages/orderDetail/orderDetail')">
 				<view class="top">

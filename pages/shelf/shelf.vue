@@ -43,6 +43,7 @@
 				<view class="nuskinIcon navBarIcon" slot="right" @click="go('/pages/shoppingCar/shoppingCar')">&#xe6d5;</view>
 				<view class="nuskinIcon navBarIcon" slot="right" @click="sideShow()">&#xe656;</view>
 			</navBarCP>
+			<view style="width:100%;height: 55px;"></view>
 			<tabbarCP class="tabbarCP" :list="sort" :hl="hl" @change="change"/>
 			<view class="productList">
 				<productCP v-for="(v,i) in product" 

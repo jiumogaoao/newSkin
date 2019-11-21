@@ -106,7 +106,7 @@
 			</view>
 			<view class="iconFrame">
 				<image class="icon" :src="imgPath+'wx2.png'" @click="go('/pages/logon/authorization')"></image>
-				<image class="icon" :src="imgPath+'wb2.png'" @click="go('/pages/logon/authorization')"></image>
+<!-- 				<image class="icon" :src="imgPath+'wb2.png'" @click="go('/pages/logon/authorization')"></image> -->
 				<image class="icon" :src="imgPath+'qq2.png'" @click="go('/pages/logon/authorization')"></image>
 			</view>
 		</block>
@@ -447,7 +447,7 @@
 							display: flex;
 							justify-content: space-between;
 							align-items: center;
-							margin-top: 50rpx;
+							margin-top: 30rpx;
 							.icon{
 								width:80rpx;
 								height:80rpx;

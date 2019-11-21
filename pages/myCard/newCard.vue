@@ -19,7 +19,8 @@
 				<view class="nuskinIcon navBarBack" slot="left" @click="back">&#xe63d;</view>
 				<text slot="center">绑定银行卡号</text>
 			</navBarCP>
-			<view style="width:100%;height: 134rpx;"></view>
+			<view style="width:100%;height: 55px;"></view>
+			<view style="width:100%;height: 20rpx;"></view>
 			<view class="list">
 				<view class="title">银行卡号：</view><input placeholder="请输入银行卡号"/>
 			</view>

@@ -56,7 +56,7 @@
 					<view class="nuskinIcon navBarBack" slot="left" @click="back">&#xe63d;</view>
 					<text slot="center">售后服务单查询</text>
 				</navBarCP>
-				<view style="width:100%;height: 114rpx;"></view>
+				<view style="width:100%;height: 55px;"></view>
 				<view class="point" @click="go('/pages/afterSale/serveDetail')">
 					<view class="top">服务单号：CBER9999999</view>
 					<view class="center">

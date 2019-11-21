@@ -33,7 +33,7 @@
 				<view class="nuskinIcon navBarBack" slot="left" @click="back">&#xe63d;</view>
 				<text slot="center">我的分享</text>
 			</navBarCP>
-			<view style="width:100%;height: 114rpx;"></view>
+			<view style="width:100%;height: 55px;"></view>
 			<tabbarCP :list="l" :hl="0"/>
 			<view class="total">累计注册人数：123</view>
 			<view class="list">

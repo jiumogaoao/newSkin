@@ -10,7 +10,7 @@
 				<view class="nuskinIcon navBarBack" slot="left" @click="back">&#xe63d;</view>
 				<text slot="center">修改手机号</text>
 			</navBarCP>
-			<view style="width:100%;height: 114rpx;"></view>
+			<view style="width:100%;height: 55px;"></view>
 			<view class="info">修改手机号，您可以通过新手机号进行登录，旧手机号将作废不可以登录</view>
 			<view class="frame">
 				<view class="list">

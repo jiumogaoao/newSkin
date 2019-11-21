@@ -71,6 +71,7 @@
 						
 					</view>
 				</view>
+				<view style="width:100%;height: 55px;"></view>
 				<view class="listFrame">
 					<view class="welcome">欢迎登录，完成时将自动绑定微信 <text class="blue">AKIKEI</text></view>
 					<block v-if="type">

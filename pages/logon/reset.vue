@@ -71,6 +71,7 @@
 						
 					</view>
 				</view>
+				<view style="width:100%;height: 55px;"></view>
 				<block v-if="step">
 					<view class="listFrame">
 						<view class="list">

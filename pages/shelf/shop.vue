@@ -50,6 +50,7 @@
 					<image class="list" :src="imgPath+'menu01.png'" @click="sideShow()"></image>
 				</view>
 			</view>
+			<view style="width:100%;height: 55px;"></view>
 			<image class="bigPic" :src="imgPath+'IpMMLTJCOmjYB0M3Tj5LxtpBTOBb5w.jpg'"/>
 			<view class="dsc">如新新动机是NU SKIN首创二合一肌肤保养系统。一次护理，即享更深层净化及促进肌肤更新双重功效。早晚各一次，让您享受活力满满的面部按摩，日复一日，肌肤由内而外焕发透亮光采。</view>
 			<tabbarCP :list="sort" :hl="hl" @change="change"/>
@@ -205,6 +206,7 @@
 		}
 		.dsc{
 			padding: 30rpx;
+			line-height: 1.5;
 		}
 		.productList{
 			display: flex;

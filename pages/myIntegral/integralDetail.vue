@@ -19,7 +19,8 @@
 				<view class="nuskinIcon navBarBack" slot="left" @click="back">&#xe63d;</view>
 				<text slot="center">积分失效详情</text>
 			</navBarCP>
-			<view style="width:100%;height: 134rpx;"></view>
+			<view style="width:100%;height: 55px;"></view>
+			<view style="width:100%;height: 20rpx;"></view>
 			<view class="list">
 				<view class="title">积分0</view>
 				<view class="dsc">失效时间：2019-11-30</view>

@@ -30,7 +30,7 @@
 				<view class="nuskinIcon navBarBack" slot="left" @click="back">&#xe63d;</view>
 				<text slot="center">优惠券</text>
 			</navBarCP>
-			<view style="width:100%;height: 114rpx;"></view>
+			<view style="width:100%;height: 55px;"></view>
 			<tabbarCP class="tabbarCP" :list="l" :hl="0"></tabbarCP>
 			<couponCP :type="2"/>
 			<couponCP :type="2"/>

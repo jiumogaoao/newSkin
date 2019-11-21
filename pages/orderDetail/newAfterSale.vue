@@ -9,7 +9,7 @@
 				<view class="nuskinIcon navBarBack" slot="left" @click="back">&#xe63d;</view>
 				<text slot="center">售后申请</text>
 			</navBarCP>
-			<view style="width:100%;height: 114rpx;"></view>
+			<view style="width:100%;height: 55px;"></view>
 			<view class="topFrame">
 					<view class="title">售后说明</view>
 					<view class="dsc">亲爱的顾客：如新海外购暂时不支持无理由退货和退换。如果您购买的商品出现漏发、错发和破损的情况，您可以在此提交售后申请，客服同事会与您联系确定具体情况并及时处理，谢谢！</view>

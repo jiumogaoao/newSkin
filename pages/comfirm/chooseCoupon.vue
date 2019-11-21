@@ -13,7 +13,7 @@
 				<text slot="center">优惠券</text>
 				<view class="navBarText" slot="right">使用说明</view>
 			</navBarCP>
-			<view style="width:100%;height: 114rpx;"></view>
+			<view style="width:100%;height: 55px;"></view>
 			<tabbarCP class="tabbarCP" :list="l" :hl="0"></tabbarCP>
 			<couponCP :type="1"/>
 			<couponCP :type="1"/>

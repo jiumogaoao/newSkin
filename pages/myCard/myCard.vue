@@ -24,7 +24,7 @@
 				<view class="nuskinIcon navBarBack" slot="left" @click="back">&#xe63d;</view>
 				<text slot="center">我的银行卡</text>
 			</navBarCP>
-			<view style="width:100%;height: 114rpx;"></view>
+			<view style="width:100%;height: 55px;"></view>
 			<view class="dsc">
 				您还未绑定银行卡，将影响商品分享推广和奖励发放，请尽快绑定您的常用银行卡！
 			</view>

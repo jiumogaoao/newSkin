@@ -13,7 +13,7 @@
 				<text slot="center">订单评价</text>
 				<text slot="right" class="navBarText">提交</text>
 			</navBarCP>
-			<view style="width:100%;height: 114rpx;"></view>
+			<view style="width:100%;height: 55px;"></view>
 			<view class="frame">
 				<view class="title">订单号：CN25369836</view>
 				<view class="dsc">2019-01-03 16:36:36</view>

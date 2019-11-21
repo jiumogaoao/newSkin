@@ -40,7 +40,7 @@
 	.phoneCP{
 		.navBar{
 			width:750rpx;
-			height:113rpx;
+			height:55px;
 			display: flex;
 			justify-content: space-between;
 			align-items: center;

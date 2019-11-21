@@ -128,7 +128,7 @@
 				<view class="nuskinIcon navBarBack" slot="left" @click="back">&#xe63d;</view>
 				<text slot="center">订单确认</text>
 			</navBarCP>
-			<view style="width:100%;height: 114rpx;"></view>
+			<view style="width:100%;height: 55px;"></view>
 			<view class="place" @click="go('/pages/myPlace/myPlace')">
 				<view class="address nuskinIcon">&#xe74a;</view>
 				<view class="center">
@@ -159,9 +159,10 @@
 					<view class="right">
 						<view class="title">丝昂去渍牙膏（暂未非直销产品）</view>
 						<view class="code">产品编号 29003817</view>
+						<view class="code">规格：粉红 100ml*2</view>
 						<view class="bottom">
-							<view class="price">零售顾客价￥60.00</view>
-							<view class="count">X1</view>
+							<view class="price">零售价￥60.00</view>
+							<view class="count">x 1</view>
 						</view>
 					</view>
 					
@@ -184,18 +185,27 @@
 			</view>
 			<view class="totalFrame">
 				<view class="row">
-					<view class="title">产品数量</view>
-					<view class="number">1</view>
+					<view class="title">产品总金额</view>
+					<view class="number">￥1234</view>
+				</view>
+				<view class="row">
+					<view class="title">促销优惠</view>
+					<view class="number red">-￥1234</view>
 				</view>
 				<view class="row">
 					<view class="title">运费</view>
 					<view class="number">￥15.00</view>
 				</view>
 				<view class="row">
-					<view class="title">产品总金额</view>
-					<view class="number">￥60.00</view>
+					<view class="title">税费</view>
+					<view class="number">￥99.00</view>
+				</view>
+				<view class="row">
+					<view class="title">现金优惠</view>
+					<view class="number red">￥-60.00</view>
 				</view>
 			</view>
+			<view style="width:100%;height:100rpx;"></view>
 			<view class="bottomFrame">
 				<view class="title">应付总额（含运费）</view>
 				<view class="price">￥75.00</view>
@@ -550,6 +560,8 @@
 				}
 				.text{
 					margin-left: 20rpx;
+					flex-shrink: 1;
+					line-height: 1.5;
 				}
 			}
 		}
@@ -641,6 +653,7 @@
 				.number{
 					font-size: 18rpx;
 				}
+				.number.red{color:#ff6ab2;}
 			}
 		}
 		.bottomFrame{

@@ -114,6 +114,7 @@
 				<view class="nuskinIcon navBarIcon" slot="right" @click="go('/pages/shoppingCar/shoppingCar')">&#xe6d5;</view>
 				<view class="nuskinIcon navBarIcon" slot="right" @click="sideShow()">&#xe656;</view>
 			</navBarCP>
+			<view style="width:100%;height: 55px;"></view>
 			<view class="top">
 				<swiper class="swiper" :indicator-dots="true" :autoplay="true" :interval="2000" :duration="500">
 				                        <swiper-item>
@@ -173,6 +174,10 @@
 				</view>
 				<view class="nuskinIcon rightDag">&#xe636;</view>
 			</view>
+			<view class="flowFrame">
+				
+			</view>
+			<view class="shopFrame"></view>
 			<view class="info">
 				<view class="titleFrame">
 					<view class="line"></view>
@@ -228,7 +233,8 @@
 			</view>
 			<view class="skuOptionFrame" v-if="skuShow" @click="closeSku">
 				<view class="skuOption">
-					<view class="top">
+					<view class="nuskinIcon close" @click="closeSku">&#xe600;</view>
+					<view class="skuOptiontop">
 						<image :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'" class="pic"></image>
 						<view class="right">
 							<view class="text">灵韵润泽唇膏-熏莎红</view>
@@ -586,7 +592,6 @@
 			.title{
 				font-size: 31rpx;
 				padding: 0 30rpx;
-				text-align: center;
 				margin-top: 32rpx;
 				font-weight: bolder;
 			}
@@ -594,7 +599,6 @@
 				margin-top: 30rpx;
 				font-size: 24px;
 				padding: 0 30rpx;
-				text-align: center;
 				color: $main-hl;
 			}
 		}
@@ -771,7 +775,12 @@
 				width:100%;
 				padding: 96rpx 38rpx 53rpx 38rpx;
 				background-color: #fff;
-				.top{
+				.close{
+					position: absolute;
+					top:30rpx;
+					right:30rpx;
+				}
+				.skuOptiontop{
 					display: flex;
 					margin-bottom: 46rpx;
 					.pic{
@@ -824,7 +833,7 @@
 						margin-left: 24rpx;
 						display: flex;
 						align-items: center;
-						border: 1px solid $main-gray-deep;
+						border: 1px solid $main-gray;
 						border-radius: 10rpx;
 						width: 175rpx;
 						height:50rpx;
@@ -839,9 +848,10 @@
 							color: $main-gray-deep;
 						}
 						.input{
-							border-left: 1px solid $main-gray-deep;
-							border-right: 1px solid $main-gray-deep;
+							border-left: 1px solid $main-gray;
+							border-right: 1px solid $main-gray;
 							text-align: center;
+							flex-shrink: 1;
 						}
 					}
 				}

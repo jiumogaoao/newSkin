@@ -71,8 +71,9 @@
 						登录
 					</view>
 				</view>
+				<view style="width:100%;height: 55px;"></view>
 				<view class="listFrame">
-					<view class="referrer" v-if="referrer">您的推荐人是{{referrer}}（{{referrerPhone}}）</view>
+					<!-- <view class="referrer" v-if="referrer">您的推荐人是{{referrer}}（{{referrerPhone}}）</view> -->
 					<view class="list">
 						<input class="input" placeholder="请输入手机号码"/>
 					</view>
@@ -94,7 +95,7 @@
 						<image class="eye" :src="imgPath+'yanjing.png'"></image>
 					</view>
 				</view>
-				<view class="dsc">密码长度须为6-20非纯数字，可包含字母、数字或下划线('_')中的至少2个类别</view>
+				<!-- <view class="dsc">密码长度须为6-20非纯数字，可包含字母、数字或下划线('_')中的至少2个类别</view> -->
 				<view class="ruleFrame">
 					<chechBoxCP/>
 					<view class="text">已阅读并同意</view>

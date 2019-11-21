@@ -71,13 +71,13 @@
 							<image class="icon" :src="imgPath+'wodezhanghao.png'"></image>
 							<view class="name">我的账号</view>
 						</view>
-						<view class="item" @click="go('/pages/myIntegral/myIntegral')">
-							<image class="icon" :src="imgPath+'wodejifen.png'"></image>
-							<view class="name">我的积分</view>
-						</view>
 						<view class="item" @click="go('/pages/myFollow/myFollow')">
 							<image class="icon" :src="imgPath+'wodeshoucang.png'"></image>
 							<view class="name">我的收藏</view>
+						</view>
+						<view class="item" @click="go('/pages/myIntegral/myIntegral')">
+							<image class="icon" :src="imgPath+'wodejifen.png'"></image>
+							<view class="name">我的积分</view>
 						</view>
 					</view>
 				</view>
@@ -90,10 +90,6 @@
 							<image class="icon" :src="imgPath+'wodezhanghao.png'"></image>
 							<view class="name">我的银行卡</view>
 						</view>
-						<view class="item" @click="go('/pages/myLevel/myLevel')">
-							<image class="icon" :src="imgPath+'wodejifen.png'"></image>
-							<view class="name">我的身份</view>
-						</view>
 						<view class="item" @click="go('/pages/myShare/myShare')">
 							<image class="icon" :src="imgPath+'wodeshoucang.png'"></image>
 							<view class="name">我的分享</view>
@@ -101,6 +97,10 @@
 						<view class="item" @click="go('/pages/myIncome/myIncome')">
 							<image class="icon" :src="imgPath+'wodeshoucang.png'"></image>
 							<view class="name">我的收入</view>
+						</view>
+						<view class="item" @click="go('/pages/myLevel/myLevel')">
+							<image class="icon" :src="imgPath+'wodejifen.png'"></image>
+							<view class="name">我的身份</view>
 						</view>
 					</view>
 				</view>

@@ -26,7 +26,7 @@
 				<view class="nuskinIcon navBarBack" slot="left" @click="back">&#xe63d;</view>
 				<text slot="center">我的二维码</text>
 			</navBarCP>
-			<view style="width:100%;height: 114rpx;"></view>
+			<view style="width:100%;height: 55px;"></view>
 			<view class="frame">
 				<view class="title">
 					此二维码为您的身份凭证，可作为分享他人注册和身份验证使用

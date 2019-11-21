@@ -12,11 +12,15 @@
 				<view class="nuskinIcon navBarBack" slot="left" @click="back">&#xe63d;</view>
 				<text slot="center">新建收货地址</text>
 			</navBarCP>
-			<view style="width:100%;height: 114rpx;"></view>
+			<view style="width:100%;height: 55px;"></view>
 			<view class="list">
 				<view class="point">
-					<view class="title">收货人：</view>
-					<input placeholder="请填写收货人"/>
+					<view class="title">收货人姓名：</view>
+					<input placeholder="请填写收货人姓名"/>
+				</view>
+				<view class="point">
+					<view class="title">身份证号码：</view>
+					<input placeholder="请填写身份证号码"/>
 				</view>
 				<view class="point">
 					<view class="title">手机号码：</view>

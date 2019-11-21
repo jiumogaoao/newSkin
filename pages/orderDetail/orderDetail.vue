@@ -19,7 +19,12 @@
 				<view class="nuskinIcon navBarBack" slot="left" @click="back">&#xe63d;</view>
 				<text slot="center">订单详情</text>
 			</navBarCP>
-			<view style="width:100%;height: 114rpx;"></view>
+			<view style="width:100%;height: 55px;"></view>
+			
+			<view class="topFrame">
+				<view class="state">已取消</view>
+				<view class="type">线上购物</view>
+			</view>
 			<view class="logisticsFrame" @click="go('/pages/orderDetail/logistics')">
 				<view class="left">
 					<view class="nuskinIcon">&#xe8ee;</view>
@@ -30,10 +35,6 @@
 					</view>
 				</view>
 				<view class="nuskinIcon">&#xe636;</view>
-			</view>
-			<view class="topFrame">
-				<view class="state">已取消</view>
-				<view class="type">线上购物</view>
 			</view>
 			<view class="placeFrame">
 				<view class="nuskinIcon">&#xe74a;</view>

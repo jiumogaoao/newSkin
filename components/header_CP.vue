@@ -45,17 +45,17 @@
 			<view class="line"></view>
 			<view class="item" @click="go('/pages/type/type')">
 				<!-- <image class="icon" :src="footNav=='type'?(imgPath+'tab-cate-current.png'):(imgPath+'tab-cate.png')"></image> -->
-				<view class="title">产品目录</view>
+				<view class="title">分类</view>
 			</view>
 			<view class="line"></view>
-			<view class="item" @click="go('/pages/join/join')">
+			<view class="item" @click="go('/pages/shoppingCar/shoppingCar')">
 				<!-- <image class="icon" :src="footNav=='shoppingCar'?(imgPath+'tab-cart-current.png'):(imgPath+'tab-cart.png')"></image> -->
-				<view class="title">加入如新</view>
+				<view class="title">购物车</view>
 			</view>
 			<view class="line"></view>
 			<view class="item" @click="go('/pages/mine/mine')">
 				<!-- <image class="icon" :src="footNav=='mine'?(imgPath+'tab-my-current.png'):(imgPath+'tab-my.png')"></image> -->
-				<view class="title">个人中心</view>
+				<view class="title">会员中心</view>
 			</view>
 		</view>
 	</view>

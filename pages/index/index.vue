@@ -84,6 +84,7 @@
 					<image class="navList" :src="imgPath+'menu01.png'" @click="sideShow()"></image>
 				</view>
 			</view> -->
+			<view style="width:100%;height:55px;"></view>
 			<view class="banner">
 				<swiper class="swiper" :indicator-dots="true" :autoplay="true" :interval="2000" :duration="500">
 				                        <swiper-item v-for="(v,i) in banner" @click="go('/pages/detail/detail?id='+v.id)" :key="i">
@@ -114,10 +115,10 @@
 				</view>
 			</view>
 			<block v-for="(v,i) in shelf" :key="i">
-				<view class="bigTitle">
+<!-- 				<view class="bigTitle">
 					热销排行
 					<view class="line"></view>
-				</view>
+				</view> -->
 
 				<view class="productList">
 					<productSimpleCP style="margin-top:30rpx;" v-for="(n,o) in v.prouduct"  @click="go('/pages/detail/detail?id='+n.pId)" :key="n.pId" :follow="n.follow" :img="n.img" :name="n.name" :price="n.price" :pId="n.pId"/>
@@ -125,7 +126,7 @@
 				<image class="ad" :src="imgPath+'ad1.png'"/>
 			</block>
 			<view class="smallTitle">新闻中心<view class="line"></view></view>
-			<view class="news" v-for="(v,i) in news" :key="v.nId" @click="go('/pages/newDetail/newDetail')">
+			<view class="news" v-for="(v,i) in news" :key="v.nId" @click="go('/pages/newDetail/newDetail')" v-if="i == 0">
 				<image class="img" :src="v.img"></image>
 				<view class="title">{{v.name}}</view>
 				<view class="dsc">{{v.dsc}}</view>
@@ -436,58 +437,10 @@
 	}
 	/* #endif */
 	.phone{
-		.navBar{
-			width:750rpx;
-			height:113rpx;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			position: fixed;
-			top:0;
-			left:0;
-			background-color: #fff;
-			z-index: 3;
-			.left{
-				width:200rpx;
-				display: flex;
-				align-items: center;
-				.notice{
-					width:42rpx;
-					height:42rpx;
-					margin-left: 20rpx;
-				}
-			}
-			.center{
-				flex-grow: 1;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				.logo{
-					width:58rpx;
-					height:58rpx;
-				}
-			}
-			.right{
-				display: flex;
-				align-items: center;
-				width:200rpx;
-				justify-content: flex-end;
-				.shoppingCar{
-					width:42rpx;
-					height:42rpx;
-					margin-right: 20rpx;
-				}
-				.navList{
-					width:42rpx;
-					height:42rpx;
-					margin-right: 20rpx;
-				}
-			}
-		}
+
 		.banner{
 			width:750rpx;
 			height:600rpx;
-			padding-top: 62rpx;
 			.swiper{
 				width:100%;
 				height:100%;
@@ -509,8 +462,8 @@
 				justify-content: center;
 				align-items: center;
 				.icon{
-					width:120rpx;
-					height:120rpx;
+					width:60rpx;
+					height:60rpx;
 				}
 				.title{
 					width:122rpx;

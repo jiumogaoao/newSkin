@@ -31,7 +31,7 @@
 				<view class="nuskinIcon navBarBack" slot="left" @click="back">&#xe63d;</view>
 				<text slot="center">我的身份</text>
 			</navBarCP>
-			<view style="width:100%;height: 114rpx;"></view>
+			<view style="width:100%;height: 55px;"></view>
 			<view class="top">
 				<view class="title">我的身份</view>
 				<view class="dsc">零售顾客</view>

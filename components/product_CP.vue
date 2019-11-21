@@ -16,6 +16,10 @@
 			<image :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'" class="img"></image>
 			<view class="brand">王牌ageLOC</view>
 			<view class="title">商品标题</view>
+			<view class="saleFrame">
+				<view class="sale">包邮</view>
+				<view class="sale">促销</view>
+			</view>
 			<view class="taxes">预计税费：￥100</view>
 			<view class="price">零售价：<block style="font-size: 20px;">￥100</block></view>
 			<view :class="{follow:1,nuskinIcon:1,hl:(follow?1:0)}" @click="f($event)">&#xe64e;</view>
@@ -116,7 +120,7 @@
 	.phoneCP{
 		.productCP{
 			width: 340rpx;
-			    height: 570rpx;
+			    height: 620rpx;
 			    border: 1px solid #ddd;
 			    position: relative;
 			    background-color: #fff;
@@ -125,37 +129,54 @@
 		}
 		.img{
 			width:100%;
-			height:338rpx;
+			height:328rpx;
 		}
 		.brand{
 			display: block;
 			padding: 0 18rpx;
 			color: $main-gray-deep;
-			font-size: 16rpx;
-			text-align: center;
-			margin-top: 23rpx;
+			font-size: 22rpx;
+			// text-align: center;
+			margin-top: 25rpx;
 		}
 		.title{
 			    padding: 0 18rpx;
 			    margin-top: 22rpx;
 			    font-size: 26rpx;
-			    color: $main-gray-deep;
-			    line-height: 25rpx;
-				text-align: center;
-			    height: 50rpx;
+			    line-height: 1.5;
+				// text-align: center;
+			    height: 70rpx;
 			    overflow: hidden;
 		}
-		.taxes{
-			font-size: 18rpx;
+		.saleFrame{
 			padding: 0 18rpx;
-			margin-top: 20rpx;
+			height: 30rpx;
+			display: flex;
+			.sale{
+				width:92rpx;
+				height: 30rpx;
+				border: 1px solid #ff69b0;
+				color: #ff69b0;
+				font-size: 21rpx;
+				text-align: center;
+				line-height: 24rpx;
+				border-radius: 30rpx;
+				margin-right: 20rpx;
+			}
+		}
+		.taxes{
+			font-size: 20rpx;
+			padding: 0 18rpx;
+			margin-top: 16rpx;
+			color: $main-gray-deep;
 		}
 		.price{
-			font-size: 34rpx;
+			font-size: 24rpx;
 			    color: $main-hl;
-			    font-size: 18rpx;
+			    font-size: 34rpx;
 			    padding: 0 18rpx;
-				margin-top: 20rpx;
+				margin-top: 12rpx;
+				font-weight: bolder;
 			}
 		.follow{
 			color: $main-gray;

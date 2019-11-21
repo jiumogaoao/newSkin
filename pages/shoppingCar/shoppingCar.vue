@@ -145,7 +145,7 @@
 				<view class="navBarText" slot="right">编辑</view>
 				<view class="nuskinIcon navBarIcon" slot="right" @click="sideShow()">&#xe656;</view>
 			</navBarCP>
-			<view style="width: 750rpx;height:114rpx;"></view>
+			<view style="width: 750rpx;height:55px;"></view>
 			<view class="list" v-for="(v,i) in warehouse" :key="v.id">
 				<view class="top">
 					<view class="warehouse">
@@ -465,6 +465,7 @@
 								    text-align: center;
 								    padding: 0;
 								    font-size: 30rpx;
+									flex-shrink: 1;
 							}
 						}
 					}
@@ -473,29 +474,29 @@
 			.tapBar{
 				margin-top: 40rpx;
 				width:750rpx;
-				height: 114px;
+				height: 114rpx;
 				    background: #fff;
 				display: flex;
 				align-items:flex-end;
 				.tap{
 					width:50%;
-					height: 81px;
-					line-height: 81px;
+					height: 81rpx;
+					line-height: 81rpx;
 					text-align: center;
-					font-size: 28px;
+					font-size: 28rpx;
 					color: $main-gray-deep;
 					position: relative;
 					.line{
 						width:126rpx;
 						height:5rpx;
-						background-color: #333;
+						background-color: $main-hl;
 						position:absolute;
-						left:140rpx;
+						left:125rpx;
 						bottom:10rpx;
 					}
 				}
 				.hl{
-					color: #333;
+					color: $main-hl;
 				}
 			}
 			.productList{

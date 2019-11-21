@@ -17,7 +17,7 @@
 				<view class="nuskinIcon navBarBack" slot="left" @click="back">&#xe63d;</view>
 				<text slot="center">帮助中心</text>
 			</navBarCP>
-			<view style="width:100%;height: 114rpx;"></view>
+			<view style="width:100%;height: 55px;"></view>
 			<view class="frame">
 				<view class="list" @click="go('/pages/help/userRule')">
 					<view class="title">如新用户注册协议</view>

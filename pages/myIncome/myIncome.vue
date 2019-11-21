@@ -43,7 +43,7 @@
 				<text slot="center">我的收入</text>
 				<view class="navBarText" slot="right">说明</view>
 			</navBarCP>
-			<view style="width:100%;height: 114rpx;"></view>
+			<view style="width:100%;height: 55px;"></view>
 			<view class="date">2019年5月</view>
 			<view class="point">
 				<view class="title">报筹：</view>
