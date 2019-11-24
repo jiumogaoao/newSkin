@@ -2,16 +2,18 @@
 	<view :class="destop?'destop':'phone'">
 		<block if="!destop">
 			<view class="top">
-				<view class="header">
-					<image class="notice" :src="imgPath+'xinxi2.0-hl.png'" @click="go('/pages/notice/notice')"></image>
-					<view class="right">
-						<image class="shoppingCar" :src="imgPath+'tab-cart-hl.png'" @click="go('/pages/shoppingCar/shoppingCar')"></image>
-						<image class="option" :src="imgPath+'menu01-hl.png'"></image>
-					</view>
-				</view>
 				<view class="infoFrame">
-					<image class="avatar" :src="imgPath+'missing-face.png'"></image>
-					<view class="logon" @click="go('/pages/logon/logon')">注册登录</view>
+					<view class="header">
+						<image class="notice" :src="imgPath+'xinxi2.0-hl.png'" @click="go('/pages/notice/notice')"></image>
+						<view class="right">
+							<image class="shoppingCar" :src="imgPath+'tab-cart-hl.png'" @click="go('/pages/shoppingCar/shoppingCar')"></image>
+							<image class="option" :src="imgPath+'menu01-hl.png'"></image>
+						</view>
+					</view>
+					<view class="infoMain">
+						<image class="avatar" :src="imgPath+'missing-face.png'"></image>
+						<view class="logon" @click="go('/pages/logon/logon')">注册登录</view>
+					</view>
 				</view>
 			</view>
 			<view class="bottom">
@@ -132,44 +134,50 @@
 		.top{
 			width:750rpx;
 			background-color: #0391b7;
-			.header{
-				width:750rpx;
-				height:50rpx;
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				.notice{
-					width:24rpx;
-					height:24rpx;
-					margin-left: 20rpx;
-				}
-				.right{
-					display: flex;
-					align-items: center;
-					.shoppingCar,.option{
-						width:20rpx;
-						height:20rpx;
-						margin-right: 20rpx;
-					}
-				}
-			}
 			.infoFrame{
 				width:750rpx;
 				height:430rpx;
 				background: url($oss-phone+'user_bg.png') 50%;
 				display: flex;
-				align-items: center;
-				.avatar{
-					    width: 120rpx;
-					    height: 120rpx;
-					    border: 5px solid #fff;
-					    border-radius: 50%;
-					    margin-left: 30rpx;
+				flex-direction: column;
+				.header{
+					width:750rpx;
+					height:60rpx;
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					flex-shrink: 0;
+					padding: 0 30rpx;
+					.notice{
+						width:45rpx;
+						height:45rpx;
+					}
+					.right{
+						display: flex;
+						align-items: center;
+						.shoppingCar,.option{
+							width:45rpx;
+							height:45rpx;
+							margin-left: 20rpx;
+						}
+					}
 				}
-				.logon{
-					font-size: 38rpx;
-					color: #fff;
-					margin-left: 30rpx;
+				.infoMain{
+					flex-grow: 1;
+					display: flex;
+					align-items: center;
+					.avatar{
+						    width: 120rpx;
+						    height: 120rpx;
+						    border: 5px solid #fff;
+						    border-radius: 50%;
+						    margin-left: 30rpx;
+					}
+					.logon{
+						font-size: 38rpx;
+						color: #fff;
+						margin-left: 30rpx;
+					}
 				}
 			}
 		}

@@ -136,7 +136,7 @@
 				<view class="price">零售价：<block class="block">￥100</block></view>
 				<view :class="{nuskinIcon:1,follow:1,hl:(follow?1:0)}">&#xe64e;</view>
 			</view>
-			<view class="middle">
+<!-- 			<view class="middle">
 				<view class="row">
 					<view class="title">税费</view>
 					<view class="text">￥46.41</view>
@@ -220,7 +220,29 @@
 					<view class="title">美国Nuskin专卖店</view>
 				</view>
 				<view class="nuskinIcon rightDag">&#xe636;</view>
+			</view> -->
+			<view class="integralFrame">
+				<view class="integralMallList">
+					<radioCP/>
+					<view class="text">纯积分：</view>
+					<view class="number">3600</view>
+				</view>
+				<view class="integralMallList">
+					<radioCP/>
+					<view class="text">纯现金：</view>
+					<view class="number">￥200.00</view>
+				</view>
+				<view class="integralMallList">
+					<radioCP/>
+					<view class="text">现+积：</view>
+					<view class="number">￥200.00+1500</view>
+				</view>
+				<view class="placeFrame">
+					<view class="dsc">送至</view>
+					<view class="title">广东，广州</view>
+				</view>
 			</view>
+			
 			<view class="info">
 				<view class="titleFrame">
 					<view class="line"></view>
@@ -314,8 +336,10 @@
 
 <script>
 	import allPage from "@/mixin/allPage"
+	import radioCP from "@/components/radio_CP"
 	export default {
 		mixins: [allPage],
+		components:{radioCP},
 		data() {
 			return {
 				skuShow:false
@@ -679,6 +703,41 @@
 							}
 						}
 					}
+				}
+			}
+		}
+		.integralFrame{
+			margin-top: 20rpx;
+			background-color: #fff;
+			padding: 30rpx;
+			.integralMallList{
+				display: flex;
+				align-items: center;
+				margin-bottom: 20rpx;
+				.text{
+					font-size: 24rpx;
+					margin-left: 10rpx;
+				}
+				.number{
+					font-size: 24rpx;
+					color: $main-hl;
+					// margin-left: 10rpx;
+				}
+			}
+			.placeFrame{
+				width:100%;
+				height: 110rpx;
+				border-bottom: 1px solid $main-gray;
+				border-top: 1px solid $main-gray;
+				display: flex;
+				align-items: center;
+				.dsc{
+					font-size: 24rpx;
+					color: $main-gray-deep;
+				}
+				.title{
+					font-size: 26rpx;
+					margin-left: 50rpx;
 				}
 			}
 		}

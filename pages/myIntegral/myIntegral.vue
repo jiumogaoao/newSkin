@@ -48,13 +48,13 @@
 				<view class="nuskinIcon navBarBack" slot="left" @click="back">&#xe63d;</view>
 				<text slot="center">服务单详情</text>
 			</navBarCP>
-			<view style="width:100%;height: 55rpx;"></view>
+			<view style="width:100%;height: 55px;"></view>
 			<view class="top">
 				<view class="left">
 					<view class="title">999</view>
 					<view class="dsc">积分余额</view>
 				</view>
-				<view class="button">积分购物</view>
+				<view class="button" @click="go('/pages/shelf/integralMall')">积分购物</view>
 			</view>
 			<view class="center">
 				<view class="left">
@@ -241,7 +241,7 @@
 				width:750rpx;
 				height:200rpx;
 				background-image: linear-gradient(to top right, #23a7da, #34b5b9);
-				padding: 30rpx;
+				padding:30rpx;
 				display: flex;
 				justify-content: space-between;
 				align-items: center;

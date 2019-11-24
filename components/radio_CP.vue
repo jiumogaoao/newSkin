@@ -32,7 +32,7 @@
 	/* #endif */
 	.phoneCP{
 		.radioCP{
-			font-size: 50rpx;
+			font-size: 30rpx;
 			color: $main-gray;
 		}
 		.radioCP.checked{

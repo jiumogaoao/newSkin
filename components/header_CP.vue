@@ -8,31 +8,58 @@
 					<view class="top">
 						<view class="topLeft">
 							<view class="place"><image :src="imgPath+'indexLandmarkIcon.png'" id="place"></image>{{place}}</view>
-							<view class="nav1" v-for="(v,i) in topNav" :key="'nav1'+i" @click="go(v.url)">{{v.nav}}</view>
+							<view class="nav1" v-for="(v,i) in head_link" :key="'nav1'+i" @click="go(v.link)">{{v.nav}}</view>
 						</view>
 						<view class="topRight">
-							<image :src="imgPath+'indexSearchIcon.png'" id="search"></image>
+							<image :src="imgPath+'indexSearchIcon.png'" id="search" @click="go('/pages/search/search')"></image>
 							<image :src="imgPath+'indexUserIcon.png'" id="user" @click="go('/pages/myOrder/myOrder')"></image>
-							<div class="goShoppingCar" @click="go('/pages/shoppingCar/shoppingCar')">购物车</div>
+							<div class="goShoppingCar">购物车
+								<view class="shoppingCarList">
+									<view class="carTop">
+										<view class="bigTitle">我的购物车</view>
+										<view class="count">数量</view>
+										<view class="price">零售价格</view>
+									</view>
+									<view class="carList">
+										<view class="carPoint">
+											<view class="bigTitle">
+												<image src="/static/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg"></image>
+												<view class="title">活水深层润泽面膜</view>
+											</view>
+											<view class="count">1</view>
+											<view class="price">370</view>
+										</view>
+										<view class="carPoint">
+											<view class="bigTitle">
+												<image src="/static/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg"></image>
+												<view class="title">活水深层润泽面膜</view>
+											</view>
+											<view class="count">1</view>
+											<view class="price">370</view>
+										</view>
+									</view>
+									<view class="carBottom">
+										<view class="bigTitle">共2件商品</view>
+										<view class="price">合计 ￥610</view>
+									</view>
+									<view class="carGo" @click="go('/pages/shoppingCar/shoppingCar')"><text class="nuskinIcon">&#xe6d5;</text>查看购物车</view>
+								</view>
+							</div>
 						</view>
 					</view>
 					<view class="bottom">
-						<view class="nav2" @click="go('/pages/index/index')">首页</view>
-						<view class="nav2" v-for="(v,i) in secondNav" @mouseover="changeNavHl(i)">{{v.nav}}</view>
-						<view class="nav2" @click="go('/pages/news/news')">新闻中心</view>
-						<view class="nav2" @click="go('/pages/story/story')">品牌故事</view>
-					</view>
-				</view>
-				<view class="nav2ChildFrame" v-if="navHl || navHl===0">
-					<view class="nav2Child" v-if="secondNav[navHl].child">
-						<view class="secondNav" v-for="(v,i) in secondNav[navHl].child">
-							<view class="secondNavName">{{v.nav}}</view>
-							<view class="thirdNav" v-if="v.child" v-for="(n,o) in v.child" @click="go('/pages/shelf/shelf?id='+n.id)">{{n.nav}}</view>
+						<view class="nav2" v-for="(v,i) in navigation" @mouseover="changeNavHl(i)" :key="'nav2'+i" @click="navClick(v.link)">{{v.nav}}</view>
+						<view class="nav2ChildFrame" v-if="navHl || navHl===0">
+							<view class="nav2Child" v-if="navigation[navHl].child">
+								<view class="secondNav" v-for="(v,i) in navigation[navHl].child" :key="'nav3'+i">
+									<view class="secondNavName" @click="navClick(v.link)">{{v.nav}}</view>
+									<view class="thirdNav" v-if="v.child" v-for="(n,o) in v.child" @click="go(n.link)" :key="'nav4'+o">{{n.nav}}</view>
+								</view>
+							</view>
+							<view class="showAll" @click="go('/pages/shelf/shelf')">查看所有商品></view>
 						</view>
 					</view>
-					<view class="showAll" @click="go('/pages/shelf/shelf')">查看所有商品></view>
 				</view>
-				
 			</view>
 			
 		</view>
@@ -74,6 +101,11 @@
 		methods:{
 			changeNavHl(index){
 				this.navHl = index;
+			},
+			navClick(link){
+				if(link){
+					this.go(link)
+				}
 			}
 		},
 		computed:{
@@ -88,6 +120,12 @@
 			},
 			footNav(){
 				return this.$store.state.rootST.footNav
+			},
+			head_link(){
+				return this.$store.state.indexST.head_link
+			},
+			navigation(){
+				return this.$store.state.indexST.navigation
 			}
 		}
 	}
@@ -180,6 +218,101 @@
 			font-size: 12px;
 			text-align: center;
 			line-height: 32px;
+			position: relative;
+			.shoppingCarList{
+				position: absolute;
+				top:31px;
+				right: 0;
+				width: 636px;
+				padding: 37px;
+				background-color: #fff;
+				z-index: 3;
+				display: none;
+				.carTop{
+					width: 100%;
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+					.bigTitle{
+						font-size: 18px;
+						width:300px;
+						text-align: left;
+					}
+					.count{
+						width:30px;
+						font-size: 13px;
+					}
+					.price{
+						flex-grow: 1;
+						font-size: 13px;
+					}
+				}
+				.carList{
+					margin-top: 14px;
+					margin-bottom: 14px;
+					width: 100%;
+					border-bottom: 1px solid $main-gray;
+					border-top: 1px solid $main-gray;
+					padding-bottom: 30px;
+					.carPoint{
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						margin-top: 30px;
+						.bigTitle{
+							width:300px;
+							display: flex;
+							align-items: center;
+							image{
+								width:78px;
+								height:78px;
+								border: 1px solid $main-gray;
+							}
+							.title{
+								font-size: 14px;
+								margin-left: 20px;
+							}
+						}
+						.count{
+							width:30px;
+							font-size: 13px;
+						}
+						.price{
+							flex-grow: 1;
+							font-size: 13px;
+						}
+					}
+				}
+				.carBottom{
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					margin-top: 20px;
+					.price{
+						font-size: 15px;
+					}
+					.bigTitle{
+						font-size: 16px;
+					}
+				}
+				.carGo{
+					width: 146px;
+					height: 35px;
+					background-color: $main-hl;
+					color: #fff;
+					text-align: center;
+					line-height: 35px;
+					font-size: 12px;
+					margin-top: 26px;
+					margin-left: 416px;
+					.nuskinIcon{
+						font-size: 18px;
+					}
+				}
+			}
+		}
+		.goShoppingCar:hover .shoppingCarList{
+			display: block;
 		}
 		.bottom{
 			display: flex;
@@ -193,15 +326,15 @@
 			color:#212529;
 		}
 		.nav2ChildFrame{
-			width:100%;
+			@include frame-width;
 			background-color: #fff;
 			position: absolute;
-			top:110px;
-			left:0px;
+			top:12px;
+			left:-210px;
 			display: none;
 			padding: 30px;
 		}
-		.headerCP:hover .nav2ChildFrame{
+		.bottom:hover .nav2ChildFrame{
 			display: block;
 		}
 		.nav2Child{

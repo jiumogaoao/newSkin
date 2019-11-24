@@ -343,7 +343,25 @@
             	"navigationStyle": "custom",
             	"navigationBarTitleText": "如新"
             }
-        }
+        },{
+            "path" : "pages/shelf/integralMall",
+            "style" : {
+            	"navigationStyle": "custom",
+            	"navigationBarTitleText": "如新"
+            }
+        },{
+			"path" : "pages/detail/detailForIntegral",
+			"style" : {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "如新"
+			}
+		},{
+			"path" : "pages/myNotice/noticeDetail",
+			"style" : {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "如新"
+			}
+		}
     ],
     "subPackages": [],
     "globalStyle": {

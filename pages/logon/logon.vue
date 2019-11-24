@@ -18,10 +18,10 @@
 					</view>
 					<view class="frame" v-if="logOnType==0">
 						<view class="row">
-							<image class="icon" :src="imgPath+'login-form-mine.png'"></image><input class="input"/>
+							<image class="icon" :src="imgPath+'login-form-mine.png'"></image><input class="input" v-model="userName"/>
 						</view>
 						<view class="row">
-							<input class="input"/><image class="picCode" :src="imgPath+'verificationCode.png'"></image><view class="blue">换一张</view>
+							<input class="input" v-model="picCode"/><image class="picCode" :src="imgPath+'verificationCode.png'"></image><view class="blue">换一张</view>
 						</view>
 						<view class="row">
 							<image class="icon" :src="imgPath+'login-form-lock.png'"></image><input class="input"/><view class="getPhoneCode">获取验证码</view>
@@ -29,13 +29,13 @@
 					</view>
 					<view class="frame" v-else>
 						<view class="row">
-							<image class="icon" :src="imgPath+'login-form-mine.png'"></image><input class="input"/>
+							<image class="icon" :src="imgPath+'login-form-mine.png'"></image><input class="input" v-model="userName"/>
 						</view>
 						<view class="row">
-							<image class="icon" :src="imgPath+'login-form-lock.png'"></image><input class="input"/>
+							<image class="icon" :src="imgPath+'login-form-lock.png'"></image><input class="input" v-model="password"/>
 						</view>
 						<view class="row">
-							<input class="input"/><image class="picCode" :src="imgPath+'verificationCode.png'"></image><view class="blue">换一张</view>
+							<input class="input"/><image class="picCode" :src="imgPath+'verificationCode.png'" v-model="picCode"></image><view class="blue">换一张</view>
 						</view>
 					</view>
 					<view class="forget">忘记密码</view>
@@ -87,10 +87,10 @@
 			</view>
 			<view class="listFrame" v-else>
 				<view class="list">
-					<input class="input" placeholder="请输入手机号码/账号" placeholder-class="placeholder"/>
+					<input class="input" placeholder="请输入手机号码/账号" placeholder-class="placeholder" v-model="userName"/>
 				</view>
 				<view class="list">
-					<input class="input" placeholder="请输入密码" placeholder-class="placeholder"/>
+					<input class="input" placeholder="请输入密码" placeholder-class="placeholder" v-model="password"/>
 					<image class="eye" :src="imgPath+'yanjing.png'"></image>
 				</view>
 			</view>
@@ -118,7 +118,10 @@
 		mixins: [allPage],
 		data() {
 					return {
-						logOnType:0
+						logOnType:0,
+						userName:'',
+						password:'',
+						picCode:''
 					};
 				},
 		methods:{
@@ -126,8 +129,25 @@
 				this.logOnType = type
 			},
 			logon(){
-				this.$store.dispatch('userST/logon', {})
-				uni.navigateBack()
+				let _this=this;
+				if(this.logOnType==1){
+					this.$store.dispatch('rootST/logon', {
+						logOnType:_this.logOnType,
+						userName:_this.userName,
+						password:_this.password,
+						callback(res,err){
+							if(res){
+								_this.$store.dispatch('userST/logon', {})
+								uni.navigateBack()
+							}else{
+								alert(err)
+							}
+						}
+					})
+				}else{
+					this.$store.dispatch('userST/logon', {})
+					uni.navigateBack()
+				}
 			}
 		}
 			}
@@ -195,7 +215,7 @@
 							}
 						}
 						.frame{
-							width: 340px;
+							width: 400px;
 							padding: 0 30px;
 							border: 1px solid #dee2e6;
 							padding-bottom: 20px;

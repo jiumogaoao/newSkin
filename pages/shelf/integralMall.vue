@@ -30,7 +30,8 @@
 			:taxes="v.taxes" 
 			:price="v.price" 
 			:id="v.pId"
-			@click="go('/pages/detail/detail?id='+v.pId)"/>
+			:type="1"
+			@click="go('/pages/detail/detailForIntegral?id='+v.pId)"/>
 		</view>
 		<footerCP/>
 		</view>
@@ -55,7 +56,8 @@
 				:taxes="v.taxes" 
 				:price="v.price" 
 				:id="v.pId"
-				@click="go('/pages/detail/detail?id='+v.pId)"/>
+				:type="1"
+				@click="go('/pages/detail/detailForIntegral?id='+v.pId)"/>
 			</view>
 		</block>
 		

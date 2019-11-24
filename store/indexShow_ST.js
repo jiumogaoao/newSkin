@@ -1,7 +1,12 @@
 import Vue from 'vue'
+import {postFetch} from "@/util/request_UT.js"
 export default {
   namespaced:true,
   state: {
+	  footer_link:[],
+	  head_link:[],
+	  info_link:[],
+	  navigation:[],
 	  banner:[
 		  {url:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/肌修Banner20191102MOB.jpg',id:'1'},
 		  {url:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/肌修Banner20191102MOB.jpg',id:'2'},
@@ -31,6 +36,7 @@ export default {
 		  {follow:false,img:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/destop/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg',name:'灵韵冰晶炫感惑唇彩',price:10,pId:'8'}
 		  ]},
 		  ],
+	  join_img:"",
 	  news:[
 		  {img:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/destop/BFx00b0ptJs4P2Tw0b1OBB4vWYQqBp.jpg',
 		  name:'如新海外购上线了',
@@ -56,16 +62,43 @@ export default {
   },
   mutations: {
 	  clear(state, data){
+		  Vue.set(state,'footer_link',[])
+		  Vue.set(state,'head_link',[])
+		  Vue.set(state,'info_link',[])
+		  Vue.set(state,'navigation',[])
 		  Vue.set(state,'banner',[])
 		  Vue.set(state,'shelf',[])
 		  state.joinImg=''
 		  Vue.set(state,'news',[])
 		  Vue.set(state,'story',[])
+	  },
+	  setLink(state, data){
+		Vue.set(state,'footer_link',data.footer_link)
+		Vue.set(state,'head_link',data.head_link)
+		Vue.set(state,'info_link',data.info_link)
+		Vue.set(state,'navigation',data.navigation)
+	  },
+	  setIndex(state, data){
+		Vue.set(state,'banner',data.banner)
+		state.join_img=data.join_img
+		Vue.set(state,'news',data.news)
+		Vue.set(state,'shelf',data.shelf)
+		Vue.set(state,'story',data.story)
 	  }
   },
   actions:{
 	  clear(context,data){
 		  context.commit("clear");
+	  },
+	  init(context,data){
+		  postFetch("index-navigation",{},false,function(nav){
+			  console.log("index-navigation",nav)
+			  context.commit("setLink",nav.data)
+		  })
+		  postFetch("index-page",{},false,function(index){
+				console.log("index-page",index)
+				 context.commit("setIndex",index.data)
+		  })
 	  }
   }
  }

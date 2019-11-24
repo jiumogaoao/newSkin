@@ -31,9 +31,12 @@
 				<view class="title">
 					此二维码为您的身份凭证，可作为分享他人注册和身份验证使用
 				</view>
-				<image src="/static/qrCode.png"></image>
-				<view class="dsc">138****1848</view>
-				<view class="dsc">请扫描我的二维码进行注册</view>
+				<view class="writeFrame">
+					<view class="dsc">138****1848</view>
+					<view class="dsc">请扫描我的二维码进行注册</view>
+					<image src="/static/qrCode.png"></image>
+				</view>
+				
 				<view class="button">保存到手机</view>
 			</view>
 		</block>
@@ -104,6 +107,10 @@
 	}
 	/* #endif */
 	.phone{
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 			.frame{
 				width:750rpx;
 				padding: 30rpx;
@@ -111,28 +118,45 @@
 				display: flex;
 				align-items: center;
 				flex-direction: column;
+				background: url('/h5/static/erweimabg.png') no-repeat 50%;
+				background-size: cover;
+				flex-grow: 1;
 				.title{
-					font-size: 32rpx;
+					font-size: 26rpx;
 					text-align: center;
+					color: #fff;
+					margin-top: 67rpx;
+					line-height: 1.5;
 				}
-				image{
-					width:400rpx;
-					height:400rpx;
-					margin-top: 250rpx;
-				}
-				.dsc{
-					font-size: 24rpx;
-					margin-top: 20rpx;
-					text-align: center;
+				.writeFrame{
+					background-color: #fff;
+					margin: auto;
+					margin-top: 70rpx;
+					width:538rpx;
+					border-radius: 20rpx;
+					padding: 75rpx;
+					image{
+						width:300rpx;
+						height:300rpx;
+						margin: auto;
+						margin-top: 80rpx;
+					}
+					.dsc{
+						font-size: 24rpx;
+						margin-bottom: 38rpx;
+						text-align: center;
+					}
 				}
 				.button{
-					width:303rpx;
-					height: 84rpx;
+					width:643rpx;
+					height: 78rpx;
 					border: 1px solid $main-gray;
+					color: #fff;
 					margin: auto;
 					margin-top: 62rpx;
-					line-height: 84rpx;
+					line-height: 78rpx;
 					text-align: center;
+					border-radius: 10rpx;
 				}
 			}
 		}

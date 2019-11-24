@@ -6,19 +6,13 @@
 		<headerCP/>
 		<view class="band"></view>
 		<swiper class="banner" :indicator-dots="true" :autoplay="true" :interval="1000" :duration="500">
-		                        <swiper-item>
-		                            <image src="/static/20190506FreeShippingPCbanner.png"></image>
-		                        </swiper-item>
-		                        <swiper-item>
-		                            <image src="/static/20190506FreeShippingPCbanner.png"></image>
-		                        </swiper-item>
-		                        <swiper-item>
-		                            <image src="/static/20190506FreeShippingPCbanner.png"></image>
+		                        <swiper-item v-for="(v,i) in banner" :key="v.id" @click="go(v.pc_link)">
+		                            <image :src="v.pc_img"></image>
 		                        </swiper-item>
 		                    </swiper>
 		<view class="shelf" v-for="(v,i) in shelf" :key="i">
 			<view class="shelfFrame">
-				<view class="shelfTitleFrame" v-if="v.title">
+				<view class="shelfTitleFrame" v-if="v.title && i==0">
 					<image :src="imgPath+'indexLeaf.jpg'" class="shelfTitleBG"></image>
 					<view class="shelfTitle">{{v.title}}</view>
 					<view class="shelfTitleLine"></view>
@@ -30,7 +24,7 @@
 			<image class="promo" :src="'/static/pomo'+i+'.jpg'"></image>
 		</view>
 		<view class="joinFrame">
-				<image src="/static/事业机会20190624PC.jpg"></image>
+				<image :src="join_img"></image>
 				<view class="joinButton" @click="go('/pages/join/join')">加入我们</view>
 		</view>
 		<view class="titleFrame">
@@ -39,7 +33,7 @@
 		</view>
 		<view class="newsFrame">
 			<view class="newsCenterFrame">
-				<view class="newsItem" v-for="(v,i) in news" :key="i" @click="go('/pages/newDetail/newDetail?id='+v.nId)">
+				<view class="newsItem" v-for="(v,i) in news" :key="v.nid" @click="go('/pages/newDetail/newDetail?id='+v.nId)" v-if="i<2">
 					<image class="newsImage" :src="v.img"></image>
 					<view class="newsTitle">{{v.name}}</view>
 					<view class="newsDesc">{{v.dsc}}</view>
@@ -56,7 +50,7 @@
 				<image class="storyImg" :src="v.img"></image>
 				<view class="storyBottom">
 					<view class="storyTitle">{{v.name}}</view>
-					<view class="storyMore" @click="go('/pages/storyDetail/storyDetail?id='+sid)">了解更多</view>
+					<view class="storyMore" @click="go('/pages/storyDetail/storyDetail?id='+v.sid)">了解更多</view>
 				</view>
 			</view>
 		</view>
@@ -87,8 +81,8 @@
 			<view style="width:100%;height:55px;"></view>
 			<view class="banner">
 				<swiper class="swiper" :indicator-dots="true" :autoplay="true" :interval="2000" :duration="500">
-				                        <swiper-item v-for="(v,i) in banner" @click="go('/pages/detail/detail?id='+v.id)" :key="i">
-				                            <image :src="v.url" class="item"></image>
+				                        <swiper-item v-for="(v,i) in banner" @click="go(v.h5_link)" :key="i">
+				                            <image :src="v.h5_img" class="item"></image>
 				                        </swiper-item>
 				</swiper>
 			</view>
@@ -126,14 +120,14 @@
 				<image class="ad" :src="imgPath+'ad1.png'"/>
 			</block>
 			<view class="smallTitle">新闻中心<view class="line"></view></view>
-			<view class="news" v-for="(v,i) in news" :key="v.nId" @click="go('/pages/newDetail/newDetail')" v-if="i == 0">
+			<view class="news" v-for="(v,i) in news" :key="v.nId" @click="go('/pages/newDetail/newDetail?id='+v.nId)" v-if="i == 0">
 				<image class="img" :src="v.img"></image>
 				<view class="title">{{v.name}}</view>
 				<view class="dsc">{{v.dsc}}</view>
 			</view>
 			<view class="more" @click="go('/pages/news/news')">查看更多</view>
 			<view class="joinFrame">
-				<image class="pic" :src="imgPath+'事业机会20190624PC.jpg'"></image>
+				<image class="pic" :src="join_img"></image>
 				<view class="button" @click="go('/pages/join/join')">立即加入</view>
 			</view>
 			<view class="smallTitle">品牌故事<view class="line"></view></view>
@@ -144,7 +138,7 @@
 							<image class="pic" :src="v.img"></image>
 							<view class="subTitle">品牌故事</view>
 							<view class="title">{{v.name}}</view>
-							<view class="knowMore" @click="go('/pages/storyDetail/storyDetail')">了解更多>></view>
+							<view class="knowMore" @click="go('/pages/storyDetail/storyDetail?id='+v.sid)">了解更多>></view>
 						</view>
 					</view>
 				</scroll-view>
@@ -208,6 +202,7 @@
 		components:{productSimpleCP},
 		onShow: function() {
 			this.$store.dispatch('rootST/changeFootNav', 'index')
+			this.$store.dispatch('indexST/init')
 		},
 		data() {
 			return {
@@ -220,11 +215,22 @@
 			}
 		},
 		computed:{
+			footer_link(){
+				return this.$store.state.indexST.footer_link
+			},
+			
+			info_link(){
+				return this.$store.state.indexST.info_link
+			},
+			
 			banner(){
 				return this.$store.state.indexST.banner
 			},
 			shelf(){
 				return this.$store.state.indexST.shelf
+			},
+			join_img(){
+				return this.$store.state.indexST.join_img
 			},
 			news(){
 				return this.$store.state.indexST.news

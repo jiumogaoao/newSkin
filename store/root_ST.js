@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import {postFetch,setToken} from "@/util/request_UT.js"
 export default {
   namespaced:true,
   state: {
@@ -15,7 +16,11 @@ export default {
 		  {nav:'营养补充',child:[{nav:'一级导航5',child:[{nav:'二级导航5',id:'5'}]}]},
 		  ],
 	  myPage:'myOrder',
-	  footNav:'index'
+	  footNav:'index',
+	  access_expired:'',
+	  access_token:'',
+	  refresh_expired:'',
+	  refresh_token:''
   },
   mutations: {
 	  clear(state, data){
@@ -33,6 +38,14 @@ export default {
 	  },
 	  changeFootNav(state, data){
 	  		  state.footNav = data;
+	  },
+	  setToken(state, data){
+		  state.access_expired=data.access_expired
+		  state.access_token=data.access_token
+		  if(data.refresh_token){
+			  state.refresh_expired=data.refresh_expired
+			  state.refresh_token=data.refresh_token
+		  }
 	  }
   },
   actions:{
@@ -50,6 +63,25 @@ export default {
 	  },
 	  changeFootNav(context,data){
 	  		  context.commit("changeFootNav",data);
+	  },
+	  setToken(context,data){
+		  context.commit("changeFootNav",data);
+	  },
+	  async logon(context,data){
+		  if(data.logOnType==1){
+			  let logon= await postFetch("Login",{"username":data.userName,"password":data.password},false)
+				if(logon.data.access_token){
+					context.commit('setToken',logon.data)
+					setToken(logon.data)
+					if(data.callback){
+						data.callback(1)
+					}
+				}else{
+					if(data.callback){
+						data.callback(0,logon.data.message)
+					}
+				}
+		  }
 	  }
   }
  }

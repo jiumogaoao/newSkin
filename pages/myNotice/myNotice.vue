@@ -36,10 +36,26 @@
 		</block>
 		<!-- #endif -->
 		<block  v-if="!destop && initReady">
-			<view class="head">
-							<image class="back" :src="imgPath+'back.png'" @click="back"></image>
-							消息中心
-						</view>
+			<navBarCP>
+				<view class="nuskinIcon navBarBack" slot="left" @click="back">&#xe63d;</view>
+				<text slot="center">消息中心</text>
+			</navBarCP>
+			<view style="width:100%;height: 55px;"></view>
+			<view class="list" @click="go('/pages/myNotice/noticeDetail')">
+				<view class="top">
+					<view class="type">订单跟踪</view>
+					<view class="date">2019.04.12 12:36:53</view>
+				</view>
+				<view class="bigTitle">订单已提交，等待支付</view>
+				<view class="bottom">
+					<view class="left">
+						<view class="title">清如新盈透三校保护系列系列【礼盒版】</view>
+						<view class="subTitle">产品编号：123212</view>
+						<view class="dsc">订单编号：CBE1234567</view>
+					</view>
+					<image src="/static/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg"></image>
+				</view>
+			</view>
 		</block>
 		
 	</view>
@@ -184,22 +200,63 @@
 	}
 	}
 	/* #endif */
+	page{
+		background-color: $main-gray-background;
+	}
 	.phone{
-			display: flex;
-			align-items: center;
-			flex-direction: column;
 			width:750rpx;
-			.head{
-				width:100%;
-				text-align: center;
-				    font-size: 40rpx;
-				padding-top: 34rpx;
-				position: relative;
-				.back{
-					width:32rpx;
-					height:32rpx;
-					position:absolute;
-					left:20rpx;
+			.list{
+				width: 750rpx;
+				padding: 30rpx;
+				background-color: #fff;
+				margin-top: 20rpx;
+				.top{
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					.type{
+						width:146rpx;
+						height: 48rpx;
+						border: 1px solid $main-hl;
+						border-radius: 48rpx;
+						color: $main-hl;
+						font-size: 24rpx;
+						text-align: center;
+						line-height: 46rpx;
+					}
+					.date{
+						font-size: 22rpx;
+						color: $main-gray-deep;
+					}
+				}
+				.bigTitle{
+					font-size: 26rpx;
+					margin-top: 35rpx;
+				}
+				.bottom{
+					display: flex;
+					justify-content: space-between;
+					margin-top: 30rpx;
+					.left{
+						.title{
+							font-size: 24rpx;
+						}
+						.subTitle{
+							font-size: 22rpx;
+							margin-top: 15rpx;
+							color: $main-gray-deep;
+						}
+						.dsc{
+							font-size: 22rpx;
+							margin-top: 38rpx;
+							color: $main-gray-deep;
+						}
+					}
+					image{
+						width: 150rpx;
+						height:150rpx;
+						border: 1px solid $main-gray;
+					}
 				}
 			}
 		}
