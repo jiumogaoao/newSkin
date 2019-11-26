@@ -18,7 +18,7 @@
 					<view class="shelfTitleLine"></view>
 				</view>
 				<view class="shelfProductList">
-					<productSimpleCP v-for="(n,o) in v.prouduct" @follow="follow(n.pId)" @click="go('/pages/detail/detail?id='+n.pId)" :key="n.pId" :follow="n.follow" :img="n.img" :name="n.name" :price="n.price" :pId="n.pId"/>
+					<productSimpleCP v-for="(n,o) in v.product" @follow="follow(n.pId)" @click="go('/pages/detail/detail?id='+n.pId)" :key="n.pId" :follow="n.follow" :img="n.img" :name="n.name" :price="n.price" :pId="n.pId"/>
 				</view>
 			</view>
 			<image class="promo" :src="'/static/pomo'+i+'.jpg'"></image>
@@ -115,7 +115,7 @@
 				</view> -->
 
 				<view class="productList">
-					<productSimpleCP style="margin-top:30rpx;" v-for="(n,o) in v.prouduct"  @click="go('/pages/detail/detail?id='+n.pId)" :key="n.pId" :follow="n.follow" :img="n.img" :name="n.name" :price="n.price" :pId="n.pId"/>
+					<productSimpleCP style="margin-top:30rpx;" v-for="(n,o) in v.product"  @click="go('/pages/detail/detail?id='+n.pId)" :key="n.pId" :follow="n.follow" :img="n.img" :name="n.name" :price="n.price" :pId="n.pId"/>
 				</view>
 				<image class="ad" :src="imgPath+'ad1.png'"/>
 			</block>
