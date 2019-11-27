@@ -9,15 +9,14 @@
 		<view class="shelfTitle">ageLOC换新系列</view>
 		<view class="optionFrame" style="margin-bottom: 18px;">
 			<view class="optionTitle">系列</view>
-			<view class="optionItem">ageLOC精油系列</view>
-			<view class="optionItem hl">ageLOC焕新系列</view>
+			<view class="optionItem" v-for="(v) in shelf" :key="v.id">{{v.name}}</view>
 		</view>
 		<view class="optionFrame">
 			<view class="optionTitle">排序</view>
-			<view :class="{optionItem:1,hl:i==key}" v-for="(v,i) in sortArry" :key="'sort'+i" @click="update(i)">{{v}}</view>
+			<view :class="{optionItem:1,hl:v.key==key}" v-for="(v,i) in sort" :key="'sort'+i" @click="update(v.key)">{{v.name}}</view>
 		</view>
 		<view class="productList">
-			<productCP v-for="(v,i) in product"
+			<productCP v-for="(v) in product"
 			:key="v.pId" 
 			:follow="v.follow" 
 			:img="v.img" 
@@ -42,7 +41,7 @@
 			<view style="width:100%;height: 55px;"></view>
 			<tabbarCP class="tabbarCP" :list="sort" :hl="key" @change="update"/>
 			<view class="productList">
-				<productCP v-for="(v,i) in product" 
+				<productCP v-for="(v) in product" 
 				:key="v.pId" 
 				:follow="v.follow" 
 				:img="v.img" 
@@ -84,8 +83,9 @@
 			key(){return this.$store.state.shelfST.key},
 			pageNo(){return this.$store.state.shelfST.pageNo},
 			pageSize(){return this.$store.state.shelfST.pageSize},
-			sortArry(){return this.$store.state.shelfST.sortArry},
-			product(){return this.$store.state.shelfST.product}
+			sort(){return this.$store.state.shelfST.sort},
+			product(){return this.$store.state.shelfST.product},
+			shelf(){return this.$store.state.shelfST.shelf}
 		},
 		onLoad(props){
 			this.$store.dispatch("shelfST/setId",props.id)

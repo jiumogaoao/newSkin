@@ -1,87 +1,89 @@
 import Vue from 'vue'
+import {postFetch} from "@/util/request_UT.js"
 export default {
   namespaced:true,
   state: {
 	  kid:"",
 	  key:0,
-	  pageNo:0,
+	  pageNo:1,
 	  pageSize:10,
-	  sortArry:["综合排序","销售排序","人气排序","价格正序","价格倒序"],
 	  shelf:[
-		  {name:'',id:''}
+		  // {name:'',id:''}
 	  ],
 	  sort:[
-		  {'name':'综合',id:0},
-		  {'name':'销量',id:1},
-		  {'name':'人气',id:2},
-		  {'name':'价格',id:3}
+		  // {'name':'综合',key:0},
+		  // {'name':'销量',key:1},
+		  // {'name':'人气',key:2},
+		  // {'name':'价格',key:3}
 	  ],
 	  product:[
-		  {
-			  follow:false,
-			  img:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg',
-			  band:'王牌ageLOC',
-			  name:'商品标题',
-			  taxes:'100',
-			  price:'100',
-			  pId:'1'
-		  },
-		  {
-		  			  follow:false,
-		  			  img:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg',
-		  			  band:'王牌ageLOC',
-		  			  name:'商品标题',
-		  			  taxes:'100',
-		  			  price:'100',
-		  			  pId:'1'
-		  },
-		  {
-		  			  follow:false,
-		  			  img:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg',
-		  			  band:'王牌ageLOC',
-		  			  name:'商品标题',
-		  			  taxes:'100',
-		  			  price:'100',
-		  			  pId:'2'
-		  },
-		  {
-		  			  follow:false,
-		  			  img:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg',
-		  			  band:'王牌ageLOC',
-		  			  name:'商品标题',
-		  			  taxes:'100',
-		  			  price:'100',
-		  			  pId:'3'
-		  },
-		  {
-		  			  follow:false,
-		  			  img:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg',
-		  			  band:'王牌ageLOC',
-		  			  name:'商品标题',
-		  			  taxes:'100',
-		  			  price:'100',
-		  			  pId:'4'
-		  },
-		  {
-		  			  follow:false,
-		  			  img:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg',
-		  			  band:'王牌ageLOC',
-		  			  name:'商品标题',
-		  			  taxes:'100',
-		  			  price:'100',
-		  			  pId:'5'
-		  }
+		  // {
+			 //  follow:false,
+			 //  img:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg',
+			 //  band:'王牌ageLOC',
+			 //  name:'商品标题',
+			 //  taxes:'100',
+			 //  price:'100',
+			 //  pId:'1'
+		  // },
+		  // {
+		  // 			  follow:false,
+		  // 			  img:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg',
+		  // 			  band:'王牌ageLOC',
+		  // 			  name:'商品标题',
+		  // 			  taxes:'100',
+		  // 			  price:'100',
+		  // 			  pId:'1'
+		  // },
+		  // {
+		  // 			  follow:false,
+		  // 			  img:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg',
+		  // 			  band:'王牌ageLOC',
+		  // 			  name:'商品标题',
+		  // 			  taxes:'100',
+		  // 			  price:'100',
+		  // 			  pId:'2'
+		  // },
+		  // {
+		  // 			  follow:false,
+		  // 			  img:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg',
+		  // 			  band:'王牌ageLOC',
+		  // 			  name:'商品标题',
+		  // 			  taxes:'100',
+		  // 			  price:'100',
+		  // 			  pId:'3'
+		  // },
+		  // {
+		  // 			  follow:false,
+		  // 			  img:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg',
+		  // 			  band:'王牌ageLOC',
+		  // 			  name:'商品标题',
+		  // 			  taxes:'100',
+		  // 			  price:'100',
+		  // 			  pId:'4'
+		  // },
+		  // {
+		  // 			  follow:false,
+		  // 			  img:'https://nuskindevelop.oss-cn-shenzhen.aliyuncs.com/phone/NF80clypcwPftxY6LKp6TH0phSx3wy.jpg',
+		  // 			  band:'王牌ageLOC',
+		  // 			  name:'商品标题',
+		  // 			  taxes:'100',
+		  // 			  price:'100',
+		  // 			  pId:'5'
+		  // }
 	  ]
   },
   mutations: {
 	 update(state, data){
 		 state.key = data.key
-		 state.pageNo = 1
+		 state.pageNo = 2
 		 Vue.set(state,'product',data.product)
+		 Vue.set(state,'shelf',data.shelf)
+		 Vue.set(state,'sort',data.sort)
 	 },
 	 push(state, data){
 		 state.pageNo += 1
-		 Vue.set(state,'product',data.product)
+		 Vue.set(state,'product',[...state.product,data.product])
 	 },
 	 setId(state, data){
 		 state.kid = data
@@ -89,14 +91,14 @@ export default {
   },
   actions:{
 	  update(context,data){
-		  postFetch("product-shelf",{kid:context.state.kid,key:context.state.sortArry[data.key],pageNo:0,pageSize:context.state.pageSize},false,callback(res){
-			res.key = data.key
-		  	context.commit("update",res);
+		  postFetch("product-shelf",{kid:context.state.kid,key:data.key,pageNo:1,pageSize:context.state.pageSize},false,function(res){
+			res.data.key = data.key
+		  	context.commit("update",res.data);
 		  })
 	  },
 	  push(context,data){
-		  postFetch("product-shelf",{kid:context.state.kid,key:context.state.sortArry[context.state.key],pageNo:context.state.pageNo,pageSize:context.state.pageSize},false,callback(res){
-		  	context.commit("push",res);
+		  postFetch("product-shelf",{kid:context.state.kid,key:context.state.key,pageNo:context.state.pageNo,pageSize:context.state.pageSize},false,function(res){
+		  	context.commit("push",res.data);
 		  })
 	  },
 	  setId(context, data){

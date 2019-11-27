@@ -2,20 +2,20 @@
 	<view :class="destop?'destopCP':'phoneCP'" @click="c">
 		<!-- #ifdef H5 -->
 		<view class="productCP" v-if="destop">
-			<image :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'" class="img"></image>
-			<view class="brand">王牌ageLOC</view>
-			<view class="title">商品标题</view>
-			<view class="taxes">预计税费：￥100</view>
-			<view class="price">零售价：<block style="font-size: 20px;">￥100</block></view>
+			<image :src="img" class="img"></image>
+			<view class="brand">{{band}}</view>
+			<view class="title">{{name}}</view>
+			<view class="taxes">预计税费：￥{{taxes}}</view>
+			<view class="price">零售价：<block style="font-size: 20px;">￥{{price}}</block></view>
 			<image class="follow" :src="imgPath+'favorite-full-love.png'" v-if="follow" @click="f"></image>
 			<image class="follow" :src="imgPath+'sellWellHIcon.png'" v-else @click="f"></image>
 			<image class="shoppingCar" :src="imgPath+'caricon-blue.png'" @click="a"></image>
 		</view>
 		<!-- #endif -->
 		<view :class="{productCP:1,integralProduct:type==1}" v-if="!destop">
-			<image :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'" class="img"></image>
-			<view class="brand">王牌ageLOC</view>
-			<view class="title">商品标题</view>
+			<image :src="img" class="img"></image>
+			<view class="brand">{{band}}</view>
+			<view class="title">{{name}}</view>
 			<block v-if="type==1">
 				<view class="integralMallList">
 					<radioCP/>
@@ -38,8 +38,8 @@
 					<view class="sale">包邮</view>
 					<view class="sale">促销</view>
 				</view>
-				<view class="taxes">预计税费：￥100</view>
-				<view class="price">零售价：<block style="font-size: 20px;">￥100</block></view>
+				<view class="taxes">预计税费：￥{{taxes}}</view>
+				<view class="price">零售价：<block style="font-size: 20px;">￥{{price}}</block></view>
 			</block>
 			<view :class="{follow:1,nuskinIcon:1,hl:(follow?1:0)}" @click="f($event)">&#xe64e;</view>
 			<image class="shoppingCar" :src="imgPath+'tab-cart-current.png'" @click="a"></image>

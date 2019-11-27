@@ -5,6 +5,6 @@ module.exports = {
 	apiMock: false, //是否使用后台假数据
 	apiPath:"v1/",//api子路径
 	production: true,//是否线上环境，线上打包设成true,本机调试false
-	destop:false,
+	destop:true,
 	updateTime:0
 };
