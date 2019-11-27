@@ -2,6 +2,11 @@ import Vue from 'vue'
 export default {
   namespaced:true,
   state: {
+	  kid:"",
+	  key:0,
+	  pageNo:0,
+	  pageSize:10,
+	  sortArry:["综合排序","销售排序","人气排序","价格正序","价格倒序"],
 	  shelf:[
 		  {name:'',id:''}
 	  ],
@@ -69,18 +74,33 @@ export default {
 	  ]
   },
   mutations: {
-	  clear(state, data){
-		  Vue.set(state,'shelf',[])
-		  Vue.set(state,'sort',[])
-		  Vue.set(state,'product',[])
-	  }
+	 update(state, data){
+		 state.key = data.key
+		 state.pageNo = 1
+		 Vue.set(state,'product',data.product)
+	 },
+	 push(state, data){
+		 state.pageNo += 1
+		 Vue.set(state,'product',data.product)
+	 },
+	 setId(state, data){
+		 state.kid = data
+	 }
   },
   actions:{
-	  clear(context,data){
-		  context.commit("clear");
+	  update(context,data){
+		  postFetch("product-shelf",{kid:context.state.kid,key:context.state.sortArry[data.key],pageNo:0,pageSize:context.state.pageSize},false,callback(res){
+			res.key = data.key
+		  	context.commit("update",res);
+		  })
 	  },
-	  initReady(context,data){
-		  context.commit("initReady");
+	  push(context,data){
+		  postFetch("product-shelf",{kid:context.state.kid,key:context.state.sortArry[context.state.key],pageNo:context.state.pageNo,pageSize:context.state.pageSize},false,callback(res){
+		  	context.commit("push",res);
+		  })
+	  },
+	  setId(context, data){
+	  		context.commit("setId",data);
 	  }
   }
  }

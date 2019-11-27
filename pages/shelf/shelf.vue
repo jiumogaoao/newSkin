@@ -14,11 +14,7 @@
 		</view>
 		<view class="optionFrame">
 			<view class="optionTitle">排序</view>
-			<view class="optionItem hl">综合排序</view>
-			<view class="optionItem">销售排序</view>
-			<view class="optionItem">人气排序</view>
-			<view class="optionItem">价格正序</view>
-			<view class="optionItem">价格倒序</view>
+			<view :class="{optionItem:1,hl:i==key}" v-for="(v,i) in sortArry" :key="'sort'+i" @click="update(i)">{{v}}</view>
 		</view>
 		<view class="productList">
 			<productCP v-for="(v,i) in product"
@@ -44,7 +40,7 @@
 				<view class="nuskinIcon navBarIcon" slot="right" @click="sideShow()">&#xe656;</view>
 			</navBarCP>
 			<view style="width:100%;height: 55px;"></view>
-			<tabbarCP class="tabbarCP" :list="sort" :hl="hl" @change="change"/>
+			<tabbarCP class="tabbarCP" :list="sort" :hl="key" @change="update"/>
 			<view class="productList">
 				<productCP v-for="(v,i) in product" 
 				:key="v.pId" 
@@ -66,23 +62,35 @@
 	import allPage from "@/mixin/allPage"
 	import productCP from "@/components/product_CP.vue"
 	import tabbarCP from "@/components/tabbar_CP.vue"
+	import {postFetch} from "@/util/request_UT.js"
 	export default {
 		mixins: [allPage],
 		components:{productCP,tabbarCP},
 		data() {
 			return {
-				hl:0
+
 			};
 		},
 		methods:{
-			change(num){
-				this.hl = num;
+			update(key){
+				this.$store.dispatch("shelfST/update",{key:key})
+			},
+			push(){
+				this.$store.dispatch("shelfST/push")
 			}
 		},
 		computed:{
-			sort(){return this.$store.state.shelfST.sort},
+			kid(){return this.$store.state.shelfST.kid},
+			key(){return this.$store.state.shelfST.key},
+			pageNo(){return this.$store.state.shelfST.pageNo},
+			pageSize(){return this.$store.state.shelfST.pageSize},
+			sortArry(){return this.$store.state.shelfST.sortArry},
 			product(){return this.$store.state.shelfST.product}
-		}
+		},
+		onLoad(props){
+			this.$store.dispatch("shelfST/setId",props.id)
+			this.$store.dispatch("shelfST/update",{key:0})
+		},
 	}
 </script>
 

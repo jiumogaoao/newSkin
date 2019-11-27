@@ -8,7 +8,7 @@
     /* 5+App特有相关 */
     "app-plus" : {
         "usingComponents" : true,
-        "nvueCompiler":"uni-app",
+        "nvueCompiler" : "uni-app",
         "splashscreen" : {
             "alwaysShowBeforeRender" : true,
             "waiting" : true,
@@ -105,7 +105,7 @@
         "template" : "template.h5.html",
         "router" : {
             "mode" : "history",
-            "base" : "/h5/"
+            "base" : "/"
         },
         "sdkConfigs" : {
             "maps" : {
@@ -114,19 +114,21 @@
                 }
             }
         },
-		"devServer" : {
-		    "port" : 8000,
-		    "disableHostCheck" : true,
-		    "proxy" : {
-		        "/api/" : {
-		            "target" : "https://www.baidu.com/",
-		            "changeOrigin" : true,
-		            "secure" : false,
-		            "pathRewrite" : {
-		                "^/api/" : "/"
-		            }
-		        }
-		    }
-		}
+        "devServer" : {
+            "port" : 8000,
+            "disableHostCheck" : true,
+            "proxy" : {
+                "/api/" : {
+                    "target" : "https://www.baidu.com/",
+                    "changeOrigin" : true,
+                    "secure" : false,
+                    "pathRewrite" : {
+                        "^/api/" : "/"
+                    }
+                }
+            },
+            "https" : true
+        },
+        "title" : "nuskin"
     }
 }
