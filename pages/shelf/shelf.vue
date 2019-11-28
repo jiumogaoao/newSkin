@@ -26,7 +26,7 @@
 			:price="v.price" 
 			:id="v.pId"
 			@f="f"
-			@c="go('/pages/detail/detail?id='+v.pId)"/>
+			@click="go('/pages/detail/detail?id='+v.pId)"/>
 		</view>
 		<footerCP/>
 		</view>
@@ -52,7 +52,7 @@
 				:price="v.price" 
 				:id="v.pId"
 				@f="f"			
-				@c="go('/pages/detail/detail?id='+v.pId)"/>
+				@click="go('/pages/detail/detail?id='+v.pId)"/>
 			</view>
 		</block>
 		
