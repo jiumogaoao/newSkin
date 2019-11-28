@@ -25,7 +25,8 @@
 			:taxes="v.taxes" 
 			:price="v.price" 
 			:id="v.pId"
-			@click="go('/pages/detail/detail?id='+v.pId)"/>
+			@f="f"
+			@c="go('/pages/detail/detail?id='+v.pId)"/>
 		</view>
 		<footerCP/>
 		</view>
@@ -50,7 +51,8 @@
 				:taxes="v.taxes" 
 				:price="v.price" 
 				:id="v.pId"
-				@click="go('/pages/detail/detail?id='+v.pId)"/>
+				@f="f"			
+				@c="go('/pages/detail/detail?id='+v.pId)"/>
 			</view>
 		</block>
 		
@@ -71,6 +73,9 @@
 			};
 		},
 		methods:{
+			f(){
+				alert(f)
+			},
 			update(key){
 				this.$store.dispatch("shelfST/update",{key:key})
 			},

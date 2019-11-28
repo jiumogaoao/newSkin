@@ -7,12 +7,12 @@
 			<view class="title">{{name}}</view>
 			<view class="taxes">预计税费：￥{{taxes}}</view>
 			<view class="price">零售价：<block style="font-size: 20px;">￥{{price}}</block></view>
-			<image class="follow" :src="imgPath+'favorite-full-love.png'" v-if="follow" @click="f"></image>
-			<image class="follow" :src="imgPath+'sellWellHIcon.png'" v-else @click="f"></image>
-			<image class="shoppingCar" :src="imgPath+'caricon-blue.png'" @click="a"></image>
+			<image class="follow" :src="imgPath+'favorite-full-love.png'" v-if="follow" @click.stop="f"></image>
+			<image class="follow" :src="imgPath+'sellWellHIcon.png'" v-else @click.stop="f"></image>
+			<image class="shoppingCar" :src="imgPath+'caricon-blue.png'"></image>
 		</view>
 		<!-- #endif -->
-		<view :class="{productCP:1,integralProduct:type==1}" v-if="!destop">
+		<view :class="{productCP:1,integralProduct:type==1}" v-if="!destop"  @click="c">
 			<image :src="img" class="img"></image>
 			<view class="brand">{{band}}</view>
 			<view class="title">{{name}}</view>
@@ -41,8 +41,8 @@
 				<view class="taxes">预计税费：￥{{taxes}}</view>
 				<view class="price">零售价：<block style="font-size: 20px;">￥{{price}}</block></view>
 			</block>
-			<view :class="{follow:1,nuskinIcon:1,hl:(follow?1:0)}" @click="f($event)">&#xe64e;</view>
-			<image class="shoppingCar" :src="imgPath+'tab-cart-current.png'" @click="a"></image>
+			<view :class="{follow:1,nuskinIcon:1,hl:(follow?1:0)}" @click.stop="f">&#xe64e;</view>
+			<image class="shoppingCar" :src="imgPath+'tab-cart-current.png'"></image>
 		</view>
 	</view>
 </template>
@@ -63,14 +63,8 @@
 			c(){
 				this.$emit('click')
 			},
-			f(e){
-				e.stopPropagation()
-				e.preventDefault()
-				alert(1)
-				this.$emit('follow',{id})
-			},
-			a(){
-				this.$emit('addCar')
+			f(){
+				this.$emit('f')
 			}
 		}
 	}
