@@ -7,6 +7,7 @@ import shelfST from './shelf_ST'
 import shoppingCarST from './shoppingCar_ST'
 import followST from './follow_ST'
 import historyST from './history_ST'
+import productST from './product_ST'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
@@ -23,7 +24,8 @@ const store = new Vuex.Store({
 		shelfST,
 		shoppingCarST,
 		followST,
-		historyST
+		historyST,
+		productST
 	},
 	mutations: {
 		login(state, provider) {

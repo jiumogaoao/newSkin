@@ -328,6 +328,9 @@
 			closeSku(){
 				this.skuShow=false;
 			}
+		},
+		onLoad(props){
+			this.$store.dispatch("productST/init",props.id)
 		}
 	}
 </script>
