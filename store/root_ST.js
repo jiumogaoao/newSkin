@@ -20,7 +20,9 @@ export default {
 	  access_expired:'',
 	  access_token:'',
 	  refresh_expired:'',
-	  refresh_token:''
+	  refresh_token:'',
+	  logonPicCode:'',
+	  regestPicCode:''
   },
   mutations: {
 	  clear(state, data){
@@ -46,6 +48,12 @@ export default {
 			  state.refresh_expired=data.refresh_expired
 			  state.refresh_token=data.refresh_token
 		  }
+	  },
+	  updateLogonPicCode(state, data){
+		  state.logonPicCode = data
+	  }
+	  updateRegestPicCode(state, data){
+		  state.regestPicCode = data
 	  }
   },
   actions:{
@@ -82,6 +90,14 @@ export default {
 					}
 				}
 		  }
+	  },
+	  async updateLogonPicCode(context,data){
+		  let picCode = await postFetch("auth-loginvercode",{"account":data},false)
+		  context.commit('updateLogonPicCode',picCode)
+	  },
+	  async updateRegestPicCode(context,data){
+	  		  let picCode = await postFetch("user-registervercode",{"account":data},false)
+	  		  context.commit('updateRegestPicCode',picCode)
 	  }
   }
  }
