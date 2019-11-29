@@ -13,22 +13,17 @@
 					<image class="degLeft" :src="imgPath+'feel3.png'"></image>
 					<view class="picRollFrame">
 						<view class="picRoll">
-							<image class="smallPic" :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'"></image>
-							<image class="smallPic" :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'"></image>
-							<image class="smallPic" :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'"></image>
-							<image class="smallPic" :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'"></image>
-							<image class="smallPic" :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'"></image>
-							<image class="smallPic" :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'"></image>
+							<image class="smallPic" :src="v.imgurl" v-for="(v,i) in img" :key="'img'+i"></image>
 						</view>
 					</view>
 					<image class="degRight" :src="imgPath+'feel4.png'"></image>
 				</view>
 			</view>
 			<view class="right">
-				<view class="id">产品编号  29003880</view>
-				<view class="chn">ageLOC焕新系列-晚霜</view>
-				<view class="eng">ageLOC焕新系列-晚霜</view>
-				<view class="band">王牌ageLOC</view>
+				<view class="id">产品编号  {{pid}}</view>
+				<view class="chn">{{name}}</view>
+				<view class="eng">{{subtitle}}</view>
+				<view class="band">{{brand}}</view>
 				<view class="price">零售价：<block class="newPrice">￥510.00</block> <block class="oldPrice">￥0.00</block></view>
 				<view class="frame">
 					<view class="title">活动：</view>
@@ -117,22 +112,16 @@
 			<view style="width:100%;height: 55px;"></view>
 			<view class="top">
 				<swiper class="swiper" :indicator-dots="true" :autoplay="true" :interval="2000" :duration="500">
-				                        <swiper-item>
-				                            <image class="smallPic" :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'"></image>
-				                        </swiper-item>
-				                        <swiper-item>
-				                            <image class="smallPic" :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'"></image>
-				                        </swiper-item>
-				                        <swiper-item>
-				                            <image class="smallPic" :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'"></image>
+				                        <swiper-item v-for="(v,i) in img" :key="'img'+i">
+				                            <image class="smallPic" :src="v.imgurl"></image>
 				                        </swiper-item>
 				</swiper>
 				<view class="flew">
-					<view class="name">产品编号：SKU111</view>
+					<view class="name">产品编号：{{pid}}</view>
 					<view class="name">推广奖励：<block class="blue">￥40.00</block></view>
 				</view>
-				<view class="title">agcLoC焕新系列-晚霜 30ml</view>
-				<view class="title">agcLoC Transforming Night</view>
+				<view class="title">{{name}}</view>
+				<view class="title">{{subtitle}}</view>
 				<view class="price">零售价：<block class="block">￥100</block></view>
 				<view :class="{nuskinIcon:1,follow:1,hl:(follow?1:0)}">&#xe64e;</view>
 			</view>
@@ -331,6 +320,22 @@
 		},
 		onLoad(props){
 			this.$store.dispatch("productST/init",props.id)
+		},
+		computed:{
+			attribute(){return this.$store.state.productST.attribute},
+			brand(){return this.$store.state.productST.brand},
+			capacity(){return this.$store.state.productST.capacity},
+			details(){return this.$store.state.productST.details},
+			follow(){return this.$store.state.productST.follow},
+			img(){return this.$store.state.productST.img},
+			name(){return this.$store.state.productST.name},
+			pid(){return this.$store.state.productST.pid},
+			price(){return this.$store.state.productST.price},
+			promotions(){return this.$store.state.productST.promotions},
+			property(){return this.$store.state.productST.property},
+			subtitle(){return this.$store.state.productST.subtitle},
+			supplier(){return this.$store.state.productST.supplier},
+			weight(){return this.$store.state.productST.weight}
 		}
 	}
 </script>
