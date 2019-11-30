@@ -8,44 +8,49 @@
 					<image class="logo" :src="imgPath+'indexLogo.jpg'"></image>
 					<view class="welcome">欢迎注册</view>
 				</view>
-				<view class="back">返回首页</view>
+				<view class="back" @click="back">返回首页</view>
 			</view>
 			<view class="center">
 				<view class="row">
 					<view class="label">手机号码*</view>
 					<view class="inputFrame">
-						<input class="input"/>
+						<input class="input" v-model="phone"/>
+						<view class="error" v-if="phoneError">{{phoneError}}</view>
 					</view>
 				</view>
 				<view class="row">
 					<view class="label">验证*</view>
 					<view class="inputFrame">
-						<input class="input"/>
-						<image class="picCode" :src="imgPath+'verificationCode.png'"></image>
-						<view class="blue">换一张</view>
+						<input class="input" v-model="code"/>
+						<view class="error" v-if="codeError">{{codeError}}</view>
+						<image class="picCode" :src="picCodeIMG"></image>
+						<view class="blue" @click="updatePicCode()">换一张</view>
 					</view>
 				</view>
 				<view class="row">
 					<view class="label">手机短信验证码*</view>
 					<view class="inputFrame">
-						<input class="input"/>
+						<input class="input" v-model="phoneCode"/>
+						<view class="error" v-if="phoneCodeError">{{phoneCodeError}}</view>
 						<view class="getCode">获取验证码</view>
 					</view>
 				</view>
 				<view class="row">
 					<view class="label">设置密码*</view>
 					<view class="inputFrame">
-						<input class="input"/>
+						<input class="input" v-model="password"/>
+						<view class="error" v-if="passwordError">{{passwordError}}</view>
 					</view>
 				</view>
 				<view class="row">
 					<view class="label">确认密码*</view>
 					<view class="inputFrame">
-						<input class="input"/>
+						<input class="input" v-model="password2"/>
+						<view class="error" v-if="password2Error">{{password2Error}}</view>
 					</view>
 				</view>
 				<view class="agreeFrame">
-					<chechBoxCP/>
+					<chechBoxCP :checked="agree" @click="toggleAgree"/>
 					<view class="text">已阅读并同意</view>
 					<view class="blue">《如新海外购用户协议》</view>
 				</view>
@@ -75,29 +80,29 @@
 				<view class="listFrame">
 					<!-- <view class="referrer" v-if="referrer">您的推荐人是{{referrer}}（{{referrerPhone}}）</view> -->
 					<view class="list">
-						<input class="input" placeholder="请输入手机号码"/>
+						<input class="input" placeholder="请输入手机号码" v-model="phone"/>
 					</view>
 					<view class="list">
-						<input class="input" placeholder="请输入图形验证码"/>
-						<image class="picCode" :src="imgPath+'verificationCode.png'"></image>
-						<view class="blue">换一张</view>
+						<input class="input" placeholder="请输入图形验证码" v-model="code"/>
+						<image class="picCode" :src="picCodeIMG"></image>
+						<view class="blue" @click="updatePicCode()">换一张</view>
 					</view>
 					<view class="list">
-						<input class="input" placeholder="请输入手机验证码"/>
+						<input class="input" placeholder="请输入手机验证码" v-model="phoneCode"/>
 						<view class="getCode">获取验证码</view>
 					</view>
 					<view class="list">
-						<input class="input" placeholder="请设置密码,6~20位数"/>
+						<input class="input" placeholder="请设置密码,6~20位数" v-model="password"/>
 						<image class="eye" :src="imgPath+'yanjing.png'"></image>
 					</view>
 					<view class="list">
-						<input class="input" placeholder="请再次确认密码"/>
+						<input class="input" placeholder="请再次确认密码" v-model="password2"/>
 						<image class="eye" :src="imgPath+'yanjing.png'"></image>
 					</view>
 				</view>
 				<!-- <view class="dsc">密码长度须为6-20非纯数字，可包含字母、数字或下划线('_')中的至少2个类别</view> -->
 				<view class="ruleFrame">
-					<chechBoxCP/>
+					<chechBoxCP :checked="agree" @click="toggleAgree"/>
 					<view class="text">已阅读并同意</view>
 					<view class="blue">《如新海外购用户协议》</view>
 				</view>
@@ -114,13 +119,47 @@
 		data() {
 					return {
 						referrer:'王**',
-						referrerPhone:'135****5636'
+						referrerPhone:'135****5636',
+						phone:'',
+						code:'',
+						phoneCode:'',
+						password:'',
+						password2:'',
+						agree:false,
+						phoneError:'',
+						codeError:'',
+						phoneCodeError:'',
+						passwordError:'',
+						password2Error:''
 					};
 				},
 				methods:{
 					regest(){
 						this.$store.dispatch('userST/logon', {})
 						this.go('/pages/regest/bind')
+					},
+					updatePicCode(){
+						this.$store.dispatch('rootST/updateRegestPicCode',this.phone)
+					},
+					toggleAgree(){
+						this.agree=!this.agree
+					}
+				},
+				computed:{
+					picCodeIMG(){
+						try{
+							return 'data:image/jpeg;base64,'+this.$store.state.rootST.regestPicCode.data.captcha
+						}catch(e){
+							return ''
+						}
+					}
+				},
+				onShow(){
+					this.updatePicCode()
+				},
+				watch:{
+					phone(val){
+						this.updatePicCode()
 					}
 				}
 			}

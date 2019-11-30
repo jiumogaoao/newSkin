@@ -1,7 +1,8 @@
 <template>
-	<view :class="destop?'destopCP':'phoneCP'">
+	<view :class="destop?'destopCP':'phoneCP'" @click="c">
 		<!-- #ifdef H5 -->
-		<image class="checkboxCP" :src="imgPath+'checked.png'" v-if="destop"></image>
+		<view class="checkboxCP nuskinIcon" v-if="destop&&!checked">&#xe65e;</view>
+		<view class="checkboxCP nuskinIcon checked" v-if="destop&&checked">&#xe725;</view>
 		<!-- #endif -->
 		<view class="checkboxCP nuskinIcon" v-if="!destop&&!checked">&#xea2a;</view>
 		<view class="checkboxCP nuskinIcon checked" v-if="!destop&&checked">&#xe62e;</view>
@@ -17,6 +18,11 @@
 			return {
 				
 			};
+		},
+		methods:{
+			c(){
+				this.$emit("click")
+			}
 		}
 	}
 </script>
@@ -25,8 +31,11 @@
 	/* #ifdef H5 */
 	.destopCP{
 		.checkboxCP{
-			width:18px;
-			height:18px;
+			font-size: 10rpx;
+			color: $main-gray;
+		}
+		.checkboxCP.checked{
+			color: $main-hl;
 		}
 	}
 	/* #endif */

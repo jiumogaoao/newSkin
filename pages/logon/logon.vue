@@ -17,25 +17,25 @@
 						<view :class="{item:1,hl:logOnType==1}" @click="changeType(1)">账号登录</view>
 					</view>
 					<view class="frame" v-if="logOnType==0">
-						<view class="row">
-							<image class="icon" :src="imgPath+'login-form-mine.png'"></image><input class="input" v-model="userName"/>
+						<view class="row" key="1">
+							<image class="icon" :src="imgPath+'login-form-mine.png'"></image><input class="input" v-model="userName"/><view class="error" v-if="userNameError">{{userNameError}}</view>
 						</view>
-						<view class="row">
-							<input class="input" v-model="picCode"/><image class="picCode" :src="picCodeIMG"></image><view class="blue" @click="updatePicCode">换一张</view>
+						<view class="row" key="2">
+							<input class="input" v-model="picCode"/><image class="picCode" :src="picCodeIMG"></image><view class="blue" @click="updatePicCode">换一张</view><view class="error" v-if="picCodeError">{{picCodeError}}</view>
 						</view>
-						<view class="row">
-							<image class="icon" :src="imgPath+'login-form-lock.png'"></image><input class="input"/><view class="getPhoneCode">获取验证码</view>
+						<view class="row" key="3">
+							<image class="icon" :src="imgPath+'login-form-lock.png'"></image><input class="input" v-model="code"/><view class="getPhoneCode">获取验证码</view><view class="error" v-if="codeError">{{codeError}}</view>
 						</view>
 					</view>
 					<view class="frame" v-else>
-						<view class="row">
-							<image class="icon" :src="imgPath+'login-form-mine.png'"></image><input class="input" v-model="userName"/>
+						<view class="row" key="4">
+							<image class="icon" :src="imgPath+'login-form-mine.png'"></image><input class="input" v-model="userName"/><view class="error" v-if="userNameError">{{userNameError}}</view>
 						</view>
-						<view class="row">
-							<image class="icon" :src="imgPath+'login-form-lock.png'"></image><input class="input" v-model="password"/>
+						<view class="row" key="5">
+							<image class="icon" :src="imgPath+'login-form-lock.png'"></image><input class="input" v-model="password"/><view class="error" v-if="passwordError">{{passwordError}}</view>
 						</view>
-						<view class="row">
-							<input class="input"/><image class="picCode" :src="picCodeIMG"></image><view class="blue" @click="updatePicCode">换一张</view>
+						<view class="row" key="6">
+							<input class="input"/><image class="picCode" :src="picCodeIMG"></image><view class="blue" @click="updatePicCode">换一张</view><view class="error" v-if="picCodeError">{{picCodeError}}</view>
 						</view>
 					</view>
 					<view class="forget">忘记密码</view>
@@ -73,15 +73,15 @@
 			</view>
 			<view class="listFrame" v-if="logOnType==0">
 				<view class="list">
-					<input class="input" placeholder="请输入手机号码" placeholder-class="placeholder"/>
+					<input class="input" placeholder="请输入手机号码" placeholder-class="placeholder" v-model="userName"/>
 				</view>
 				<view class="list">
-					<input class="input" placeholder="请输入图形验证码" placeholder-class="placeholder"/>
+					<input class="input" placeholder="请输入图形验证码" placeholder-class="placeholder" v-model="picCode"/>
 					<image class="picCode" :src="picCodeIMG"></image>
 					<view class="blue" @click="updatePicCode">换一张</view>
 				</view>
 				<view class="list">
-					<input class="input" placeholder="请输入手机验证码" placeholder-class="placeholder"/>
+					<input class="input" placeholder="请输入手机验证码" placeholder-class="placeholder" v-model="code"/>
 					<view class="getCode">获取验证码</view>
 				</view>
 			</view>
@@ -121,7 +121,12 @@
 						logOnType:0,
 						userName:'',
 						password:'',
-						picCode:''
+						picCode:'',
+						code:'',
+						userNameError:'',
+						passwordError:'',
+						picCodeError:'',
+						codeError:''
 					};
 				},
 		methods:{
@@ -161,8 +166,11 @@
 		},
 		computed:{
 			picCodeIMG(){
-				console.log(this.$store.state.rootST.logonPicCode.data)
-				return 'data:image/jpeg;base64,'+this.$store.state.rootST.logonPicCode.data.captcha
+				try{
+					return 'data:image/jpeg;base64,'+this.$store.state.rootST.logonPicCode.data.captcha
+				}catch(e){
+					return ''
+				}
 			}
 		},
 		onShow(){
