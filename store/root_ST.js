@@ -98,6 +98,18 @@ export default {
 	  async updateRegestPicCode(context,data){
 	  		  let picCode = await postFetch("user-registervercode",{"account":data},false)
 	  		  context.commit('updateRegestPicCode',picCode)
+	  },
+	  async getPhoneCode(context,data){
+		  let res = await postFetch("sendSmsForRegister",{tel:data.tel,code:data.code},false)
+		  if(res.data.send_sms && data.callback){
+			  data.callback(res)
+		  }
+	  },
+	  async regest(context,data){
+		  let res = await postFetch("Register",{"account":data.account,"password":data.password,"code":data.code},false)
+		  if(res.data.userid && data.callback){
+			  data.callback()
+		  }
 	  }
   }
  }

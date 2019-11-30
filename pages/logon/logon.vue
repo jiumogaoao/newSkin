@@ -46,11 +46,33 @@
 							<image class="icon" :src="imgPath+'login-wechat.png'"></image>
 							<image class="icon" :src="imgPath+'login-qq.png'"></image>
 						</view>
-						<view class="blue" @click="go('/pages/regest/regest')">立即注册</view>
+						<view class="blue" @click="goRegest">立即注册</view>
 					</view>
 				</view>
 			</view>
 			<footerCP/>
+			<modalCP 
+			v-if="showRegestPop"
+			title='隐私协议'
+								confirmText='同意'
+								cancelText='拒绝'
+								@cancel="closePop"
+								@submit="go('/pages/regest/regest')"
+			>
+			<view class="p">如新用户注册协议、如新隐私政策、如新优惠顾客/星级顾客注册申请书</view>
+			
+			<view class="p">在您注册成为如新（中国）日用保健品有限公司（以下简称如新）用户及或优惠顾客/星级顾客的过程中，您需要完成如新的注册流程并通过点击同意的形式在线签署《如新用户注册协议》、《如新隐私政策》和《如新优惠顾客/星级顾客注册申请书》，本隐私政策明确了我们的产品与/或服务所收集、使用及共享个人信息的类型方式和用途。请您务必仔细阅读、充分理解协议中的条款内容后再点击同意（尤其是以粗体并下划线标识的条款，因为这些条款可能会明确您应履行的义务或对您的权利有所限制）</view>
+			
+			<view class="p">【审慎阅读】您在申请注册流程中点击同意前，应当认真阅读以下协议。请您务必审慎阅读、充分理解协议中相关条款内容，其中包括：</view>
+			
+			<view class="p">1、与您约定免除或限制责任的条款；</view>
+			
+			<view class="p">2、与您约定法律适用和管辖的条款；</view>
+			
+			<view class="p">3、其他以粗体下划线标识的重要条款。</view>
+			
+			<view class="p">【请您注意】如果您不同意上述协议或其中任何条款约定，请您停止注册。您停止注册后将仅可以浏览我们的产品信息但无法享受我们的产品或服务。如您按照注册流程提示填写信息、阅读并点击同意上述协议且完成全部注册流程后，即表示您已充分阅读、理解并接受协议的全部内容；</view>
+			</modalCP>
 			</view>
 		</block>
 		<!-- #endif -->
@@ -96,7 +118,7 @@
 			</view>
 			<view class="logon" @click="logon">登录</view>
 			<view class="blueFrame">
-				<view class="text" @click="go('/pages/regest/regest')">立即注册</view>
+				<view class="text" @click="goRegest">立即注册</view>
 				<view class="text" @click="go('/pages/logon/reset')">忘记密码？</view>
 			</view>
 			<view class="thirdPath">
@@ -114,8 +136,10 @@
 </template>
 <script>
 	import allPage from "@/mixin/allPage"
+	import modalCP from "@/components/modal_CP.vue"
 	export default {
 		mixins: [allPage],
+		components:{modalCP},
 		data() {
 					return {
 						logOnType:0,
@@ -126,21 +150,122 @@
 						userNameError:'',
 						passwordError:'',
 						picCodeError:'',
-						codeError:''
+						codeError:'',
+						showRegestPop:false
 					};
 				},
 		methods:{
+			closePop(){
+				this.showRegestPop =false
+			},
+			goRegest(){
+				if(this.destop){
+					this.showRegestPop =true
+				}else{
+					uni.showModal({
+									    title: '隐私协议',
+										confirmText:'同意',
+										cancelText:'拒绝',
+									    content: '如新用户注册协议、如新隐私政策、如新优惠顾客/星级顾客注册申请书'+
+					
+					'在您注册成为如新（中国）日用保健品有限公司（以下简称如新）用户及或优惠顾客/星级顾客的过程中，您需要完成如新的注册流程并通过点击同意的形式在线签署《如新用户注册协议》、《如新隐私政策》和《如新优惠顾客/星级顾客注册申请书》，本隐私政策明确了我们的产品与/或服务所收集、使用及共享个人信息的类型方式和用途。请您务必仔细阅读、充分理解协议中的条款内容后再点击同意（尤其是以粗体并下划线标识的条款，因为这些条款可能会明确您应履行的义务或对您的权利有所限制）：'+
+					
+					'【审慎阅读】您在申请注册流程中点击同意前，应当认真阅读以下协议。请您务必审慎阅读、充分理解协议中相关条款内容，其中包括：'+
+					
+					'1、与您约定免除或限制责任的条款；'+
+					
+					'2、与您约定法律适用和管辖的条款；'+
+					
+					'3、其他以粗体下划线标识的重要条款。'+
+					
+					'【请您注意】如果您不同意上述协议或其中任何条款约定，请您停止注册。您停止注册后将仅可以浏览我们的产品信息但无法享受我们的产品或服务。如您按照注册流程提示填写信息、阅读并点击同意上述协议且完成全部注册流程后，即表示您已充分阅读、理解并接受协议的全部内容；',
+									    success: function (res) {
+									        if (res.confirm) {
+									            this.go('/pages/regest/regest')
+									        } else if (res.cancel) {
+									            console.log('用户点击取消');
+									        }
+									    }
+									});
+				}
+				
+			},
+			userNameCheck(){
+				if(!this.userName.length){
+					if(this.destop){
+						this.userNameError = this.logOnType?'请输入账号/手机号':'请输入手机号'
+					}else{
+						uni.showToast({
+						    title: this.logOnType?'请输入账号/手机号':'请输入手机号',
+							icon:'none',
+						    duration: 1000
+						});
+					}
+					return false;
+				}else{
+					return true
+				}
+			},
+			passwordCheck(){
+				if(!this.password.length){
+					if(this.destop){
+						this.passwordError = '请输入密码'
+					}else{
+						uni.showToast({
+						    title: '请输入密码',
+							icon:'none',
+						    duration: 1000
+						});
+					}
+					return false;
+				}else{
+					return true
+				}
+			},
+			picCodeCheck(){
+				if(!this.picCode.length){
+					if(this.destop){
+						this.picCodeError = '请输入图形验证码'
+					}else{
+						uni.showToast({
+						    title: '请输入图形验证码',
+							icon:'none',
+						    duration: 1000
+						});
+					}
+					return false;
+				}else{
+					return true
+				}
+			},
+			codeCheck(){
+				if(!this.code.length){
+					if(this.destop){
+						this.codeError = '请输入短信验证码'
+					}else{
+						uni.showToast({
+						    title: '请输入短信验证码',
+							icon:'none',
+						    duration: 1000
+						});
+					}
+					return false;
+				}else{
+					return true
+				}
+			},
 			changeType(type){
 				this.logOnType = type
 			},
 			logon(){
 				let _this=this;
-				if(this.logOnType==1){
+				if((this.logOnType==0&&this.userNameCheck()&&this.passwordCheck()&&this.codeCheck())||(this.logOnType==1&&this.userNameCheck()&&this.passwordCheck()&&this.picCodeCheck())){}
 					this.$store.dispatch('rootST/logon', {
 						logOnType:_this.logOnType,
 						userName:_this.userName,
 						password:_this.password,
 						picCode:_this.picCode,
+						code:_this.code,
 						callback(res,err){
 							if(res){
 								_this.$store.dispatch('userST/logon', {})
@@ -150,10 +275,6 @@
 							}
 						}
 					})
-				}else{
-					this.$store.dispatch('userST/logon', {})
-					uni.navigateBack()
-				}
 			},
 			updatePicCode(){
 				this.$store.dispatch('rootST/updateLogonPicCode',this.userName)

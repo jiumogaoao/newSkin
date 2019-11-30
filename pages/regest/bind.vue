@@ -12,46 +12,25 @@
 			</view>
 			<view class="center">
 				<view class="row">
-					<view class="label">手机号码*</view>
+					<view class="label">CN号*</view>
 					<view class="inputFrame">
-						<input class="input"/>
+						<input class="input" v-model="id"/><view class="error" v-if="idError">{{idError}}</view>
 					</view>
 				</view>
 				<view class="row">
-					<view class="label">验证*</view>
+					<view class="label">CN号密码*</view>
 					<view class="inputFrame">
-						<input class="input"/>
-						<image class="picCode" :src="imgPath+'verificationCode.png'"></image>
-						<view class="blue">换一张</view>
-					</view>
-				</view>
-				<view class="row">
-					<view class="label">手机短信验证码*</view>
-					<view class="inputFrame">
-						<input class="input"/>
-						<view class="getCode">获取验证码</view>
-					</view>
-				</view>
-				<view class="row">
-					<view class="label">设置密码*</view>
-					<view class="inputFrame">
-						<input class="input"/>
-					</view>
-				</view>
-				<view class="row">
-					<view class="label">确认密码*</view>
-					<view class="inputFrame">
-						<input class="input"/>
+						<input class="input" v-model="password"/><view class="error" v-if="passwordError">{{passwordError}}</view>
 					</view>
 				</view>
 				<view class="agreeFrame">
-					<chechBoxCP/>
-					<view class="text">已阅读并同意</view>
-					<view class="blue">《如新海外购用户协议》</view>
+					<chechBoxCP :checked="agree" @click="toggleAgree"/>
+					<view class="text">绑定如新CN号需同意</view>
+					<view class="blue">《如新海外购推广商申请书》</view>
 				</view>
 				<view class="buttonFrame">
-					<view class="cancel">取消</view>
-					<view class="submit">提交</view>
+					<view class="cancel" @click="go('/pages/index/index')">取消</view>
+					<view class="submit" @click="bind">绑定</view>
 				</view>
 			</view>
 			
@@ -74,19 +53,19 @@
 				<view style="width:100%;height: 55px;"></view>
 				<view class="listFrame">
 					<view class="list">
-						<input class="input" placeholder="请输入CN号"/>
+						<input class="input" placeholder="请输入CN号" v-model="id"/>
 					</view>
 					<view class="list">
-						<input class="input" placeholder="请输入CN号密码"/>
+						<input class="input" placeholder="请输入CN号密码" v-model="password"/>
 						<image class="eye" :src="imgPath+'yanjing.png'"></image>
 					</view>
 				</view>
 				<view class="ruleFrame">
-					<chechBoxCP/>
+					<chechBoxCP :checked="agree" @click="toggleAgree"/>
 					<view class="text">绑定CN号需同意</view>
 					<view class="blue">《如新海外购推广商申请书》</view>
 				</view>
-				<view class="logon" @click="go('/pages/index/index')">绑定</view>
+				<view class="logon" @click="bind">绑定</view>
 		</block>
 	</view>
 </template>
@@ -98,9 +77,56 @@
 		components:{chechBoxCP},
 		data() {
 					return {
-
+						id:"",
+						password:"",
+						agree:false,
+						idError:'',
+						passwordError:''
 					};
+				},
+		methods:{
+			toggleAgree(){
+				this.agree = !this.agree
+			},
+			idCheck(){
+				if(!this.id.length){
+					if(this.destop){
+						this.idError = '请输入CN号'
+					}else{
+						uni.showToast({
+						    title: '请输入CN号',
+							icon:'none',
+						    duration: 1000
+						});
+					}
+					return false;
+				}else{
+					return true;
 				}
+			},
+			passwordCheck(){
+				if(!this.password.length){
+					if(this.destop){
+						this.passwordError = '请输入CN号密码'
+					}else{
+						uni.showToast({
+						    title: '请输入CN号密码',
+							icon:'none',
+						    duration: 1000
+						});
+					}
+					return false;
+				}else{
+					return true;
+				}
+			},
+			bind(){
+				if(!this.agree){return}
+				if(this.idCheck()&&this.passwordCheck()){
+					this.go('/pages/index/index')
+				}
+			}
+		}
 			}
 		</script>
 		

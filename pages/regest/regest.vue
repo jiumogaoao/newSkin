@@ -32,7 +32,8 @@
 					<view class="inputFrame">
 						<input class="input" v-model="phoneCode"/>
 						<view class="error" v-if="phoneCodeError">{{phoneCodeError}}</view>
-						<view class="getCode">获取验证码</view>
+						<view class="getCode" v-if="nextTime">{{nextTime}}后可继续获取</view>
+						<view class="getCode" @click="getCode" v-else>获取验证码</view>
 					</view>
 				</view>
 				<view class="row">
@@ -55,8 +56,8 @@
 					<view class="blue">《如新海外购用户协议》</view>
 				</view>
 				<view class="buttonFrame">
-					<view class="cancel">取消</view>
-					<view class="submit">提交</view>
+					<view class="cancel" @click="back">取消</view>
+					<view class="submit" @click="regest">提交</view>
 				</view>
 			</view>
 			
@@ -89,7 +90,8 @@
 					</view>
 					<view class="list">
 						<input class="input" placeholder="请输入手机验证码" v-model="phoneCode"/>
-						<view class="getCode">获取验证码</view>
+						<view class="getCode" v-if="nextTime">{{nextTime}}后可继续获取</view>
+						<view class="getCode" @click="getCode" v-else>获取验证码</view>
 					</view>
 					<view class="list">
 						<input class="input" placeholder="请设置密码,6~20位数" v-model="password"/>
@@ -130,19 +132,176 @@
 						codeError:'',
 						phoneCodeError:'',
 						passwordError:'',
-						password2Error:''
+						password2Error:'',
+						nextTime:0
 					};
 				},
 				methods:{
+					phoneCheck(){
+						if(!this.phone.length){
+							if(this.destop){
+								this.phoneError = '请输入手机号'
+							}else{
+								uni.showToast({
+								    title: '请输入手机号',
+									icon:'none',
+								    duration: 1000
+								});
+							}
+							return false;
+						}else if(!(/^1[3456789]\d{9}$/.test(this.phone))){
+							if(this.destop){
+								this.phoneError = '请输入正确的手机号'
+							}else{
+								uni.showToast({
+								    title: '请输入正确的手机号',
+									icon:'none',
+								    duration: 1000
+								});
+							}
+							return false;
+						}else{
+							return true;
+						}
+					},
+					codeCheck(){
+						if(!this.code.length){
+							if(this.destop){
+								this.codeError = '请输入图片验证码！'
+							}else{
+								uni.showToast({
+								    title: '请输入图片验证码！',
+									icon:'none',
+								    duration: 1000
+								});
+							}
+							return false;
+						}else{
+							return true;
+						}
+					},
+					phoneCodeCheck(){
+						if(!this.phoneCode.length){
+							if(this.destop){
+								this.phoneCodeError = '请输入短信验证码！'
+							}else{
+								uni.showToast({
+								    title: '请输入短信验证码！',
+									icon:'none',
+								    duration: 1000
+								});
+							}
+							return false;
+						}else{
+							return true;
+						}
+					},
+					passwordCheck(){
+						if(!this.password.length){
+							if(this.destop){
+								this.passwordError = '请输入密码！'
+							}else{
+								uni.showToast({
+								    title: '请输入密码！',
+									icon:'none',
+								    duration: 1000
+								});
+							}
+							return false;
+						}else if(/^(?:\d+|[a-zA-Z]+|[!@#$%^&*]+)$/.test(this.password)){
+							if(this.destop){
+								this.passwordError = '密码格式不正确！'
+							}else{
+								uni.showToast({
+								    title: '密码格式不正确！',
+									icon:'none',
+								    duration: 1000
+								});
+							}
+							return false;
+						}else if(this.password.length<6 || this.password.length>20){
+							if(this.destop){
+								this.passwordError = '密码长度必须为6-20位，可包含字母数字和符号！'
+							}else{
+								uni.showToast({
+								    title: '密码长度必须为6-20位，可包含字母数字和符号！',
+									icon:'none',
+								    duration: 1000
+								});
+							}
+							return false;
+						}else{
+							return true;
+						}
+					},
+					password2Check(){
+						if(!this.password2.length){
+							if(this.destop){
+								this.password2Error = '请输入确认密码！'
+							}else{
+								uni.showToast({
+								    title: '请输入确认密码！',
+									icon:'none',
+								    duration: 1000
+								});
+							}
+							return false;
+						}else if(this.password != this.password2){
+							if(this.destop){
+								this.password2Error = '两次输入的密码不一致！'
+							}else{
+								uni.showToast({
+								    title: '两次输入的密码不一致！',
+									icon:'none',
+								    duration: 1000
+								});
+							}
+							return false;
+						}else{
+							return true;
+						}
+					},
 					regest(){
-						this.$store.dispatch('userST/logon', {})
-						this.go('/pages/regest/bind')
+						if(!this.agree){
+							return
+						}
+						let _this = this;
+						if(this.phoneCheck()&&this.phoneCodeCheck()&&this.passwordCheck()&&this.password2Check()){
+							this.$store.dispatch("rootST/regest",{account:this.phone,password:this.password,code:this.phoneCode,callback:function(){
+								_this.$store.dispatch('userST/logon', {})
+								_this.go('/pages/regest/bind')
+							}})
+						}
 					},
 					updatePicCode(){
 						this.$store.dispatch('rootST/updateRegestPicCode',this.phone)
 					},
 					toggleAgree(){
 						this.agree=!this.agree
+					},
+					updateNextTime(){
+						this.nextTime = 60;
+						let s = setInterval(function(){
+							if(this.nextTime >= 1){
+								this.nextTime--;
+							}else{
+								clearInterval(s)
+							}
+						},1000)
+					},
+					getCode(){
+						console.log(this.nextTime)
+						if(this.nextTime){return}
+						let _this=this;
+						if(this.phoneCheck()&&this.codeCheck()){
+							this.$store.dispatch("rootST/getPhoneCode",{
+								tel:this.phone,
+								code:this.code,
+								callback(){
+									_this.updateNextTime()
+								}
+							})
+						}
 					}
 				},
 				computed:{
