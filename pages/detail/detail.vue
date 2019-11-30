@@ -24,7 +24,7 @@
 				<view class="chn">{{name}}</view>
 				<view class="eng">{{subtitle}}</view>
 				<view class="band">{{brand}}</view>
-				<view class="price">零售价：<block class="newPrice">￥510.00</block> <block class="oldPrice">￥0.00</block></view>
+				<view class="price">零售价：<block class="newPrice">￥{{selectedSKU.price}}</block> <block class="oldPrice">￥{{selectedSKU.marketprice}}</block></view>
 				<view class="frame">
 					<view class="title">活动：</view>
 					<view class="activeFrame">
@@ -46,7 +46,7 @@
 				</view>
 				<view class="frame">
 					<view class="title">税费：</view>
-					<view class="text">预计：￥46.41</view>
+					<view class="text">预计：￥{{selectedSKU.tariff}}</view>
 				</view>
 				<view class="frame">
 					<view class="title">运费：</view>
@@ -57,10 +57,9 @@
 					<view class="text">顺丰</view>
 				</view>
 				<view class="frame">
-					<view class="title">容量：</view>
+					<view class="title">{{capacity[0].name.split(":")[0]}}：</view>
 					<view class="radioFrame">
-						<view class="radio">30ml<image class="choosed" :src="imgPath+'prop-selected.png'"></image></view>
-						<view class="radio">30ml<image class="choosed" :src="imgPath+'prop-selected.png'"></image></view>
+						<view :class="{radio:1,hl:v.property_id==property_id}" v-for="(v,i) in capacity" :key="v.property_id" @click="setSKU(v.property_id)">{{v.name.split(":")[1]}}<image class="choosed" :src="imgPath+'prop-selected.png'" v-if="v.property_id==property_id"></image></view>
 					</view>
 				</view>
 				<view class="frame">
@@ -122,13 +121,13 @@
 				</view>
 				<view class="title">{{name}}</view>
 				<view class="title">{{subtitle}}</view>
-				<view class="price">零售价：<block class="block">￥100</block></view>
+				<view class="price">零售价：<block class="block">￥{{selectedSKU.price}}</block></view>
 				<view :class="{nuskinIcon:1,follow:1,hl:(follow?1:0)}">&#xe64e;</view>
 			</view>
 			<view class="middle">
 				<view class="row">
 					<view class="title">税费</view>
-					<view class="text">￥46.41</view>
+					<view class="text">￥{{selectedSKU.tariff}}</view>
 				</view>
 				<view class="row">
 					<view class="title">运费</view>
@@ -270,16 +269,14 @@
 						<image :src="imgPath+'NF80clypcwPftxY6LKp6TH0phSx3wy.jpg'" class="pic"></image>
 						<view class="right">
 							<view class="text">灵韵润泽唇膏-熏莎红</view>
-							<view class="text">零售价：<text>￥485.00</text></view>
+							<view class="text">零售价：<text>￥{{selectedSKU.price}}</text></view>
 							<view class="stock">库存：995件</view>
 						</view>
 					</view>
 					<view class="skuList">
-						<view class="skuTitle">颜色</view>
+						<view class="skuTitle">{{capacity[0].name.split(":")[0]}}</view>
 						<view class="skuGFrame">
-							<view class="sku hl">黛纱红</view>
-							<view class="sku">黛纱红</view>
-							<view class="sku">黛纱红</view>
+							<view :class="{sku:1,hl:v.property_id == property_id}" v-for="(v,i) in capacity" :key="v.property_id" @click="setSKU(v.property_id)">{{v.name.split(":")[1]}}</view>
 						</view>
 					</view>
 					<view class="countFrame">
@@ -316,6 +313,9 @@
 			},
 			closeSku(){
 				this.skuShow=false;
+			},
+			setSKU(id){
+				this.$store.dispatch("productST/setProperty",id)
 			}
 		},
 		onLoad(props){
@@ -335,7 +335,20 @@
 			property(){return this.$store.state.productST.property},
 			subtitle(){return this.$store.state.productST.subtitle},
 			supplier(){return this.$store.state.productST.supplier},
-			weight(){return this.$store.state.productST.weight}
+			weight(){return this.$store.state.productST.weight},
+			property_id(){
+				return this.$store.state.productST.property_id
+			},
+			selectedSKU(){
+				let _this = this
+				let s = {}
+				this.capacity.map(function(v){
+					if(v.property_id == _this.property_id){
+						s = v
+					}
+				})
+				return s
+			}
 		}
 	}
 </script>
@@ -574,12 +587,15 @@
 		margin-bottom: 15px;
 	}
 	.radio{
-		border: 1px solid #008ab0;
+		border: 1px solid $main-gray;
 		position: relative;
 		position: relative;
 		padding: 5px 10px;
 		border-radius: 3px;
 		margin-right:10px;
+	}
+	.radio.hl{
+		border: 1px solid #008ab0;
 	}
 	.choosed{
 		width:15px;

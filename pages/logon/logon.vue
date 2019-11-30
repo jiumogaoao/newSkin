@@ -21,7 +21,7 @@
 							<image class="icon" :src="imgPath+'login-form-mine.png'"></image><input class="input" v-model="userName"/>
 						</view>
 						<view class="row">
-							<input class="input" v-model="picCode"/><image class="picCode" :src="imgPath+'verificationCode.png'"></image><view class="blue">换一张</view>
+							<input class="input" v-model="picCode"/><image class="picCode" :src="picCodeIMG"></image><view class="blue" @click="updatePicCode">换一张</view>
 						</view>
 						<view class="row">
 							<image class="icon" :src="imgPath+'login-form-lock.png'"></image><input class="input"/><view class="getPhoneCode">获取验证码</view>
@@ -35,7 +35,7 @@
 							<image class="icon" :src="imgPath+'login-form-lock.png'"></image><input class="input" v-model="password"/>
 						</view>
 						<view class="row">
-							<input class="input"/><image class="picCode" :src="imgPath+'verificationCode.png'" v-model="picCode"></image><view class="blue">换一张</view>
+							<input class="input"/><image class="picCode" :src="picCodeIMG"></image><view class="blue" @click="updatePicCode">换一张</view>
 						</view>
 					</view>
 					<view class="forget">忘记密码</view>
@@ -57,11 +57,11 @@
 		<block  v-if="!destop && initReady">
 			<view class="top">
 				<view class="head">
-					<image class="back" :src="imgPath+'zuojiantou.png'" @click="back"></image>
+					<image class="back" :src="imgPath+'zuojiantou.png'" @click="backForLogon"></image>
 				</view>
 				<image class="logo" :src="imgPath+'de4406c8.logo2.png'"></image>
 				<view class="tagBar">
-					<view :class="{item:1,hl:logOnType==0}" @click="changeType(0)">
+					<view :class="{item:1,hl:logOnType==0}">
 						<view class="name">手机验证码登录</view>
 						<image class="deg" :src="imgPath+'upDeg.png'"></image>
 					</view>
@@ -77,8 +77,8 @@
 				</view>
 				<view class="list">
 					<input class="input" placeholder="请输入图形验证码" placeholder-class="placeholder"/>
-					<image class="picCode" :src="imgPath+'verificationCode.png'"></image>
-					<view class="blue">换一张</view>
+					<image class="picCode" :src="picCodeIMG"></image>
+					<view class="blue" @click="updatePicCode">换一张</view>
 				</view>
 				<view class="list">
 					<input class="input" placeholder="请输入手机验证码" placeholder-class="placeholder"/>
@@ -135,6 +135,7 @@
 						logOnType:_this.logOnType,
 						userName:_this.userName,
 						password:_this.password,
+						picCode:_this.picCode,
 						callback(res,err){
 							if(res){
 								_this.$store.dispatch('userST/logon', {})
@@ -148,6 +149,28 @@
 					this.$store.dispatch('userST/logon', {})
 					uni.navigateBack()
 				}
+			},
+			updatePicCode(){
+				this.$store.dispatch('rootST/updateLogonPicCode',this.userName)
+			},
+			backForLogon(){
+				uni.navigateBack({
+					delta: 2
+				});
+			}
+		},
+		computed:{
+			picCodeIMG(){
+				console.log(this.$store.state.rootST.logonPicCode.data)
+				return 'data:image/jpeg;base64,'+this.$store.state.rootST.logonPicCode.data.captcha
+			}
+		},
+		onShow(){
+			this.updatePicCode()
+		},
+		watch:{
+			userName(val){
+				this.updatePicCode()
 			}
 		}
 			}

@@ -51,7 +51,7 @@ export default {
 	  },
 	  updateLogonPicCode(state, data){
 		  state.logonPicCode = data
-	  }
+	  },
 	  updateRegestPicCode(state, data){
 		  state.regestPicCode = data
 	  }
@@ -77,7 +77,7 @@ export default {
 	  },
 	  async logon(context,data){
 		  if(data.logOnType==1){
-			  let logon= await postFetch("Login",{"username":data.userName,"password":data.password},false)
+			  let logon= await postFetch("Login",{"username":data.userName,"password":data.password,code:data.picCode},false)
 				if(logon.data.access_token){
 					context.commit('setToken',logon.data)
 					setToken(logon.data)

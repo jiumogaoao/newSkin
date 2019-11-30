@@ -18,7 +18,7 @@
 					<view class="shelfTitleLine"></view>
 				</view>
 				<view class="shelfProductList">
-					<productSimpleCP v-for="(n,o) in v.product" @follow="follow(n.pId)" @click="go('/pages/detail/detail?id='+n.pId)" :key="n.pId" :follow="n.follow" :img="n.img" :name="n.name" :price="n.price" :pId="n.pId"/>
+					<productSimpleCP v-for="(n,o) in v.product" @follow="follow(n.pid)" @click="go('/pages/detail/detail?id='+n.pid)" :key="n.pid" :follow="n.follow" :img="n.img" :name="n.name" :price="n.price" :pId="n.pid"/>
 				</view>
 			</view>
 			<image class="promo" :src="'/static/pomo'+i+'.jpg'"></image>
@@ -34,7 +34,7 @@
 		<view class="newsFrame">
 			<view class="newsCenterFrame">
 				<view class="newsItem" v-for="(v,i) in news" :key="v.nid" @click="go('/pages/newDetail/newDetail?id='+v.nId)" v-if="i<2">
-					<image class="newsImage" :src="v.img"></image>
+					<image class="newsImage" :src="v.imgPc"></image>
 					<view class="newsTitle">{{v.name}}</view>
 					<view class="newsDesc">{{v.dsc}}</view>
 				</view>
@@ -47,7 +47,7 @@
 		</view>
 		<view class="storyFrame">
 			<view class="storyItem" v-for="(v,i) in story" :key="v.sid">
-				<image class="storyImg" :src="v.img"></image>
+				<image class="storyImg" :src="v.imgpc"></image>
 				<view class="storyBottom">
 					<view class="storyTitle">{{v.name}}</view>
 					<view class="storyMore" @click="go('/pages/storyDetail/storyDetail?id='+v.sid)">了解更多</view>
@@ -115,13 +115,13 @@
 				</view> -->
 
 				<view class="productList">
-					<productSimpleCP style="margin-top:30rpx;" v-for="(n,o) in v.product"  @click="go('/pages/detail/detail?id='+n.pId)" :key="n.pId" :follow="n.follow" :img="n.img" :name="n.name" :price="n.price" :pId="n.pId"/>
+					<productSimpleCP style="margin-top:30rpx;" v-for="(n,o) in v.product"  @click="go('/pages/detail/detail?id='+n.pid)" :key="n.pId" :follow="n.follow" :img="n.img" :name="n.name" :price="n.price" :pId="n.pId"/>
 				</view>
 				<image class="ad" :src="imgPath+'ad1.png'"/>
 			</block>
 			<view class="smallTitle">新闻中心<view class="line"></view></view>
 			<view class="news" v-for="(v,i) in news" :key="v.nId" @click="go('/pages/newDetail/newDetail?id='+v.nId)" v-if="i == 0">
-				<image class="img" :src="v.img"></image>
+				<image class="img" :src="v.imgH5"></image>
 				<view class="title">{{v.name}}</view>
 				<view class="dsc">{{v.dsc}}</view>
 			</view>
@@ -134,8 +134,8 @@
 			<view class="storyList">
 				<scroll-view scroll-x="true" class="scroll-X">
 					<view class="scrollFrame">
-						<view class="item" v-for="(v,i) in story">
-							<image class="pic" :src="v.img"></image>
+						<view class="item" v-for="(v,i) in story" :key="v.sid">
+							<image class="pic" :src="v.imgh5"></image>
 							<view class="subTitle">品牌故事</view>
 							<view class="title">{{v.name}}</view>
 							<view class="knowMore" @click="go('/pages/storyDetail/storyDetail?id='+v.sid)">了解更多>></view>

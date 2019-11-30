@@ -16,7 +16,8 @@ export default {
 	  property:"",
 	  subtitle:"",
 	  supplier:"",
-	  weight:0
+	  weight:0,
+	  property_id:""
   },
   mutations: {
 	  clear(state, data){
@@ -37,6 +38,10 @@ export default {
 		  state.subtitle = data.subtitle
 		  state.supplier = data.supplier
 		  state.weight = data.weight
+		  state.property_id = data.capacity[0].property_id
+	  },
+	  setProperty(state, data){
+		  state.property_id = data
 	  }
   },
   actions:{
@@ -48,6 +53,9 @@ export default {
 			  context.commit("init",res.data)
 			  // console.log("product-detail",res)
 		  })
+	  },
+	  setProperty(context,data){
+		  context.commit("setProperty",data)
 	  }
   }
  }
