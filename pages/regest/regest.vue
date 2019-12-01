@@ -366,6 +366,13 @@
 					.row{
 						margin-top: 70px;
 						width: 100%;
+						position:relative;
+						.error{
+									position: absolute;
+									top:80px;
+									left: 0;
+									color: red;
+								}
 						.label{
 							font-size: 14px;
 							color: #000;

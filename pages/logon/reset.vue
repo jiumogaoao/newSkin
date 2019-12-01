@@ -172,6 +172,12 @@
 					.row{
 						margin-top: 70px;
 						width: 100%;
+						.error{
+									position: absolute;
+									top:41px;
+									left: 0;
+									color: red;
+								}
 						.label{
 							font-size: 14px;
 							color: #000;

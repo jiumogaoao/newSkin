@@ -123,6 +123,7 @@
 			bind(){
 				if(!this.agree){return}
 				if(this.idCheck()&&this.passwordCheck()){
+					
 					this.go('/pages/index/index')
 				}
 			}
@@ -172,6 +173,13 @@
 					.row{
 						margin-top: 70px;
 						width: 100%;
+						position: relative;
+						.error{
+									position: absolute;
+									top:72px;
+									left: 0;
+									color: red;
+								}
 						.label{
 							font-size: 14px;
 							color: #000;

@@ -68,8 +68,10 @@
 			}
 			.center{
 				flex-grow: 1;
+				flex-shrink: 1;
 				overflow: auto;
 				margin-top: 48px;
+				margin-bottom: 20px;
 			}
 			.bottom{
 				flex-shrink: 0;

@@ -35,7 +35,7 @@
 							<image class="icon" :src="imgPath+'login-form-lock.png'"></image><input class="input" v-model="password"/><view class="error" v-if="passwordError">{{passwordError}}</view>
 						</view>
 						<view class="row" key="6">
-							<input class="input"/><image class="picCode" :src="picCodeIMG"></image><view class="blue" @click="updatePicCode">换一张</view><view class="error" v-if="picCodeError">{{picCodeError}}</view>
+							<input class="input" v-model="picCode"/><image class="picCode" :src="picCodeIMG"></image><view class="blue" @click="updatePicCode">换一张</view><view class="error" v-if="picCodeError">{{picCodeError}}</view>
 						</view>
 					</view>
 					<view class="forget">忘记密码</view>
@@ -308,6 +308,10 @@
 		<style lang="scss" scoped>
 			/* #ifdef H5 */
 			.destop{
+				.p{
+					line-height: 1.5;
+					font-size: 16px;
+				}
 				.content{
 				display: flex;
 				justify-content: space-between;
@@ -375,6 +379,13 @@
 								display: flex;
 								margin-top: 20px;
 								align-items: center;
+								position: relative;
+								.error{
+									position: absolute;
+									top:41px;
+									left: 0;
+									color: red;
+								}
 								.icon{
 									width: 48px;
 									height: 38px;
