@@ -111,6 +111,10 @@ export default {
 		  if(res.data.userid && data.callback){
 			  data.callback()
 		  }
+	  },
+	  async bind(context,data){
+		  let res = await postFetch("Rx-BindCN",{"cbeAccount":data.cbeAccount,"distId":data.distId},false)
+		  			  data.callback()
 	  }
   }
  }
