@@ -159,6 +159,7 @@
 				this.showRegestPop =false
 			},
 			goRegest(){
+				let _this=this
 				if(this.destop){
 					this.showRegestPop =true
 				}else{
@@ -181,7 +182,7 @@
 					'【请您注意】如果您不同意上述协议或其中任何条款约定，请您停止注册。您停止注册后将仅可以浏览我们的产品信息但无法享受我们的产品或服务。如您按照注册流程提示填写信息、阅读并点击同意上述协议且完成全部注册流程后，即表示您已充分阅读、理解并接受协议的全部内容；',
 									    success: function (res) {
 									        if (res.confirm) {
-									            this.go('/pages/regest/regest')
+									            _this.go('/pages/regest/regest')
 									        } else if (res.cancel) {
 									            console.log('用户点击取消');
 									        }
