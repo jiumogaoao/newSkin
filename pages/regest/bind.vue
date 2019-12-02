@@ -27,6 +27,7 @@
 					<chechBoxCP :checked="agree" @click="toggleAgree"/>
 					<view class="text">绑定如新CN号需同意</view>
 					<view class="blue">《如新海外购推广商申请书》</view>
+					<view class="error" v-if="agreeError">{{agreeError}}</view>
 				</view>
 				<view class="buttonFrame">
 					<view class="cancel" @click="go('/pages/index/index')">取消</view>
@@ -81,12 +82,30 @@
 						password:"",
 						agree:false,
 						idError:'',
-						passwordError:''
+						passwordError:'',
+						agreeError:''
 					};
 				},
 		methods:{
 			toggleAgree(){
 				this.agree = !this.agree
+			},
+			agreeCheck(){
+				if(!this.agree){
+					if(this.destop){
+						this.agreeError = '请勾选同意'
+					}else{
+						uni.showToast({
+						    title: '请勾选同意',
+							icon:'none',
+						    duration: 1000
+						});
+					}
+					return false;
+				}else{
+					this.agreeError=''
+					return true;
+				}
 			},
 			idCheck(){
 				if(!this.id.length){
@@ -101,6 +120,7 @@
 					}
 					return false;
 				}else{
+					this.idError = ''
 					return true;
 				}
 			},
@@ -117,13 +137,13 @@
 					}
 					return false;
 				}else{
+					this.passwordError = ''
 					return true;
 				}
 			},
 			bind(){
 				let _this=this;
-				if(!this.agree){return}
-				if(this.idCheck()&&this.passwordCheck()){
+				if(this.agreeCheck()&&this.idCheck()&&this.passwordCheck()){
 					this.$store.dispatch('rootST/bind',{"userName":this.id,"password":this.password,"callback":function(){
 						_this.go('/pages/index/index')
 					}})
@@ -226,6 +246,13 @@
 						display: flex;
 						margin-top: 40px;
 						align-items: center;
+						position:relative;
+						.error{
+									position: absolute;
+									top:30px;
+									left: 0;
+									color: red;
+								}
 						.text{
 							    font-size: 14px;
 							    color: #000;

@@ -54,6 +54,7 @@
 					<chechBoxCP :checked="agree" @click="toggleAgree"/>
 					<view class="text">已阅读并同意</view>
 					<view class="blue">《如新海外购用户协议》</view>
+					<view class="error" v-if="agreeError">{{agreeError}}</view>
 				</view>
 				<view class="buttonFrame">
 					<view class="cancel" @click="back">取消</view>
@@ -133,10 +134,28 @@
 						phoneCodeError:'',
 						passwordError:'',
 						password2Error:'',
-						nextTime:0
+						nextTime:0,
+						agreeError:'',
 					};
 				},
 				methods:{
+					agreeCheck(){
+						if(!this.agree){
+							if(this.destop){
+								this.agreeError = '请勾选同意'
+							}else{
+								uni.showToast({
+								    title: '请勾选同意',
+									icon:'none',
+								    duration: 1000
+								});
+							}
+							return false;
+						}else{
+							this.agreeError=''
+							return true;
+						}
+					},
 					phoneCheck(){
 						if(!this.phone.length){
 							if(this.destop){
@@ -161,6 +180,7 @@
 							}
 							return false;
 						}else{
+							this.phoneError = ''
 							return true;
 						}
 					},
@@ -177,6 +197,7 @@
 							}
 							return false;
 						}else{
+							this.codeError = ''
 							return true;
 						}
 					},
@@ -193,6 +214,7 @@
 							}
 							return false;
 						}else{
+							this.phoneCodeError = ''
 							return true;
 						}
 					},
@@ -231,6 +253,7 @@
 							}
 							return false;
 						}else{
+							this.passwordError = ''
 							return true;
 						}
 					},
@@ -258,15 +281,13 @@
 							}
 							return false;
 						}else{
+							this.password2Error = ''
 							return true;
 						}
 					},
 					regest(){
-						if(!this.agree){
-							return
-						}
 						let _this = this;
-						if(this.phoneCheck()&&this.phoneCodeCheck()&&this.passwordCheck()&&this.password2Check()){
+						if(this.agreeCheck()&&this.phoneCheck()&&this.phoneCodeCheck()&&this.passwordCheck()&&this.password2Check()){
 							this.$store.dispatch("rootST/regest",{account:this.phone,password:this.password,code:this.phoneCode,callback:function(){
 								_this.$store.dispatch('userST/logon', {})
 								_this.go('/pages/regest/bind')
@@ -417,6 +438,13 @@
 						display: flex;
 						margin-top: 40px;
 						align-items: center;
+						position: relative;
+						.error{
+									position: absolute;
+									top:30px;
+									left: 0;
+									color: red;
+								}
 						.text{
 							    font-size: 14px;
 							    color: #000;
