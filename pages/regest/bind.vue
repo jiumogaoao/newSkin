@@ -121,10 +121,12 @@
 				}
 			},
 			bind(){
+				let _this=this;
 				if(!this.agree){return}
 				if(this.idCheck()&&this.passwordCheck()){
-					
-					this.go('/pages/index/index')
+					this.$store.dispatch('rootST/bind',{"userName":this.id,"password":this.password,"callback":function(){
+						_this.go('/pages/index/index')
+					}})
 				}
 			}
 		}

@@ -113,7 +113,7 @@ export default {
 		  }
 	  },
 	  async bind(context,data){
-		  let res = await postFetch("Rx-BindCN",{"cbeAccount":data.cbeAccount,"distId":data.distId},false)
+		  let res = await postFetch("Rx-BindCN",{"userName":data.userName,"password":data.password},false)
 		  			  data.callback()
 	  }
   }
