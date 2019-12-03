@@ -288,7 +288,14 @@
 					regest(){
 						let _this = this;
 						if(this.agreeCheck()&&this.phoneCheck()&&this.phoneCodeCheck()&&this.passwordCheck()&&this.password2Check()){
-							this.$store.dispatch("rootST/regest",{account:this.phone,password:this.password,code:this.phoneCode,callback:function(){
+							this.$store.dispatch("rootST/regest",{account:this.phone,password:this.password,code:this.phoneCode,callback:function(error){
+								if(error){
+									uni.showToast({
+										title:error,
+										icon:'none'
+									})
+									return;
+								}
 								_this.$store.dispatch('userST/logon', {})
 								_this.go('/pages/regest/bind')
 							}})

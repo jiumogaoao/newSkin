@@ -8,6 +8,7 @@ import shoppingCarST from './shoppingCar_ST'
 import followST from './follow_ST'
 import historyST from './history_ST'
 import productST from './product_ST'
+import createPersistedState from "vuex-persistedstate"
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
@@ -74,7 +75,8 @@ const store = new Vuex.Store({
 				}
 			})
 		}
-	}
+	},
+	plugins:[createPersistedState('localStorage')]
 })
 
 export default store

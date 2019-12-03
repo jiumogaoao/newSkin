@@ -105,7 +105,7 @@ export const refleshToken =  async (url,params = {},needLogon,callback)=>{
 	d+=config.apiPath
 	console.log(params)
 	try{
-		 const res = uni.request({
+		 const res = await uni.request({
 		 		url: d+url, //仅为示例，并非真实接口地址。
 		 		data: params,
 		 			method:"POST",
@@ -133,19 +133,23 @@ export const refleshToken =  async (url,params = {},needLogon,callback)=>{
 };
 
 export const postFetch =  async (url,params = {},needLogon,callback) => {
+	access_expired=store.state.rootST.access_expired
+	access_token=store.state.rootST.access_token
+	refresh_expired=store.state.rootST.refresh_expired
+	refresh_token=store.state.rootST.refresh_token
 	if(needLogon,access_expired && (moment(access_expired.substr(0, access_expired.length - 8),'YYYYY-MM-DD hh:mm:ss').format('x')<moment().format('x'))){
 		let newToken = await refleshToken('RefreshToken',{'access_token':access_token,'refresh_token':refresh_token},null)
 		store.dispatch('rootST/setToken',{
-			access_expired:newToken.access_expired,
-			access_token:newToken.access_token,
-			refresh_expired:newToken.refresh_expired?newToken.refresh_expired:null,
-			refresh_token:newToken.refresh_token?newToken.refresh_token:null
+			access_expired:newToken.data.access_expired,
+			access_token:newToken.data.access_token,
+			refresh_expired:newToken.data.refresh_expired?newToken.data.refresh_expired:null,
+			refresh_token:newToken.data.refresh_token?newToken.data.refresh_token:null
 		})
-		access_expired = newToken.access_expired
-		access_token = newToken.access_token
-		if(newToken.refresh_expired){
-			refresh_expired = newToken.refresh_expired
-			refresh_token = newToken.refresh_token
+		access_expired = newToken.data.access_expired
+		access_token = newToken.data.access_token
+		if(newToken.data.refresh_expired){
+			refresh_expired = newToken.data.refresh_expired
+			refresh_token = newToken.data.refresh_token
 		}
 		console.log('token更新',newToken)
 	}else if(needLogon && !access_expired){
@@ -156,7 +160,7 @@ export const postFetch =  async (url,params = {},needLogon,callback) => {
 	keyList.sort()
 	let str = "";
 	keyList.map(function(v,i){
-		str+=v+"="+encodeURI(params[v])+'&'
+		str+=v+"="+encodeURIComponent(params[v])+'&'
 	})
 	console.log("参数排序",str)
 	let ts = new Date().getTime();

@@ -77,7 +77,6 @@ export default {
 	  },
 	  async logon(context,data){
 		  if(data.logOnType==1){
-			  debugger;
 			  let logon= await postFetch("Login",{"username":data.userName,"password":data.password,code:data.picCode},false)
 				if(logon.data.access_token){
 					context.commit('setToken',logon.data)
@@ -108,13 +107,37 @@ export default {
 	  },
 	  async regest(context,data){
 		  let res = await postFetch("Register",{"account":data.account,"password":data.password,"code":data.code},false)
-		  if(res.data.userid && data.callback){
+		  if(res.data.access_token && data.callback){
+			 context.commit('setToken',res.data)
+			 setToken(res.data)
 			  data.callback()
+		  }else if(data.callback){
+			  data.callback(res.data.message)
 		  }
 	  },
+	  async verifyBind(context,data){
+		  let res = await postFetch("Rx-VerifyCN",{"userName":data.userName,"password":data.password},true)
+		  try{
+			  if(res.data.data.data.type==2){
+				  data.callback(res.data.data.data)
+			  }else{
+				  data.callback(null,"账号已绑定")
+			  }
+		  }catch(e){
+			  data.callback(null,res.data.message)
+		  }
+		  			  
+	  },
 	  async bind(context,data){
-		  let res = await postFetch("Rx-VerifyCN",{"userName":data.userName,"password":data.password},false)
-		  			  data.callback()
-	  }
+	  		  let res = await postFetch("Rx-BindCN",{"cbeAccount":data.cbeAccount,"distId":data.distId},true)
+	  		  if(res.data.status==1){
+				  data.callback()
+			  }else{
+				  data.callback(res.data.message)
+			  }
+	  			  
+	  		  
+	  		  			  
+	  },
   }
  }

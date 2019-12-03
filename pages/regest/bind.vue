@@ -14,15 +14,17 @@
 				<view class="row">
 					<view class="label">CN号*</view>
 					<view class="inputFrame">
-						<input class="input" v-model="id"/><view class="error" v-if="idError">{{idError}}</view>
+						<input class="input" v-model="id" @change="idCheck"/><view class="error" v-if="idError">{{idError}}</view>
 					</view>
 				</view>
 				<view class="row">
 					<view class="label">CN号密码*</view>
 					<view class="inputFrame">
-						<input class="input" v-model="password"/><view class="error" v-if="passwordError">{{passwordError}}</view>
+						<input class="input" v-model="password" @change="passwordCheck"/><view class="error" v-if="passwordError">{{passwordError}}</view>
 					</view>
 				</view>
+				<view class="name" v-if="name">{{name}}</view>
+				<view class="nameError" v-if="nameError">{{nameError}}</view>
 				<view class="agreeFrame">
 					<chechBoxCP :checked="agree" @click="toggleAgree"/>
 					<view class="text">绑定如新CN号需同意</view>
@@ -54,13 +56,15 @@
 				<view style="width:100%;height: 55px;"></view>
 				<view class="listFrame">
 					<view class="list">
-						<input class="input" placeholder="请输入CN号" v-model="id"/>
+						<input class="input" placeholder="请输入CN号" v-model="id" @change="idCheck"/>
 					</view>
 					<view class="list">
-						<input class="input" placeholder="请输入CN号密码" v-model="password"/>
+						<input class="input" placeholder="请输入CN号密码" v-model="password" @change="passwordCheck"/>
 						<image class="eye" :src="imgPath+'yanjing.png'"></image>
 					</view>
 				</view>
+				<view class="name" v-if="name">{{name}}</view>
+				<view class="nameError" v-if="nameError">{{nameError}}</view>
 				<view class="ruleFrame">
 					<chechBoxCP :checked="agree" @click="toggleAgree"/>
 					<view class="text">绑定CN号需同意</view>
@@ -83,7 +87,10 @@
 						agree:false,
 						idError:'',
 						passwordError:'',
-						agreeError:''
+						agreeError:'',
+						name:'',
+						nameError:'',
+						accoundID:''
 					};
 				},
 		methods:{
@@ -109,9 +116,8 @@
 			},
 			idCheck(){
 				if(!this.id.length){
-					if(this.destop){
 						this.idError = '请输入CN号'
-					}else{
+					if(!this.destop){
 						uni.showToast({
 						    title: '请输入CN号',
 							icon:'none',
@@ -125,6 +131,7 @@
 				}
 			},
 			passwordCheck(){
+				let _this=this;
 				if(!this.password.length){
 					if(this.destop){
 						this.passwordError = '请输入CN号密码'
@@ -138,14 +145,32 @@
 					return false;
 				}else{
 					this.passwordError = ''
+					if(!this.passwordError && !this.idError){
+						this.$store.dispatch('rootST/verifyBind',{"userName":this.id,"password":this.password,"callback":function(res,error){
+							if(error){
+								_this.nameError=error;
+								if(!_this.destop){
+									uni.showToast({
+										title:error,
+										icon:'none'
+									})
+								}
+								return;
+							}else{
+								_this.nameError='';
+								_this.name = res.realName;
+								_this.accoundID = res.accountId;
+							}
+						}})
+					}
 					return true;
 				}
 			},
 			bind(){
 				let _this=this;
-				if(this.agreeCheck()&&this.idCheck()&&this.passwordCheck()){
-					this.$store.dispatch('rootST/bind',{"userName":this.id,"password":this.password,"callback":function(){
-						_this.go('/pages/index/index')
+				if(this.agreeCheck()&&this.idCheck()&&this.passwordCheck()&&!this.nameError&&this.accoundID){
+					this.$store.dispatch('rootST/bind',{"cbeAccount":this.id,distId:this.accoundID,"callback":function(res,error){
+						
 					}})
 				}
 			}
