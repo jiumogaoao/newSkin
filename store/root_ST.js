@@ -22,6 +22,7 @@ export default {
 	  refresh_expired:'',
 	  refresh_token:'',
 	  logonPicCode:'',
+	  logonPicCodeByPhone:'',
 	  regestPicCode:''
   },
   mutations: {
@@ -50,7 +51,10 @@ export default {
 		  }
 	  },
 	  updateLogonPicCode(state, data){
-		  state.logonPicCode = data
+	  		  state.logonPicCode = data
+	  },
+	  updateLogonPicCodeByPhone(state, data){
+		  state.logonPicCodeByPhone = data
 	  },
 	  updateRegestPicCode(state, data){
 		  state.regestPicCode = data
@@ -81,6 +85,9 @@ export default {
 				if(logon.data.access_token){
 					context.commit('setToken',logon.data)
 					setToken(logon.data)
+					_this.dispatch('userST/logon', {
+						phone: data.userName
+					})
 					if(data.callback){
 						data.callback(1)
 					}
@@ -89,6 +96,22 @@ export default {
 						data.callback(0,logon.data.message)
 					}
 				}
+		  }else{
+			  let logon= await postFetch("MobileLogin",{"tel":data.userName,code:data.code},false)
+			  				if(logon.data.access_token){
+			  					context.commit('setToken',logon.data)
+			  					setToken(logon.data)
+								_this.dispatch('userST/logon', {
+									phone: data.userName
+								})
+			  					if(data.callback){
+			  						data.callback(1)
+			  					}
+			  				}else{
+			  					if(data.callback){
+			  						data.callback(0,logon.data.message)
+			  					}
+			  				}
 		  }
 	  },
 	  async updateLogonPicCode(context,data){
@@ -96,8 +119,12 @@ export default {
 		  context.commit('updateLogonPicCode',picCode)
 	  },
 	  async updateRegestPicCode(context,data){
-	  		  let picCode = await postFetch("user-registervercode",{"account":data},false)
+	  		  let picCode = await postFetch("User-RegisterVerCode",{"account":data},false)
 	  		  context.commit('updateRegestPicCode',picCode)
+	  },
+	  async updateLogonPicCodeByPhone(context,data){
+	  		  let picCode = await postFetch("Auth-SmsVerCode",{"tel":data},false)
+	  		  context.commit('updateLogonPicCodeByPhone',picCode)
 	  },
 	  async getPhoneCode(context,data){
 		  let res = await postFetch("sendSmsForRegister",{tel:data.tel,code:data.code},false)
@@ -105,11 +132,21 @@ export default {
 			  data.callback(res)
 		  }
 	  },
+	  async getLogonPhoneCode(context,data){
+	  		  let res = await postFetch("sendSmsForLogin",{tel:data.tel,code:data.code},false)
+	  		  if(res.data.send_sms && data.callback){
+	  			  data.callback(res)
+	  		  }
+	  },
 	  async regest(context,data){
+		  let _this =this;
 		  let res = await postFetch("Register",{"account":data.account,"password":data.password,"code":data.code},false)
 		  if(res.data.access_token && data.callback){
 			 context.commit('setToken',res.data)
 			 setToken(res.data)
+			 _this.dispatch('userST/logon', {
+			 	phone: data.account
+			 })
 			  data.callback()
 		  }else if(data.callback){
 			  data.callback(res.data.message)
@@ -124,20 +161,33 @@ export default {
 				  data.callback(null,"账号已绑定")
 			  }
 		  }catch(e){
-			  data.callback(null,res.data.message)
+			  data.callback(null,res.data.data.message)
 		  }
 		  			  
 	  },
 	  async bind(context,data){
-	  		  let res = await postFetch("Rx-BindCN",{"cbeAccount":data.cbeAccount,"distId":data.distId},true)
+	  		  let res = await postFetch("Rx-BindCN",{"cbeAccount":this.state.userST.phone,"distId":data.distId},true)
 	  		  if(res.data.status==1){
 				  data.callback()
 			  }else{
 				  data.callback(res.data.message)
-			  }
-	  			  
-	  		  
-	  		  			  
+			  }  			  
 	  },
+	  async checkPhoneHaveRegest(context,data){
+		  let res = await postFetch("User-AccountExsit",{"account":data.account},false)
+		  if(!res.data.exist_account){
+		  				  data.callback()
+		  }else{
+		  				  data.callback(1)
+		  }  	
+	  },
+	  async checkCNHaveRegest(context,data){
+	  		  let res = await postFetch("User-CnExsit",{"bindno":data.bindno},true)
+	  		  if(!res.data.exist_cn){
+	  		  				  data.callback()
+	  		  }else{
+	  		  				  data.callback(1)
+	  		  }  	
+	  }
   }
  }

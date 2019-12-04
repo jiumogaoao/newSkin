@@ -14,7 +14,9 @@
 				<view class="row">
 					<view class="label">手机号码*</view>
 					<view class="inputFrame">
-						<input class="input" v-model="phone"/>
+						<input class="input" v-model="phone" @change="checkPhoneRegested"/>
+						<view class="nuskinIcon" v-if="phoneOnly==1">&#xe6f5;</view>
+						<view class="nuskinIcon" v-if="phoneOnly==2">&#xe600;</view>
 						<view class="error" v-if="phoneError">{{phoneError}}</view>
 					</view>
 				</view>
@@ -82,7 +84,9 @@
 				<view class="listFrame">
 					<!-- <view class="referrer" v-if="referrer">您的推荐人是{{referrer}}（{{referrerPhone}}）</view> -->
 					<view class="list">
-						<input class="input" placeholder="请输入手机号码" v-model="phone"/>
+						<input class="input" placeholder="请输入手机号码" v-model="phone" @change="checkPhoneRegested"/>
+						<view class="nuskinIcon" v-if="phoneOnly==1">&#xe6f5;</view>
+						<view class="nuskinIcon" v-if="phoneOnly==2">&#xe600;</view>
 					</view>
 					<view class="list">
 						<input class="input" placeholder="请输入图形验证码" v-model="code"/>
@@ -136,9 +140,20 @@
 						password2Error:'',
 						nextTime:0,
 						agreeError:'',
+						phoneOnly:0
 					};
 				},
 				methods:{
+					checkPhoneRegested(){
+						let _this = this
+						this.$store.dispatch('rootST/checkPhoneHaveRegest',{"account":this.phone,"callback":function(error){
+							if(error){
+								_this.phoneOnly=2
+							}else{
+								_this.phoneOnly=1
+							}
+						}})
+					},
 					agreeCheck(){
 						if(!this.agree){
 							if(this.destop){
@@ -296,7 +311,7 @@
 									})
 									return;
 								}
-								_this.$store.dispatch('userST/logon', {})
+								_this.$store.dispatch('userST/logon', {phone:_this.phone})
 								_this.go('/pages/regest/bind')
 							}})
 						}
@@ -309,9 +324,10 @@
 					},
 					updateNextTime(){
 						this.nextTime = 60;
+						let _this = this;
 						let s = setInterval(function(){
-							if(this.nextTime >= 1){
-								this.nextTime--;
+							if(_this.nextTime >= 1){
+								_this.nextTime--;
 							}else{
 								clearInterval(s)
 							}

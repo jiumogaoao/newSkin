@@ -21,10 +21,13 @@
 							<image class="icon" :src="imgPath+'login-form-mine.png'"></image><input class="input" v-model="userName"/><view class="error" v-if="userNameError">{{userNameError}}</view>
 						</view>
 						<view class="row" key="2">
-							<input class="input" v-model="picCode"/><image class="picCode" :src="picCodeIMG"></image><view class="blue" @click="updatePicCode">换一张</view><view class="error" v-if="picCodeError">{{picCodeError}}</view>
+							<input class="input" v-model="picCode"/><image class="picCode" :src="picCodeIMGByPhone"></image><view class="blue" @click="updatePicCode">换一张</view><view class="error" v-if="picCodeError">{{picCodeError}}</view>
 						</view>
 						<view class="row" key="3">
-							<image class="icon" :src="imgPath+'login-form-lock.png'"></image><input class="input" v-model="code"/><view class="getPhoneCode">获取验证码</view><view class="error" v-if="codeError">{{codeError}}</view>
+							<image class="icon" :src="imgPath+'login-form-lock.png'"></image><input class="input" v-model="code"/>
+							<view class="getPhoneCode" v-if="nextTime">{{nextTime}}后可继续获取</view>
+							<view class="getPhoneCode" @click="getSMSCode" v-else>获取验证码</view>
+							<view class="error" v-if="codeError">{{codeError}}</view>
 						</view>
 					</view>
 					<view class="frame" v-else>
@@ -99,12 +102,13 @@
 				</view>
 				<view class="list">
 					<input class="input" placeholder="请输入图形验证码" placeholder-class="placeholder" v-model="picCode"/>
-					<image class="picCode" :src="picCodeIMG"></image>
+					<image class="picCode" :src="picCodeIMGByPhone"></image>
 					<view class="blue" @click="updatePicCode">换一张</view>
 				</view>
 				<view class="list">
 					<input class="input" placeholder="请输入手机验证码" placeholder-class="placeholder" v-model="code"/>
-					<view class="getCode">获取验证码</view>
+					<view class="getCode" v-if="nextTime">{{nextTime}}后可继续获取</view>
+					<view class="getCode" @click="getSMSCode" v-else>获取验证码</view>
 				</view>
 			</view>
 			<view class="listFrame" v-else>
@@ -114,6 +118,11 @@
 				<view class="list">
 					<input class="input" placeholder="请输入密码" placeholder-class="placeholder" v-model="password"/>
 					<image class="eye" :src="imgPath+'yanjing.png'"></image>
+				</view>
+				<view class="list">
+					<input class="input" placeholder="请输入图形验证码" placeholder-class="placeholder" v-model="picCode"/>
+					<image class="picCode" :src="picCodeIMG"></image>
+					<view class="blue" @click="updatePicCode">换一张</view>
 				</view>
 			</view>
 			<view class="logon" @click="logon">登录</view>
@@ -151,10 +160,28 @@
 						passwordError:'',
 						picCodeError:'',
 						codeError:'',
-						showRegestPop:false
+						showRegestPop:false,
+						nextTime:0
 					};
 				},
 		methods:{
+			updateNextTime(){
+				this.nextTime = 60;
+				let _this = this
+				let s = setInterval(function(){
+					if(_this.nextTime >= 1){
+						_this.nextTime--;
+					}else{
+						clearInterval(s)
+					}
+				},1000)
+			},
+			getSMSCode(){
+				let _this = this;
+				this.$store.dispatch("rootST/getLogonPhoneCode",{tel:this.userName,code:this.picCode,callback:function(){
+					_this.updateNextTime()
+				}})
+			},
 			closePop(){
 				this.showRegestPop =false
 			},
@@ -278,7 +305,11 @@
 					})
 			},
 			updatePicCode(){
-				this.$store.dispatch('rootST/updateLogonPicCode',this.userName)
+				if(this.logOnType){
+					this.$store.dispatch('rootST/updateLogonPicCode',this.userName)
+				}else{
+					this.$store.dispatch('rootST/updateLogonPicCodeByPhone',this.userName)
+				}
 			},
 			backForLogon(){
 				uni.navigateBack({
@@ -290,6 +321,13 @@
 			picCodeIMG(){
 				try{
 					return 'data:image/jpeg;base64,'+this.$store.state.rootST.logonPicCode.data.captcha
+				}catch(e){
+					return ''
+				}
+			},
+			picCodeIMGByPhone(){
+				try{
+					return 'data:image/jpeg;base64,'+this.$store.state.rootST.logonPicCodeByPhone.data.captcha
 				}catch(e){
 					return ''
 				}

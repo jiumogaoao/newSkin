@@ -153,7 +153,10 @@ export const postFetch =  async (url,params = {},needLogon,callback) => {
 		}
 		console.log('token更新',newToken)
 	}else if(needLogon && !access_expired){
-		alert('请登录')
+		uni.showToast({
+			title:'请登录',
+			icon:'none'
+		})
 		return;
 	}
 	let keyList=Object.keys(params);

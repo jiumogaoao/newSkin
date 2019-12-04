@@ -2,15 +2,14 @@ import Vue from 'vue'
 export default {
   namespaced:true,
   state: {
-	  userName:''
+	  phone:''
   },
   mutations: {
   	  clear(state, data){
-  		  state.userName = '';
+  		  state.phone = '';
   	  },
 	  logon(state, data){
-		  state.userName = data.userName
-		  
+		  state.phone = data.phone
 	  }
   },
   actions:{
@@ -18,7 +17,6 @@ export default {
   		  context.commit("clear");
   	  },
 	  logon(context,data){
-		  data.userName='1111'
 		  context.commit("logon",data);
 	  }
   }

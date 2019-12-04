@@ -90,10 +90,21 @@
 						agreeError:'',
 						name:'',
 						nameError:'',
-						accoundID:''
+						accoundID:'',
+						idOnly:0
 					};
 				},
 		methods:{
+			checkCNRegested(){
+				let _this = this
+				this.$store.dispatch('rootST/checkCNHaveRegest',{"bindno":this.id,"callback":function(error){
+					if(error){
+						_this.idOnly=2
+					}else{
+						_this.idOnly=1
+					}
+				}})
+			},
 			toggleAgree(){
 				this.agree = !this.agree
 			},
@@ -115,6 +126,7 @@
 				}
 			},
 			idCheck(){
+				this.checkCNRegested()
 				if(!this.id.length){
 						this.idError = '请输入CN号'
 					if(!this.destop){
@@ -168,9 +180,21 @@
 			},
 			bind(){
 				let _this=this;
-				if(this.agreeCheck()&&this.idCheck()&&this.passwordCheck()&&!this.nameError&&this.accoundID){
-					this.$store.dispatch('rootST/bind',{"cbeAccount":this.id,distId:this.accoundID,"callback":function(res,error){
-						
+				if(this.agreeCheck()&&this.idCheck()&&this.passwordCheck()&&!this.nameError&&this.id){
+					console.log('bind')
+					this.$store.dispatch('rootST/bind',{distId:this.id,"callback":function(error){
+						if(error){
+							uni.showToast({
+								title:error,
+								icon:'none'
+							})
+							return;
+						}
+						uni.showToast({
+							title:'绑定成功',
+							icon:'none'
+						})
+						_this.go('/pages/index/index')
 					}})
 				}
 			}
