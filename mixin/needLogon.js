@@ -3,8 +3,10 @@ import moment from 'moment'
 module.exports = {
 	onShow: function() {
 		if(!this.isLogon){
+			var pages = getCurrentPages(); 
+			var page = (pages[pages.length - 2]).route; 
 			uni.navigateTo({
-			    url: '/pages/logon/logon'
+			    url: '/pages/logon/logon?page='+page
 			});
 		}
 	},

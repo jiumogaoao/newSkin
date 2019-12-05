@@ -185,7 +185,7 @@
 						<image class="deg" :src="imgPath+'jiantou-r.png'"></image>
 					</view>
 				</view>
-				<view class="logon" @click="go('/pages/logon/logon')">
+				<view class="logon" @click="go('/pages/logon/logon?page=pages/index/index')">
 					<image class="icon" :src="imgPath+'touxiangs.png'"></image>
 					<view class="title">注册 | 登录</view>
 				</view>

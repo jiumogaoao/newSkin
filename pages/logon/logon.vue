@@ -8,7 +8,7 @@
 					<image class="logo" :src="imgPath+'indexLogo.jpg'"></image>
 					<view class="welcome">欢迎登录</view>
 				</view>
-				<view class="back">返回首页</view>
+				<view class="back" @click="go('/pages/index/index')">返回首页</view>
 			</view>
 			<view class="center">
 				<view class="logonFrame">
@@ -161,8 +161,12 @@
 						picCodeError:'',
 						codeError:'',
 						showRegestPop:false,
-						nextTime:0
+						nextTime:0,
+						backPage:''
 					};
+				},
+				onLoad(props){
+					this.backPage='/'+props.page
 				},
 		methods:{
 			updateNextTime(){
@@ -297,7 +301,9 @@
 						callback(res,err){
 							if(res){
 								_this.$store.dispatch('userST/logon', {})
-								uni.navigateBack()
+								uni.navigateTo({
+								    url: _this.backPage
+								});
 							}else{
 								alert(err)
 							}
@@ -312,8 +318,9 @@
 				}
 			},
 			backForLogon(){
-				uni.navigateBack({
-					delta: 2
+				let _this = this;
+				uni.navigateTo({
+				    url: _this.backPage
 				});
 			}
 		},
