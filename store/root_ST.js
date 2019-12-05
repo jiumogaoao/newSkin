@@ -80,6 +80,7 @@ export default {
 		  context.commit("changeFootNav",data);
 	  },
 	  async logon(context,data){
+		  let _this = this;
 		  if(data.logOnType==1){
 			  let logon= await postFetch("Login",{"username":data.userName,"password":data.password,code:data.picCode},false)
 				if(logon.data.access_token){
