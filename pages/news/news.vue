@@ -174,23 +174,34 @@
 			</view>
 			<view class="list">
 				<view class="bigTitle">美容贴士<view class="line"></view></view>
-				<swiper class="frame" :indicator-dots="true" :autoplay="false" :interval="1000" :duration="500">
-				                        <swiper-item>
-				                            <image src="/static/20190506FreeShippingPCbanner.png"></image>
-				                        </swiper-item>
-										<swiper-item>
-										    <image src="/static/20190506FreeShippingPCbanner.png"></image>
-										</swiper-item>
-										<swiper-item>
-										    <image src="/static/20190506FreeShippingPCbanner.png"></image>
-										</swiper-item>
-										<swiper-item>
-										    <image src="/static/20190506FreeShippingPCbanner.png"></image>
-										</swiper-item>
-										<swiper-item>
-										    <image src="/static/20190506FreeShippingPCbanner.png"></image>
-										</swiper-item>
-				                    </swiper>
+				<scroll-view class="frame swiper" scroll-x="true">
+					<view class="scrollFrame">
+						<view class="point3">
+							<image src="/static/BFx00b0ptJs4P2Tw0b1OBB4vWYQqBp.jpg"></image>
+							<view class="title">我们的诞生</view>
+							<view class="text">订单端午将至，打算怎么过端午将至，打算怎么过端午将至，打算怎么过</view>
+							<view class="more">了解更多</view>
+						</view>
+						<view class="point3">
+							<image src="/static/BFx00b0ptJs4P2Tw0b1OBB4vWYQqBp.jpg"></image>
+							<view class="title">我们的诞生</view>
+							<view class="text">订单端午将至，打算怎么过端午将至，打算怎么过端午将至，打算怎么过</view>
+							<view class="more">了解更多</view>
+						</view>
+						<view class="point3">
+							<image src="/static/BFx00b0ptJs4P2Tw0b1OBB4vWYQqBp.jpg"></image>
+							<view class="title">我们的诞生</view>
+							<view class="text">订单端午将至，打算怎么过端午将至，打算怎么过端午将至，打算怎么过</view>
+							<view class="more">了解更多</view>
+						</view>
+						<view class="point3">
+							<image src="/static/BFx00b0ptJs4P2Tw0b1OBB4vWYQqBp.jpg"></image>
+							<view class="title">我们的诞生</view>
+							<view class="text">订单端午将至，打算怎么过端午将至，打算怎么过端午将至，打算怎么过</view>
+							<view class="more">了解更多</view>
+						</view>
+					</view>
+				</scroll-view>
 			</view>
 		</block>
 		
@@ -206,6 +217,9 @@
 			return {
 			
 			};
+		},
+		onShow(){
+			this.$store.dispatch('newsST/getList')
 		},
 		methods:{
 
@@ -361,6 +375,7 @@
 	/* #endif */
 	.phone{
 		background-color: #f1f1f1;
+		padding-bottom: 30rpx;
 		.banner{
 			width: 750rpx;
 			height: 500rpx;
@@ -373,6 +388,114 @@
 			margin-top: 75rpx;
 			width: 750rpx;
 			padding: 0 30rpx;
+			.bigTitle{
+				font-size: 32rpx;
+				font-weight: 500;
+				position: relative;
+				width:135rpx;
+				margin: auto;
+				height: 58rpx;
+				.line{
+					width:42rpx;
+					height: 6rpx;
+					background-color: $main-hl;
+					position: absolute;
+					bottom:0;
+					left: 48rpx;
+				}
+			}
+			.frame{
+				width:100%;
+				.point{
+					width:100%;
+					height: 530rpx;
+					border: 1px solid $main-gray;
+					margin-top: 46rpx;
+					image{
+						width: 100%;
+						height: 360rpx;
+					}
+					.title{
+						height:66rpx;
+						font-size: 26rpx;
+						font-weight: 500;
+						width: 100%;
+						margin-top: 26rpx;
+						padding: 0 29rpx;
+						line-height: 1.5;
+					}
+					.text{
+						font-size: 24rpx;
+						color: $main-gray-deep;
+						margin-top: 29rpx;
+						padding: 0 29rpx;
+					}
+				}
+				.point2{
+					width: 100%;
+					height: 302rpx;
+					position: relative;
+					margin-top: 20rpx;
+					image{
+						width: 100%;
+						height: 302rpx;
+					}
+					.title{
+						width:570rpx;
+						height: 80rpx;
+						line-height: 80rpx;
+						text-align: center;
+						color: #fff;
+						font-weight: bold;
+						background-color: rgba(0,0,0,0.3);
+						position: absolute;
+						top:112rpx;
+						left: 60rpx;
+					}
+				}
+			}
+			.frame.swiper{
+				margin-top: 47rpx;
+				height: 560rpx;
+				width:100%;
+				overflow: hidden;
+				.scrollFrame{
+					display: flex;
+					align-items: center;
+					.point3{
+						width: 491rpx;
+						height: 560rpx;
+						border: 1px solid $main-gray;
+						margin-right: 30rpx;
+						image{
+							width:100%;
+							height: 320rpx;
+						}
+						.title{
+							height:66rpx;
+							font-size: 26rpx;
+							font-weight: 500;
+							width: 100%;
+							margin-top: 26rpx;
+							padding: 0 29rpx;
+							line-height: 1.5;
+						}
+						.text{
+							font-size: 24rpx;
+							color: $main-gray-deep;
+							margin-top: 29rpx;
+							padding: 0 29rpx;
+							height: 62rpx;
+						}
+						.more{
+							padding: 0 29rpx;
+							font-size: 24rpx;
+							color: $main-hl;
+						}
+					}
+				}
+				
+			}
 		}
 	}
 	
