@@ -80,7 +80,7 @@
 						</view>
 						<view class="list">
 							<input class="input" placeholder="输入密码"/>
-							<image class="eye" :src="imgPath+'yanjing.png'"></image>
+							<view class="eye nuskinIcon" @click="togglePassword">{{showPassword?'&#xe726;':'&#xe724;'}}</view>
 						</view>
 					</block>
 					<block v-else>
@@ -114,10 +114,14 @@
 		components:{chechBoxCP},
 		data() {
 					return {
-						type:0
+						type:0,
+						showPassword:false
 					};
 				},
 				methods:{
+					togglePassword(){
+						this.showPassword = !this.showPassword
+					},
 					toggleType(){
 						this.type = this.type?0:1
 					},

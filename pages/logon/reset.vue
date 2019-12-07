@@ -75,12 +75,12 @@
 				<block v-if="step">
 					<view class="listFrame">
 						<view class="list">
-							<input class="input" placeholder="输入新密码" placeholder-class="placeholder"/>
-							<image class="eye" :src="imgPath+'yanjing.png'"></image>
+							<input class="input" placeholder="输入新密码" placeholder-class="placeholder" :password="!showPassword1"/>
+							<view class="eye nuskinIcon" @click="togglePassword(1)">{{showPassword1?'&#xe726;':'&#xe724;'}}</view>
 						</view>
 						<view class="list">
-							<input class="input" placeholder="确认密码" placeholder-class="placeholder"/>
-							<image class="eye" :src="imgPath+'yanjing.png'"></image>
+							<input class="input" placeholder="确认密码" placeholder-class="placeholder" :password="!showPassword2"/>
+							<view class="eye nuskinIcon" @click="togglePassword(2)">{{showPassword2?'&#xe726;':'&#xe724;'}}</view>
 						</view>
 					</view>
 					<view class="dsc">密码长度须为6-20非纯数字，可包含字母、数字或下划线('_')中的至少2个类别</view>
@@ -115,10 +115,15 @@
 		components:{chechBoxCP},
 		data() {
 					return {
-						step:0
+						step:0,
+						showPassword1:false,
+						showPassword2:false
 					};
 				},
 				methods:{
+					togglePassword(num){
+						this['showPassword'+num] = !this['showPassword'+num]
+					},
 					next(){
 						this.step = 1;
 					},

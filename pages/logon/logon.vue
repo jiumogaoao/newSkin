@@ -116,8 +116,8 @@
 					<input class="input" placeholder="请输入手机号码/账号" placeholder-class="placeholder" v-model="userName"/>
 				</view>
 				<view class="list">
-					<input class="input" placeholder="请输入密码" placeholder-class="placeholder" v-model="password"/>
-					<image class="eye" :src="imgPath+'yanjing.png'"></image>
+					<input class="input" placeholder="请输入密码" placeholder-class="placeholder" v-model="password" password="!showPassword"/>
+					<view class="eye nuskinIcon" @click="togglePassword">{{showPassword?'&#xe726;':'&#xe724;'}}</view>
 				</view>
 				<view class="list">
 					<input class="input" placeholder="请输入图形验证码" placeholder-class="placeholder" v-model="picCode"/>
@@ -162,13 +162,17 @@
 						codeError:'',
 						showRegestPop:false,
 						nextTime:0,
-						backPage:''
+						backPage:'',
+						showPassword:false
 					};
 				},
 				onLoad(props){
 					this.backPage='/'+props.page
 				},
 		methods:{
+			togglePassword(){
+				this.showPassword = !this.showPassword
+			},
 			updateNextTime(){
 				this.nextTime = 60;
 				let _this = this
