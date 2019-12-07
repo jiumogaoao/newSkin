@@ -11,10 +11,10 @@
 			<view class="info">
 				<view class="title">个人信息</view>
 				<view class="row">
-					<view class="userInfo"><view class="infoTitle">昵称</view><view class="infoMessage"><view class="text">David Li</view></view></view>
-					<view class="userInfo"><view class="infoTitle">账号</view><view class="infoMessage"><view class="text">13900000002</view><view class="blue">修改</view> </view></view>
+					<view class="userInfo"><view class="infoTitle">昵称</view><view class="infoMessage"><view class="text">{{nick_name}}</view></view></view>
+					<view class="userInfo"><view class="infoTitle">账号</view><view class="infoMessage"><view class="text">{{user_account}}</view><view class="blue">修改</view> </view></view>
 					<view class="userInfo"><view class="infoTitle">账号密码</view><view class="infoMessage"><view class="blue">修改密码</view></view></view>
-					<view class="userInfo"><view class="infoTitle">手机号</view><view class="infoMessage"><view class="text">139****0002</view><view class="blue">修改</view></view></view>
+					<view class="userInfo"><view class="infoTitle">手机号</view><view class="infoMessage"><view class="text">{{phone}}</view><view class="blue">修改</view></view></view>
 					<view class="userInfo"><view class="infoTitle">微信</view><view class="infoMessage"><view class="blue">解绑</view></view></view>
 					<view class="userInfo"><view class="infoTitle">QQ</view><view class="infoMessage"><view class="blue">绑定</view></view></view>
 				</view>
@@ -59,7 +59,7 @@
 				<view class="list">
 					<view class="title">手机号</view>
 					<view class="right" @click="go('/pages/myInfo/setPhone')">
-						<view class="dsc">139*****2563</view>
+						<view class="dsc">{{phone}}</view>
 						<view class="nuskinIcon">&#xe636;</view>
 					</view>
 					
@@ -69,14 +69,14 @@
 				<view class="list">
 					<view class="title">微信</view>
 					<view class="right">
-						<view class="dsc">David</view>
+						<view class="dsc">{{wx||'绑定'}}</view>
 						<view class="nuskinIcon">&#xe636;</view>
 					</view>
 				</view>
 				<view class="list">
 					<view class="title">QQ</view>
 					<view class="right">
-						<view class="dsc">绑定</view>
+						<view class="dsc">{{qq||'绑定'}}</view>
 						<view class="nuskinIcon">&#xe636;</view>
 					</view>
 					
@@ -96,7 +96,7 @@
 					</view>
 				</view>
 			</view>
-			<view class="logout">退出登录</view>
+			<view class="logout" @click="logout">退出登录</view>
 		</block>
 		
 	</view>
@@ -108,6 +108,14 @@
 	import needLogon from "@/mixin/needLogon"
 	export default {
 		mixins: [allPage,needLogon,mine],
+		methods:{
+			logout(){
+				this.$store.dispatch('rootST/logOut')
+				uni.reLaunch({
+					url:'/pages/index/index'
+				})
+			}
+		},
 		onShow: function() {
 			this.$store.dispatch('rootST/changeMyPage', 'myInfo')
 		},
@@ -115,6 +123,26 @@
 			return {
 				
 			};
+		},
+		computed:{
+			phone(){
+				return this.$store.state.userST.phone
+			},
+			nick_name(){
+				return this.$store.state.userST.nick_name
+			},
+			qq(){
+				return this.$store.state.userST.qq
+			},
+			qr_code(){
+				return this.$store.state.userST.qr_code
+			},
+			user_account(){
+				return this.$store.state.userST.user_account
+			},
+			wx(){
+				return this.$store.state.userST.wx
+			}
 		}
 	}
 </script>

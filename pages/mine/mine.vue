@@ -125,6 +125,9 @@
 			return {
 				
 			};
+		},
+		computed:{
+			
 		}
 	}
 </script>

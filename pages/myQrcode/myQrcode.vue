@@ -11,7 +11,7 @@
 			<view class="info">
 				<view class="title">我的二维码</view>
 				<view class="row">
-					<view class="text">我的二维码</view><image src="/static/qrCode.png" class="qrCode"/><view class="text">此二维码为您的身份凭证，可作为他人注册和身份验证使用</view>
+					<view class="text">我的二维码</view><image :src="qr_code" class="qrCode"/><view class="text">此二维码为您的身份凭证，可作为他人注册和身份验证使用</view>
 				</view>
 				
 			</view>
@@ -32,9 +32,9 @@
 					此二维码为您的身份凭证，可作为分享他人注册和身份验证使用
 				</view>
 				<view class="writeFrame">
-					<view class="dsc">138****1848</view>
+					<view class="dsc">{{phone}}</view>
 					<view class="dsc">请扫描我的二维码进行注册</view>
-					<image src="/static/qrCode.png"></image>
+					<image :src="qr_code"></image>
 				</view>
 				
 				<view class="button">保存到手机</view>
@@ -57,6 +57,14 @@
 			return {
 				
 			};
+		},
+		computed:{
+			phone(){
+				return this.$store.state.userST.phone
+			},
+			qr_code(){
+				return this.$store.state.userST.qr_code
+			}
 		}
 	}
 </script>

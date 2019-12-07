@@ -15,7 +15,7 @@
 			<view class="frame">
 				<view class="list">
 					<view class="title">账号</view>
-					<input value="15099959636"/>
+					<input v-model="account"/>
 				</view>
 			</view>
 			<view class="button" @click="back()">提交</view>
@@ -33,7 +33,8 @@
 		components:{productCP,tabbarCP},
 		data() {
 			return {
-				hl:0
+				hl:0,
+				account:this.$store.state.userST.user_account
 			};
 		},
 		methods:{

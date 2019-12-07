@@ -58,11 +58,20 @@ export default {
 	  },
 	  updateRegestPicCode(state, data){
 		  state.regestPicCode = data
+	  },
+	  logOut(state, data){
+		  state.access_expired=''
+		  state.access_token=''
+		  state.refresh_expired=''
+		  state.refresh_token=''
 	  }
   },
   actions:{
 	  clear(context,data){
 		  context.commit("clear");
+	  },
+	  logOut(context,data){
+		  context.commit("logOut");
 	  },
 	  initReady(context,data){
 		  context.commit("initReady");

@@ -11,12 +11,7 @@
 			<view class="info">
 				<view class="title">我的收藏</view>
 				<view class="productList">
-					<productCP/>
-					<productCP/>
-					<productCP/>
-					<productCP/>
-					<productCP/>
-					<productCP/>
+					<productCP v-for="(v,i) in user_follow" :follow="1" :img="v.img" :band="v.band" :name="v.name" :taxes="v.taxes" :price="v.price" :id="v.pid" type="0" :key="v.pid"/>
 				</view>
 			</view>
 			
@@ -32,14 +27,7 @@
 			</navBarCP>
 			<view style="width:100%;height: 55px;"></view>
 			<view class="list">
-				<productCP/>
-				<productCP/>
-				<productCP/>
-				<productCP/>
-				<productCP/>
-				<productCP/>
-				<productCP/>
-				<productCP/>
+				<productCP v-for="(v,i) in user_follow" :follow="1" :img="v.img" :band="v.band" :name="v.name" :taxes="v.taxes" :price="v.price" :id="v.pid" type="0" :key="v.pid"/>
 			</view>
 		</block>
 		
@@ -61,6 +49,11 @@
 			return {
 				
 			};
+		},
+		computed:{
+			user_follow(){
+				return this.$store.state.userST.user_follow
+			}
 		}
 	}
 </script>
