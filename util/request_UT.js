@@ -212,7 +212,8 @@ export const postFetch =  async (url,params = {},needLogon,callback) => {
 				'appkey':'nuskin-h5-app-key',
 				'timestamp':ts,
 				'nonce':nonce,
-				'sign':str
+				'sign':str,
+				'Authorization':needLogon?'Bearer '+access_token:null
 	 		}
 	 	});
 	 postCache[cacheKey]={data:res[1],time:new Date().getTime()}
