@@ -11,8 +11,17 @@
 						</view>
 					</view>
 					<view class="infoMain">
-						<image class="avatar" :src="imgPath+'missing-face.png'"></image>
-						<view class="logon" @click="go('/pages/logon/logon')">注册登录</view>
+						<view class="infoMainFrame">
+							<image class="avatar" :src="avatar"></image>
+							<view class="userInfo">
+								<view class="top">
+									<view class="nickName">{{nick_name}}</view>
+									<view class="level">{{level==1?'零售顾客':'推广商'}}<text class="yellow" v-if="level==1">V</text></view>
+								</view>
+								<view class="CN">{{user_account}}</view>
+							</view>
+						</view>
+						<view class="nuskinIcon" @click="go('/pages/myQrcode/myQrcode')">&#xe739;</view>
 					</view>
 				</view>
 			</view>
@@ -127,7 +136,18 @@
 			};
 		},
 		computed:{
-			
+			avatar(){
+				return this.$store.state.userST.avatar
+			},
+			nick_name(){
+				return this.$store.state.userST.nick_name
+			},
+			user_account(){
+				return this.$store.state.userST.user_account
+			},
+			level(){
+				return this.$store.state.userST.level
+			}
 		}
 	}
 </script>
@@ -136,7 +156,6 @@
 	.phone{
 		.top{
 			width:750rpx;
-			background-color: #0391b7;
 			.infoFrame{
 				width:750rpx;
 				height:430rpx;
@@ -169,12 +188,53 @@
 					flex-grow: 1;
 					display: flex;
 					align-items: center;
-					.avatar{
-						    width: 120rpx;
-						    height: 120rpx;
-						    border: 5px solid #fff;
-						    border-radius: 50%;
-						    margin-left: 30rpx;
+					justify-content: space-between;
+					.infoMainFrame{
+						width:600rpx;
+						display: flex;
+						align-items: center;
+						.avatar{
+							    width: 120rpx;
+							    height: 120rpx;
+							    border: 5px solid #fff;
+							    border-radius: 50%;
+							    margin-left: 30rpx;
+						}
+						.userInfo{
+							margin-left: 30rpx;
+							.top{
+								display: flex;
+								align-items: center;
+								.nickName{
+									font-size: 30rpx;
+									color: #fff;
+									font-weight: bold;
+								}
+								.level{
+									padding: 14rpx 9rpx;
+									border: 1px solid #fff;
+									border-radius: 20rpx;
+									font-size: 24rpx;
+									color: #fff;
+									margin-left: 28rpx;
+									.yellow{
+										color: #f1bc9c;
+										font-weight: bold;
+									}
+								}
+							}
+							.CN{
+								font-size: 22rpx;
+								color: #fff;
+								margin-top: 18rpx;
+							}
+						}
+					}
+					.nuskinIcon{
+						font-size: 100rpx;
+						color: #fff;
+						flex-shrink: 0;
+						margin-right: 30rpx;
 					}
 					.logon{
 						font-size: 38rpx;

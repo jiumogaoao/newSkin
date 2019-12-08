@@ -185,7 +185,11 @@
 						<image class="deg" :src="imgPath+'jiantou-r.png'"></image>
 					</view>
 				</view>
-				<view class="logon" @click="go('/pages/logon/logon?page=pages/index/index')">
+				<view class="logon" @click="go('/pages/mine/mine')" v-if="isLogon">
+					<image class="icon" :src="imgPath+'touxiangs.png'"></image>
+					<view class="title">个人中心</view>
+				</view>
+				<view class="logon" @click="go('/pages/logon/logon?page=pages/index/index')" v-else>
 					<image class="icon" :src="imgPath+'touxiangs.png'"></image>
 					<view class="title">注册 | 登录</view>
 				</view>
@@ -195,6 +199,7 @@
 </template>
 
 <script>
+	import moment from 'moment'
 	import allPage from "@/mixin/allPage"
 	import productSimpleCP from "@/components/productSimple_CP.vue"
 	export default {
@@ -215,6 +220,13 @@
 			}
 		},
 		computed:{
+			isLogon(){
+				if(this.$store.state.rootST.refresh_expired && (moment(this.$store.state.rootST.refresh_expired.substr(0, this.$store.state.rootST.refresh_expired.length - 8),'YYYYY-MM-DD hh:mm:ss').format('x')>moment().format('x'))){
+					return true;
+				}else{
+					return false;
+				}
+			},
 			footer_link(){
 				return this.$store.state.indexST.footer_link
 			},

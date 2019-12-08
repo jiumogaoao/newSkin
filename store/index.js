@@ -9,6 +9,7 @@ import followST from './follow_ST'
 import historyST from './history_ST'
 import productST from './product_ST'
 import newsST from './news_ST'
+import CNST from './CN_ST'
 import createPersistedState from "vuex-persistedstate"
 Vue.use(Vuex)
 
@@ -28,7 +29,8 @@ const store = new Vuex.Store({
 		followST,
 		historyST,
 		productST,
-		newsST
+		newsST,
+		CNST
 	},
 	mutations: {
 		login(state, provider) {

@@ -254,8 +254,8 @@
 		},
 		computed:{
 			warehouse(){return this.$store.state.shoppingCarST.warehouse},
-			followList(){return this.$store.state.followST.list},
-			historyList(){return this.$store.state.historyST.list}
+			followList(){return this.$store.state.userST.user_follow},
+			historyList(){return this.$store.state.useryST.user_buyed}
 		}
 	}
 </script>

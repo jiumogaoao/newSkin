@@ -9,6 +9,10 @@ export default {
 	  qr_code: "",
 	  user_account: "",
 	  wx: "",
+	  avatar:"",
+	  user_address:[
+		  
+	  ],
 	  user_buyed:[
 		  // {
 			 //  band: "关注产品苹果Apple"
@@ -44,13 +48,15 @@ export default {
 		  state.wx = data.wx
 	  },
 	  setAddressList(state, data){
-		  
+		  Vue.set(state,"user_address",data)
 	  },
 	  setBuyedList(state, data){
-		  
+		  Vue.set(state,"user_buyed",data)
+		  console.log("user_buyed",state.user_buyed)
 	  },
 	  setFollowList(state, data){
-		  
+		  Vue.set(state,"user_follow",data)
+		  console.log("user_buyed",state.user_follow)
 	  }
   },
   actions:{

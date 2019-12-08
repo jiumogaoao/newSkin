@@ -355,8 +355,9 @@
 									top:-10rpx
 							}
 							.eye{
-								width:40rpx;
-								height:40rpx;
+								font-size: 40rpx;
+								font-weight: bold;
+								color: $main-hl;
 							}
 							.blue{
 								font-size: 26rpx;

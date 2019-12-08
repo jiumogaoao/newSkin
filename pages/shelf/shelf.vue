@@ -93,7 +93,7 @@
 			shelf(){return this.$store.state.shelfST.shelf}
 		},
 		onLoad(props){
-			this.$store.dispatch("shelfST/setId",props.id)
+			this.$store.dispatch("shelfST/setId",props.cid)
 			this.$store.dispatch("shelfST/update",{key:0})
 		},
 	}

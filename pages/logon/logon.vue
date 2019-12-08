@@ -86,7 +86,7 @@
 				</view>
 				<image class="logo" :src="imgPath+'de4406c8.logo2.png'"></image>
 				<view class="tagBar">
-					<view :class="{item:1,hl:logOnType==0}">
+					<view :class="{item:1,hl:logOnType==0}" @click="changeType(0)">
 						<view class="name">手机验证码登录</view>
 						<image class="deg" :src="imgPath+'upDeg.png'"></image>
 					</view>
@@ -116,7 +116,7 @@
 					<input class="input" placeholder="请输入手机号码/账号" placeholder-class="placeholder" v-model="userName"/>
 				</view>
 				<view class="list">
-					<input class="input" placeholder="请输入密码" placeholder-class="placeholder" v-model="password" password="!showPassword"/>
+					<input class="input" placeholder="请输入密码" placeholder-class="placeholder" v-model="password" :password="!showPassword"/>
 					<view class="eye nuskinIcon" @click="togglePassword">{{showPassword?'&#xe726;':'&#xe724;'}}</view>
 				</view>
 				<view class="list">
@@ -292,6 +292,7 @@
 			},
 			changeType(type){
 				this.logOnType = type
+				this.updatePicCode();
 			},
 			logon(){
 				let _this=this;
@@ -309,16 +310,19 @@
 								    url: _this.backPage
 								});
 							}else{
-								alert(err)
+								uni.showToast({
+									title:err,
+									icon:'none'
+								})
 							}
 						}
 					})
 			},
 			updatePicCode(){
 				if(this.logOnType){
-					this.$store.dispatch('rootST/updateLogonPicCode',this.userName)
+					this.$store.dispatch('rootST/updateLogonPicCode',this.userName||1)
 				}else{
-					this.$store.dispatch('rootST/updateLogonPicCodeByPhone',this.userName)
+					this.$store.dispatch('rootST/updateLogonPicCodeByPhone',this.userName||1)
 				}
 			},
 			backForLogon(){
@@ -624,8 +628,9 @@
 										top:-10rpx
 								}
 								.eye{
-									width:40rpx;
-									height:40rpx;
+									font-size: 40rpx;
+									font-weight: bold;
+									color: $main-hl;
 								}
 								.blue{
 									font-size: 26rpx;

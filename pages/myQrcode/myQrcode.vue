@@ -126,7 +126,7 @@
 				display: flex;
 				align-items: center;
 				flex-direction: column;
-				background: url('/h5/static/erweimabg.png') no-repeat 50%;
+				background: url('/static/erweimabg.png') no-repeat 50%;
 				background-size: cover;
 				flex-grow: 1;
 				.title{

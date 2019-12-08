@@ -76,7 +76,7 @@
 					<view class="center">
 						注册
 					</view>
-					<view class="right" @click="go('/pages/login/login')">
+					<view class="right" @click="go('/pages/logon/logon?page=pages/regest/regest')">
 						登录
 					</view>
 				</view>
@@ -99,12 +99,12 @@
 						<view class="getCode" @click="getCode" v-else>获取验证码</view>
 					</view>
 					<view class="list">
-						<input class="input" placeholder="请设置密码,6~20位数" v-model="password"/>
-						<image class="eye" :src="imgPath+'yanjing.png'"></image>
+						<input class="input" placeholder="请设置密码,6~20位数" v-model="password" :password="!showPassword1"/>
+						<view class="eye nuskinIcon" @click="togglePassword(1)">{{showPassword1?'&#xe726;':'&#xe724;'}}</view>
 					</view>
 					<view class="list">
-						<input class="input" placeholder="请再次确认密码" v-model="password2"/>
-						<image class="eye" :src="imgPath+'yanjing.png'"></image>
+						<input class="input" placeholder="请再次确认密码" v-model="password2" :password="!showPassword2"/>
+						<view class="eye nuskinIcon" @click="togglePassword(2)">{{showPassword2?'&#xe726;':'&#xe724;'}}</view>
 					</view>
 				</view>
 				<!-- <view class="dsc">密码长度须为6-20非纯数字，可包含字母、数字或下划线('_')中的至少2个类别</view> -->
@@ -140,10 +140,15 @@
 						password2Error:'',
 						nextTime:0,
 						agreeError:'',
-						phoneOnly:0
+						phoneOnly:0,
+						showPassword1:false,
+						showPassword2:false
 					};
 				},
 				methods:{
+					togglePassword(num){
+						this['showPassword'+num] = !this['showPassword'+num]
+					},
 					checkPhoneRegested(){
 						let _this = this
 						this.$store.dispatch('rootST/checkPhoneHaveRegest',{"account":this.phone,"callback":function(error){
@@ -317,7 +322,7 @@
 						}
 					},
 					updatePicCode(){
-						this.$store.dispatch('rootST/updateRegestPicCode',this.phone)
+						this.$store.dispatch('rootST/updateRegestPicCode',this.phone||1)
 					},
 					toggleAgree(){
 						this.agree=!this.agree
@@ -596,8 +601,9 @@
 									top:-10rpx
 							}
 							.eye{
-								width:40rpx;
-								height:40rpx;
+								font-size: 40rpx;
+								font-weight: bold;
+								color: $main-hl;
 							}
 							.blue{
 								font-size: 26rpx;
