@@ -177,10 +177,11 @@ export default {
 	  },
 	  async bind(context,data){
 	  		  let res = await postFetch("Rx-BindCN",{"cbeAccount":this.state.userST.phone,"distId":data.distId},true)
-	  		  if(res.data.status==1){
+			  
+	  		  if(res.data.data.status==1){
 				  data.callback()
 			  }else{
-				  data.callback(res.data.message)
+				  data.callback(res.data.data.message)
 			  }  			  
 	  },
 	  async checkPhoneHaveRegest(context,data){

@@ -15,7 +15,10 @@
 					<view class="label">CN号*</view>
 					<view class="inputFrame">
 						<input class="input" v-model="id" @change="idCheck"/><view class="error" v-if="idError">{{idError}}</view>
+						<view class="nuskinIcon" v-if="idOnly==1">&#xe6f5;</view>
+						<view class="nuskinIcon" v-if="idOnly==2">&#xe600;</view>
 					</view>
+					
 				</view>
 				<view class="row">
 					<view class="label">CN号密码*</view>
@@ -57,6 +60,8 @@
 				<view class="listFrame">
 					<view class="list">
 						<input class="input" placeholder="请输入CN号" v-model="id" @change="idCheck"/>
+						<view class="nuskinIcon" v-if="idOnly==1">&#xe6f5;</view>
+						<view class="nuskinIcon" v-if="idOnly==2">&#xe600;</view>
 					</view>
 					<view class="list">
 						<input class="input" placeholder="请输入CN号密码" v-model="password" @change="passwordCheck"/>

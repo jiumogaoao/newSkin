@@ -64,11 +64,13 @@ export default {
   		  context.commit("clear");
   	  },
 	  logon(context,data){
+		  let _this = this;
 		  postFetch('Mine-Info',{},true,function(res){
 			  console.log("获取用户信息",res)
 			  if(res.data.status==1){
 				  res.data.user_info.phone = res.data.user_info.tel
 				  context.commit("logon",res.data.user_info);
+				  _this.dispatch('CNST/getInfo')
 			  }else{
 				  uni.showToast({
 				  	title:res.data.message,
