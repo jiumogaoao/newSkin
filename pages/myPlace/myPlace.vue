@@ -19,6 +19,50 @@
 			</view>
 			<footerCP/>
 			</view>
+			<view class="newPlaceFrame">
+				<view class="newPlace">
+					<view class="title">收货地址</view>
+					<view class="grayFrame">
+						<view class="blue">温馨提示:</view>
+						<view class="dsc">1、请确保收货人的身份证号码真实有效，否则无法完成订单支付；</view>
+						<view class="dsc">2、购买海外商品需依法向中国海关申报纳税，根据海关要求，请您填写真实的收货人姓名，并配合提供海关所需的身份证信息进行个人物品你入境申报。</view>
+					</view>
+					<view class="inputList">
+						<view class="point">
+							<view class="label">收货人姓名*</view>
+							<input placeholder="请输入收货人真实姓名"/>
+							<view class="error">请输入收货人姓名！</view>
+						</view>
+						<view class="point">
+							<view class="label">收货人身份证*</view>
+							<input placeholder="请输入正确的身份证号码,如填写有误,海关将取消订单,敬请留意"/>
+							<view class="error">请输入收货人身份证！</view>
+						</view>
+						<view class="point">
+							<view class="label">手机号码*</view>
+							<input placeholder="请输入收货人手机号码"/>
+							<view class="error">请输入手机号码！</view>
+						</view>
+						<view class="point">
+							<view class="label">省份/城市/地区*</view>
+							<input placeholder="请选择"/>
+							<view class="error">请选择省市区！</view>
+						</view>
+						<view class="point">
+							<view class="label">详细地址*</view>
+							<input placeholder="请填写"/>
+							<view class="error">请填写详细地址！</view>
+						</view>
+					</view>
+					<view class="agreeFrame">
+						<radioCP/> <view class="dsc">设为默认收货地址</view>
+					</view>
+					<view class="buttonFrame">
+						<view class="button cancel">取消</view>
+						<view class="button">绑定</view>
+					</view>
+				</view>
+			</view>
 		</block>
 		<!-- #endif -->
 		<block  v-if="!destop && initReady">
@@ -66,7 +110,7 @@
 		},
 		data() {
 			return {
-				
+				newPlace:true
 			};
 		}
 	}
@@ -120,7 +164,94 @@
 			color: #333;
 		}
 	}
-	
+	.newPlaceFrame{
+		position: fixed;
+		top:0;
+		left:0;
+		right:0;
+		bottom:0;
+		background-color: rgba(0,0,0,0.3);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		.newPlace{
+			width:668px;
+			padding: 50px 75px;
+			background-color: #fff;
+			.title{
+				font-size: 16px;
+				font-weight: bold;
+			}
+			.grayFrame{
+				width:500px;
+				height: 105px;
+				background-color: $main-gray-background;
+				padding: 14px 18px;
+				.blue{
+					font-size: 12px;
+					color: $main-hl;
+					margin-bottom: 14px;
+				}
+				.dsc{
+					font-size: 12px;
+					color: $main-gray-deep;
+					line-height: 1.5;
+				}
+			}
+			.inputList{
+				width: 500px;
+				.point{
+					margin-top: 26px;
+					position: relative;
+					.label{
+						font-size: 13px;
+						color: $main-black;
+					}
+					input{
+						width: 100%;
+						height: 46px;
+						border: 1px solid $main-gray;
+						margin-top: 20px;
+					}
+					.error{
+						position: absolute;
+						bottom:-18px;
+						right:0px;
+						font-size: 12px;
+						color: #ee6463;
+					}
+				}
+			}
+			.agreeFrame{
+				display: flex;
+				align-items: center;
+				margin-top: 22px;
+			}
+			.buttonFrame{
+				display: flex;
+				justify-content: flex-end;
+				width:505px;
+				margin-top: 17px;
+				.button{
+					width:140px;
+					height: 44px;
+					border: 1px solid $main-hl;
+					background-color: $main-hl;
+					color: #fff;
+					line-height: 42px;
+					text-align: center;
+					border-radius: 22px;
+					font-size: 16px;
+				}
+				.button.cancel{
+					border: 1px solid $main-gray;
+					background-color: #fff;
+					color: $main-gray-deep;
+					margin-right: 40px;
+				}
+			}
+		}
+	}
 	}
 	/* #endif */
 	page{background-color: $main-gray-background;}

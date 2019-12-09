@@ -11,7 +11,7 @@
 			<view class="info">
 				<view class="title">我的银行卡</view>
 				<view class="blue">您还未绑定银行卡，将影响商品分享推广和奖励发放，请尽快绑定您的常用银行卡！</view>
-				<view class="bindCard">+绑定银行卡</view>
+				<view class="bindCard" @click="go('/pages/myCard/newCard')">+绑定银行卡</view>
 			</view>
 			
 		</view>
