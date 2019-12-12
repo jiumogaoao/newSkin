@@ -44,9 +44,10 @@
 									</view>
 									<view class="carBottom">
 										<view class="bigTitle">共2件商品</view>
-										<view class="price">合计 ￥610</view>
+										<view class="count">合计</view>
+										<view class="price">￥610</view>
 									</view>
-									<view class="carGo" @click="go('/pages/shoppingCar/shoppingCar')"><text class="nuskinIcon">&#xe6d5;</text>查看购物车</view>
+									<view class="carGo" @click="go('/pages/shoppingCar/shoppingCar')">查看购物车</view>
 								</view>
 							</div>
 						</view>
@@ -70,22 +71,22 @@
 		<!-- #endif -->
 		<view class="headerCP" v-if="!destop">
 			<view class="item" @click="go('/pages/index/index')">
-				<!-- <image class="icon" :src="footNav=='index'?(imgPath+'tab-home-current.png'):(imgPath+'tab-home.png')"></image> -->
+				<image class="icon" :src="footNav=='index'?(imgPath+'tab-home-current.png'):(imgPath+'tab-home.png')"></image>
 				<view class="title">首页</view>
 			</view>
-			<view class="line"></view>
+			<!-- <view class="line"></view> -->
 			<view class="item" @click="go('/pages/type/type')">
-				<!-- <image class="icon" :src="footNav=='type'?(imgPath+'tab-cate-current.png'):(imgPath+'tab-cate.png')"></image> -->
+				<image class="icon" :src="footNav=='type'?(imgPath+'tab-cate-current.png'):(imgPath+'tab-cate.png')"></image>
 				<view class="title">分类</view>
 			</view>
-			<view class="line"></view>
+			<!-- <view class="line"></view> -->
 			<view class="item" @click="go('/pages/shoppingCar/shoppingCar')">
-				<!-- <image class="icon" :src="footNav=='shoppingCar'?(imgPath+'tab-cart-current.png'):(imgPath+'tab-cart.png')"></image> -->
+				<image class="icon" :src="footNav=='shoppingCar'?(imgPath+'tab-cart-current.png'):(imgPath+'tab-cart.png')"></image>
 				<view class="title">购物车</view>
 			</view>
-			<view class="line"></view>
+<!-- 			<view class="line"></view> -->
 			<view class="item" @click="go('/pages/mine/mine')">
-				<!-- <image class="icon" :src="footNav=='mine'?(imgPath+'tab-my-current.png'):(imgPath+'tab-my.png')"></image> -->
+				<image class="icon" :src="footNav=='mine'?(imgPath+'tab-my-current.png'):(imgPath+'tab-my.png')"></image>
 				<view class="title">会员中心</view>
 			</view>
 		</view>
@@ -231,8 +232,8 @@
 				position: absolute;
 				top:31px;
 				right: 0;
-				width: 636px;
-				padding: 37px;
+				width: 600px;
+				padding: 0 34px 42px 34px; 
 				background-color: #fff;
 				z-index: 3;
 				display: none;
@@ -242,8 +243,8 @@
 					align-items: center;
 					justify-content: space-between;
 					.bigTitle{
-						font-size: 18px;
-						width:300px;
+						font-size: 16px;
+						width:276px;
 						text-align: left;
 					}
 					.count{
@@ -251,13 +252,14 @@
 						font-size: 13px;
 					}
 					.price{
-						flex-grow: 1;
+						width:182px;
+						text-align: center;
 						font-size: 13px;
 					}
 				}
 				.carList{
 					margin-top: 14px;
-					margin-bottom: 14px;
+					margin-bottom: 18px;
 					width: 100%;
 					border-bottom: 1px solid $main-gray;
 					border-top: 1px solid $main-gray;
@@ -266,9 +268,9 @@
 						display: flex;
 						justify-content: space-between;
 						align-items: center;
-						margin-top: 30px;
+						margin-top: 20px;
 						.bigTitle{
-							width:300px;
+							width:276px;
 							display: flex;
 							align-items: center;
 							image{
@@ -286,7 +288,8 @@
 							font-size: 13px;
 						}
 						.price{
-							flex-grow: 1;
+							width:182px;
+							text-align: center;
 							font-size: 13px;
 						}
 					}
@@ -295,27 +298,27 @@
 					display: flex;
 					justify-content: space-between;
 					align-items: center;
-					margin-top: 20px;
+					// margin-top: 20px;
 					.price{
-						font-size: 15px;
+						font-size: 14px;
+					}
+					.count{
+						font-size: 14px;
 					}
 					.bigTitle{
-						font-size: 16px;
+						font-size: 13px;
 					}
 				}
 				.carGo{
-					width: 146px;
-					height: 35px;
-					background-color: $main-hl;
+					width: 145px;
+					height: 32px;
+					background-color: #008aaf;
 					color: #fff;
 					text-align: center;
-					line-height: 35px;
+					line-height: 32px;
 					font-size: 12px;
 					margin-top: 26px;
-					margin-left: 416px;
-					.nuskinIcon{
-						font-size: 18px;
-					}
+					margin-left: 397px;
 				}
 			}
 		}
@@ -370,28 +373,30 @@
 	.phoneCP{
 		.headerCP{
 			width:750rpx;
-			height:85rpx;
+			height:106rpx;
 			background-color: #fff;
-			border-top:1px solid rgba(255, 255, 255, 0.33);
+			border-top:1px solid $main-gray;
 			z-index: 3;
 			position: fixed;
 			bottom:0;
 			left:0;
 			display: flex;
-			justify-content: space-evenly;
+			padding: 0 60rpx;
 			align-items: center;
+			justify-content: space-between;
 			.item{
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
 				align-items: center;
-				// .icon{
-				// 	width:35rpx;
-				// 	height:35rpx;
-				// }
+				.icon{
+					width:49rpx;
+					height:49rpx;
+				}
 				.title{
 					font-size: 23rpx;
 					color:#999;
+					margin-top: 9rpx;
 				}
 			}
 			.line{

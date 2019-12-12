@@ -36,7 +36,7 @@
 	.destopCP{
 		.productSimpleCP{
 			width: 275px;
-			height: 375px;
+			height: 378px;
 			border: 1px solid #F0E9DE;
 			position: relative;
 		}
@@ -45,21 +45,29 @@
 		}
 		.img{
 			width: 273px;
-			height: 270px;
+			height: 272px;
 		}
 		.title{
 			padding-left: 20px;
 			padding-right: 20px;
-			margin-top: 15px;
+			margin-top: 17px;
 			text-align: center;
-			font-size: 16px;
+			font-size: 16.5px;
 			font-weight: 500;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			display:-webkit-box; //作为弹性伸缩盒子模型显示。
+			-webkit-box-orient:vertical; //设置伸缩盒子的子元素排列方式--从上到下垂直排列
+			-webkit-line-clamp:2; //显示的行
+			width: 100%;
+			height: 42px;
+			line-height: 1.3;
 		}
 		.price{
 			text-align: center;
-			margin-top: 5px;
-			font-weight: bold;
-			font-size: 16px;
+			margin-top: 19px;
+			font-weight: 500;
+			font-size: 14px;
 		}
 		.follow{
 			width:20px;
@@ -73,25 +81,33 @@
 	/* #endif */
 	.phoneCP{
 		.productSimpleCP{
-			width: 654rpx;
-			height: 876rpx;
+			width: 671rpx;
+			height: 842rpx;
 			border: 1px solid #F0E9DE;
 			position: relative;
 			.img{
 				width: 100%;
-				height: 602rpx;
+				height: 668rpx;
 			}
 			.title{
-				text-align: center;
-				margin-top: 80rpx;
-				font-size: 30rpx;
+				height: 67rpx;
+				width: 100%;
+				padding: 0 32rpx;
+				margin-top: 27rpx;
+				font-size: 26rpx;
 				font-weight: 500;
 				color: #191919;
+				line-height: 1.3;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				display:-webkit-box; //作为弹性伸缩盒子模型显示。
+				-webkit-box-orient:vertical; //设置伸缩盒子的子元素排列方式--从上到下垂直排列
+				-webkit-line-clamp:2; //显示的行
 			}
 			.price{
-				margin-top: 87rpx;
+				margin-top: 25rpx;
 				    text-align: center;
-				    font-size: 30rpx;
+				    font-size: 24rpx;
 				    color: #191919;
 					font-weight: 500;
 			}

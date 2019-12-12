@@ -7,7 +7,7 @@
 		<view class="band"></view>
 		<swiper class="banner" :indicator-dots="true" :autoplay="true" :interval="1000" :duration="500">
 		                        <swiper-item v-for="(v,i) in banner" :key="v.id" @click="go(v.pc_link)">
-		                            <image :src="v.pc_img"></image>
+		                            <image :src="v.pcimg"></image>
 		                        </swiper-item>
 		                    </swiper>
 		<view class="shelf" v-for="(v,i) in shelf" :key="i">
@@ -83,7 +83,7 @@
 			<view class="banner">
 				<swiper class="swiper" :indicator-dots="true" :autoplay="true" :interval="2000" :duration="500">
 				                        <swiper-item v-for="(v,i) in banner" @click="go(v.h5_link)" :key="i">
-				                            <image :src="v.h5_img" class="item"></image>
+				                            <image :src="v.h5img" class="item"></image>
 				                        </swiper-item>
 				</swiper>
 			</view>
@@ -139,6 +139,7 @@
 							<image class="pic" :src="v.imgh5"></image>
 							<view class="subTitle">品牌故事</view>
 							<view class="title">{{v.name}}</view>
+							<view class="storyDsc">维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚</view>
 							<view class="knowMore" @click="go('/pages/storyDetail/storyDetail?id='+v.sid)">了解更多>></view>
 						</view>
 					</view>
@@ -161,29 +162,31 @@
 				</view>
 				
 				<view class="navList">
-					<view class="item" @click="go('/pages/story/story')">
-						<view class="title">关于我们</view>
-						<image class="deg" :src="imgPath+'jiantou-r.png'"></image>
-					</view>
-					<view class="item" @click="go('/pages/news/news')">
-						<view class="title">新闻中心</view>
-						<image class="deg" :src="imgPath+'jiantou-r.png'"></image>
-					</view>
-					<view class="item" @click="go('/pages/afterSale/afterSale')">
-						<view class="title">售后中心</view>
-						<image class="deg" :src="imgPath+'jiantou-r.png'"></image>
-					</view>
-					<view class="item">
-						<view class="title">联系我们</view>
-						<image class="deg" :src="imgPath+'jiantou-r.png'"></image>
-					</view>
-					<view class="item" @click="go('/pages/help/help')">
-						<view class="title">帮助中心</view>
-						<image class="deg" :src="imgPath+'jiantou-r.png'"></image>
-					</view>
-					<view class="item" @click="go('/pages/index/index')">
-						<view class="title">官网主页</view>
-						<image class="deg" :src="imgPath+'jiantou-r.png'"></image>
+					<view class="listFrame">
+						<view class="item" @click="go('/pages/story/story')">
+							<view class="title">关于我们</view>
+							<image class="deg" :src="imgPath+'jiantou-r.png'"></image>
+						</view>
+						<view class="item" @click="go('/pages/news/news')">
+							<view class="title">新闻中心</view>
+							<image class="deg" :src="imgPath+'jiantou-r.png'"></image>
+						</view>
+						<view class="item" @click="go('/pages/afterSale/afterSale')">
+							<view class="title">售后中心</view>
+							<image class="deg" :src="imgPath+'jiantou-r.png'"></image>
+						</view>
+						<view class="item">
+							<view class="title">联系我们</view>
+							<image class="deg" :src="imgPath+'jiantou-r.png'"></image>
+						</view>
+						<view class="item" @click="go('/pages/help/help')">
+							<view class="title">帮助中心</view>
+							<image class="deg" :src="imgPath+'jiantou-r.png'"></image>
+						</view>
+						<view class="item" @click="go('/pages/index/index')">
+							<view class="title">官网主页</view>
+							<image class="deg" :src="imgPath+'jiantou-r.png'"></image>
+						</view>
 					</view>
 				</view>
 				<view class="logon" @click="go('/pages/mine/mine')" v-if="isLogon">
@@ -471,7 +474,7 @@
 
 		.banner{
 			width:750rpx;
-			height:600rpx;
+			height:400rpx;
 			.swiper{
 				width:100%;
 				height:100%;
@@ -483,9 +486,11 @@
 		}
 		.iconListFrame{
 			width:750rpx;
-			height:326rpx;
+			margin-top: 72rpx;
+			margin-bottom: 75rpx;
+			padding: 0 40rpx;
 			display: flex;
-			justify-content: space-evenly;
+			justify-content: space-between;
 			align-items: center;
 			.item{
 				display: flex;
@@ -493,13 +498,13 @@
 				justify-content: center;
 				align-items: center;
 				.icon{
-					width:60rpx;
-					height:60rpx;
+					width:70rpx;
+					height:70rpx;
 				}
 				.title{
 					width:122rpx;
-					font-size: 23rpx;
-					margin-top: 30rpx;
+					font-size: 22rpx;
+					margin-top: 20rpx;
 					text-align: center;
 					color: #4a4a4a;
 				}
@@ -560,25 +565,34 @@
 		}
 		.news{
 			width:690rpx;
-			height:493rpx;
+			height:530rpx;
 			border: 1px solid #f0e9de;
 			margin: auto;
-			margin-top:40rpx;
+			margin-top:47rpx;
 			.img{
 				width:690rpx;
-				height:360rpx;
+				height:362rpx;
 			}
 			.title{
+				width: 100%;
+				height: 65rpx;
 				padding: 0 30rpx;
 				    color: #191919;
 				    font-size: 28rpx;
 				    line-height: 60rpx;
 				    font-weight: 600;
+					margin-top: 25rpx;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					display:-webkit-box; //作为弹性伸缩盒子模型显示。
+					-webkit-box-orient:vertical; //设置伸缩盒子的子元素排列方式--从上到下垂直排列
+					-webkit-line-clamp:2; //显示的行
 			}
 			.dsc{
-				padding: 10rpx 30rpx;
-				    font-size: 24rpx;
-				    color: grey;
+				padding: 0rpx 30rpx;
+				margin-top: 28rpx;
+				    font-size: 22rpx;
+				    color: $main-gray-deep;
 			}
 		}
 		.more{
@@ -634,35 +648,44 @@
 					.item{
 						width: 490rpx;
 						    height: 580rpx;
-						    margin-right: 30rpx;
-						    font-size: 26rpx;
-						    color: #303133;
-						    line-height: 1.8;
+						    margin-right: 32rpx;
 						    border: 1px solid #f0e9de;
 							flex-shrink: 0;
 						.pic{
 							width: 490rpx;
-							    height: 320rpx;
-							    border-radius: 6rpx;
+							    height: 322rpx;
 						}
 						.subTitle{
 							color: #191919;
 							    font-size: 26rpx;
-							    padding: 0px 20rpx;
-								margin-top: 40rpx;
+							    padding: 0px 30rpx;
+								margin-top: 23rpx;
 						}
 						.title{
 							color: #191919;
-							    font-size: 30rpx;
-							    padding: 0 20rpx;
+							    font-size: 28rpx;
+							    padding: 0 30rpx;
 							    font-weight: 600;
-								margin-top: 20rpx;
+								margin-top: 18rpx;
+						}
+						.storyDsc{
+							width:100%;
+							padding: 0 30rpx;
+							color: $main-gray-deep;
+							font-size: 22rpx;
+							line-height: 1.3;
+							margin-top: 30rpx;
+							display: -webkit-box;
+							overflow: hidden;
+							-webkit-line-clamp:2;
+							-webkit-box-orient:vertical;
+							height: 64rpx;
 						}
 						.knowMore{
-							padding: 0 20rpx;
+							padding: 0 30rpx;
 							    color: #008ab0;
-							    font-size: 26rpx;
-								margin-top: 40rpx;
+							    font-size: 25rpx;
+								margin-top: 23rpx;
 						}
 					}
 				}
@@ -690,23 +713,23 @@
 				height:226rpx;
 				flex-shrink: 0;
 				.searchFrame{
-					width:529rpx;
+					width:570rpx;
 					flex-shrink: 0;
 					position: relative;
 					.search{
 						width: 100%;
-						    height: 70rpx;
+						    height: 76rpx;
 						    font-size: 30rpx;
 						    background: #f6f7f7;
-						    padding: 0 20rpx;
+						    padding: 0 29rpx;
 						    border-radius: 15rpx;
 					}
 					.searchButton{
-						width:44rpx;
-						height:44rpx;
+						width:35rpx;
+						height:35rpx;
 						position: absolute;
-						top:15rpx;
-						left: 20rpx;
+						top:20rpx;
+						right: 30rpx;
 					}
 				}
 				.qrFrame{
@@ -715,13 +738,13 @@
 					justify-content: center;
 					align-items: center;
 					.qrCode{
-						width:43rpx;
-						height:43rpx;
+						width:35rpx;
+						height:35rpx;
 					}
 					.text{
 						font-size: 22rpx;
-						color: #8f8f8f;
-						margin-top: 18rpx;
+						color: #74c4d3;
+						margin-top: 10rpx;
 					}
 				}
 			}
@@ -729,25 +752,30 @@
 			.navList{
 				width: 100%;
 				flex-grow: 1;
+				.listFrame{
+					border-bottom: 1px solid $main-gray;
+					border-top: 1px solid $main-gray;
+					padding-top: 52rpx;
+				}
 				.item{
 					width:100%;
 					display: flex;
 					justify-content: space-between;
 					align-items: center;
-					margin-bottom: 62rpx;
+					margin-bottom: 52rpx;
 					.title{
-						font-size: 28rpx;
+						font-size: 26rpx;
 						color: #010101;
 					}
 					.deg{
-						width:20rpx;
-						height:20rpx;
+						width:26rpx;
+						height:26rpx;
 					}
 				}
 			}
 			.logon{
 				width: 100%;
-				    height: 83rpx;
+				    height: 80rpx;
 				    background: #008ab0;
 				    color: #fff;
 				    border-radius: 15rpx;
@@ -761,9 +789,9 @@
 					height:40rpx;
 				}
 				.title{
-					font-size: 32rpx;
+					font-size: 27rpx;
 					color: #fff;
-					margin-left: 44rpx;
+					margin-left: 26rpx;
 				}
 			}
 		}
