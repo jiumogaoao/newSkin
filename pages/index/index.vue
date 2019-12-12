@@ -50,6 +50,7 @@
 				<image class="storyImg" :src="v.imgpc"></image>
 				<view class="storyBottom">
 					<view class="storyTitle">{{v.name}}</view>
+					<view class="storyDsc">维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚维多利亚</view>
 					<view class="storyMore" @click="go('/pages/storyDetail/storyDetail?id='+v.sid)">了解更多</view>
 				</view>
 			</view>
@@ -388,12 +389,12 @@
 			width: 250px;
 			    height: 50px;
 			    line-height: 50px;
-			    margin: 65px auto 0;
+			    margin: 82px auto 0;
 			    background: #008AB0;
 			    color: #ffffff;
 			    text-align: center;
 			    cursor: pointer;
-				font-size: 12px;
+				font-size: 17px;
 		}
 		.newsItem{
 			padding-bottom: 25px;
@@ -403,18 +404,19 @@
 			    cursor: pointer;
 		}
 		.newsImage{
-			width: 578px;
-			height:372px;
+			width: 100%;
+			height:407px;
 		}
 		.newsTitle{
-			margin-top: 30px;
+			margin-top: 34px;
 			padding-left: 40px;
-			font-size: 20px;
+			font-size: 24px;
+			font-weight: bold;
 		}
 		.newsDesc{
 			    margin-top: 25px;
 			    padding-left: 40px;
-			    font-size: 15px;
+			    font-size: 13px;
 			    color: #9A9A9A;
 		}
 		.storyFrame{
@@ -431,10 +433,10 @@
 		}
 		.storyImg{
 			width:378px;
-			height:151px;
+			height:302px;
 		}
 		.storyBottom{
-			padding: 15px 50px 35px 23px;
+			padding: 32px 50px 40px 20px;
 			border: 1px solid #F0E9DE;
 		}
 		.storyTitle{
@@ -442,15 +444,26 @@
 			    font-weight: bold;
 			    letter-spacing: 2px;
 			    color: #2f2728;
-			    line-height: 30px;
+			    margin-top: 30px;
+		}
+		.storyDsc{
+			width:100%;
+			color: $main-gray-deep;
+			font-size: 14px;
+			line-height: 1.5;
+			margin-top: 28px;
+			display: -webkit-box;
+			overflow: hidden;
+			-webkit-line-clamp:3;
+			-webkit-box-orient:vertical;
 		}
 		.storyMore{
-			    font-size: 14px;
+			    font-size: 15px;
 			    letter-spacing: 1px;
 			    color: #333333;
 			    cursor: pointer;
 				text-decoration: underline;
-				margin-top:20px;
+				margin-top:22px;
 		}
 	}
 	/* #endif */

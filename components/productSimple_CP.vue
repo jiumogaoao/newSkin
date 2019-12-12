@@ -40,6 +40,9 @@
 			border: 1px solid #F0E9DE;
 			position: relative;
 		}
+		.productSimpleCP:hover{
+			box-shadow: 3px 10px 13px rgba(0,0,0,0.3);
+		}
 		.img{
 			width: 273px;
 			height: 270px;

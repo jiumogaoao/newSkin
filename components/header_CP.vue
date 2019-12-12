@@ -7,13 +7,17 @@
 				<view class="right">
 					<view class="top">
 						<view class="topLeft">
-							<view class="place"><image :src="imgPath+'indexLandmarkIcon.png'" id="place"></image>{{place}}</view>
-							<view class="nav1" v-for="(v,i) in head_link" :key="'nav1'+i" @click="go(v.link)">{{v.nav}}</view>
+							<view class="place"><text class="nuskinIcon" style="font-size: 16px;margin-right: 10px;">&#xe74a;</text> {{place}}</view>
+							<block v-for="(v,i) in head_link" :key="'nav1'+i">
+								<em style="margin: 0 20px;width: 1px;height: 7px;background: #aaa;"/>
+								<view class="nav1" @click="go(v.link)">{{v.nav}}</view>
+							</block>
+							
 						</view>
 						<view class="topRight">
 							<image :src="imgPath+'indexSearchIcon.png'" id="search" @click="go('/pages/search/search')"></image>
 							<image :src="imgPath+'indexUserIcon.png'" id="user" @click="go('/pages/myOrder/myOrder')"></image>
-							<div class="goShoppingCar">购物车
+							<div class="goShoppingCar"><text class="nuskinIcon">&#xe6d5;</text>购物车
 								<view class="shoppingCarList">
 									<view class="carTop">
 										<view class="bigTitle">我的购物车</view>
@@ -177,11 +181,9 @@
 		.nav1{
 			color:#999;
 			font-size: 12px;
-			width:120px;
 			height:18px;
 			line-height: 18px;
 			text-align: center;
-			border-right:1px solid #999;
 		}
 		.place{
 			font-size: 12px;
@@ -201,24 +203,30 @@
 			flex-shrink: 0;
 		}
 		#search{
-			width:20px;
-			height:20px;
-			margin-right: 20px;
+			width:17px;
+			height:17px;
+			margin: 0 15.5px;
 		}
 		#user{
-			width:19px;
-			height:21px;
-			margin-right: 80px;
+			width:15px;
+			height:17px;
+			margin: 0 15.5px;
 		}
 		.goShoppingCar{
-			width:144px;
-			height:32px;
-			background-color: #008AB0;
+			width: 140px;
+			height: 30px;
+			background-color: #77c4d6;
 			color:#fff;
 			font-size: 12px;
-			text-align: center;
 			line-height: 32px;
+			margin-left: 23.5px;
 			position: relative;
+			.nuskinIcon{
+				color: #fff;
+				font-size: 16px;
+				margin-right: 22px;
+				margin-left: 28px;
+			}
 			.shoppingCarList{
 				position: absolute;
 				top:31px;
@@ -322,14 +330,14 @@
 		}
 		.nav2{
 			flex-grow: 1;
-			font-size: 12px;
+			font-size: 14px;
 			color:#212529;
 		}
 		.nav2ChildFrame{
 			@include frame-width;
 			background-color: #fff;
 			position: absolute;
-			top:12px;
+			top:15px;
 			left:-210px;
 			display: none;
 			padding: 30px;

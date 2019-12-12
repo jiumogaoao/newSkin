@@ -90,16 +90,16 @@
 		    line-height: 20px;
 		    margin-bottom: 10px;
 		    color: #fff;
-			font-weight: 700;
+			font-weight: bold;
 	}
 	.item{
-		margin-top: 34px;
+		margin-top: 27px;
 		    font-size: 14px;
 		    line-height: 4px;
 			color: #fff;
 	}
 	.followFrame{
-		margin-top: 34px;
+		margin-top: 32px;
 		display: flex;
 	}
 	.followItem{
