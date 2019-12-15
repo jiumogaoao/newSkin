@@ -11,19 +11,24 @@
 				<view class="back">返回首页</view>
 			</view>
 			<view class="center">
+				<view class="notice">温馨提示：绑定成功后可获得分享激励。一个CN卡号只能绑定一个CBE账号。CN卡号一旦绑定通过客服才能解绑。</view>
 				<view class="row">
-					<view class="label">CN号*</view>
+					<view class="label">CN号<text style="color:red;">*</text></view>
 					<view class="inputFrame">
-						<input class="input" v-model="id" @change="idCheck"/><view class="error" v-if="idError">{{idError}}</view>
+						<view class="inputSubFrame">
+							<input class="input" v-model="id" @change="idCheck" placeholder="请输入CN号"/><view class="error" v-if="idError">{{idError}}</view>
+						</view>
 						<view class="nuskinIcon" v-if="idOnly==1">&#xe6f5;</view>
 						<view class="nuskinIcon" v-if="idOnly==2">&#xe600;</view>
 					</view>
 					
 				</view>
 				<view class="row">
-					<view class="label">CN号密码*</view>
+					<view class="label">CN号密码<text style="color:red;">*</text></view>
 					<view class="inputFrame">
-						<input class="input" v-model="password" @change="passwordCheck"/><view class="error" v-if="passwordError">{{passwordError}}</view>
+						<view class="inputSubFrame">
+						<input class="input" v-model="password" @change="passwordCheck" placeholder="请输入密码"/><view class="error" v-if="passwordError">{{passwordError}}</view>
+						</view>
 					</view>
 				</view>
 				<view class="name" v-if="name">{{name}}</view>
@@ -246,50 +251,66 @@
 				.center{
 					width: 500px;
 					margin: auto;
+					margin-top: 121px;
+					.notice{
+						color: $main-hl;
+						font-size: 15px;
+						line-height: 1.3;
+						margin-bottom: 38px;
+					}
 					.row{
-						margin-top: 70px;
+						margin-bottom: 36px;
 						width: 100%;
-						position: relative;
+						position:relative;
 						.error{
 									position: absolute;
-									top:72px;
-									left: 0;
+									top:57px;
+									right: 0;
+									font-size: 15px;
 									color: red;
 								}
 						.label{
 							font-size: 14px;
 							color: #000;
-							margin-bottom: 5px;
+							margin-bottom: 16px;
 						}
 						.inputFrame{
 							width: 100%;
 							height:50px;
 							display: flex;
 							align-items: center;
+							.inputSubFrame{
+								height:50px;
+								flex-grow: 1;
+								position: relative;
+							}
 							.input{
-								height: 48px;
+								height: 100%;
+								width:100%;
 								color: #495057;
 								background-color: #fff;
+								text-indent: 15px;
 								border: 1px solid #ced4da;
 								border-radius: 3px;
-								flex-grow: 1;
 							}
 							.picCode{
-								width:136px;
-								height:46px;
+								width:140px;
+								height:50px;
 								margin: 0 20px;
+								border: 1px solid $main-gray;
 							}
 							.blue{
 								color: #007bff;
-								font-size: 14px;
+								font-size: 16px;
 							}
 							.getCode{
 								    width: 140px;
-								    height: 48px;
+								    height: 50px;
 								    border: 1px solid #008ab0;
 								    border-radius: 35px;
 								    background: #fff;
 								    color: #008ab0;
+									font-size: 12px;
 									margin-left: 20px;
 									line-height: 48px;
 									text-align: center;
@@ -300,7 +321,7 @@
 						display: flex;
 						margin-top: 40px;
 						align-items: center;
-						position:relative;
+						position: relative;
 						.error{
 									position: absolute;
 									top:30px;
@@ -321,7 +342,7 @@
 					.buttonFrame{
 						display: flex;
 						align-items: center;
-						margin-top: 40px;
+						margin-top: 93px;
 						.cancel{
 							background-color: #fff;
 							    color: #008ab0;
@@ -329,8 +350,8 @@
 								width: 150px;
 								    height: 50px;
 								    border-radius: 30px;
-								    font-size: 16px;
-									margin-right: 30px;
+								    font-size: 15px;
+									margin-right: 50px;
 									line-height: 50px;
 									text-align: center;
 						}
@@ -341,7 +362,7 @@
 								width: 150px;
 								    height: 50px;
 								    border-radius: 30px;
-								    font-size: 16px;
+								    font-size: 15px;
 									line-height: 50px;
 									text-align: center;
 						}

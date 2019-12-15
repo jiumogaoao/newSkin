@@ -11,45 +11,50 @@
 				<view class="back" @click="go('/pages/index/index')">返回首页</view>
 			</view>
 			<view class="center">
-				<view class="logonFrame">
-					<view class="tabbarFrame">
-						<view :class="{item:1,hl:logOnType==0}" @click="changeType(0)">手机验证码登录</view>
-						<view :class="{item:1,hl:logOnType==1}" @click="changeType(1)">账号登录</view>
-					</view>
-					<view class="frame" v-if="logOnType==0">
-						<view class="row" key="1">
-							<image class="icon" :src="imgPath+'login-form-mine.png'"></image><input class="input" v-model="userName"/><view class="error" v-if="userNameError">{{userNameError}}</view>
+				<view class="centerFrame">
+					<view class="logonFrame">
+						<view class="tabbarFrame">
+							<view :class="{item:1,hl:logOnType==0}" @click="changeType(0)">手机验证码登录</view>
+							<view :class="{item:1,hl:logOnType==1}" @click="changeType(1)">账号登录</view>
 						</view>
-						<view class="row" key="2">
-							<input class="input" v-model="picCode"/><image class="picCode" :src="picCodeIMGByPhone"></image><view class="blue" @click="updatePicCode">换一张</view><view class="error" v-if="picCodeError">{{picCodeError}}</view>
+						<view class="frame" v-if="logOnType==0">
+							<view class="row" key="1">
+								<image class="icon" :src="imgPath+'login-form-mine.png'"></image><input class="input" placeholder="请输入手机号" v-model="userName"/><view class="error" v-if="userNameError">{{userNameError}}</view>
+							</view>
+							<view class="row" key="2">
+								<input class="input" v-model="picCode" placeholder="验证码"/><image class="picCode" :src="picCodeIMGByPhone"></image><view class="blue" @click="updatePicCode">换一张</view><view class="error" v-if="picCodeError">{{picCodeError}}</view>
+							</view>
+							<view class="row" key="3">
+								<image class="icon" :src="imgPath+'login-form-lock.png'"></image><input class="input" v-model="code" placeholder="请输入手机验证码"/>
+								<view class="getPhoneCode" v-if="nextTime">{{nextTime}}后可继续获取</view>
+								<view class="getPhoneCode" @click="getSMSCode" v-else>获取验证码</view>
+								<view class="error" v-if="codeError">{{codeError}}</view>
+							</view>
+							<view class="forget" @click="go('/pages/logon/reset')">忘记密码</view>
+							<view class="logon" @click="logon">登录</view>
 						</view>
-						<view class="row" key="3">
-							<image class="icon" :src="imgPath+'login-form-lock.png'"></image><input class="input" v-model="code"/>
-							<view class="getPhoneCode" v-if="nextTime">{{nextTime}}后可继续获取</view>
-							<view class="getPhoneCode" @click="getSMSCode" v-else>获取验证码</view>
-							<view class="error" v-if="codeError">{{codeError}}</view>
+						<view class="frame" v-else>
+							<view class="row" key="4">
+								<image class="icon" :src="imgPath+'login-form-mine.png'"></image><input class="input" v-model="userName" placeholder="证件号/手机号/用户名/邮箱"/><view class="error" v-if="userNameError">{{userNameError}}</view>
+							</view>
+							<view class="row" key="5">
+								<image class="icon" :src="imgPath+'login-form-lock.png'"></image><input class="input" v-model="password" placeholder="密码"/><view class="error" v-if="passwordError">{{passwordError}}</view>
+							</view>
+							<view class="row" key="6">
+								<input class="input" v-model="picCode" placeholder="验证码"/><image class="picCode" :src="picCodeIMG"></image><view class="blue" @click="updatePicCode">换一张</view><view class="error" v-if="picCodeError">{{picCodeError}}</view>
+							</view>
+							<view class="forget" @click="go('/pages/logon/reset')">忘记密码</view>
+							<view class="logon" @click="logon">登录</view>
 						</view>
-					</view>
-					<view class="frame" v-else>
-						<view class="row" key="4">
-							<image class="icon" :src="imgPath+'login-form-mine.png'"></image><input class="input" v-model="userName"/><view class="error" v-if="userNameError">{{userNameError}}</view>
+						
+						<view class="thirdPathLogonFrame">
+							<view class="left">
+								<view class="title">社交账号登录</view>
+								<image class="icon" :src="imgPath+'login-wechat.png'"></image>
+								<image class="icon" :src="imgPath+'login-qq.png'"></image>
+							</view>
+							<view class="blue" @click="goRegest">立即注册</view>
 						</view>
-						<view class="row" key="5">
-							<image class="icon" :src="imgPath+'login-form-lock.png'"></image><input class="input" v-model="password"/><view class="error" v-if="passwordError">{{passwordError}}</view>
-						</view>
-						<view class="row" key="6">
-							<input class="input" v-model="picCode"/><image class="picCode" :src="picCodeIMG"></image><view class="blue" @click="updatePicCode">换一张</view><view class="error" v-if="picCodeError">{{picCodeError}}</view>
-						</view>
-					</view>
-					<view class="forget">忘记密码</view>
-					<view class="logon" @click="logon">登录</view>
-					<view class="thirdPathLogonFrame">
-						<view class="left">
-							<view class="title">社交账号登录</view>
-							<image class="icon" :src="imgPath+'login-wechat.png'"></image>
-							<image class="icon" :src="imgPath+'login-qq.png'"></image>
-						</view>
-						<view class="blue" @click="goRegest">立即注册</view>
 					</view>
 				</view>
 			</view>
@@ -402,131 +407,145 @@
 				.center{
 					@include frame-width;
 					margin: auto;
-					margin-top: 40px;
-					display: flex;
-					justify-content: flex-end;
-					.logonFrame{
-						width:400px;
-						.tabbarFrame{
-							width:100%;
-							height:60px;
-							display: flex;
-							.item{
-								width:50%;
-								height: 60px;
-								line-height: 60px;
-								text-align: center;
-								font-size: 16px;
-								color: #000;
-								background-color: #dee2e6;
-							}
-							.hl{
-								background-color: #fff;
-							}
-						}
-						.frame{
-							width: 400px;
-							padding: 0 30px;
-							border: 1px solid #dee2e6;
-							padding-bottom: 20px;
-							.row{
+					width: 100%;
+					background: url("~@/static/login_bg.jpg") center center no-repeat #ebebeb;
+					height: 600px;
+					.centerFrame{
+						height: 100%;
+						width: 1200px;
+						margin: auto;
+						display: flex;
+						justify-content: flex-end;
+						align-items: center;
+						.logonFrame{
+							width:500px;
+							height: 551px;
+							background-color: #fff;
+							.tabbarFrame{
+								width:100%;
+								height:60px;
 								display: flex;
-								margin-top: 20px;
+								.item{
+									width:50%;
+									height: 60px;
+									line-height: 60px;
+									text-align: center;
+									color: #343434;
+									font-size: 17px;
+									color: #000;
+									background-color: #f0f0f0;
+								}
+								.hl{
+									background-color: #fff;
+								}
+							}
+							.frame{
+								width: 100%;
+								padding: 45px 35px 38px 35px;
+								border-bottom: 1px solid $main-gray;
+								.row{
+									display: flex;
+									margin-bottom: 37px;
+									align-items: center;
+									position: relative;
+									height: 50px;
+									.error{
+										position: absolute;
+										top:57px;
+										left: 0;
+										color: red;
+										font-size: 14px;
+									}
+									.icon{
+										width: 60px;
+										height: 50px;
+										border: 1px solid #ced4da;
+										border-right: 0;
+										flex-shrink: 0;
+									}
+									.input{
+										height: 50px;
+										    color: #495057;
+										    background-color: #fff;
+										    background-clip: padding-box;
+										    border: 1px solid #ced4da;
+										    border-radius: 0 3px 3px 0;
+										flex-grow: 1;
+										text-indent: 15px;
+									}
+									.picCode{
+										width:136px;
+										height:50px;
+										flex-shrink: 0;
+										margin-left: 18px;
+										margin-right: 15px;
+										 border: 1px solid #ced4da;
+									}
+									.blue{
+										font-size: 16px;
+										    color: #0389af;
+											flex-shrink: 0;
+									}
+									.getPhoneCode{
+										width: 98px;
+										    height: 38px;
+											line-height: 38px;
+											text-align: center;
+										    border: 1px solid #008ab0;
+										    border-radius: 35px;
+										    background: #fff;
+										    color: #008ab0;
+										    font-size: 12px;
+											margin-left: 20px;
+									}
+								}
+							}
+							.forget{
+								font-size: 16px;
+								color: #0389af;
+								text-align: right;
+								width:100%;
+								line-height: 20px;
+							}
+							.logon{
+								width: 100%;
+								    height: 52px;
+								    border-radius: 35px;
+								    background-color: #008ab0;
+									color: #fff;
+									line-height: 52px;
+									text-align: center;
+									font-size: 15px;
+									margin-top: 20px;
+							}
+							.thirdPathLogonFrame{
+								width:100%;
+								height: 54px;
+								padding: 0 35px;
+								display: flex;
+								justify-content: space-between;
 								align-items: center;
-								position: relative;
-								.error{
-									position: absolute;
-									top:41px;
-									left: 0;
-									color: red;
-								}
-								.icon{
-									width: 48px;
-									height: 38px;
-									border: 1px solid #ced4da;
-									border-right: 0;
-									flex-shrink: 0;
-								}
-								.input{
-									height: 38px;
-									    color: #495057;
-									    background-color: #fff;
-									    background-clip: padding-box;
-									    border: 1px solid #ced4da;
-									    border-radius: 0 3px 3px 0;
-									flex-grow: 1;
-								}
-								.picCode{
-									width:98px;
-									height:38px;
-									flex-shrink: 0;
-									margin-left: 10px;
-									margin-right: 10px;
+								.left{
+									display: flex;
+									align-items: center;
+									.title{
+										margin-right: 22px;
+										    font-size: 14px;
+									}
+									.icon{
+										width:30px;
+										height:30px;
+										margin-right: 22px;
+									}
 								}
 								.blue{
-									font-size: 12px;
-									    color: #007bff;
-										flex-shrink: 0;
+									color: #008ab0;
+									font-size: 14px;
 								}
-								.getPhoneCode{
-									width: 98px;
-									    height: 38px;
-										line-height: 38px;
-										text-align: center;
-									    border: 1px solid #008ab0;
-									    border-radius: 35px;
-									    background: #fff;
-									    color: #008ab0;
-									    font-size: 12px;
-										margin-left: 20px;
-								}
-							}
-						}
-						.forget{
-							font-size: 14px;
-							color: #6c757d;
-							text-align: right;
-							width:100%;
-							line-height: 20px;
-						}
-						.logon{
-							width: 100%;
-							    height: 40px;
-							    border-radius: 35px;
-							    background-color: #008ab0;
-								color: #fff;
-								line-height: 40px;
-								text-align: center;
-								margin-top: 10px;
-						}
-						.thirdPathLogonFrame{
-							width:100%;
-							height:52px;
-							display: flex;
-							justify-content: space-between;
-							align-items: center;
-							margin-top: 10px;
-							.left{
-								display: flex;
-								align-items: center;
-								.title{
-									margin-right: 22px;
-									    font-size: 14px;
-										margin-left: 30px;
-								}
-								.icon{
-									width:30px;
-									height:30px;
-									margin-right: 22px;
-								}
-							}
-							.blue{
-								color: #008ab0;
-								    font-size: 14px;
-									margin-right: 30px;
 							}
 						}
 					}
+					
 				}
 				}
 				/* #endif */

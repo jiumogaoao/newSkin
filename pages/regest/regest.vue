@@ -12,44 +12,54 @@
 			</view>
 			<view class="center">
 				<view class="row">
-					<view class="label">手机号码*</view>
+					<view class="label">手机号码<text style="color:red;">*</text></view>
 					<view class="inputFrame">
-						<input class="input" v-model="phone" @change="checkPhoneRegested"/>
+						<view class="inputSubFrame">
+							<input class="input" placeholder="请输入手机号" v-model="phone" @change="checkPhoneRegested"/>
+							<view class="error" v-if="phoneError">{{phoneError}}</view>
+						</view>
 						<view class="nuskinIcon" v-if="phoneOnly==1">&#xe6f5;</view>
 						<view class="nuskinIcon" v-if="phoneOnly==2">&#xe600;</view>
-						<view class="error" v-if="phoneError">{{phoneError}}</view>
 					</view>
 				</view>
 				<view class="row">
-					<view class="label">验证*</view>
+					<view class="label">验证<text style="color:red;">*</text></view>
 					<view class="inputFrame">
-						<input class="input" v-model="code"/>
-						<view class="error" v-if="codeError">{{codeError}}</view>
+						<view class="inputSubFrame">
+							<input class="input" v-model="code" placeholder="验证码"/>
+							<view class="error" v-if="codeError">{{codeError}}</view>
+						</view>
 						<image class="picCode" :src="picCodeIMG"></image>
 						<view class="blue" @click="updatePicCode()">换一张</view>
 					</view>
 				</view>
 				<view class="row">
-					<view class="label">手机短信验证码*</view>
+					<view class="label">手机短信验证码<text style="color:red;">*</text></view>
 					<view class="inputFrame">
-						<input class="input" v-model="phoneCode"/>
+						<view class="inputSubFrame">
+						<input class="input" v-model="phoneCode"  placeholder="请输入手机验证码"/>
 						<view class="error" v-if="phoneCodeError">{{phoneCodeError}}</view>
+						</view>
 						<view class="getCode" v-if="nextTime">{{nextTime}}后可继续获取</view>
 						<view class="getCode" @click="getCode" v-else>获取验证码</view>
 					</view>
 				</view>
 				<view class="row">
-					<view class="label">设置密码*</view>
+					<view class="label">设置密码<text style="color:red;">*</text></view>
 					<view class="inputFrame">
-						<input class="input" v-model="password"/>
+						<view class="inputSubFrame">
+						<input class="input" v-model="password" placeholder="密码长度须为6-20位,可包含字母/数字和符号"/>
 						<view class="error" v-if="passwordError">{{passwordError}}</view>
+						</view>
 					</view>
 				</view>
 				<view class="row">
-					<view class="label">确认密码*</view>
+					<view class="label">确认密码<text style="color:red;">*</text></view>
 					<view class="inputFrame">
-						<input class="input" v-model="password2"/>
+						<view class="inputSubFrame">
+						<input class="input" v-model="password2" placeholder="请再次确认密码"/>
 						<view class="error" v-if="password2Error">{{password2Error}}</view>
+						</view>
 					</view>
 				</view>
 				<view class="agreeFrame">
@@ -412,50 +422,60 @@
 				.center{
 					width: 500px;
 					margin: auto;
+					margin-top: 121px;
 					.row{
-						margin-top: 70px;
+						margin-bottom: 36px;
 						width: 100%;
 						position:relative;
 						.error{
 									position: absolute;
-									top:80px;
-									left: 0;
+									top:57px;
+									right: 0;
+									font-size: 15px;
 									color: red;
 								}
 						.label{
 							font-size: 14px;
 							color: #000;
-							margin-bottom: 5px;
+							margin-bottom: 16px;
 						}
 						.inputFrame{
 							width: 100%;
 							height:50px;
 							display: flex;
 							align-items: center;
+							.inputSubFrame{
+								height:50px;
+								flex-grow: 1;
+								position: relative;
+							}
 							.input{
-								height: 48px;
+								height: 100%;
+								width:100%;
 								color: #495057;
 								background-color: #fff;
+								text-indent: 15px;
 								border: 1px solid #ced4da;
 								border-radius: 3px;
-								flex-grow: 1;
 							}
 							.picCode{
-								width:136px;
-								height:46px;
+								width:140px;
+								height:50px;
 								margin: 0 20px;
+								border: 1px solid $main-gray;
 							}
 							.blue{
 								color: #007bff;
-								font-size: 14px;
+								font-size: 16px;
 							}
 							.getCode{
 								    width: 140px;
-								    height: 48px;
+								    height: 50px;
 								    border: 1px solid #008ab0;
 								    border-radius: 35px;
 								    background: #fff;
 								    color: #008ab0;
+									font-size: 12px;
 									margin-left: 20px;
 									line-height: 48px;
 									text-align: center;
@@ -487,7 +507,7 @@
 					.buttonFrame{
 						display: flex;
 						align-items: center;
-						margin-top: 40px;
+						margin-top: 93px;
 						.cancel{
 							background-color: #fff;
 							    color: #008ab0;
@@ -495,8 +515,8 @@
 								width: 150px;
 								    height: 50px;
 								    border-radius: 30px;
-								    font-size: 16px;
-									margin-right: 30px;
+								    font-size: 15px;
+									margin-right: 50px;
 									line-height: 50px;
 									text-align: center;
 						}
@@ -507,7 +527,7 @@
 								width: 150px;
 								    height: 50px;
 								    border-radius: 30px;
-								    font-size: 16px;
+								    font-size: 15px;
 									line-height: 50px;
 									text-align: center;
 						}

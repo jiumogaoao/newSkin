@@ -10,48 +10,63 @@
 				</view>
 				<view class="back">返回首页</view>
 			</view>
+			<image class="stepImg" src="/static/reset0.png" v-if="step==0"></image>
+			<image class="stepImg" src="/static/reset1.png" v-if="step==1"></image>
+			<image class="stepImg" src="/static/reset2.png" v-if="step==2"></image>
+			
 			<view class="center">
-				<view class="row">
-					<view class="label">手机号码*</view>
+				<view class="bigTitle" v-if="step==0">进行安全验证</view>
+				<view class="bigTitle" v-else>重置密码</view>
+				<view class="row" key="1" v-if="step==0">
+					<view class="label">手机号码<text style="color:red;">*</text></view>
 					<view class="inputFrame">
-						<input class="input"/>
+						<view class="inputSubFrame">
+							<input class="input" placeholder="请输入手机号"/>
+						</view>
+						
 					</view>
 				</view>
-				<view class="row">
-					<view class="label">验证*</view>
+				<view class="row" key="2" v-if="step==0">
+					<view class="label">验证<text style="color:red;">*</text></view>
 					<view class="inputFrame">
-						<input class="input"/>
+						<view class="inputSubFrame">
+						<input class="input" placeholder="验证码"/>
+						</view>
 						<image class="picCode" :src="imgPath+'verificationCode.png'"></image>
 						<view class="blue">换一张</view>
 					</view>
 				</view>
-				<view class="row">
-					<view class="label">手机短信验证码*</view>
+				<view class="row" key="3" v-if="step==0">
+					<view class="label">手机短信验证码<text style="color:red;">*</text></view>
 					<view class="inputFrame">
-						<input class="input"/>
+						<view class="inputSubFrame">
+						<input class="input" placeholder="请输入手机验证码"/>
+						</view>
 						<view class="getCode">获取验证码</view>
 					</view>
 				</view>
-				<view class="row">
-					<view class="label">设置密码*</view>
+				<view class="row" key="4" v-if="step!=0">
+					<view class="label">设置密码<text style="color:red;">*</text></view>
 					<view class="inputFrame">
-						<input class="input"/>
+						<view class="inputSubFrame">
+						<input class="input" placeholder="密码长度需为6~20位,可包含字母/数字和符号"/>
+						</view>
 					</view>
 				</view>
-				<view class="row">
-					<view class="label">确认密码*</view>
+				<view class="row" key="5" v-if="step!=0">
+					<view class="label">确认密码<text style="color:red;">*</text></view>
 					<view class="inputFrame">
-						<input class="input"/>
+						<view class="inputSubFrame">
+						<input class="input" placeholder="请再次确认密码"/>
+						</view>
 					</view>
 				</view>
-				<view class="agreeFrame">
-					<chechBoxCP/>
-					<view class="text">已阅读并同意</view>
-					<view class="blue">《如新海外购用户协议》</view>
-				</view>
+
 				<view class="buttonFrame">
-					<view class="cancel">取消</view>
-					<view class="submit">提交</view>
+					<view class="cancel" v-if="step==0" @click="back()">取消</view>
+					<view class="cancel" v-else @click="backStep()">上一步</view>
+					<view class="submit" v-if="step==0" @click="next">提交</view>
+					<view class="submit" v-else @click="reset">提交</view>
 				</view>
 			</view>
 			
@@ -124,6 +139,9 @@
 					togglePassword(num){
 						this['showPassword'+num] = !this['showPassword'+num]
 					},
+					backStep(){
+						this.step = 0;
+					},
 					next(){
 						this.step = 1;
 					},
@@ -171,52 +189,74 @@
 						margin-right: 10px;
 					}
 				}
+				.stepImg{
+					width:687px;
+					height: 80px;
+					margin: auto;
+					margin-top: 113px;
+				}
 				.center{
 					width: 500px;
 					margin: auto;
+					margin-top: 103px;
+					.bigTitle{
+						font-size: 21px;
+						font-weight: bold;
+						margin-bottom: 60px;
+					}
 					.row{
-						margin-top: 70px;
+						margin-bottom: 36px;
 						width: 100%;
+						position:relative;
 						.error{
 									position: absolute;
-									top:41px;
-									left: 0;
+									top:57px;
+									right: 0;
+									font-size: 15px;
 									color: red;
 								}
 						.label{
 							font-size: 14px;
 							color: #000;
-							margin-bottom: 5px;
+							margin-bottom: 16px;
 						}
 						.inputFrame{
 							width: 100%;
 							height:50px;
 							display: flex;
 							align-items: center;
+							.inputSubFrame{
+								height:50px;
+								flex-grow: 1;
+								position: relative;
+							}
 							.input{
-								height: 48px;
+								height: 100%;
+								width:100%;
 								color: #495057;
 								background-color: #fff;
+								text-indent: 15px;
 								border: 1px solid #ced4da;
 								border-radius: 3px;
-								flex-grow: 1;
 							}
 							.picCode{
-								width:136px;
-								height:46px;
+								width:140px;
+								height:50px;
 								margin: 0 20px;
+								border: 1px solid $main-gray;
 							}
 							.blue{
 								color: #007bff;
-								font-size: 14px;
+								font-size: 16px;
 							}
 							.getCode{
 								    width: 140px;
-								    height: 48px;
+								    height: 50px;
 								    border: 1px solid #008ab0;
 								    border-radius: 35px;
 								    background: #fff;
 								    color: #008ab0;
+									font-size: 12px;
 									margin-left: 20px;
 									line-height: 48px;
 									text-align: center;
@@ -241,7 +281,7 @@
 					.buttonFrame{
 						display: flex;
 						align-items: center;
-						margin-top: 40px;
+						margin-top: 93px;
 						.cancel{
 							background-color: #fff;
 							    color: #008ab0;
@@ -249,8 +289,8 @@
 								width: 150px;
 								    height: 50px;
 								    border-radius: 30px;
-								    font-size: 16px;
-									margin-right: 30px;
+								    font-size: 15px;
+									margin-right: 50px;
 									line-height: 50px;
 									text-align: center;
 						}
@@ -261,7 +301,7 @@
 								width: 150px;
 								    height: 50px;
 								    border-radius: 30px;
-								    font-size: 16px;
+								    font-size: 15px;
 									line-height: 50px;
 									text-align: center;
 						}
