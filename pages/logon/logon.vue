@@ -61,6 +61,9 @@
 			<footerCP/>
 			<modalCP 
 			v-if="showRegestPop"
+			width="960px"
+			height="680px"
+			padding="30px 95px"
 			title='隐私协议'
 								confirmText='同意'
 								cancelText='拒绝'
@@ -115,6 +118,11 @@
 					<view class="getCode" v-if="nextTime">{{nextTime}}后可继续获取</view>
 					<view class="getCode" @click="getSMSCode" v-else>获取验证码</view>
 				</view>
+				<view class="logon" @click="logon">登录</view>
+				<view class="blueFrame">
+					<view class="text" @click="goRegest">立即注册</view>
+					<view class="text" @click="go('/pages/logon/reset')">忘记密码？</view>
+				</view>
 			</view>
 			<view class="listFrame" v-else>
 				<view class="list">
@@ -129,12 +137,13 @@
 					<image class="picCode" :src="picCodeIMG"></image>
 					<view class="blue" @click="updatePicCode">换一张</view>
 				</view>
+				<view class="logon" @click="logon">登录</view>
+				<view class="blueFrame">
+					<view class="text" @click="goRegest">立即注册</view>
+					<view class="text" @click="go('/pages/logon/reset')">忘记密码？</view>
+				</view>
 			</view>
-			<view class="logon" @click="logon">登录</view>
-			<view class="blueFrame">
-				<view class="text" @click="goRegest">立即注册</view>
-				<view class="text" @click="go('/pages/logon/reset')">忘记密码？</view>
-			</view>
+			
 			<view class="thirdPath">
 				<view class="line"></view>
 				<view class="title">其他方式登录</view>
@@ -368,7 +377,7 @@
 			/* #ifdef H5 */
 			.destop{
 				.p{
-					line-height: 1.5;
+					line-height: 2;
 					font-size: 16px;
 				}
 				.content{
@@ -558,7 +567,7 @@
 						    font-size: 21rpx;
 					}
 						.top{
-							height: 420rpx;
+							height: 361rpx;
 							    width: 750rpx;
 								background: linear-gradient(-45deg,#5cc2cc,#0573b2);
 							    position: relative;
@@ -571,19 +580,19 @@
 									width:41rpx;
 									height:41rpx;
 									position:absolute;
-									left:34rpx;
+									left:40rpx;
 								}
 							}
 							.logo{
 								width:348rpx;
 								height:98rpx;
 								margin: auto;
-								margin-top: 126rpx;
+								margin-top: 100rpx;
 							}
 							.tagBar{
 								width: 422rpx;
 								margin: auto;
-								margin-top: 96rpx;
+								margin-top: 62rpx;
 								display: flex;
 								justify-content: space-between;
 								.item{
@@ -611,11 +620,11 @@
 						}
 						.listFrame{
 							width:100%;
-							padding: 30rpx 30rpx;
+							padding: 10rpx 46rpx;
+							height: 655rpx;
 							.list{
 								width:100%;
-								height: 86rpx;
-								padding-top: 20rpx;
+								height: 120rpx;
 								border-bottom: 1px solid #eaeaea;
 								display: flex;
 								align-items: center;
@@ -631,20 +640,17 @@
 									font-size: 25rpx;
 								}
 								.picCode{
-									width:146rpx;
-									height:62rpx;
+									width:130rpx;
+									height:60rpx;
 									margin: 0 20rpx;
-									position: relative;
-									top:-10rpx
+									border: 1px solid $main-gray;
 								}
 								.getCode{
-									font-size: 26rpx;
+									font-size: 24rpx;
 									    color: #fff;
 										background-color: #3a3a3a;
-									    padding: 17rpx 22rpx;
+									    padding: 15rpx 44rpx;
 									    border-radius: 36rpx;
-										position: relative;
-										top:-10rpx
 								}
 								.eye{
 									font-size: 40rpx;
@@ -653,32 +659,30 @@
 								}
 								.blue{
 									font-size: 26rpx;
-									color: #7d7d7d;
-									position: relative;
-									top:-10rpx
+									color: $main-hl;
 								}
 							}
 						}
 						.logon{
-							width: 690rpx;
+							width: 670rpx;
 							    height: 80rpx;
 							    line-height: 80rpx;
-							    border-radius: 80rpx;
-								margin-top: 40rpx;
+							    border-radius: 10rpx;
+								margin-top: 67rpx;
 							    background: #038eb7;
 							    color: #fff;
 								text-align: center;
-							    font-size: 28rpx;
+							    font-size: 26rpx;
 						}
 						.blueFrame{
 							width: 690rpx;
 							display: flex;
 							justify-content: space-between;
 							align-items: center;
-							margin-top: 67rpx;
+							margin-top: 40rpx;
 							.text{
-								font-size: 22rpx;
-								color: #383838;
+								font-size: 24rpx;
+								color: $main-hl;
 							}
 						}
 						.thirdPath{

@@ -582,14 +582,11 @@
 					}
 					.listFrame{
 						width:100%;
-						padding: 113rpx 30rpx 0 30rpx;
-						.referrer{
-							font-size: 24rpx;
-						}
+						padding: 10rpx 46rpx;
+						height: 655rpx;
 						.list{
 							width:100%;
-							height: 86rpx;
-							padding-top: 20rpx;
+							height: 120rpx;
 							border-bottom: 1px solid #eaeaea;
 							display: flex;
 							align-items: center;
@@ -605,20 +602,17 @@
 								font-size: 25rpx;
 							}
 							.picCode{
-								width:146rpx;
-								height:62rpx;
+								width:130rpx;
+								height:60rpx;
 								margin: 0 20rpx;
-								position: relative;
-								top:-10rpx
+								border: 1px solid $main-gray;
 							}
 							.getCode{
-								font-size: 26rpx;
+								font-size: 24rpx;
 								    color: #fff;
 									background-color: #3a3a3a;
-								    padding: 17rpx 22rpx;
+								    padding: 15rpx 44rpx;
 								    border-radius: 36rpx;
-									position: relative;
-									top:-10rpx
 							}
 							.eye{
 								font-size: 40rpx;
@@ -627,9 +621,7 @@
 							}
 							.blue{
 								font-size: 26rpx;
-								color: #7d7d7d;
-								position: relative;
-								top:-10rpx
+								color: $main-hl;
 							}
 						}
 					}
@@ -643,7 +635,7 @@
 						width: 690rpx;
 						    height: 80rpx;
 						    line-height: 80rpx;
-						    border-radius: 80rpx;
+						    border-radius: 10rpx;
 							margin-top: 40rpx;
 						    background: #038eb7;
 						    color: #fff;
@@ -654,7 +646,7 @@
 						width: 690rpx;
 						display: flex;
 						align-items: center;
-						margin-top: 70rpx;
+						margin-top: 42rpx;
 						.text{
 							font-size: 26rpx;
 							    color: #666;

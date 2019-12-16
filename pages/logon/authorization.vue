@@ -14,13 +14,17 @@
 				<view class="row">
 					<view class="label">手机号码*</view>
 					<view class="inputFrame">
+						<view class="inputSubFrame">
 						<input class="input"/>
+						</view>
 					</view>
 				</view>
 				<view class="row">
 					<view class="label">验证*</view>
 					<view class="inputFrame">
+						<view class="inputSubFrame">
 						<input class="input"/>
+						</view>
 						<image class="picCode" :src="imgPath+'verificationCode.png'"></image>
 						<view class="blue">换一张</view>
 					</view>
@@ -28,20 +32,26 @@
 				<view class="row">
 					<view class="label">手机短信验证码*</view>
 					<view class="inputFrame">
+						<view class="inputSubFrame">
 						<input class="input"/>
+						</view>
 						<view class="getCode">获取验证码</view>
 					</view>
 				</view>
 				<view class="row">
 					<view class="label">设置密码*</view>
 					<view class="inputFrame">
+						<view class="inputSubFrame">
 						<input class="input"/>
+						</view>
 					</view>
 				</view>
 				<view class="row">
 					<view class="label">确认密码*</view>
 					<view class="inputFrame">
+						<view class="inputSubFrame">
 						<input class="input"/>
+						</view>
 					</view>
 				</view>
 				<view class="agreeFrame">
@@ -172,43 +182,60 @@
 				.center{
 					width: 500px;
 					margin: auto;
+					margin-top: 121px;
 					.row{
-						margin-top: 70px;
+						margin-bottom: 36px;
 						width: 100%;
+						position:relative;
+						.error{
+									position: absolute;
+									top:57px;
+									right: 0;
+									font-size: 15px;
+									color: red;
+								}
 						.label{
 							font-size: 14px;
 							color: #000;
-							margin-bottom: 5px;
+							margin-bottom: 16px;
 						}
 						.inputFrame{
 							width: 100%;
 							height:50px;
 							display: flex;
 							align-items: center;
+							.inputSubFrame{
+								height:50px;
+								flex-grow: 1;
+								position: relative;
+							}
 							.input{
-								height: 48px;
+								height: 100%;
+								width:100%;
 								color: #495057;
 								background-color: #fff;
+								text-indent: 15px;
 								border: 1px solid #ced4da;
 								border-radius: 3px;
-								flex-grow: 1;
 							}
 							.picCode{
-								width:136px;
-								height:46px;
+								width:140px;
+								height:50px;
 								margin: 0 20px;
+								border: 1px solid $main-gray;
 							}
 							.blue{
 								color: #007bff;
-								font-size: 14px;
+								font-size: 16px;
 							}
 							.getCode{
 								    width: 140px;
-								    height: 48px;
+								    height: 50px;
 								    border: 1px solid #008ab0;
 								    border-radius: 35px;
 								    background: #fff;
 								    color: #008ab0;
+									font-size: 12px;
 									margin-left: 20px;
 									line-height: 48px;
 									text-align: center;
@@ -219,6 +246,13 @@
 						display: flex;
 						margin-top: 40px;
 						align-items: center;
+						position: relative;
+						.error{
+									position: absolute;
+									top:30px;
+									left: 0;
+									color: red;
+								}
 						.text{
 							    font-size: 14px;
 							    color: #000;
@@ -233,7 +267,7 @@
 					.buttonFrame{
 						display: flex;
 						align-items: center;
-						margin-top: 40px;
+						margin-top: 93px;
 						.cancel{
 							background-color: #fff;
 							    color: #008ab0;
@@ -241,8 +275,8 @@
 								width: 150px;
 								    height: 50px;
 								    border-radius: 30px;
-								    font-size: 16px;
-									margin-right: 30px;
+								    font-size: 15px;
+									margin-right: 50px;
 									line-height: 50px;
 									text-align: center;
 						}
@@ -253,7 +287,7 @@
 								width: 150px;
 								    height: 50px;
 								    border-radius: 30px;
-								    font-size: 16px;
+								    font-size: 15px;
 									line-height: 50px;
 									text-align: center;
 						}
@@ -308,14 +342,11 @@
 					}
 					.listFrame{
 						width:100%;
-						padding: 113rpx 30rpx 0 30rpx;
-						.referrer{
-							font-size: 24rpx;
-						}
+						padding: 10rpx 46rpx;
+						height: 655rpx;
 						.list{
 							width:100%;
-							height: 86rpx;
-							padding-top: 20rpx;
+							height: 120rpx;
 							border-bottom: 1px solid #eaeaea;
 							display: flex;
 							align-items: center;
@@ -331,20 +362,17 @@
 								font-size: 25rpx;
 							}
 							.picCode{
-								width:146rpx;
-								height:62rpx;
+								width:130rpx;
+								height:60rpx;
 								margin: 0 20rpx;
-								position: relative;
-								top:-10rpx
+								border: 1px solid $main-gray;
 							}
 							.getCode{
-								font-size: 26rpx;
+								font-size: 24rpx;
 								    color: #fff;
 									background-color: #3a3a3a;
-								    padding: 17rpx 22rpx;
+								    padding: 15rpx 44rpx;
 								    border-radius: 36rpx;
-									position: relative;
-									top:-10rpx
 							}
 							.eye{
 								font-size: 40rpx;
@@ -353,9 +381,7 @@
 							}
 							.blue{
 								font-size: 26rpx;
-								color: #7d7d7d;
-								position: relative;
-								top:-10rpx
+								color: $main-hl;
 							}
 						}
 					}
@@ -369,29 +395,18 @@
 						width: 690rpx;
 						    height: 80rpx;
 						    line-height: 80rpx;
-						    border-radius: 80rpx;
+						    border-radius: 10rpx;
 							margin-top: 40rpx;
 						    background: #038eb7;
 						    color: #fff;
 							text-align: center;
 						    font-size: 28rpx;
 					}
-					.blueFrame{
-						width: 690rpx;
-						display: flex;
-						justify-content: space-between;
-						align-items: center;
-						margin-top: 67rpx;
-						.text{
-							font-size: 22rpx;
-							color: #383838;
-						}
-					}
 					.ruleFrame{
 						width: 690rpx;
 						display: flex;
 						align-items: center;
-						margin-top: 70rpx;
+						margin-top: 42rpx;
 						.text{
 							font-size: 26rpx;
 							    color: #666;

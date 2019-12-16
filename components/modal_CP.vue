@@ -1,16 +1,13 @@
 <template>
-	<view class="modalCP">
-		<view class="frame">
-			<view class="top">
-				<view class="title">{{title}}</view>
-				<view class="nuskinIcon" @click="c">&#xe600;</view>
-			</view>
-			<view class="center">
+	<view class="popCP">
+		<view class="popFrame" :style="{width:width||'300rpx',height:height||'300rpx',padding:padding||'30rpx'}">
+			<view class="title" v-if="title">{{title}}</view>
+			<view class="mainFrame">
 				<slot></slot>
 			</view>
-			<view class="bottom">
-				<view class="button" @click="c">{{cancelText}}</view>
-				<view class="button hl" @click="s">{{confirmText}}</view>
+			<view class="buttonFrame">
+				<view class="confirm" v-if="confirmText" @click="confirm">{{confirmText}}</view>
+				<view class="cancel" v-if="cancelText" @click="cancel">{{cancelText}}</view>
 			</view>
 		</view>
 	</view>
@@ -18,84 +15,77 @@
 
 <script>
 	export default {
-		props:['title','confirmText','cancelText'],
+		props:["title","width","height","padding","confirmText","cancelText"],
 		data() {
 			return {
 				
 			};
 		},
 		methods:{
-			c(){
-				this.$emit('cancel')
+			confirm(){
+				this.$emit('confirm')
 			},
-			s(){
-				this.$emit('submit')
+			cancel(){
+				this.$emit('cancel')
 			}
 		}
 	}
 </script>
 
 <style lang="scss">
-	.modalCP{
+	.popCP{
 		position: fixed;
 		top:0;
-		left: 0;
+		left:0;
 		right:0;
 		bottom:0;
-		background-color: rgba(0,0,0,0.5);
+		background-color: rgba(0,0,0,0.3);
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		z-index: 999;
-		.frame{
-			width: 800px;
-			height: 616px;
+		.popFrame{
 			background-color: #fff;
 			border-radius: 10px;
-			padding: 65px;
 			display: flex;
-			justify-content: space-between;
 			flex-direction: column;
-			.top{
+			.title{
+				width: 100%;
+				height: 40px;
+				font-size: 14px;
+				line-height: 40px;
+				font-weight: bold;
 				flex-shrink: 0;
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				.title{
-					font-size: 16px;
-					font-weight: bold;
-				}
 			}
-			.center{
-				flex-grow: 1;
-				flex-shrink: 1;
+			.mainFrame{
+				width:100%;
 				overflow: auto;
-				margin-top: 48px;
-				margin-bottom: 20px;
+				flex-grow: 1;
 			}
-			.bottom{
-				flex-shrink: 0;
+			.buttonFrame{
+				width: 100%;
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
-				.button{
-					    width: 240px;
-					    height: 58px;
-					    border-radius: 30px;
-					    font-size: 18px;
-					    outline: none;
-						font-weight: 400;
-						    text-align: center;
-						    white-space: nowrap;
-						line-height: 56px;
-					    background-color: #fff;
-					    color: #008ab0;
-					    border: 1px solid #008ab0;
+				flex-shrink: 0;
+				.cancel{
+					width:150px;
+					height: 50px;
+					border-radius: 50px;
+					line-height: 48px;
+					border: 1px solid $main-gray;
+					font-size: 14px;
+					text-align: center;
+					color: $main-gray-deep;
 				}
-				.button.hl{
-					background-color: #008ab0;
-					    color: #fff;
-					    border: 1px solid #008ab0;
+				.confirm{
+					width:150px;
+					height: 50px;
+					border-radius: 50px;
+					line-height: 50px;
+					font-size: 14px;
+					text-align: center;
+					background-color: #008aaf;
+					color: #fff;
 				}
 			}
 		}
